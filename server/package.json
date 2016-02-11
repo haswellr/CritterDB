@@ -1,0 +1,11 @@
+{
+    "name": "bestiary-manager",
+    "description": "Bestiary Manager Server",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "3.x",
+        "mongoose": "4.4.3",
+        "assert": "1.x"
+    }
+}

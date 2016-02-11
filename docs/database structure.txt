@@ -1,0 +1,79 @@
+
+NPC/Creature
+{
+	name: string,
+	stats: {
+		size: Size (enum),
+		race: string,
+		alignment: string,
+		armorType: string,
+		naturalArmorClass: int,
+		numHitDie: int,
+		speed: int,
+		strength: int,
+		dexterity: int,
+		constitution: int,
+		intelligence: int,
+		wisdom: int,
+		charisma: int,
+		proficiencyBonus: int,
+		savingThrowProficiencies: {
+			strength: bool,
+			dexterity: bool,
+			constitution: bool,
+			intelligence: bool,
+			wisdom: bool,
+			charisma: bool
+		},
+		savingThrows: {
+			strength: int,
+			dexterity: int,
+			constitution: int,
+			intelligence: int,
+			wisdom: int,
+			charisma: int
+		},
+		skillProficiencies: [
+			insight: Skill (enum),
+			acrobatics: Skill (enum),
+			etc...
+		],
+		skillModifiers: hashtable, example: {
+			insight: 5,
+			acrobatics: 7
+			(anything not in hashtable is calculated via ability scores)
+		},
+		damageResistances: string[],
+		damageImmunities: string[],
+		conditionImmunities: string[],
+		senses: string[],
+		languages: string[],
+		challengeRating: double,
+		experiencePoints: int,
+		additionalAbilities: Ability[],
+		actions: Ability[]
+	},
+	faction: string,
+	environment: string,
+	description: string,
+	bestiary: Bestiary,
+	notes: string
+}
+
+Ability: {
+	name: string,
+	description: string
+}
+
+Bestiary: {
+	creatures: Creature[],
+	owner: User
+}
+
+User: {
+	name: string,
+	password: string (encrypted),
+	email: string (encrypted),
+	ownedBestiaries: Bestiary[],
+	followedBestiaries: Bestiary[]
+}
