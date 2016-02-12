@@ -2,6 +2,10 @@
 NPC/Creature
 {
 	name: string,
+	faction: string,
+	environment: string,
+	description: string,
+	notes: string,
 	stats: {
 		size: Size (enum),
 		race: string,
@@ -9,7 +13,7 @@ NPC/Creature
 		armorType: string,
 		naturalArmorClass: int,
 		numHitDie: int,
-		speed: int,
+		speed: string,
 		strength: int,
 		dexterity: int,
 		constitution: int,
@@ -52,12 +56,7 @@ NPC/Creature
 		experiencePoints: int,
 		additionalAbilities: Ability[],
 		actions: Ability[]
-	},
-	faction: string,
-	environment: string,
-	description: string,
-	bestiary: Bestiary,
-	notes: string
+	}
 }
 
 Ability: {
