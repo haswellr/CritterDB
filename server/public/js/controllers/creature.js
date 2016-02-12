@@ -87,6 +87,8 @@ var creatureCtrl = angular.module('myApp').controller('creatureCtrl', function (
 			var ability = creature.stats.reactions[index];
 			ability.descriptionHtml = $sce.trustAsHtml(ability.description);
 		}
+		//make description html safe so we can use italics and other markup
+		creature.flavor.descriptionHtml = $sce.trustAsHtml(creature.flavor.description);
 		//saving throws
 		for(var index in creature.stats.savingThrows){
 			var savingThrow = creature.stats.savingThrows[index];
