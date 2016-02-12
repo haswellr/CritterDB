@@ -14,7 +14,8 @@ myApp.config(['$routeProvider',
 			}).
 			when('/creature/:creatureId',{
 				templateUrl: 'assets/partials/creature.html',
-				controller: 'creatureCtrl'
+				controller: 'creatureCtrl',
+				resolve: creatureCtrl.resolve
 			}).
 			otherwise({
 				redirectTo: '/index'
