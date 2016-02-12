@@ -1,0 +1,91 @@
+{
+  "name": "Fire Giant",
+  "environment": "",
+  "stats": {
+    "actions": [
+      {
+        "name": "Multiattack",
+        "description": "The giant makes two greatsword attacks."
+      },
+      {
+        "name": "Greatsword",
+        "description": "<i>Melee Weapon Attack</i>: +11 to hit, reach 10 ft., one target. <i>Hit</i>: 28 (6d6 + 7) slashing damage."
+      },
+      {
+        "name": "Rock",
+        "description": "<i>Ranged Weapon Attack</i>: +11 to hit, range 60/240 ft., one target. <i>Hit</i>: 29 (4d10 + 7) bludgeoning damage."
+      }
+    ],
+    "reactions": [
+
+    ],
+    "additionalAbilities": [
+
+    ],
+    "experiencePoints": 5000,
+    "challengeRating": 9,
+    "languages": [
+      "Giant"
+    ],
+    "senses": [
+      "passive Perception 16"
+    ],
+    "conditionImmunities": [
+
+    ],
+    "damageVulnerabilities": [
+
+    ],
+    "damageImmunities": [
+      "fire"
+    ],
+    "damageResistances": [
+
+    ],
+    "skills": [
+      {
+        "name": "Athletics",
+        "proficient": true
+      },
+      {
+        "name": "Perception",
+        "proficient": true
+      }
+    ],
+    "savingThrows": [
+      {
+        "ability": "dexterity",
+        "proficient": true
+      },
+      {
+        "ability": "constitution",
+        "proficient": true
+      },
+      {
+        "ability": "charisma",
+        "proficient": true
+      }
+    ],
+    "proficiencyBonus": 4,
+    "abilityScores": {
+      "charisma": 13,
+      "wisdom": 14,
+      "intelligence": 10,
+      "constitution": 22,
+      "dexterity": 9,
+      "strength": 25
+    },
+    "speed": "30 ft.",
+    "numHitDie": 13,
+    "armorClass": 18,
+    "armorType": "plate",
+    "alignment": "lawful evil",
+    "race": "giant",
+    "size": "Huge"
+  },
+  "flavor": {
+    "description": "With dark skin and flaming red hair, fire giants have a fearsome reputation as soldiers and conquerors. They dwell among volcanoes, lava flows, and rocky mountains, and are known for their ability to burn, plunder, and destroy.",
+    "environment": "",
+    "faction": ""
+  }
+}
