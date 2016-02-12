@@ -161,7 +161,8 @@ var StatBlock = new mongoose.Schema(
             default: 0
         },
         additionalAbilities: [Ability],
-        actions: [Ability]
+        actions: [Ability],
+        reactions: [Ability]
     },
     {
         _id : false
