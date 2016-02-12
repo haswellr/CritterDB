@@ -1,24 +1,6 @@
-var mongoose = require('mongoose');
-var assert = require('assert');
 
-var databaseUrl = "mongodb://ryan:3Edcft6yhn@ds061335.mongolab.com:61335/bestiarymanager";
-
-mongoose.connect(databaseUrl);
-
-//Define Creature model for Mongoose
-var Creature = mongoose.model('Creature', 
-    {
-        name: {
-            type: String,
-            required: true
-        },
-        environment: {
-            type: String
-        },
-        level: {
-            type: Number
-        }
-     });
+//Get mongoose Creature model
+var Creature = require('../models/creature');
 
 exports.findById = function(req, res) {
     var id = req.params.id;
