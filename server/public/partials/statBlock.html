@@ -1,0 +1,127 @@
+<stat-block>
+  <creature-heading>
+    <h1>{{creature.name}}</h1>
+    <h2>{{creature.stats.size}} {{creature.stats.race}}, {{creature.stats.alignment}}</h2>
+  </creature-heading>
+
+  <top-stats>
+    <property-line>
+      <h4>Armor Class</h4>
+      <p>{{creature.stats.armorClass}} {{creature.stats.armorTypeStr}}</p>
+    </property-line>
+    <property-line>
+      <h4>Hit Points</h4>
+      <p>{{creature.stats.hitPoints}} ({{creature.stats.numHitDie}}d{{creature.stats.hitDieSize}} + {{creature.stats.extraHealthFromConstitution}})</p>
+    </property-line>
+    <property-line>
+      <h4>Speed</h4>
+      <p>{{creature.stats.speed}}</p>
+    </property-line>
+
+    <link rel="import" href="assets/partials/dndstatblock/tapered-rule.html">
+    <style>
+      table {
+        width: 100%;
+        border: 0px;
+        border-collapse: collapse;
+      }
+      th, td {
+        width: 50px;
+        text-align: center;
+      }
+    </style>
+    <tapered-rule></tapered-rule>
+    <table>
+      <tr>
+        <th>STR</th>
+        <th>DEX</th>
+        <th>CON</th>
+        <th>INT</th>
+        <th>WIS</th>
+        <th>CHA</th>
+      </tr>
+      <tr>
+        <td>{{creature.stats.abilityScoreStrs.strength}}</td>
+        <td>{{creature.stats.abilityScoreStrs.dexterity}}</td>
+        <td>{{creature.stats.abilityScoreStrs.constitution}}</td>
+        <td>{{creature.stats.abilityScoreStrs.intelligence}}</td>
+        <td>{{creature.stats.abilityScoreStrs.wisdom}}</td>
+        <td>{{creature.stats.abilityScoreStrs.charisma}}</td>
+      </tr>
+    </table>
+    <tapered-rule></tapered-rule>
+
+    <property-line ng-if="creature.stats.savingThrows.length>0">
+      <h4>Saving Throws</h4>
+      <p>
+        <span ng-repeat="savingThrow in creature.stats.savingThrows"><span ng-if="$index>0">, </span>{{savingThrow.modifierStr}}</span>
+      </p>
+    </property-line>
+    <property-line ng-if="creature.stats.skills.length>0">
+      <h4>Skills</h4>
+      <p>
+        <span ng-repeat="skill in creature.stats.skills"><span ng-if="$index>0">, </span>{{skill.modifierStr}}</span>
+      </p>
+    </property-line>
+    <property-line ng-if="creature.stats.damageVulnerabilities.length>0">
+      <h4>Damage Vulnerabilities</h4>
+      <p>
+        <span ng-repeat="vulnerability in creature.stats.damageVulnerabilities"><span ng-if="$index>0">, </span>{{vulnerability}}</span>
+      </p>
+    </property-line>
+    <property-line ng-if="creature.stats.damageResistances.length>0">
+      <h4>Damage Resistances</h4>
+      <p>
+        <span ng-repeat="resistance in creature.stats.damageResistances"><span ng-if="$index>0">, </span>{{resistance}}</span>
+      </p>
+    </property-line>
+    <property-line ng-if="creature.stats.damageImmunities.length>0">
+      <h4>Damage Immunities</h4>
+      <p>
+        <span ng-repeat="immunity in creature.stats.damageImmunities"><span ng-if="$index>0">, </span>{{immunity}}</span>
+      </p>
+    </property-line>
+    <property-line ng-if="creature.stats.conditionImmunities.length>0">
+      <h4>Condition Immunities</h4>
+      <p>
+        <span ng-repeat="immunity in creature.stats.conditionImmunities"><span ng-if="$index>0">, </span>{{immunity}}</span>
+      </p>
+    </property-line>
+    <property-line ng-if="creature.stats.senses.length>0">
+      <h4>Senses</h4>
+      <p>
+        <span ng-repeat="sense in creature.stats.senses"><span ng-if="$index>0">, </span>{{sense}}</span>
+      </p>
+    </property-line>
+    <property-line>
+      <h4>Languages</h4>
+      <p ng-if="creature.stats.languages.length==0">—</p>
+      <p ng-if="creature.stats.languages.length>0">
+        <span ng-repeat="language in creature.stats.languages"><span ng-if="$index>0">, </span>{{language}}</span>
+      </p>
+    </property-line>
+    <property-line>
+      <h4>Challenge</h4>
+      <p>{{creature.stats.challengeRating}} ({{creature.stats.experiencePoints}} XP)</p>
+    </property-line>
+  </top-stats>
+
+  <property-block ng-repeat="ability in creature.stats.additionalAbilities">
+    <h4>{{ability.name}}.</h4>
+    <p ng-bind-html="ability.descriptionHtml"></p>
+  </property-block>
+
+  <h3 ng-if="creature.stats.actions.length>0">Actions</h3>
+
+  <property-block ng-repeat="action in creature.stats.actions">
+    <h4>{{action.name}}.</h4>
+    <p ng-bind-html="action.descriptionHtml"></p>
+  </property-block>
+
+  <h3 ng-if="creature.stats.reactions.length>0">Reactions</h3>
+
+  <property-block ng-repeat="reaction in creature.stats.reactions">
+    <h4>{{reaction.name}}.</h4>
+    <p ng-bind-html="reaction.descriptionHtml"></p>
+  </property-block>
+</stat-block>

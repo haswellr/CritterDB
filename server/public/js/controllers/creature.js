@@ -2,8 +2,8 @@ angular.module('myApp').factory("Creature", function($resource) {
   return $resource("/api/creatures/:id");
 });
 
-angular.module('myApp').controller('creatureCtrl', function ($scope, Creature, $routeParams, $sce) {
-	$scope.creature = {};
+var creatureCtrl = angular.module('myApp').controller('creatureCtrl', function ($scope, creature, $routeParams, $sce) {
+	$scope.creature = creature;
 
 	var hitDieSize = {
 		"Fine": 4,
@@ -118,8 +118,19 @@ angular.module('myApp').controller('creatureCtrl', function ($scope, Creature, $
 		}
 	}
 
-	Creature.get({id:$routeParams.creatureId}, function(data) {
-		$scope.creature = data;
-		fillInCreatureDetails($scope.creature);
-	});
+	fillInCreatureDetails($scope.creature);
+
 });
+
+//don't load controll until we've gotten the creature from the server
+creatureCtrl.resolve = {
+			creature: function(Creature, $q, $route){
+				var deferred = $q.defer();
+				Creature.get({id:$route.current.params.creatureId},function(data) {
+					deferred.resolve(data);
+				}, function(errorData) {
+					deferred.reject();
+				});
+				return deferred.promise;
+			}
+		}
