@@ -55,7 +55,7 @@ var AbilityScores = new mongoose.Schema(
 //a special saving throw - either proficient, or a specific value
 var SavingThrow = new mongoose.Schema(
     {
-        abilityName: {
+        ability: {
             type: String,
             enum: ["strength","dexterity","constitution","intelligence","wisdom","charisma"],
             required: true
@@ -74,8 +74,9 @@ var SavingThrow = new mongoose.Schema(
 //a special skill - either proficient, or a specific value
 var Skill = new mongoose.Schema(
     {
-        skillName: {
+        name: {
             type: String,
+            enum: ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"],
             required: true
         },
         value: {
@@ -125,7 +126,7 @@ var StatBlock = new mongoose.Schema(
             type: String,
             default: ""
         },
-        naturalArmorClass: {
+        armorClass: {
             type: Number,
             default: 10
         },
@@ -147,6 +148,7 @@ var StatBlock = new mongoose.Schema(
         },
         savingThrows: [SavingThrow],
         skills: [Skill],
+        damageVulnerabilities: [String],
         damageResistances: [String],
         damageImmunities: [String],
         conditionImmunities: [String],
