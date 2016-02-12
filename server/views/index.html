@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="html" ng:app="myApp">
+  <head>
+
+    <title>Bestiary</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- CSS Files -->
+    <!--link rel="stylesheet" href='assets/app/css/custom.css")'>-->
+    <!-- Font Files -->
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet" type="text/css">-->
+    <!-- Angular includes -->
+    <script src="/assets/js/vendor/angular/angular.min.js"></script>
+    <script src="/assets/js/vendor/angular/angular-route.min.js"></script>
+    <script src="/assets/js/vendor/angular/angular-resource.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <!-- Controllers -->
+    <script src="/assets/js/controllers/creature.js"></script>
+    <!-- Directives -->
+
+    <!-- Services -->
+
+    <!-- D&D Stat Block Includes -->
+    <link rel="import" href="/assets/partials/dndstatblock/top-stats.html">
+    <link rel="import" href="/assets/partials/dndstatblock/creature-heading.html">
+    <link rel="import" href="/assets/partials/dndstatblock/abilities-block.html">
+    <link rel="import" href="/assets/partials/dndstatblock/property-block.html">
+    <link rel="import" href="/assets/partials/dndstatblock/property-line.html">
+    <link rel="import" href="/assets/partials/dndstatblock/stat-block.html">
+  </head>
+
+  <body>
+
+  	<div ng-view></div>
+
+  </body>
+
+</html>
