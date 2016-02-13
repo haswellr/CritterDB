@@ -3,12 +3,16 @@ var autopopulate = require('mongoose-autopopulate');
 
 var BestiarySchema = new mongoose.Schema(
 	{
-        creatures: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Creature',
-            autopopulate: true
-        }]
-    });
+		name: {
+			type: String,
+			required: true
+		},
+    creatureIds: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Creature',
+        autopopulate: false
+    }]
+  });
 BestiarySchema.plugin(autopopulate);
 
 module.exports = mongoose.model('Bestiary',BestiarySchema);

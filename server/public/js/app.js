@@ -12,6 +12,11 @@ myApp.config(['$routeProvider',
 			when('/index',{
 				templateUrl: 'assets/partials/index.html'
 			}).
+			when('/bestiary/:bestiaryId',{
+				templateUrl: 'assets/partials/bestiary.html',
+				controller: 'bestiaryCtrl',
+				resolve: bestiaryCtrl.resolve
+			}).
 			when('/creature/:creatureId',{
 				templateUrl: 'assets/partials/creature.html',
 				controller: 'creatureCtrl',
