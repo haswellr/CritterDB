@@ -1,10 +1,11 @@
 
-var creatureCtrl = angular.module('myApp').controller('creatureCtrl', function ($scope, creature) {
+
+
+var creatureCtrl = function($scope,creature) {
 	$scope.creature = creature;
+}
 
-});
-
-//don't load controller until we've gotten the creature from the server
+//don't load controller until we've gotten the data from the server
 creatureCtrl.resolve = {
 			creature: function(Creature, $q, $route){
 				var deferred = $q.defer();
@@ -16,3 +17,5 @@ creatureCtrl.resolve = {
 				return deferred.promise;
 			}
 		}
+
+angular.module('myApp').controller('creatureCtrl',creatureCtrl);
