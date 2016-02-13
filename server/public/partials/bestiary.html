@@ -1,3 +1,4 @@
 <h1>Bestiary: {{bestiary.name}}</h1>
-
-<ng-stat-block ng-repeat="creature in bestiary.creatures" creature="creature"></ng-stat-block>
+<input ng-model="creatureFilter" type="text"></input>
+<p></p>
+<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature"></ng-stat-block>
