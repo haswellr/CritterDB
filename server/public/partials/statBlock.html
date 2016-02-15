@@ -66,25 +66,25 @@
     <property-line ng-if="creature.stats.damageVulnerabilities.length>0">
       <h4>Damage Vulnerabilities</h4>
       <p>
-        <span ng-repeat="vulnerability in creature.stats.damageVulnerabilities"><span ng-if="$index>0">, </span>{{vulnerability}}</span>
+        <span ng-repeat="vulnerability in creature.stats.damageVulnerabilities"><span ng-if="$index>0">, </span>{{vulnerability.toLowerCase()}}</span>
       </p>
     </property-line>
     <property-line ng-if="creature.stats.damageResistances.length>0">
       <h4>Damage Resistances</h4>
       <p>
-        <span ng-repeat="resistance in creature.stats.damageResistances"><span ng-if="$index>0">, </span>{{resistance}}</span>
+        <span ng-repeat="resistance in creature.stats.damageResistances"><span ng-if="$index>0">, </span>{{resistance.toLowerCase()}}</span>
       </p>
     </property-line>
     <property-line ng-if="creature.stats.damageImmunities.length>0">
       <h4>Damage Immunities</h4>
       <p>
-        <span ng-repeat="immunity in creature.stats.damageImmunities"><span ng-if="$index>0">, </span>{{immunity}}</span>
+        <span ng-repeat="immunity in creature.stats.damageImmunities"><span ng-if="$index>0">, </span>{{immunity.toLowerCase()}}</span>
       </p>
     </property-line>
     <property-line ng-if="creature.stats.conditionImmunities.length>0">
       <h4>Condition Immunities</h4>
       <p>
-        <span ng-repeat="immunity in creature.stats.conditionImmunities"><span ng-if="$index>0">, </span>{{immunity}}</span>
+        <span ng-repeat="immunity in creature.stats.conditionImmunities"><span ng-if="$index>0">, </span>{{immunity.toLowerCase()}}</span>
       </p>
     </property-line>
     <property-line ng-if="creature.stats.senses.length>0">
@@ -97,7 +97,7 @@
       <h4>Languages</h4>
       <p ng-if="creature.stats.languages.length==0">—</p>
       <p ng-if="creature.stats.languages.length>0">
-        <span ng-repeat="language in creature.stats.languages"><span ng-if="$index>0">, </span>{{language}}</span>
+        <span ng-repeat="language in creature.stats.languages"><span ng-if="$index>0">, </span>{{language.charAt(0).toUpperCase() + language.slice(1).toLowerCase()}}</span>
       </p>
     </property-line>
     <property-line>

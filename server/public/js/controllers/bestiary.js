@@ -22,15 +22,19 @@ var bestiaryCtrl = function ($scope, Creature, bestiary) {
 //don't load controller until we've gotten the data from the server
 bestiaryCtrl.resolve = {
 			bestiary: function(Bestiary, $q, $route){
-				var deferred = $q.defer();
-				if($route.current.params.bestiaryId!=undefined){
-					Bestiary.get({id:$route.current.params.bestiaryId},function(data) {
-						deferred.resolve(data);
-					}, function(errorData) {
-						deferred.reject();
-					});
+				if($route.current.params.bestiaryId){
+					var deferred = $q.defer();
+					if($route.current.params.bestiaryId!=undefined){
+						Bestiary.get({id:$route.current.params.bestiaryId},function(data) {
+							deferred.resolve(data);
+						}, function(errorData) {
+							deferred.reject();
+						});
+					}
+					return deferred.promise;
 				}
-				return deferred.promise;
+				else
+					return {};
 			}
 		}
 
