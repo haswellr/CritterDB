@@ -6,7 +6,7 @@ var creatureCtrl = function($scope,creature,Creature) {
 
 	$scope.creatureData = {
 		sizes: ["Fine","Diminutive","Tiny","Small","Medium","Large","Huge","Gargantuan","Colossal","Colossal+"],
-		races: ["Human","Dwarf","Elf","Halfling","Gnome","Dragonborn","Undead","Beast","Elemental","Ooze","Giant","Construct"],
+		races: ["Human","Dwarf","Elf","Halfling","Gnome","Dragonborn","Undead","Beast","Elemental","Ooze","Giant","Construct","Humanoid"],
 		alignments: ["Unaligned","Lawful Good","Lawful Neutral","Lawful Evil","Neutral Good","Neutral","Neutral Evil","Chaotic Good","Chaotic Neutral","Chaotic Evil"],
 		armorTypes: ["Natural Armor","Padded","Leather","Studded leather","Hide","Chain shirt","Scale mail","Breastplate","Half plate","Ring mail","Chain mail","Splint","Plate"],
 		abilities: ["strength","dexterity","constitution","intelligence","wisdom","charisma"],
@@ -29,17 +29,25 @@ var creatureCtrl = function($scope,creature,Creature) {
 	};
 
 	$scope.challengeRating = {
-		step: 0.25,
+		step: 0.125,
 		changed: function(){
 			if($scope.creature.stats && $scope.creature.stats.challengeRating){
 				//set new step
 				if($scope.creature.stats.challengeRating>1)
 					$scope.challengeRating.step = 1;
-				else
+				else if($scope.creature.stats.challengeRating>0.5)
+					$scope.challengeRating.step = 0.5;
+				else if($scope.creature.stats.challengeRating>0.25)
 					$scope.challengeRating.step = 0.25;
+				else
+					$scope.challengeRating.step = 0.125;
 				//fix up issues caused by dynamic step value
-				if($scope.creature.stats.challengeRating==1.25)
+				if($scope.creature.stats.challengeRating==1.5)
 					$scope.creature.stats.challengeRating = 2;
+				else if($scope.creature.stats.challengeRating==0.75)
+					$scope.creature.stats.challengeRating = 1;
+				else if($scope.creature.stats.challengeRating==0.375)
+					$scope.creature.stats.challengeRating = 0.5;
 				//set new XP
 				if($scope.creatureData.experienceByCR.hasOwnProperty($scope.creature.stats.challengeRating))
 					$scope.creature.stats.experiencePoints = $scope.creatureData.experienceByCR[$scope.creature.stats.challengeRating];
@@ -151,6 +159,22 @@ var creatureCtrl = function($scope,creature,Creature) {
 		}
 	};
 
+	$scope.saveCreature = function(){
+		if($scope.creature._id){
+			Creature.update($scope.creature._id,$scope.creature,function(){
+				console.log("updated creature!");
+			},function(err){
+				console.log("error: "+err);
+			});
+		}
+		else{
+			Creature.create($scope.creature,function(){
+				console.log("created creature!");
+			},function(err){
+				console.log("error: "+err);
+			});
+		}
+	}
 
 	$scope.$watch("creature",function(newValue,oldValue){
 		Creature.calculateCreatureDetails($scope.creature);
@@ -160,14 +184,36 @@ var creatureCtrl = function($scope,creature,Creature) {
 var defaultCreature = {
 	flavor: {},
 	stats: {
+		size: "Medium",
+		race: "Humanoid",
+		alignment: "Unaligned",
+		armorClass: 10,
+		numHitDie: 1,
+		proficiencyBonus: 0,
+		speed: "30 ft.",
+		abilityScores: {
+			strength: 10,
+			dexterity: 10,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 10
+		},
+		savingThrows: [],
+		skills: [],
 		damageVulnerabilities: [],
 		damageResistances: [],
 		damageImmunities: [],
 		conditionImmunities: [],
 		senses: [],
-		languages: [],
+		languages: ["Common"],
+		challengeRating: 0.125,
+		experiencePoints: 50,
 		additionalAbilities: [],
-		actions: [],
+		actions: [{
+			name: "Shortsword",
+			description: "<i>Melee Weapon Attack:</i> +0 to hit, reach 5 ft., one target. <i>Hit:</i> 3 (1d6 + 0) piercing damage."
+		}],
 		reactions: []
 	}
 }
