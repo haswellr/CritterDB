@@ -1,9 +1,9 @@
 
-<form>
+<form ng-submit="saveCreature()">
 	<div layout-gt-sm="row">
 		<md-input-container flex>
 		  <label>Name</label>
-		  <input ng-model="creature.name" type="text"/>
+		  <input ng-model="creature.name" type="text" required/>
 		</md-input-container>
 		<md-input-container flex>
 		  <label>Description</label>
@@ -287,6 +287,8 @@
       <md-icon md-svg-icon="md-close"></md-icon>
     </button>
 	</div>
+
+	<md-button type="Submit" class="md-raised md-primary">Save</md-button>
 
 </form>
 

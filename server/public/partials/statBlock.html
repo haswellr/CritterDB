@@ -87,10 +87,10 @@
         <span ng-repeat="immunity in creature.stats.conditionImmunities"><span ng-if="$index>0">, </span>{{immunity.toLowerCase()}}</span>
       </p>
     </property-line>
-    <property-line ng-if="creature.stats.senses.length>0">
+    <property-line>
       <h4>Senses</h4>
       <p>
-        <span ng-repeat="sense in creature.stats.senses"><span ng-if="$index>0">, </span>{{sense}}</span>
+        <span ng-repeat="sense in creature.stats.senses"><span ng-if="$index>0">, </span>{{sense}}</span><span><span ng-if="creature.stats.senses.length>0">, </span>passive Perception {{creature.stats.passivePerception}}</span>
       </p>
     </property-line>
     <property-line>

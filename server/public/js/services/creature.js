@@ -136,6 +136,20 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 				skill.modifierStr = skill.name+" "+sign+Math.abs(mod);
 			}
 		}
+		//passive perception
+		if(creature.stats && creature.stats.senses && creature.stats.abilityScoreModifiers){
+			var mod = creature.stats.abilityScoreModifiers.wisdom;
+			if(creature.stats.skills){
+				for(var index in creature.stats.skills){
+					if(creature.stats.skills[index].name=="Perception")
+					{
+						mod = creature.stats.skills[index].modifier;
+						break;
+					}
+				}
+			}
+			creature.stats.passivePerception = 10 + mod;
+		}
 	}
 
   serv.get = function(id, success, error){
@@ -157,8 +171,8 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
   	api.save(data,success,error);
   }
 
-  serv.update = function(data,success,error){
-  	api.update(data,function(data){
+  serv.update = function(id,data,success,error){
+  	api.update({'id':id},data,function(data){
   		serv.calculateCreatureDetails(data);
   		success(data);
   	},error);
