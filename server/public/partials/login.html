@@ -1,7 +1,41 @@
-<p>
-this is the super sick login page whatuuuup! by j-nasty - NO IT'S BY RYAN! Oh no...it isn't!!
-</p>
-<md-input-container flex="">
-  <label>Test</label>
-  <input type="text">
-</md-input-container>
+<div class="loginheader">
+	<img src="http://dndseek.com/qald/wp-content/uploads/2013/10/dungeons_and_Dragons_logo.png"/>
+
+  <md-button class="user-icon md-fab md-primary md-hue-2" aria-label="Profile">
+    <md-icon class="md-48"> home </md-icon>
+	</md-button>
+
+
+</div>
+
+
+<div class="loginblock">
+	<h1 class="md-display-2">Login</h1>
+	
+	<md-content layout-padding="">
+	  <form name="projectForm">
+
+	    <md-input-container class="md-block">
+	      <label>Email</label>
+	      <input required="" type="email" name="email" ng-model="project.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+
+	      <div ng-messages="projectForm.email.$error" role="alert">
+	        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+	          Your email must be between 10 and 100 characters long and look like an e-mail address.
+	        </div>
+	      </div>
+	    </md-input-container>
+
+	    <md-input-container class="md-block">
+	      <label>Password</label>
+	      <input required="" type="password" name="password" ng-model="project.password" minlength="8" max="20" data-ng-required="true" ng-pattern="/^.+@.+\..+$/">
+	      </md-input-container>
+    
+    </form>
+  </md-content>
+
+<!--Login Buttons -->
+	<md-button class="md-raised md-button">Sign Up</md-button>
+	<md-button class="md-raised md-button">Login</md-button>
+
+</div>
