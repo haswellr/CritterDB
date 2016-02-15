@@ -54,6 +54,11 @@ myApp.config(['$routeProvider',
 				controller: 'creatureCtrl',
 				resolve: creatureCtrl.resolve
 			}).
+			when('/creature/edit/:creatureId',{
+				templateUrl: 'assets/partials/creature/create.html',
+				controller: 'creatureCtrl',
+				resolve: creatureCtrl.resolve
+			}).
 			when('/creature/create',{
 				templateUrl: 'assets/partials/creature/create.html',
 				controller: 'creatureCtrl',
