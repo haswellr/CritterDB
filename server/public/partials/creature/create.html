@@ -195,7 +195,7 @@
   <md-chips ng-model="creature.stats.conditionImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.conditionImmunitiesSearch"
-        md-items="immunity in creatureData.search(creature.stats.conditionImmunitiesSearch,creatureData.damageTypes)"
+        md-items="immunity in creatureData.search(creature.stats.conditionImmunitiesSearch,creatureData.negativeConditions)"
         md-item-text="immunity"
         placeholder="Condition Immunities">
       <span md-highlight-text="creature.stats.conditionImmunitiesSearch">{{immunity}}</span>
@@ -232,12 +232,12 @@
 
   <md-input-container flex>
 	  <label>Challenge Rating</label>
-	  <input ng-model="creature.stats.challengeRating" type="number"/>
+	  <input ng-model="creature.stats.challengeRating" ng-change="challengeRating.changed()" step="{{challengeRating.step}}" type="number" min="0"/>
 	</md-input-container>
 
 	<md-input-container flex>
 	  <label>Experience Points</label>
-	  <input ng-model="creature.stats.experiencePoints" type="number"/>
+	  <input ng-model="creature.stats.experiencePoints" type="number" min="0"/>
 	</md-input-container>
 
 </form>

@@ -13,6 +13,8 @@ var creatureCtrl = function($scope,creature,Creature) {
 		skills: ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"],
 		damageTypes: ["Slashing","Piercing","Bludgeoning","Acid","Fire","Cold","Poison","Necrotic","Radiant","Lightning","Psychic","Thunder","Force"],
 		languages: ["Common","Dwarvish","Elvish","Giant","Gnomish","Goblin","Halfling","Orc","Abyssal","Celestial","Draconic","Deep Speech","Infernal","Primordial","Sylvan","Undercommon"],
+		negativeConditions: ["Blinded","Charmed","Deafened","Encumbered","Exhaustion","Frightened","Intoxicated","Paralyzed","Poisoned","Prone","Restrained","Stunned","Unconscious"],
+		experienceByCR: {'0': 10,'0.125': 25,'0.25': 50,'0.5': 100,'1': 200,'2': 450,'3': 700,'4': 1100,'5': 1800,'6': 2300,'7': 2900,'8': 3900,'9': 5000,'10': 5900,'11': 7200,'12': 8400,'13': 10000,'14': 11500,'15': 13000,'16': 15000,'17': 18000,'18': 20000,'19': 22000,'20': 25000,'21': 33000,'22': 41000,'23': 50000,'24': 62000,'25': 75000,'26': 90000,'27': 105000,'28': 120000,'29': 135000,'30': 155000},
 		search: function(searchText,arrayToSearch){
 			var returnedVals = [];
 			if(searchText && arrayToSearch){
@@ -25,6 +27,26 @@ var creatureCtrl = function($scope,creature,Creature) {
 			return(returnedVals);
 		}
 	};
+
+	$scope.challengeRating = {
+		step: 0.25,
+		changed: function(){
+			if($scope.creature.stats && $scope.creature.stats.challengeRating){
+				//set new step
+				if($scope.creature.stats.challengeRating>1)
+					$scope.challengeRating.step = 1;
+				else
+					$scope.challengeRating.step = 0.25;
+				//fix up issues caused by dynamic step value
+				if($scope.creature.stats.challengeRating==1.25)
+					$scope.creature.stats.challengeRating = 2;
+				//set new XP
+				if($scope.creatureData.experienceByCR.hasOwnProperty($scope.creature.stats.challengeRating))
+					$scope.creature.stats.experiencePoints = $scope.creatureData.experienceByCR[$scope.creature.stats.challengeRating];
+			}
+
+		}
+	}
 
 	$scope.savingThrows = {
 		isUsed: function(savingThrowAbility){
