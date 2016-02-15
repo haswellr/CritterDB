@@ -136,6 +136,21 @@ var creatureCtrl = function($scope,creature,Creature) {
 		}
 	};
 
+	$scope.abilities = {
+		addToList: function(list){
+			var newAbility = {
+				name: "",
+				description: ""
+			};
+			list.push(newAbility);
+		},
+		removeFromList: function(ability,list){
+			var index = list.indexOf(ability);
+			if(index!=-1)
+				list.splice(index,1);
+		}
+	};
+
 
 	$scope.$watch("creature",function(newValue,oldValue){
 		Creature.calculateCreatureDetails($scope.creature);
@@ -150,7 +165,10 @@ var defaultCreature = {
 		damageImmunities: [],
 		conditionImmunities: [],
 		senses: [],
-		languages: []
+		languages: [],
+		additionalAbilities: [],
+		actions: [],
+		reactions: []
 	}
 }
 
