@@ -240,6 +240,54 @@
 	  <input ng-model="creature.stats.experiencePoints" type="number" min="0"/>
 	</md-input-container>
 
+	<h4>Abilities</h4>
+	<md-button ng-click="abilities.addToList(creature.stats.additionalAbilities)" class="md-raised">Add</md-button>
+	<div ng-repeat="ability in creature.stats.additionalAbilities" layout-gt-sm="row">
+		<md-input-container flex>
+		  <label>Name</label>
+		  <input ng-model="ability.name" type="text"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>Description</label>
+		  <input ng-model="ability.description" type="text"/>
+		</md-input-container>
+		<button ng-click="abilities.removeFromList(ability,creature.stats.additionalAbilities)" class="md-primary remove-saving-throw">
+      <md-icon md-svg-icon="md-close"></md-icon>
+    </button>
+	</div>
+
+	<h4>Actions</h4>
+	<md-button ng-click="abilities.addToList(creature.stats.actions)" class="md-raised">Add</md-button>
+	<div ng-repeat="ability in creature.stats.actions" layout-gt-sm="row">
+		<md-input-container flex>
+		  <label>Name</label>
+		  <input ng-model="ability.name" type="text"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>Description</label>
+		  <input ng-model="ability.description" type="text"/>
+		</md-input-container>
+		<button ng-click="abilities.removeFromList(ability,creature.stats.actions)" class="md-primary remove-saving-throw">
+      <md-icon md-svg-icon="md-close"></md-icon>
+    </button>
+	</div>
+
+	<h4>Reactions</h4>
+	<md-button ng-click="abilities.addToList(creature.stats.reactions)" class="md-raised">Add</md-button>
+	<div ng-repeat="ability in creature.stats.reactions" layout-gt-sm="row">
+		<md-input-container flex>
+		  <label>Name</label>
+		  <input ng-model="ability.name" type="text"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>Description</label>
+		  <input ng-model="ability.description" type="text"/>
+		</md-input-container>
+		<button ng-click="abilities.removeFromList(ability,creature.stats.reactions)" class="md-primary remove-saving-throw">
+      <md-icon md-svg-icon="md-close"></md-icon>
+    </button>
+	</div>
+
 </form>
 
 <ng-stat-block creature="creature"></ng-stat-block>

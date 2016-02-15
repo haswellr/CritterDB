@@ -48,7 +48,7 @@
   padding: 0;
   margin: 0;
   transition: background 0.15s linear;
-  display: block;
+  display: inline-block;
 }
 
 .remove-saving-throw md-icon {
