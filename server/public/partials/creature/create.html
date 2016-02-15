@@ -1,5 +1,118 @@
 
+<form>
+	<div layout-gt-sm="row">
+		<md-input-container flex>
+		  <label>Name</label>
+		  <input ng-model="creature.name" type="text"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>Description</label>
+		  <textarea ng-model="creature.flavor.description"></textarea>
+		</md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+		<md-input-container flex>
+		  <label>Environment</label>
+		  <input ng-model="creature.flavor.environment" type="text"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>Faction</label>
+		  <input ng-model="creature.flavor.faction" type="text"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>Size</label>
+		  <md-select ng-model="creature.stats.size">
+	      <md-option ng-repeat="size in creatureData.sizes" value="{{size}}">
+	        {{size}}
+	      </md-option>
+	    </md-select>
+		</md-input-container>
+	</div>
+	<div layout-gt-sm="row">
+		<md-autocomplete flex
+	      md-search-text="creature.stats.race"
+	      md-items="race in creatureData.search(creature.stats.race,creatureData.races)"
+	      md-item-text="race"
+	      md-floating-label="Race">
+	    <md-item-template>
+	      <span>{{race}}</span>
+	    </md-item-template>
+	  </md-autocomplete>
+	  <md-input-container flex>
+		  <label>Alignment</label>
+		  <md-select ng-model="creature.stats.alignment">
+	      <md-option ng-repeat="alignment in creatureData.alignments" value="{{alignment}}">
+	        {{alignment}}
+	      </md-option>
+	    </md-select>
+		</md-input-container>
+		<md-autocomplete flex
+	      md-search-text="creature.stats.armorType"
+	      md-items="armorType in creatureData.search(creature.stats.armorType,creatureData.armorTypes)"
+	      md-item-text="armorType"
+	      md-floating-label="Armor Type">
+	    <md-item-template>
+	      <span>{{armorType}}</span>
+	    </md-item-template>
+	  </md-autocomplete>
+	  <md-input-container flex>
+		  <label>Armor Class</label>
+		  <input ng-model="creature.stats.armorClass" type="number"/>
+		</md-input-container>
+	</div>
+		<md-input-container flex>
+		  <label>Number of Hit Die</label>
+		  <input ng-model="creature.stats.numHitDie" type="number"/>
+		</md-input-container>
+	<md-input-container flex>
+	  <label>Proficiency Bonus</label>
+	  <input ng-model="creature.stats.proficiencyBonus" type="number"/>
+	</md-input-container>
+	<md-input-container flex>
+	  <label>Speed</label>
+	  <input ng-model="creature.stats.speed" type="text"/>
+	</md-input-container>
+	<p>Ability Scores</p>
+	<div layout-gt-sm="row">
+		<md-input-container flex>
+		  <label>STR</label>
+		  <input ng-model="creature.stats.abilityScores.strength" type="number"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>DEX</label>
+		  <input ng-model="creature.stats.abilityScores.dexterity" type="number"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>CON</label>
+		  <input ng-model="creature.stats.abilityScores.constitution" type="number"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>INT</label>
+		  <input ng-model="creature.stats.abilityScores.intelligence" type="number"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>WIS</label>
+		  <input ng-model="creature.stats.abilityScores.wisdom" type="number"/>
+		</md-input-container>
+		<md-input-container flex>
+		  <label>CHA</label>
+		  <input ng-model="creature.stats.abilityScores.charisma" type="number"/>
+		</md-input-container>
+	</div>
+	<p>Saving Throws</p>
+	<div layout-gt-sm="row">
 
+		<md-chips ng-if="creature.stats.savingThrows" ng-model="creature.stats.savingThrows" readonly="false">
+      <md-chip-template>
+        <strong>{{$chip.ability}}</strong>
+        <em ng-if="$chip.proficient && !$chip.value">(proficient)</em>
+        <em ng-if="$chip.value">(+{{$chip.value}})</em>
+      </md-chip-template>
+    </md-chips>
+
+	</div>
+
+</form>
 
 <ng-stat-block creature="creature"></ng-stat-block>
 
