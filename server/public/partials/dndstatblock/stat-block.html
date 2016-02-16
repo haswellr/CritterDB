@@ -13,6 +13,7 @@
 
     :host {
       display: inline-block;
+      width: calc(100% - 24px);
     }
 
     #content-wrap {
@@ -32,14 +33,14 @@
       margin: 6px 0px;
 
       /* This is possibly overriden by next CSS rule. */
-      width: 325px;
+      width: 100%; /*325px*/
 
-      -webkit-columns: 325px;
+      /*-webkit-columns: 325px;
          -moz-columns: 325px;
               columns: 325px;
       -webkit-column-gap: 40px;
          -moz-column-gap: 40px;
-              column-gap: 40px;
+              column-gap: 40px;*/
 
       /* When height is constrained, we want sequential filling of columns. */
       -webkit-column-fill: auto;

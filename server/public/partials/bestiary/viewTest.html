@@ -2,34 +2,13 @@
 <input ng-model="creatureFilter" type="text"></input>
 <p></p>
 <div>
-	<ng-flowing-columns column-width="'341.375px'" column-margin="'6px'" style="position:absolute;background-color:grey;width:80%;">
-		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-	</ng-flowing-columns>
-	<!--<div style="width:341.375px;float:left;margin:0px 6px;">
-		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
+	<div class="fallingColumns">
+		<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+		<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 	</div>
-	<div style="width:341.375px;float:left;margin:0px 6px;">
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>-->
 	</div>
 </div>
