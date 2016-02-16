@@ -1,5 +1,14 @@
++Add 'Add Creature' button to Bestiary
++Add Title and description to Bestiary
++Make editable version of title and description for Bestiary
++Add Filter top-bar or side-bar to Bestiary
+
+-Finalize CSS for 'Create Creature' (consider using Tabs/Steps - Flavor, Stats, Abilities)
+-Add tooltips to everything
+-Add Users
+-Add Bestiary list for users
+
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
 - Add an 'Add Action Wizard' button with modal/whatever to the Actions field on front end. This should let you put in an attack name, damage dice, whether it is finesse or not, reach, and number of targets. Alternatively it will suggest some common weapons and autofill the other values.
 - Add an 'Add Speed Wizard' button that will add a move type with a value (step=5 in feet)
 - Add 'hints' under the fields (see 'Errors Advanced' section of angular material Input demo)
-- Optimize flowingColumns directive to try and reduce usage of getBoundingClientRect and thus increase speed. This is only a problem with large numbers of creatures in a bestiary.
