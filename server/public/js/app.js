@@ -45,11 +45,6 @@ myApp.config(['$routeProvider',
 				controller: 'bestiaryCtrl',
 				resolve: bestiaryCtrl.resolve
 			}).
-			when('/bestiary/test/:bestiaryId',{
-				templateUrl: 'assets/partials/bestiary/viewTest.html',
-				controller: 'bestiaryCtrl',
-				resolve: bestiaryCtrl.resolve
-			}).
 			when('/bestiary/list',{
 				templateUrl: 'assets/partials/bestiary/list.html',
 				controller: 'bestiaryCtrl'
