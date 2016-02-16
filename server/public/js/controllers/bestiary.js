@@ -16,7 +16,6 @@ var bestiaryCtrl = function ($scope, Creature, bestiary) {
 		}
 	}
 	loadCreatures();
-
 };
 
 //don't load controller until we've gotten the data from the server
