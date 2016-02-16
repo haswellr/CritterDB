@@ -2,11 +2,9 @@
 <input ng-model="creatureFilter" type="text"></input>
 <p></p>
 <div>
-	<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
+	<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
 	<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
 	<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
 	<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
 	<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" style="float:left;display:block;"></ng-stat-block>
 </div>
-
-//345.59
