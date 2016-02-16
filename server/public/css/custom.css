@@ -63,3 +63,27 @@
 .remove-saving-throw:hover, .remove-saving-throw:focus {
   background: rgba(255, 0, 0, 0.8);
 }
+
+.fallingColumns {
+  position: absolute;
+  -webkit-column-width: 341.375px;
+  -moz-column-width: 341.375px;
+  column-width: 341.375px;
+  -webkit-column-gap: 0px;
+  -moz-column-gap: 0px;
+  column-gap: 0px;
+  -webkit-column-fill: balance;
+  -moz-column-fill: balance;
+  column-fill: balance;
+  -webkit-column-fill: auto;
+  -moz-column-fill: auto;
+  column-fill: auto;
+  margin: 0px 6px;
+  width: calc(100% - 12px);
+}
+
+.fallingColumnsItem {
+  -webkit-column-break-inside: avoid;
+  -moz-column-inside: avoid;
+  column-break-inside: avoid;
+}

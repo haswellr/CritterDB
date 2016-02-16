@@ -18,7 +18,9 @@ angular.module('myApp').directive('ngFlowingColumns', [ '$timeout', function ($t
 				var shortestColumn = null;
 				if(!child.hasAttribute(config.CHILD_ATTRIBUTE_NAME))
 					child.setAttribute(config.CHILD_ATTRIBUTE_NAME,"");
+				console.log("COLUMN HEIGHTS:");
 				for(var j=0;j<columns.length;j++){
+					console.log("...["+j+"] "+columns[j].height);
 					if(shortestColumn==null || columns[j].height<shortestColumn.height){
 						shortestColumn = columns[j];
 					}
@@ -26,6 +28,7 @@ angular.module('myApp').directive('ngFlowingColumns', [ '$timeout', function ($t
 				if(shortestColumn!=null){
 					shortestColumn.element.appendChild(child);
 					var height = childHeight;
+					console.log("adding height("+height+") to column with height: "+shortestColumn.height);
 					shortestColumn.height += height;
 				}
 			}
@@ -115,7 +118,7 @@ angular.module('myApp').directive('ngFlowingColumns', [ '$timeout', function ($t
 			//on first load of the element
 			element.ready(function(){
 				console.log("ready");
-				$timeout(arrangeElements,500);
+				//$timeout(arrangeElements);
 			});
 			//watch for style changes
 			attrs.$observe("columnStyle",function(columnStyle){
@@ -146,8 +149,13 @@ angular.module('myApp').directive('ngFlowingColumns', [ '$timeout', function ($t
 							var addedNode = mutation.addedNodes[j];
 							if(addedNode.hasAttribute && !addedNode.hasAttribute(config.CHILD_ATTRIBUTE_NAME) && !addedNode.hasAttribute(config.COLUMN_ATTRIBUTE_NAME) && addedNode.nodeType!=3 && addedNode.nodeType!=8){
 								doMutation = true;
+								break;
 							}
 						}
+					}
+					if(mutation.removedNodes){
+						//doMutation = true;
+						break;
 					}
 				}
 				if(doMutation){
