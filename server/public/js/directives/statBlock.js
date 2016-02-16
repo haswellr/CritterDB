@@ -9,6 +9,8 @@ angular.module('myApp').directive('ngStatBlock', [ function () {
 			var setContentUrl = function(){
 				if(attrs.size=='preview')
 					scope.contentUrl = 'assets/partials/statBlockPreview.html';
+				else if(attrs.size=='mini')
+					scope.contentUrl = 'assets/partials/statBlockMini.html';
 				else
 					scope.contentUrl = 'assets/partials/statBlock.html';
 			}
