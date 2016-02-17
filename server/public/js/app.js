@@ -3,7 +3,9 @@
 /* App Module */
 
 //App Module
-var myApp = angular.module('myApp', ['ngRoute','ngResource','ngMaterial','ngMessages']).
+var myApp = angular.module('myApp', ['ngRoute','ngResource','ngMaterial','ngMessages']);
+
+/*.
 config(function($mdThemingProvider) {
   $mdThemingProvider.definePalette('amazingPaletteName', {
     '50': 'E0F7FA',
@@ -28,7 +30,13 @@ config(function($mdThemingProvider) {
   });
   $mdThemingProvider.theme('default')
     .primaryPalette('amazingPaletteName')
-});
+})*/
+
+/*myApp.config(function($mdThemingProvider) {
+	$mdThemingProvider.theme('default')
+		.primaryPalette('pink')
+		.accentPalette('orange');
+});*/
 
 //Set up routing
 myApp.config(['$routeProvider',
@@ -47,7 +55,8 @@ myApp.config(['$routeProvider',
 			}).
 			when('/bestiary/list',{
 				templateUrl: 'assets/partials/bestiary/list.html',
-				controller: 'bestiaryCtrl'
+				controller: 'bestiaryCtrl',
+				resolve: bestiaryCtrl.resolve
 			}).
 			when('/creature/view/:creatureId',{
 				templateUrl: 'assets/partials/creature/view.html',

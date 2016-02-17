@@ -1,7 +1,37 @@
-<h1>Bestiary: {{bestiary.name}}</h1>
-<input ng-model="creatureFilter" type="text"></input>
+
+<md-toolbar class="md-whiteframe-5dp inner-header">
+	<div ng-controller="sideNavCtrl" class="md-toolbar-tools">
+		<md-button ng-click="toggle('filterNav')" class="md-fab md-mini" aria-label="Filters">
+			<md-icon>filter_list</md-icon>
+		</md-button>
+		<md-button ng-click="toggle('editNav')" class="md-fab md-mini" aria-label="Filters">
+			<md-icon>mode_edit</md-icon>
+		</md-button>
+		<h2>
+			<span>{{bestiary.name}}</span>
+		</h2>
+	</div>
+</md-toolbar>
+
+
+
+
+
 <p></p>
-<div>
+<div layout="column">
+<section layout="row" flex>
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="filterNav">
+	  <md-toolbar class="md-theme-indigo">
+	    <h1 class="md-toolbar-tools">Sidenav Left</h1>
+	  </md-toolbar>
+	  <md-content layout-padding ng-controller="sideNavCtrl">
+	    <md-button ng-click="close('filterNav')" class="md-primary" hide-gt-md>
+	      Close Sidenav Left
+	    </md-button>
+	    <input ng-model="creatureFilter" type="text"></input>
+	  </md-content>
+	</md-sidenav>
+
 	<div class="fallingColumns">
 		<div ng-repeat="creature in bestiary.creatures | filter:creatureFilter" style="position:relative;">
 			<div class="stat-block-overlay"></div>
@@ -13,4 +43,5 @@
 		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 	</div>
+</section>
 </div>
