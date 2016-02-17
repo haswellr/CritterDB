@@ -87,3 +87,18 @@
   -moz-column-inside: avoid;
   column-break-inside: avoid;
 }
+
+.stat-block-overlay {
+  z-index: 1;
+  width: calc(100% - 9px);
+  height: calc(100% - 12px);
+  margin-top: 6px;
+  margin-left: 1px;
+  position: absolute;
+}
+
+.stat-block-overlay:hover {
+  background: rgba(253,116,108,0.4); /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, rgba(40,48,72,0.4), rgba(133,147,152,0.4));
+  background: linear-gradient(to left, rgba(40,48,72,0.4), rgba(133,147,152,0.4));
+}
