@@ -3,8 +3,11 @@
 <p></p>
 <div>
 	<div class="fallingColumns">
-		<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+		<div ng-repeat="creature in bestiary.creatures | filter:creatureFilter" style="position:relative;">
+			<div class="stat-block-overlay"></div>
+			<ng-stat-block size="mini" creature="creature" class="fallingColumnsItem stat-block"></ng-stat-block>
+		</div>
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem stat-block"></ng-stat-block>
 		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 		<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 		<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
