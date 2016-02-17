@@ -26,6 +26,7 @@
     <!-- Controllers -->
     <script src="/assets/js/controllers/creature.js"></script>
     <script src="/assets/js/controllers/bestiary.js"></script>
+    <script src="/assets/js/controllers/sideNav.js"></script>
     <!-- Directives -->
     <script src="/assets/js/directives/statBlock.js"></script>
     <!-- Services -->
@@ -41,7 +42,22 @@
 
   <body>
 
-  	<div ng-view></div>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <div layout="row" flex>
+            <h2>
+              <a ng-href="/">
+                <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" style="width:50px;height:50px;float:left;">
+                <span class="md-toolbar-item md-breadcrumb md-headline" style="float:left;margin-top:10px;margin-left:10px;">
+                  DMLab
+                </span>
+              </a>
+            <h2>
+          </div>
+        </div>
+      </md-toolbar>
+
+      <div ng-view></div>
 
   </body>
 

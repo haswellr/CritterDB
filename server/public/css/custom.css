@@ -102,3 +102,34 @@
   background: -webkit-linear-gradient(to left, rgba(40,48,72,0.4), rgba(133,147,152,0.4));
   background: linear-gradient(to left, rgba(40,48,72,0.4), rgba(133,147,152,0.4));
 }
+
+md-toolbar.inner-header {
+  background-color: #fafafa;
+}
+
+md-toolbar.inner-header h2 {
+  margin-left: 80px;
+}
+
+md-toolbar.inner-header span {
+  color: #444;
+}
+
+md-toolbar.inner-header .md-button.md-fab {
+  background-color: #fff;
+  transition: background-color 0.4s ease-out;
+}
+
+md-toolbar.inner-header .md-button.md-fab md-icon {
+  color: #777;
+  transition: color 0.4s ease-out;
+}
+
+md-toolbar.inner-header .md-button.md-fab:hover {
+
+}
+
+md-toolbar.inner-header .md-button.md-fab:hover md-icon {
+  color:#fff;
+}
+
