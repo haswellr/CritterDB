@@ -1,4 +1,3 @@
-
 var sideNavCtrl = function ($scope,$mdSidenav) {
   $scope.close = function(id) {
     $mdSidenav(id).close();

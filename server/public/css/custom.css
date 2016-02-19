@@ -137,8 +137,14 @@ div.body-area {
   position: fixed;
   top: 128px;
   bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 md-sidenav.in-frame-sidenav {
 
+}
+
+.sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
+  display: none;
 }

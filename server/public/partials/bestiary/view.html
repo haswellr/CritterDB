@@ -14,23 +14,20 @@
 </md-toolbar>
 
 <div layout="column" class="body-area" ng-controller="sideNavCtrl">
-	<section layout="row" flex>
+	<section class="sidenav-left-wrapper" layout="row" flex>
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2 in-frame-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">
-		    <h1 class="md-toolbar-tools">Sidenav Left</h1>
+		    <h1 class="md-toolbar-tools">Filters</h1>
 		  </md-toolbar>
 		  <md-content layout-padding>
-		    <md-button ng-click="close('filterNav')" class="md-primary" hide-gt-md>
-		      Close Sidenav Left
-		    </md-button>
-		    <md-input-container class="md-whiteframe-1">
-	        <label>Search</label>
-	        <input ng-model="creatureFilter" type="text">
-	      </md-input-container>
+			    <md-input-container style="width:calc(100% - 16px);">
+		        <label style="padding-left:10px;bottom:calc(100% - 5px);">Search by name</label>
+		        <input ng-model="creatureFilter.name">
+		      </md-input-container>
 		  </md-content>
 		</md-sidenav>
 
-		<md-content>
+		<md-content style="width:100%;">
 			<div class="fallingColumns">
 				<div ng-repeat="creature in bestiary.creatures | filter:creatureFilter" style="position:relative;">
 					<div class="stat-block-overlay"></div>
