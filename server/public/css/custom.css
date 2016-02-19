@@ -65,7 +65,7 @@
 }
 
 .fallingColumns {
-  position: absolute;
+  position: relative;
   -webkit-column-width: 341.375px;
   -moz-column-width: 341.375px;
   column-width: 341.375px;
@@ -133,3 +133,12 @@ md-toolbar.inner-header .md-button.md-fab:hover md-icon {
   color:#fff;
 }
 
+div.body-area {
+  position: fixed;
+  top: 128px;
+  bottom: 0px;
+}
+
+md-sidenav.in-frame-sidenav {
+
+}
