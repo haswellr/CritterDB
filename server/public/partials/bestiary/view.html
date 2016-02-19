@@ -23,7 +23,10 @@
 		    <md-button ng-click="close('filterNav')" class="md-primary" hide-gt-md>
 		      Close Sidenav Left
 		    </md-button>
-		    <input ng-model="creatureFilter" type="text"></input>
+		    <md-input-container class="md-whiteframe-1">
+	        <label>Search</label>
+	        <input ng-model="creatureFilter" type="text">
+	      </md-input-container>
 		  </md-content>
 		</md-sidenav>
 
