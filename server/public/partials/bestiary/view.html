@@ -1,7 +1,7 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools">
-		<md-button ng-click="toggle('filterNav')" class="md-fab md-mini" aria-label="Filters">
+		<md-button ng-click="toggle('filterNav')" ng-class="{'selected':isOpen('filterNav')}" class="md-fab md-mini" aria-label="Filters">
 			<md-icon>filter_list</md-icon>
 		</md-button>
 		<md-button ng-click="toggle('editNav')" class="md-fab md-mini" aria-label="Filters">
@@ -17,7 +17,13 @@
 	<section class="sidenav-left-wrapper" layout="row" flex>
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2 in-frame-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">
-		    <h1 class="md-toolbar-tools">Filters</h1>
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Filters</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('filterNav')" class="md-icon-button" aria-label="Favorite">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
 		  </md-toolbar>
 		  <md-content layout-padding>
 			    <md-input-container style="width:calc(100% - 16px);">
