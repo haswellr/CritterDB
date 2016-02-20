@@ -1,301 +1,49 @@
 
-<form ng-submit="saveCreature()" name="createCreatureForm">
-	<div layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Name</label>
-		  <input ng-model="creature.name" name="name" type="text" required/>
-		  <div ng-messages="createCreatureForm.name.$error" md-auto-hide="false">
-	      <div ng-message="required">This is required.</div>
-	    </div>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>Description</label>
-		  <textarea ng-model="creature.flavor.description"></textarea>
-		</md-input-container>
-	</div>
-	<div layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Environment</label>
-		  <input ng-model="creature.flavor.environment" type="text"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>Faction</label>
-		  <input ng-model="creature.flavor.faction" type="text"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>Size</label>
-		  <md-select ng-model="creature.stats.size">
-	      <md-option ng-repeat="size in creatureData.sizes" value="{{size}}">
-	        {{size}}
-	      </md-option>
-	    </md-select>
-		</md-input-container>
-	</div>
-	<div layout-gt-sm="row">
-		<md-autocomplete flex
-	      md-search-text="creature.stats.race"
-	      md-items="race in creatureData.search(creature.stats.race,creatureData.races)"
-	      md-item-text="race"
-	      md-floating-label="Race">
-	    <md-item-template>
-	      <span>{{race}}</span>
-	    </md-item-template>
-	  </md-autocomplete>
-	  <md-input-container flex>
-		  <label>Alignment</label>
-		  <md-select ng-model="creature.stats.alignment">
-	      <md-option ng-repeat="alignment in creatureData.alignments" value="{{alignment}}">
-	        {{alignment}}
-	      </md-option>
-	    </md-select>
-		</md-input-container>
-		<md-autocomplete flex
-	      md-search-text="creature.stats.armorType"
-	      md-items="armorType in creatureData.search(creature.stats.armorType,creatureData.armorTypes)"
-	      md-item-text="armorType"
-	      md-floating-label="Armor Type">
-	    <md-item-template>
-	      <span>{{armorType}}</span>
-	    </md-item-template>
-	  </md-autocomplete>
-	  <md-input-container flex>
-		  <label>Armor Class</label>
-		  <input ng-model="creature.stats.armorClass" type="number"/>
-		</md-input-container>
-	</div>
-		<md-input-container flex>
-		  <label>Number of Hit Die</label>
-		  <input ng-model="creature.stats.numHitDie" type="number"/>
-		</md-input-container>
-	<md-input-container flex>
-	  <label>Proficiency Bonus</label>
-	  <input ng-model="creature.stats.proficiencyBonus" type="number"/>
-	</md-input-container>
-	<md-input-container flex>
-	  <label>Speed</label>
-	  <input ng-model="creature.stats.speed" type="text"/>
-	</md-input-container>
+<div layout="column" ng-controller="sideNavCtrl">
+	<section layout="row" flex>
+		<md-content layout-padding style="min-width:60%;">
+			<md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom>
+				<md-tab label="Flavor">
+					<md-content layout-padding>
+						<div ng-include="'assets/partials/creature/create-flavor.html'"></div>
+						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary">Save and Continue</md-button>
+					</md-content>
+				</md-tab>
+				<md-tab label="Race">
+					<md-content layout-padding>
+						<div ng-include="'assets/partials/creature/create-race.html'"></div>
+						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary">Save and Continue</md-button>
+					</md-content>
+				</md-tab>
+				<md-tab label="Core">
+					<md-content layout-padding>
+						<div ng-include="'assets/partials/creature/create-stats.html'"></div>
+						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary">Save and Continue</md-button>
+					</md-content>
+				</md-tab>
+				<md-tab label="Defense">
+					<md-content layout-padding>
+						<div ng-include="'assets/partials/creature/create-defense.html'"></div>
+						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary">Save and Continue</md-button>
+					</md-content>
+				</md-tab>
+				<md-tab label="Abilities">
+					<md-content layout-padding>
+						<div ng-include="'assets/partials/creature/create-abilities.html'"></div>
+						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary">Save and Continue</md-button>
+					</md-content>
+				</md-tab>
+				<md-tab label="Challenge">
+					<md-content layout-padding>
+						<div ng-include="'assets/partials/creature/create-challenge.html'"></div>
+						<md-button ng-click="saveCreature()" class="md-raised md-accent">Save and Finish</md-button>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>
 
-	<h4>Ability Scores</h4>
-	<div layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>STR</label>
-		  <input ng-model="creature.stats.abilityScores.strength" type="number"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>DEX</label>
-		  <input ng-model="creature.stats.abilityScores.dexterity" type="number"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>CON</label>
-		  <input ng-model="creature.stats.abilityScores.constitution" type="number"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>INT</label>
-		  <input ng-model="creature.stats.abilityScores.intelligence" type="number"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>WIS</label>
-		  <input ng-model="creature.stats.abilityScores.wisdom" type="number"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>CHA</label>
-		  <input ng-model="creature.stats.abilityScores.charisma" type="number"/>
-		</md-input-container>
-	</div>
-
-	<h4>Saving Throws</h4>
-	<md-button ng-click="savingThrows.add()" class="md-raised">Add</md-button>
-	<div ng-repeat="savingThrow in creature.stats.savingThrows" layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Ability</label>
-		  <md-select ng-model="savingThrow.ability">
-	      <md-option ng-repeat="ability in savingThrows.getUnused(savingThrow)" value="{{ability}}">
-	        {{ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase()}}
-	      </md-option>
-	    </md-select>
-		</md-input-container>
-		<md-checkbox ng-model="savingThrow.proficient" ng-change="savingThrow.value=undefined" aria-label="Proficient">
-      Proficient
-    </md-checkbox>
-    <md-input-container flex>
-		  <label>Specific Value</label>
-		  <input ng-model="savingThrow.value" ng-change="savingThrow.proficient=false" type="number"/>
-		</md-input-container>
-		<button ng-click="savingThrows.remove(savingThrow)" class="md-primary remove-saving-throw">
-      <md-icon md-svg-icon="md-close"></md-icon>
-    </button>
-	</div>
-
-	<h4>Skills</h4>
-	<md-button ng-click="skills.add()" class="md-raised">Add</md-button>
-	<div ng-repeat="skill in creature.stats.skills" layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Name</label>
-		  <md-select ng-model="skill.name">
-	      <md-option ng-repeat="skillName in skills.getUnused(skill)" value="{{skillName}}">
-	        {{skillName.charAt(0).toUpperCase() + skillName.slice(1).toLowerCase()}}
-	      </md-option>
-	    </md-select>
-		</md-input-container>
-		<md-checkbox ng-model="skill.proficient" ng-change="skill.value=undefined" aria-label="Proficient">
-      Proficient
-    </md-checkbox>
-    <md-input-container flex>
-		  <label>Specific Value</label>
-		  <input ng-model="skill.value" ng-change="skill.proficient=false" type="number"/>
-		</md-input-container>
-		<button ng-click="skills.remove(skill)" class="md-primary remove-saving-throw">
-      <md-icon md-svg-icon="md-close"></md-icon>
-    </button>
-	</div>
-
-	<md-chips ng-model="creature.stats.damageVulnerabilities" md-autocomplete-snap md-require-match="false">
-    <md-autocomplete
-        md-search-text="creature.stats.damageVulnerabilitiesSearch"
-        md-items="vulnerability in creatureData.search(creature.stats.damageVulnerabilitiesSearch,creatureData.damageTypes)"
-        md-item-text="vulnerability"
-        placeholder="Damage Vulnerabilities">
-      <span md-highlight-text="creature.stats.damageVulnerabilitiesSearch">{{vulnerability}}</span>
-    </md-autocomplete>
-    <md-chip-template>
-      <span>
-        <em>{{$chip}}</em>
-      </span>
-    </md-chip-template>
-  </md-chips>
-
-  <md-chips ng-model="creature.stats.damageResistances" md-autocomplete-snap md-require-match="false">
-    <md-autocomplete
-        md-search-text="creature.stats.damageResistancesSearch"
-        md-items="resistance in creatureData.search(creature.stats.damageResistancesSearch,creatureData.damageTypes)"
-        md-item-text="resistance"
-        placeholder="Damage Resistances">
-      <span md-highlight-text="creature.stats.damageResistancesSearch">{{resistance}}</span>
-    </md-autocomplete>
-    <md-chip-template>
-      <span>
-        <em>{{$chip}}</em>
-      </span>
-    </md-chip-template>
-  </md-chips>
-
-  <md-chips ng-model="creature.stats.damageImmunities" md-autocomplete-snap md-require-match="false">
-    <md-autocomplete
-        md-search-text="creature.stats.damageImmunitiesSearch"
-        md-items="immunity in creatureData.search(creature.stats.damageImmunitiesSearch,creatureData.damageTypes)"
-        md-item-text="immunity"
-        placeholder="Damage Immunities">
-      <span md-highlight-text="creature.stats.damageImmunitiesSearch">{{immunity}}</span>
-    </md-autocomplete>
-    <md-chip-template>
-      <span>
-        <em>{{$chip}}</em>
-      </span>
-    </md-chip-template>
-  </md-chips>
-
-  <md-chips ng-model="creature.stats.conditionImmunities" md-autocomplete-snap md-require-match="false">
-    <md-autocomplete
-        md-search-text="creature.stats.conditionImmunitiesSearch"
-        md-items="immunity in creatureData.search(creature.stats.conditionImmunitiesSearch,creatureData.negativeConditions)"
-        md-item-text="immunity"
-        placeholder="Condition Immunities">
-      <span md-highlight-text="creature.stats.conditionImmunitiesSearch">{{immunity}}</span>
-    </md-autocomplete>
-    <md-chip-template>
-      <span>
-        <em>{{$chip}}</em>
-      </span>
-    </md-chip-template>
-  </md-chips>
-
-  <md-chips ng-model="creature.stats.senses" placeholder="Senses">
-    <md-chip-template>
-      <span>
-        <em>{{$chip}}</em>
-      </span>
-    </md-chip-template>
-  </md-chips>
-
-  <md-chips ng-model="creature.stats.languages" md-autocomplete-snap md-require-match="false">
-    <md-autocomplete
-        md-search-text="creature.stats.languagesSearch"
-        md-items="language in creatureData.search(creature.stats.languagesSearch,creatureData.languages)"
-        md-item-text="language"
-        placeholder="Languages">
-      <span md-highlight-text="creature.stats.languagesSearch">{{language}}</span>
-    </md-autocomplete>
-    <md-chip-template>
-      <span>
-        <em>{{$chip}}</em>
-      </span>
-    </md-chip-template>
-  </md-chips>
-
-  <md-input-container flex>
-	  <label>Challenge Rating</label>
-	  <input ng-model="creature.stats.challengeRating" ng-change="challengeRating.changed()" step="{{challengeRating.step}}" type="number" min="0"/>
-	</md-input-container>
-
-	<md-input-container flex>
-	  <label>Experience Points</label>
-	  <input ng-model="creature.stats.experiencePoints" type="number" min="0"/>
-	</md-input-container>
-
-	<h4>Abilities</h4>
-	<md-button ng-click="abilities.addToList(creature.stats.additionalAbilities)" class="md-raised">Add</md-button>
-	<div ng-repeat="ability in creature.stats.additionalAbilities" layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Name</label>
-		  <input ng-model="ability.name" type="text"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>Description</label>
-		  <input ng-model="ability.description" type="text"/>
-		</md-input-container>
-		<button ng-click="abilities.removeFromList(ability,creature.stats.additionalAbilities)" class="md-primary remove-saving-throw">
-      <md-icon md-svg-icon="md-close"></md-icon>
-    </button>
-	</div>
-
-	<h4>Actions</h4>
-	<md-button ng-click="abilities.addToList(creature.stats.actions)" class="md-raised">Add</md-button>
-	<div ng-repeat="ability in creature.stats.actions" layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Name</label>
-		  <input ng-model="ability.name" type="text"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>Description</label>
-		  <input ng-model="ability.description" type="text"/>
-		</md-input-container>
-		<button ng-click="abilities.removeFromList(ability,creature.stats.actions)" class="md-primary remove-saving-throw">
-      <md-icon md-svg-icon="md-close"></md-icon>
-    </button>
-	</div>
-
-	<h4>Reactions</h4>
-	<md-button ng-click="abilities.addToList(creature.stats.reactions)" class="md-raised">Add</md-button>
-	<div ng-repeat="ability in creature.stats.reactions" layout-gt-sm="row">
-		<md-input-container flex>
-		  <label>Name</label>
-		  <input ng-model="ability.name" type="text"/>
-		</md-input-container>
-		<md-input-container flex>
-		  <label>Description</label>
-		  <input ng-model="ability.description" type="text"/>
-		</md-input-container>
-		<button ng-click="abilities.removeFromList(ability,creature.stats.reactions)" class="md-primary remove-saving-throw">
-      <md-icon md-svg-icon="md-close"></md-icon>
-    </button>
-	</div>
-
-	<div layout-gt-sm="row">
-		<md-button type="Submit" class="md-raised md-primary">Save</md-button>
-	</div>
-
-</form>
-
-<ng-stat-block creature="creature"></ng-stat-block>
-
+		<md-content layout-padding style="max-width:450px;width:40%;">
+			<ng-stat-block creature="creature"></ng-stat-block>
+		</md-content>
+	</section>
+</div>

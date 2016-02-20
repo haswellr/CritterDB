@@ -145,3 +145,8 @@ md-sidenav.edit-sidenav md-input-container {
   margin-bottom: 0px;
   margin-top: 18fpx;
 }
+
+button.create-continue {
+  margin-left: 0px;
+  margin-top: 15px;
+}

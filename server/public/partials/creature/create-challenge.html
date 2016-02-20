@@ -1,0 +1,11 @@
+<form name="challengeForm">
+  <md-input-container flex>
+    <label>Challenge Rating</label>
+    <input ng-model="creature.stats.challengeRating" ng-change="challengeRating.changed()" step="{{challengeRating.step}}" type="number" min="0"/>
+  </md-input-container>
+
+  <md-input-container flex>
+    <label>Experience Points</label>
+    <input ng-model="creature.stats.experiencePoints" type="number" min="0"/>
+  </md-input-container>
+</form>
