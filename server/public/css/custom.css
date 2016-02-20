@@ -134,9 +134,14 @@ div.body-area {
 }
 
 md-sidenav.in-frame-sidenav {
-
+  min-width: 250px;
 }
 
 .sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
   display: none;
+}
+
+md-sidenav.edit-sidenav md-input-container {
+  margin-bottom: 0px;
+  margin-top: 18fpx;
 }

@@ -15,7 +15,8 @@
 
 <div layout="column" class="body-area" ng-controller="sideNavCtrl">
 	<section class="sidenav-left-wrapper" layout="row" flex>
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2 in-frame-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
+		<!-- FILTER SIDENAV -->
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Filters</h1>
@@ -26,13 +27,14 @@
 	      </div>
 		  </md-toolbar>
 		  <md-content layout-padding>
-			    <md-input-container style="width:calc(100% - 16px);">
-		        <label style="padding-left:10px;bottom:calc(100% - 5px);">Search by name</label>
-		        <input ng-model="creatureFilter.name">
-		      </md-input-container>
+		    <md-input-container style="width:calc(100% - 16px);">
+	        <label style="padding-left:10px;bottom:calc(100% - 5px);">Search by name</label>
+	        <input ng-model="creatureFilter.name">
+	      </md-input-container>
 		  </md-content>
 		</md-sidenav>
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2 in-frame-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
+		<!-- EDIT SIDENAV -->
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2 in-frame-sidenav edit-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Edit</h1>
@@ -43,14 +45,23 @@
 	      </div>
 		  </md-toolbar>
 		  <md-content layout-padding>
-			    <md-input-container style="width:calc(100% - 16px);">
-		        <label style="padding-left:10px;bottom:calc(100% - 5px);">Name</label>
-		        <input ng-model="bestiary.name">
+		  	<form ng-submit="saveBestiaryInfo();close('editNav');" name="editBestiaryForm">
+			    <md-input-container class="md-block">
+		        <label>Name</label>
+		        <input ng-model="unsavedBestiary.name" name="name" required md-minlength="1" md-maxlength="30">
+		        <div ng-messages="unsavedBestiary.name.$error">
+				      <div ng-message="required">This is required.</div>
+				      <div ng-message="md-maxlength">The name must be less than 30 characters long.</div>
+				      <div ng-message="minlength">The name must be at least 1 character long.</div>
+				    </div>
 		      </md-input-container>
-		      <md-input-container style="width:calc(100% - 16px);">
-		        <label style="padding-left:10px;bottom:calc(100% - 5px);">Description</label>
+		      <md-input-container class="md-block">
+		        <label>Description</label>
 		        <textarea ng-model="bestiary.description"></textarea>
 		      </md-input-container>
+		      <md-button ng-click="cancelSave();close('editNav');" class="md-raised">Cancel</md-button>
+      		<md-button class="md-raised md-primary" type="submit">Save</md-button>
+		    </form>
 		  </md-content>
 		</md-sidenav>
 
