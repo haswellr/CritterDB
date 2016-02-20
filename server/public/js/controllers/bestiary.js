@@ -1,10 +1,5 @@
-angular.module('myApp').factory("Bestiary", function($resource,$sce) {
-  return $resource("/api/bestiaries/:id", null, {
-  	'update': { method:'PUT' }
-  });
-});
 
-var bestiaryCtrl = function ($scope, Creature, bestiary) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary) {
 	$scope.bestiary = bestiary;
 	var loadCreatures = function(){
 		$scope.bestiary.creatures = [];
@@ -16,6 +11,27 @@ var bestiaryCtrl = function ($scope, Creature, bestiary) {
 		}
 	}
 	loadCreatures();
+
+	$scope.unsavedBestiary = {
+		name: bestiary.name+"",
+		description: bestiary.description+""
+	};
+
+	$scope.cancelSave = function(){
+		$scope.unsavedBestiary = $scope.bestiary;
+	}
+
+	$scope.saveBestiaryInfo = function(){
+		if($scope.unsavedBestiary._id){
+			Bestiary.update($scope.unsavedBestiary._id,$scope.unsavedBestiary,function(data){
+				console.log("updated bestiary info!");
+				$scope.bestiary.name = data.name;
+				$scope.bestiary.description = data.description;
+			},function(err){
+				console.log("error: "+err);
+			});
+		}
+	}
 };
 
 //don't load controller until we've gotten the data from the server
@@ -24,7 +40,7 @@ bestiaryCtrl.resolve = {
 				if($route.current.params.bestiaryId){
 					var deferred = $q.defer();
 					if($route.current.params.bestiaryId!=undefined){
-						Bestiary.get({id:$route.current.params.bestiaryId},function(data) {
+						Bestiary.get($route.current.params.bestiaryId,function(data) {
 							deferred.resolve(data);
 						}, function(errorData) {
 							deferred.reject();
