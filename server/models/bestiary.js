@@ -7,6 +7,9 @@ var BestiarySchema = new mongoose.Schema(
 			type: String,
 			required: true
 		},
+    description: {
+      type: String
+    },
     creatureIds: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Creature',
