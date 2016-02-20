@@ -1,9 +1,12 @@
 
-<form ng-submit="saveCreature()">
+<form ng-submit="saveCreature()" name="createCreatureForm">
 	<div layout-gt-sm="row">
 		<md-input-container flex>
 		  <label>Name</label>
-		  <input ng-model="creature.name" type="text" required/>
+		  <input ng-model="creature.name" name="name" type="text" required/>
+		  <div ng-messages="createCreatureForm.name.$error" md-auto-hide="false">
+	      <div ng-message="required">This is required.</div>
+	    </div>
 		</md-input-container>
 		<md-input-container flex>
 		  <label>Description</label>
