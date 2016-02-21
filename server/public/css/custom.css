@@ -192,3 +192,11 @@ button.create-continue {
   width: 100%;
   height: 60px;
 }
+
+button.continue-button {
+  float: right;
+}
+
+.defense-form md-chips-wrap {
+  margin-top: 20px;
+}
