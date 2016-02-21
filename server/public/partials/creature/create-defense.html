@@ -1,21 +1,24 @@
-<form name="defenseForm">
-	<md-input-container flex>
-	  <label>Number of Hit Die</label>
-	  <input ng-model="creature.stats.numHitDie" type="number"/>
-	</md-input-container>
-  <md-input-container flex>
-	  <label>Armor Class</label>
-	  <input ng-model="creature.stats.armorClass" type="number"/>
-	</md-input-container>
-	<md-autocomplete flex
-      md-search-text="creature.stats.armorType"
-      md-items="armorType in creatureData.search(creature.stats.armorType,creatureData.armorTypes)"
-      md-item-text="armorType"
-      md-floating-label="Armor Type">
-    <md-item-template>
-      <span>{{armorType}}</span>
-    </md-item-template>
-  </md-autocomplete>
+<form name="defenseForm" class="defense-form">
+  <section layout="row" flex style="height:68px">
+  	<md-input-container flex>
+  	  <label>Number of Hit Die</label>
+  	  <input ng-model="creature.stats.numHitDie" type="number"/>
+  	</md-input-container>
+    <md-autocomplete flex
+        md-search-text="creature.stats.armorType"
+        md-items="armorType in creatureData.search(creature.stats.armorType,creatureData.armorTypes)"
+        md-item-text="armorType"
+        md-floating-label="Armor Type">
+      <md-item-template>
+        <span>{{armorType}}</span>
+      </md-item-template>
+    </md-autocomplete>
+    <md-input-container flex>
+  	  <label>Armor Class</label>
+  	  <input ng-model="creature.stats.armorClass" type="number"/>
+  	</md-input-container>
+  </section>
+
 
 	<md-chips ng-model="creature.stats.damageVulnerabilities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
@@ -32,6 +35,8 @@
     </md-chip-template>
   </md-chips>
 
+  <br />
+
   <md-chips ng-model="creature.stats.damageResistances" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.damageResistancesSearch"
@@ -46,6 +51,8 @@
       </span>
     </md-chip-template>
   </md-chips>
+
+  <br />
 
   <md-chips ng-model="creature.stats.damageImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
@@ -62,6 +69,8 @@
     </md-chip-template>
   </md-chips>
 
+  <br />
+
   <md-chips ng-model="creature.stats.conditionImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.conditionImmunitiesSearch"
@@ -76,4 +85,6 @@
       </span>
     </md-chip-template>
   </md-chips>
+
+  <br /><br />
 </form>
