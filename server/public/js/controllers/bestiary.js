@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location) {
 	$scope.bestiary = bestiary;
 	var loadCreatures = function(){
 		$scope.bestiary.creatures = [];
@@ -16,6 +16,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary) {
 		name: bestiary.name+"",
 		description: bestiary.description+""
 	};
+
+	$scope.addCreature = function(){
+		$location.url("/bestiary/add/"+$scope.bestiary._id);
+	}
 
 	$scope.cancelSave = function(){
 		$scope.unsavedBestiary = $scope.bestiary;

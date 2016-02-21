@@ -1,7 +1,7 @@
 
 
 
-var creatureCtrl = function($scope,creature,Creature) {
+var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location) {
 	$scope.creature = creature;
 
 	$scope.creatureData = {
@@ -168,8 +168,21 @@ var creatureCtrl = function($scope,creature,Creature) {
 			});
 		}
 		else{
-			Creature.create($scope.creature,function(){
+			Creature.create($scope.creature,function(data){
+				var newCreature = data;
 				console.log("created creature!");
+				if($routeParams.bestiaryId){
+					Bestiary.get($routeParams.bestiaryId,function(data){
+						if(!data.creatureIds)
+							data.creatureIds = [];
+						data.creatureIds.push(newCreature._id);
+						Bestiary.update(data._id,data,function(){
+							console.log("added to bestiary");
+							//return to bestiary view
+							$location.url("/bestiary/view/"+data._id);
+						},function(){});
+					},function(){});
+				}
 			},function(err){
 				console.log("error: "+err);
 			});
