@@ -115,12 +115,12 @@ md-toolbar.inner-header span {
   color: #444;
 }
 
-md-toolbar.inner-header .md-button.md-fab:not(.selected):not(:hover) {
+md-toolbar.inner-header .md-button.md-fab:not(.selected):not(.main-button) {
   background-color: #fff;
   transition: background-color 0.4s ease-out;
 }
 
-md-toolbar.inner-header .md-button.md-fab:not(.selected):not(:hover) md-icon {
+md-toolbar.inner-header .md-button.md-fab:not(.selected):not(.main-button) md-icon {
   color: #777;
   transition: color 0.4s ease-out;
 }
