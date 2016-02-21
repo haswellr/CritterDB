@@ -177,6 +177,7 @@ var creatureCtrl = function($scope,creature,Creature) {
 	}
 
 	$scope.$watch("creature",function(newValue,oldValue){
+		console.log("changed!");
 		Creature.calculateCreatureDetails($scope.creature);
 	},true);
 }

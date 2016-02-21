@@ -38,25 +38,27 @@
     <div layout="row" style="height:50px;">
       <md-button ng-click="savingThrows.add()" class="md-raised">Add Saving Throw</md-button>
     </div>
-    <div ng-repeat="savingThrow in creature.stats.savingThrows" layout="row" layout-align="center center" style="width:100%;">
-      <md-input-container flex>
-        <label>Saving Throw</label>
-        <md-select ng-model="savingThrow.ability">
-          <md-option ng-repeat="ability in savingThrows.getUnused(savingThrow)" value="{{ability}}">
-            {{ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase()}}
-          </md-option>
-        </md-select>
-      </md-input-container>
-      <md-checkbox ng-model="savingThrow.proficient" ng-change="savingThrow.value=undefined" aria-label="Proficient">
-        Proficient
-      </md-checkbox>
-      <md-input-container flex>
-        <label>Specific Value</label>
-        <input ng-model="savingThrow.value" ng-change="savingThrow.proficient=false" type="number"/>
-      </md-input-container>
-      <button ng-click="savingThrows.remove(savingThrow)" class="md-primary remove-saving-throw">
-        <md-icon md-svg-icon="md-close"></md-icon>
-      </button>
+    <div ng-repeat="savingThrow in creature.stats.savingThrows" class="saving-throw-row">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Saving Throw</label>
+          <md-select ng-model="savingThrow.ability">
+            <md-option ng-repeat="ability in savingThrows.getUnused(savingThrow)" value="{{ability}}">
+              {{ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase()}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-checkbox ng-model="savingThrow.proficient" ng-change="savingThrow.value=undefined" aria-label="Proficient" style="margin-left:10px;margin-right:10px;">
+          Proficient
+        </md-checkbox>
+        <md-input-container flex>
+          <label>Specific Value</label>
+          <input ng-model="savingThrow.value" ng-change="savingThrow.proficient=false" type="number"/>
+        </md-input-container>
+        <button ng-click="savingThrows.remove(savingThrow)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
     </div>
     <div class="label">Saving Throws</div>
   </section>

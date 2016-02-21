@@ -61,7 +61,7 @@
 }
 
 .remove-saving-throw:hover, .remove-saving-throw:focus {
-  background: rgba(255, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .fallingColumns {
@@ -156,6 +156,7 @@ button.create-continue {
   border-radius: 3px;
   position: relative !important;
   padding-bottom: 10px;
+  padding-left: 10px;
 }
 
 .stats-form section.subsection div.label {
@@ -164,4 +165,30 @@ button.create-continue {
   left: 7px;
   font-size: 14px;
   opacity: 0.64;
+}
+
+.stats-form section.subsection md-checkbox {
+  margin: 18px 10px 0px 10px;
+  /*background-color: rgba(0,0,0,0.075);*/
+  border-radius: 4px;
+  height: 40px;
+  padding: 10px 10px;
+  transition: background-color 0.4s ease-out;
+}
+
+.stats-form section.subsection md-checkbox:hover {
+  background-color: rgba(0,0,0,0.075);
+}
+
+.stats-form section.subsection md-checkbox div.md-container {
+  left: 10px;
+}
+
+.stats-form section.subsection button.remove-saving-throw {
+  margin: 25px 8px 0px 6px;
+}
+
+.stats-form section.subsection div.saving-throw-row {
+  width: 100%;
+  height: 60px;
 }
