@@ -1,7 +1,5 @@
-+Add 'Add Creature' button to Bestiary
 +Add description to Bestiary
 
--Finalize CSS for 'Create Creature' (consider using Tabs/Steps - Flavor, Stats, Abilities)
 -Add tooltips to everything
 -Add Users
 -Add Bestiary list for users

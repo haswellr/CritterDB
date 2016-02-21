@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var databaseUrl = "mongodb://ryan:3Edcft6yhn@ds061335.mongolab.com:61335/bestiarymanager";
-mongoose.connect(databaseUrl);
+var config = require('./config');
+mongoose.connect(config.databaseUrl);
 
 var express = require('express');
 var path = require('path');
@@ -8,6 +8,7 @@ var path = require('path');
 //Controllers
 var creatures = require('./controllers/creatures');
 var bestiaries = require('./controllers/bestiaries');
+var users = require('./controllers/users');
 
 var app = express();
 
@@ -33,6 +34,12 @@ app.get('/api/bestiaries/:id', bestiaries.findById);
 app.post('/api/bestiaries', bestiaries.create);
 app.put('/api/bestiaries/:id', bestiaries.updateById);
 app.delete('/api/bestiaries/:id', bestiaries.deleteById);
+//Users
+app.get('/api/users', users.findAll);
+app.get('/api/users/:id', users.findById);
+app.post('/api/users', users.create);
+app.put('/api/users/:id', users.updateById);
+app.delete('/api/users/:id', users.deleteById);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
