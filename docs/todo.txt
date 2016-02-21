@@ -1,5 +1,7 @@
 +Add description to Bestiary
 
+- ADD TOKEN AUTHORIZATION FOR USERS: https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+
 -Add tooltips to everything
 -Add Users
 -Add Bestiary list for users
