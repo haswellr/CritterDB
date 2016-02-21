@@ -6,6 +6,8 @@
 -Add Users
 -Add Bestiary list for users
 
+-Figure out how to make textareas auto expand
+
 - Make Racial stats auto-fill if a standard race is chosen (size, speed, senses, languages)
 - Make Armor Class auto-fill if a standard auto-type is chosen (need to calculate based on dex as well)
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
