@@ -1,6 +1,6 @@
 <form name="statsForm" class="stats-form">
   <h4>Ability Scores</h4>
-  <section layout="row" flex>
+  <section layout="row" layout-align="center center" layout-wrap>
     <md-input-container flex>
       <label>STR</label>
       <input ng-model="creature.stats.abilityScores.strength" type="number"/>
@@ -13,8 +13,6 @@
       <label>CON</label>
       <input ng-model="creature.stats.abilityScores.constitution" type="number"/>
     </md-input-container>
-  </section>
-  <section layout="row" flex>
     <md-input-container flex>
       <label>INT</label>
       <input ng-model="creature.stats.abilityScores.intelligence" type="number"/>
@@ -62,27 +60,33 @@
     </div>
     <div class="label">Saving Throws</div>
   </section>
-
-  <h4>Skills</h4>
-  <md-button ng-click="skills.add()" class="md-raised">Add</md-button>
-  <div ng-repeat="skill in creature.stats.skills" layout="row">
-    <md-input-container flex>
-      <label>Skill</label>
-      <md-select ng-model="skill.name">
-        <md-option ng-repeat="skillName in skills.getUnused(skill)" value="{{skillName}}">
-          {{skillName.charAt(0).toUpperCase() + skillName.slice(1).toLowerCase()}}
-        </md-option>
-      </md-select>
-    </md-input-container>
-    <md-checkbox ng-model="skill.proficient" ng-change="skill.value=undefined" aria-label="Proficient">
-      Proficient
-    </md-checkbox>
-    <md-input-container flex>
-      <label>Specific Value</label>
-      <input ng-model="skill.value" ng-change="skill.proficient=false" type="number"/>
-    </md-input-container>
-    <button ng-click="skills.remove(skill)" class="md-primary remove-saving-throw">
-      <md-icon md-svg-icon="md-close"></md-icon>
-    </button>
-  </div>
+  <br>
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="skills.add()" class="md-raised">Add Skill</md-button>
+    </div>
+    <div ng-repeat="skill in creature.stats.skills" class="saving-throw-row">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Skill</label>
+          <md-select ng-model="skill.name">
+            <md-option ng-repeat="skillName in skills.getUnused(skill)" value="{{skillName}}">
+              {{skillName.charAt(0).toUpperCase() + skillName.slice(1).toLowerCase()}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-checkbox ng-model="skill.proficient" ng-change="skill.value=undefined" aria-label="Proficient" style="margin-left:10px;margin-right:10px;">
+          Proficient
+        </md-checkbox>
+        <md-input-container flex>
+          <label>Specific Value</label>
+          <input ng-model="skill.value" ng-change="skill.proficient=false" type="number"/>
+        </md-input-container>
+        <button ng-click="skills.remove(skill)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Skills</div>
+  </section>
 </form>
