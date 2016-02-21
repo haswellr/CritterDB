@@ -104,7 +104,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 			creature.flavor.descriptionHtml = $sce.trustAsHtml(creature.flavor.description);
 		}
 		//saving throws
-		if(creature.stats && creature.stats.savingThrows && creature.stats.abilityScoreModifiers && creature.stats.proficiencyBonus){
+		if(creature.stats && creature.stats.savingThrows && creature.stats.abilityScoreModifiers && creature.stats.proficiencyBonus!=undefined){
 			for(var index in creature.stats.savingThrows){
 				var savingThrow = creature.stats.savingThrows[index];
 				var mod = creature.stats.abilityScoreModifiers[savingThrow.ability];
@@ -117,10 +117,11 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 					if(mod<0)
 						sign = "–";
 				savingThrow.modifierStr = shortFormAbilities[savingThrow.ability]+" "+sign+Math.abs(mod);
+				console.log("set modifier str ("+savingThrow.ability+"): "+savingThrow.modifierStr);
 			}
 		}
 		//skills
-		if(creature.stats && creature.stats.skills && creature.stats.abilityScoreModifiers && creature.stats.proficiencyBonus){
+		if(creature.stats && creature.stats.skills && creature.stats.abilityScoreModifiers && creature.stats.proficiencyBonus!=undefined){
 			for(var index in creature.stats.skills){
 				var skill = creature.stats.skills[index];
 				var ability = skillAbilities[skill.name];
