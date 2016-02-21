@@ -1,5 +1,5 @@
 +Add 'Add Creature' button to Bestiary
-+Add Title and description to Bestiary
++Add description to Bestiary
 
 -Finalize CSS for 'Create Creature' (consider using Tabs/Steps - Flavor, Stats, Abilities)
 -Add tooltips to everything
@@ -8,6 +8,7 @@
 
 -Figure out how to make textareas auto expand
 
+- Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage)
 - Make Racial stats auto-fill if a standard race is chosen (size, speed, senses, languages)
 - Make Armor Class auto-fill if a standard auto-type is chosen (need to calculate based on dex as well)
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
