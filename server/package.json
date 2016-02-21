@@ -8,6 +8,7 @@
         "mongoose": "4.4.3",
         "assert": "1.x",
         "mongoose-autopopulate": "0.4.0",
+        "bcryptjs": "2.3.0",
         "path": "0.12.7"
     }
 }
