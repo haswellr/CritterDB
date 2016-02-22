@@ -10,17 +10,12 @@ var BestiarySchema = new mongoose.Schema(
     description: {
       type: String
     },
-    owner: {
+    ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-      autopopulate: true
-    },
-    creatureIds: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Creature',
-        autopopulate: false
-    }]
+      autopopulate: false
+    }
   });
 BestiarySchema.plugin(autopopulate);
 

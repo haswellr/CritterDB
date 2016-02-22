@@ -1,6 +1,12 @@
 +Add description to Bestiary
 
-- ADD TOKEN AUTHORIZATION FOR USERS: https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens
+-Finish authorization for all server routes (see comments in server.js)
+-Add Auth service to front end that manages login and tokens
+	+ Use email/password to get token, either by user entering it or saved in cookies
+	+ Use token to get user info (useful if creating bestiaries or other objects where we must set ownerId)
+	+ Send token with every $resource request
+-Add Forgot Password route, including sending an email
+-Add Change Password UI
 
 -Add tooltips to everything
 -Add Users
