@@ -42,3 +42,29 @@ exports.authenticate = function(req, res){
     }
   });
 }
+
+exports.getCurrentUser = function(req, res) {
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if(token){
+        jwt.verify(token,config.secret,function(err,decoded){
+            if(err)
+                res.status(400).send("Failed to authenticate token.");
+            else{
+                var query = {'_id':decoded._doc._id};
+                User.findOne(query, function (err, doc) {
+                    if(err)
+                        res.status(400).send(err);
+                    else if(doc){
+                        doc.password = undefined;   //remove password field from returned value
+                        res.send(doc);
+                    }
+                    else
+                        res.status(400).send("User not found.");
+                })
+            }
+        });
+    }
+    else{
+        res.status(400).send("No token provided.");
+    }
+};
