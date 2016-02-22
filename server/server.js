@@ -31,10 +31,10 @@ app.put('/api/creatures/:id', creatures.updateById);
 app.delete('/api/creatures/:id', creatures.deleteById);
 //Bestiaries
 app.get('/api/bestiaries', bestiaries.findAll);
-app.get('/api/bestiaries/:id', bestiaries.findById);
+app.get('/api/bestiaries/:id', [bestiaries.authenticateByOwner,bestiaries.findById]);
 app.post('/api/bestiaries', bestiaries.create);
-app.put('/api/bestiaries/:id', bestiaries.updateById);
-app.delete('/api/bestiaries/:id', bestiaries.deleteById);
+app.put('/api/bestiaries/:id', [bestiaries.authenticateByOwner,bestiaries.updateById]);
+app.delete('/api/bestiaries/:id', [bestiaries.authenticateByOwner,bestiaries.deleteById]);
 //Users
 app.get('/api/users', users.findAll);
 app.get('/api/users/:id', users.findById);
