@@ -177,6 +177,11 @@ var CreatureSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        bestiaryId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Bestiary',
+          required: true
+        },
         flavor: {
             type: CreatureFlavor,
             default: {}

@@ -24,25 +24,28 @@ app.get('/',function(req,res){
 	res.sendfile(path.join(__dirname+'/views/index.html'));
 });
 //Creatures
-app.get('/api/creatures', creatures.findAll);
-app.get('/api/creatures/:id', creatures.findById);
-app.post('/api/creatures', creatures.create);
-app.put('/api/creatures/:id', creatures.updateById);
-app.delete('/api/creatures/:id', creatures.deleteById);
+app.get('/api/creatures', creatures.findAll);		//REMOVE THIS
+app.get('/api/creatures/:id', creatures.findById);		//complete
+app.post('/api/creatures', creatures.create);		//complete
+app.put('/api/creatures/:id', creatures.updateById);		//complete
+app.delete('/api/creatures/:id', creatures.deleteById);		//complete
 //Bestiaries
-app.get('/api/bestiaries', bestiaries.findAll);
-app.get('/api/bestiaries/:id', [bestiaries.authenticateByOwner,bestiaries.findById]);
-app.post('/api/bestiaries', bestiaries.create);
-app.put('/api/bestiaries/:id', [bestiaries.authenticateByOwner,bestiaries.updateById]);
-app.delete('/api/bestiaries/:id', [bestiaries.authenticateByOwner,bestiaries.deleteById]);
+app.get('/api/bestiaries/:id/creatures', bestiaries.findCreaturesByBestiary);	//complete
+app.get('/api/bestiaries', bestiaries.findAll);		//REMOVE THIS
+app.get('/api/bestiaries/:id', bestiaries.findById);	//complete
+app.post('/api/bestiaries', bestiaries.create);	//complete
+app.put('/api/bestiaries/:id', bestiaries.updateById);	//complete
+app.delete('/api/bestiaries/:id', bestiaries.deleteById);	//complete
 //Users
-app.get('/api/users', users.findAll);
-app.get('/api/users/:id', users.findById);
-app.post('/api/users', users.create);
-app.put('/api/users/:id', users.updateById);
-app.delete('/api/users/:id', users.deleteById);
+app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);	//complete
+app.get('/api/users', users.findAll);		//REMOVE THIS
+app.get('/api/users/:id', users.findById);		//REMOVE THIS - replace with api/users/:id/public
+app.post('/api/users', users.create);	//complete
+app.put('/api/users/:id', users.updateById);	//complete
+app.delete('/api/users/:id', users.deleteById);	//complete
 //Authentication
-app.post('/api/authenticate', authentication.authenticate);
+app.get('/api/authenticate/user', authentication.getCurrentUser);	//complete
+app.post('/api/authenticate', authentication.authenticate);	//complete
 
 app.listen(3000);
 console.log('Listening on port 3000...');
