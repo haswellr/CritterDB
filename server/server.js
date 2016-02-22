@@ -9,6 +9,7 @@ var path = require('path');
 var creatures = require('./controllers/creatures');
 var bestiaries = require('./controllers/bestiaries');
 var users = require('./controllers/users');
+var authentication = require('./controllers/authentication');
 
 var app = express();
 
@@ -40,6 +41,8 @@ app.get('/api/users/:id', users.findById);
 app.post('/api/users', users.create);
 app.put('/api/users/:id', users.updateById);
 app.delete('/api/users/:id', users.deleteById);
+//Authentication
+app.post('/api/authenticate', authentication.authenticate);
 
 app.listen(3000);
 console.log('Listening on port 3000...');
