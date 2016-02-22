@@ -9,6 +9,7 @@
         "assert": "1.x",
         "mongoose-autopopulate": "0.4.0",
         "bcryptjs": "2.3.0",
-        "path": "0.12.7"
+        "path": "0.12.7",
+        "jsonwebtoken": "5.7.0"
     }
 }
