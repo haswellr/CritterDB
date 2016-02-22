@@ -17,24 +17,28 @@ exports.authenticate = function(req, res){
     	res.status(400).send("Authentication failed. User not found.");
     }
     else if (user) {
+      if(!req.body.password)
+        res.status(400).send("Authentication failed. Password required.");
+      else{
+        // check if password matches
+        user.comparePassword(req.body.password,function(err,isMatch){
+          if(err)
+            res.status(400).send(err);
+          else if(isMatch){
+            // if user is found and password is right
+            // create a token
+            var token = jwt.sign(user, config.secret, {
+              expiresIn: config.tokens.duration
+            });
 
-      // check if password matches
-      if (user.password != req.body.password) {
-      	res.status(403).send("Authentication failed. Incorrect password.");
-      }
-      else {
-
-        // if user is found and password is right
-        // create a token
-        var token = jwt.sign(user, config.secret, {
-          expiresIn: config.tokens.duration
+            // return the information including token as JSON
+            res.send(token);
+          }
+          else{
+            res.status(403).send("Authentication failed. Incorrect password.");
+          }
         });
-
-        // return the information including token as JSON
-        res.send(token);
       }
-
     }
-
   });
 }
