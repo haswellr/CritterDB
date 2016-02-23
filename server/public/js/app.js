@@ -48,6 +48,10 @@ myApp.config(['$routeProvider',
 			when('/login',{
 				templateUrl: 'assets/partials/login.html'
 			}).
+			when('/signup',{
+				templateUrl: 'assets/partials/signup.html',
+				controller: 'userCtrl'
+			}).
 			when('/bestiary/view/:bestiaryId',{
 				templateUrl: 'assets/partials/bestiary/view.html',
 				controller: 'bestiaryCtrl',
