@@ -38,9 +38,10 @@ app.put('/api/bestiaries/:id', bestiaries.updateById);	//complete
 app.delete('/api/bestiaries/:id', bestiaries.deleteById);	//complete
 //Users
 app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);	//complete
-//app.get('/api/users', users.findAll);		//REMOVE THIS
+app.get('/api/users', users.findAll);		//REMOVE THIS
 //app.get('/api/users/:id', users.findById);		//REMOVE THIS
 app.get('/api/users/:id/public', users.findPublicInfoById);	//complete
+app.get('/api/users/search', users.findPublicInfo);
 app.post('/api/users', users.create);	//complete
 app.put('/api/users/:id', users.updateById);	//complete
 app.delete('/api/users/:id', users.deleteById);	//complete
