@@ -38,6 +38,11 @@ config(function($mdThemingProvider) {
 		.accentPalette('orange');
 });*/
 
+//Register HTTP token auth interceptor
+myApp.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.interceptors.push('authHttpRequestInterceptor');
+}]);
+
 //Set up routing
 myApp.config(['$routeProvider',
 	function($routeProvider) {
