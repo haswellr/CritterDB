@@ -4,6 +4,7 @@ mongoose.connect(config.databaseUrl);
 
 var express = require('express');
 var path = require('path');
+var cookieParser = require('cookie-parser');
 
 //Controllers
 var creatures = require('./controllers/creatures');
@@ -16,6 +17,7 @@ var app = express();
 //app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(cookieParser());
 //server public folder
 app.use("/assets",express.static(path.join(__dirname,"public")));
 
@@ -48,6 +50,7 @@ app.delete('/api/users/:id', users.deleteById);	//complete
 //Authentication
 app.get('/api/authenticate/user', authentication.getCurrentUser);	//complete
 app.post('/api/authenticate', authentication.authenticate);	//complete
+app.post('/api/revokeauthentication', authentication.revokeAuthentication);	//complete
 
 app.listen(3000);
 console.log('Listening on port 3000...');
