@@ -1,6 +1,6 @@
 +Add description to Bestiary
 
--Finish authorization for all server routes (see comments in server.js)
+-Database errors need to return real results (example: create a user with a non-unique email). Important errors should be shown on UI (such as non-unique email or username).
 -Add Auth service to front end that manages login and tokens
 	+ Use email/password to get token, either by user entering it or saved in cookies
 	+ Use token to get user info (useful if creating bestiaries or other objects where we must set ownerId)
