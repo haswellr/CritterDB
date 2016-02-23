@@ -1,0 +1,69 @@
+
+
+
+<div class="loginblock">
+	<h1 class="md-display-2">Signup</h1>
+	
+	<md-content layout-padding="">
+	  <form name="signupForm" ng-submit="createUser()">
+
+	    <md-input-container class="md-block">
+	      <label>Email</label>
+	      <input required type="email" name="email" ng-model="user.email" ng-pattern="/^.+@.+\..+$/">
+	      <div ng-messages="signupForm.email.$error">
+	        <div ng-message="pattern">
+	          Your email must look like an e-mail address.
+	        </div>
+	        <div ng-message="required">
+	          This is required.
+	        </div>
+	      </div>
+	    </md-input-container>
+
+	    <md-input-container class="md-block">
+	      <label>Username</label>
+	      <input required type="text" name="username" ng-model="user.username" minlength="3" maxlength="15" md-maxlength="15">
+	      <div ng-messages="signupForm.username.$error">
+	        <div ng-message-exp="['minlength','maxlength']">
+	          Your username must be between 3 and 15 characters long.
+	        </div>
+	        <div ng-message="required">
+	          This is required.
+	        </div>
+	      </div>
+	    </md-input-container>
+
+	    <md-input-container class="md-block">
+	      <label>Password</label>
+	      <input required type="password" name="password" ng-model="user.password" minlength="6">
+	      <div ng-messages="signupForm.password.$error">
+	        <div ng-message="minlength">
+	          Your password must be at least 6 characters long.
+	        </div>
+	        <div ng-message="required">
+	          This is required.
+	        </div>
+	      </div>
+	    </md-input-container>
+
+	    <md-input-container class="md-block">
+	      <label>Confirm Password</label>
+	      <input required type="password" name="confirmPassword" ng-model="user.confirmPassword"compare-to="user.password">
+	      <div ng-messages="signupForm.confirmPassword.$error">
+	        <div ng-message="compareTo">
+	          This must match your password.
+	        </div>
+	        <div ng-message="required">
+	          This is required.
+	        </div>
+	      </div>
+	    </md-input-container>
+
+	    <md-button type="submit" class="md-raised md-button md-primary">Sign Up</md-button>
+			<md-button class="md-raised md-button">Login</md-button>
+    
+    </form>
+  </md-content>
+	
+
+</div>
