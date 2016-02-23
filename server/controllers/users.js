@@ -38,7 +38,7 @@ exports.findById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             res.send(doc);
@@ -52,7 +52,7 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     User.find({}, function(err, docs) {
         if(err){
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else{
             res.send(docs);
@@ -65,7 +65,7 @@ exports.create = function(req, res) {
 
     user.save(function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else {
             res.send(getPublicInfo(doc));
@@ -83,7 +83,7 @@ exports.updateById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateUser(req, doc, function(err){
@@ -116,7 +116,7 @@ exports.deleteById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateUser(req, doc, function(err){
@@ -125,7 +125,7 @@ exports.deleteById = function(req, res) {
                 else{
                     User.findByIdAndRemove(query, function(err, doc, result){
                         if(err)
-                            res.status(400).send(err);
+                            res.status(400).send(err.errmsg);
                         else
                             res.send(doc);
                     });
@@ -144,7 +144,7 @@ exports.findBestiariesByOwner = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateUser(req, doc, function(err){
@@ -174,7 +174,7 @@ exports.findPublicInfoById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             res.send(getPublicInfo(doc));
@@ -183,4 +183,33 @@ exports.findPublicInfoById = function(req, res) {
             res.status(400).send("User not found");
         }
     });
+};
+
+exports.findPublicInfo = function(req, res) {
+    var username = req.body.username || req.query.username;
+    var email = req.body.email || req.query.email;
+    var id = req.body._id || req.query._id;
+    var query = {};
+    if(username)
+    	query.username = username;
+    if(email)
+    	query.email = email;
+    if(id)
+    	query._id = id;
+    if(query.username || query.email || query._id){
+	    User.findOne(query, function (err, doc) {
+	        if(err) {
+	            res.status(400).send(err.errmsg);
+	        }
+	        else if(doc){
+	            res.send(getPublicInfo(doc));
+	        }
+	        else{
+	            res.status(400).send("User not found.");
+	        }
+	    });
+	}
+	else{
+		res.status(400).send("Invalid query.");
+	}
 };

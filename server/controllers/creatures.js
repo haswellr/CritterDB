@@ -28,7 +28,7 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
     var query = {'_id':creature.bestiaryId};
     Bestiary.findOne(query, function(err, doc){
         if(err)
-            callback(err);
+            callback(err.errmsg);
         else if(doc)
             authenticateBestiaryByOwner(req, doc, callback);
         else
@@ -42,7 +42,7 @@ exports.findById = function(req, res) {
 
     Creature.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateCreatureByBestiary(req, doc, function(err){
@@ -61,7 +61,7 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     Creature.find({}, function(err, docs) {
         if(err){
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else{
             res.send(docs);
@@ -78,7 +78,7 @@ exports.create = function(req, res) {
         else{
             creature.save(function (err, doc) {
                 if(err) {
-                    res.status(400).send(err);
+                    res.status(400).send(err.errmsg);
                 }
                 else {
                     res.send(doc);
@@ -99,7 +99,7 @@ exports.updateById = function(req, res) {
 
     Creature.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateCreatureByBestiary(req, doc, function(err){
@@ -108,7 +108,7 @@ exports.updateById = function(req, res) {
                 else{
                     Creature.findOneAndUpdate(query, creature, options, function(err, doc){
                         if(err){
-                            res.status(400).send(err);
+                            res.status(400).send(err.errmsg);
                         }
                         else if(doc){
                             res.send(doc);
@@ -129,7 +129,7 @@ exports.deleteById = function(req, res) {
 
     Creature.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateCreatureByBestiary(req, doc, function(err){
@@ -138,7 +138,7 @@ exports.deleteById = function(req, res) {
                 else{
                     Creature.findByIdAndRemove(query, function(err, doc, result){
                         if(err){
-                            res.status(400).send(err);
+                            res.status(400).send(err.errmsg);
                         }
                         else{
                             res.send(doc);
