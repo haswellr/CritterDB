@@ -1,9 +1,12 @@
 +Add description to Bestiary
 
 -Add Auth service to front end that manages login and tokens
-	+ Use email/password to get token, either by user entering it or saved in cookies
-	+ Use token to get user info (useful if creating bestiaries or other objects where we must set ownerId)
-	+ Send token with every $resource request
+	+/ Use email/password to get token, either by user entering it or saved in cookies
+	+/ Use token to get user info (useful if creating bestiaries or other objects where we must set ownerId)
+	+/ Send token with every $resource request
+	+ Add logout route to Auth service on front end
+	+ Use route provider to reroute to login page if not logged in: http://stackoverflow.com/questions/20531965/redirect-to-route-if-user-is-not-authenticated
+	+ Make controllers actually use user info stored in auth
 -Add Forgot Password route, including sending an email
 -Add Change Password UI
 
