@@ -24,6 +24,14 @@ var authenticateUser = function(req, user, callback){
     }
 }
 
+var getPublicInfo = function(user){
+    var publicInfo = {
+        username: user.username,
+        _id: user._id
+    };
+    return(publicInfo);
+}
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
@@ -60,7 +68,7 @@ exports.create = function(req, res) {
             res.status(400).send(err);
         }
         else {
-            res.send();
+            res.send(getPublicInfo(doc));
         }
     })
 }
@@ -153,6 +161,23 @@ exports.findBestiariesByOwner = function(req, res) {
                 	});
                 }
             });
+        }
+        else{
+            res.status(400).send("User not found");
+        }
+    });
+};
+
+exports.findPublicInfoById = function(req, res) {
+    var id = req.params.id;
+    var query = {'_id':id};
+
+    User.findOne(query, function (err, doc) {
+        if(err) {
+            res.status(400).send(err);
+        }
+        else if(doc){
+            res.send(getPublicInfo(doc));
         }
         else{
             res.status(400).send("User not found");
