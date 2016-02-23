@@ -1,4 +1,4 @@
-angular.module('myApp').factory("Auth", ['$cookies','$http', function($cookies,$http) {
+angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHttpRequestInterceptor', function($cookies,$http,$location,authHttpRequestInterceptor) {
   var serv = {};
 
   serv.isLoggedIn = function(){
@@ -6,18 +6,30 @@ angular.module('myApp').factory("Auth", ['$cookies','$http', function($cookies,$
   }
 
   serv.login = function(username,password,rememberme){
+    console.log("login");
     if(!username)
-      username = $cookies.get('dmbestiary-username');
-    if(!password)
-      password = $cookies.get('dmbestiary-password');
-    if(username && password){
+      username = $cookies.get('bestiarymanagerusername');
+    if(username){
       var data = {
         'username': username,
-        'password': password
-      }
-      $http.post
+        'password': password,
+        'rememberme': rememberme
+      };
+      $http.post('/api/authenticate',data).then(function(data){
+        authHttpRequestInterceptor.token = data.data;
+        $http.get('/api/authenticate/user').then(function(data){
+          serv.user = data.data;
+          $location.url('/');
+        },function(err){
+          console.log("error getting current user: "+err);
+        });
+      },function(err){
+        console.log("error authenticating: "+err);
+        token = undefined;
+      });
     }
   }
+  serv.login(); //try login in case 'rememberme' is set
 
   return serv;
 }]);
