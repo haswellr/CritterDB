@@ -30,7 +30,7 @@ exports.findById = function(req, res) {
 
     Bestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateBestiaryByOwner(req, doc, function(err){
@@ -49,7 +49,7 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     Bestiary.find({}, function(err, docs) {
         if(err){
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else{
             res.send(docs);
@@ -66,7 +66,7 @@ exports.create = function(req, res) {
         else{
             bestiary.save(function (err, doc) {
                 if(err) {
-                    res.status(400).send(err);
+                    res.status(400).send(err.errmsg);
                 }
                 else {
                     res.send(doc);
@@ -87,7 +87,7 @@ exports.updateById = function(req, res) {
 
     Bestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateBestiaryByOwner(req, doc, function(err){
@@ -96,7 +96,7 @@ exports.updateById = function(req, res) {
                 else{
                     Bestiary.findOneAndUpdate(query, creature, options, function(err, doc){
                         if(err)
-                            res.status(400).send(err);
+                            res.status(400).send(err.errmsg);
                         else
                             res.send(doc);
                     });
@@ -115,7 +115,7 @@ exports.deleteById = function(req, res) {
 
     Bestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateBestiaryByOwner(req, doc, function(err){
@@ -124,7 +124,7 @@ exports.deleteById = function(req, res) {
                 else{
                     Bestiary.findByIdAndRemove(query, function(err, doc, result){
                         if(err)
-                            res.status(400).send(err);
+                            res.status(400).send(err.errmsg);
                         else
                             res.send(doc);
                     });
@@ -143,7 +143,7 @@ exports.findCreaturesByBestiary = function(req, res) {
 
     Bestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err);
+            res.status(400).send(err.errmsg);
         }
         else if(doc){
             authenticateBestiaryByOwner(req, doc, function(err){
@@ -154,7 +154,7 @@ exports.findCreaturesByBestiary = function(req, res) {
                         bestiaryId: doc._id
                     }, function(err, docs){
                         if(err)
-                            res.status(400).send(err);
+                            res.status(400).send(err.errmsg);
                         else
                             res.send(docs);
                     });

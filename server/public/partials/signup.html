@@ -3,13 +3,13 @@
 
 <div class="loginblock">
 	<h1 class="md-display-2">Signup</h1>
-	
+
 	<md-content layout-padding="">
 	  <form name="signupForm" ng-submit="createUser()">
 
 	    <md-input-container class="md-block">
 	      <label>Email</label>
-	      <input required type="email" name="email" ng-model="user.email" ng-pattern="/^.+@.+\..+$/">
+	      <input required type="email" name="email" ng-model="user.email" unique-email ng-pattern="/^.+@.+\..+$/">
 	      <div ng-messages="signupForm.email.$error">
 	        <div ng-message="pattern">
 	          Your email must look like an e-mail address.
@@ -17,18 +17,24 @@
 	        <div ng-message="required">
 	          This is required.
 	        </div>
+	        <div ng-message="uniqueEmail">
+	          An account with this email address already exists.
+	        </div>
 	      </div>
 	    </md-input-container>
 
 	    <md-input-container class="md-block">
 	      <label>Username</label>
-	      <input required type="text" name="username" ng-model="user.username" minlength="3" maxlength="15" md-maxlength="15">
+	      <input required type="text" name="username" ng-model="user.username" unique-username minlength="3" maxlength="15" md-maxlength="15">
 	      <div ng-messages="signupForm.username.$error">
 	        <div ng-message-exp="['minlength','maxlength']">
 	          Your username must be between 3 and 15 characters long.
 	        </div>
 	        <div ng-message="required">
 	          This is required.
+	        </div>
+	        <div ng-message="uniqueUsername">
+	          An account with this username already exists.
 	        </div>
 	      </div>
 	    </md-input-container>
@@ -48,7 +54,7 @@
 
 	    <md-input-container class="md-block">
 	      <label>Confirm Password</label>
-	      <input required type="password" name="confirmPassword" ng-model="user.confirmPassword"compare-to="user.password">
+	      <input required type="password" name="confirmPassword" ng-model="user.confirmPassword" compare-to="user.password">
 	      <div ng-messages="signupForm.confirmPassword.$error">
 	        <div ng-message="compareTo">
 	          This must match your password.
@@ -61,9 +67,9 @@
 
 	    <md-button type="submit" class="md-raised md-button md-primary">Sign Up</md-button>
 			<md-button class="md-raised md-button">Login</md-button>
-    
+
     </form>
   </md-content>
-	
+
 
 </div>
