@@ -33,7 +33,7 @@ app.put('/api/creatures/:id', creatures.updateById);		//complete
 app.delete('/api/creatures/:id', creatures.deleteById);		//complete
 //Bestiaries
 app.get('/api/bestiaries/:id/creatures', bestiaries.findCreaturesByBestiary);	//complete
-//app.get('/api/bestiaries', bestiaries.findAll);		//REMOVE THIS
+app.get('/api/bestiaries', bestiaries.findAll);		//REMOVE THIS
 app.get('/api/bestiaries/:id', bestiaries.findById);	//complete
 app.post('/api/bestiaries', bestiaries.create);	//complete
 app.put('/api/bestiaries/:id', bestiaries.updateById);	//complete
