@@ -50,7 +50,7 @@
 
   <section class="subsection" layout="row" layout-align="center center" layout-wrap>
     <div layout="row" style="height:50px;">
-      <md-button ng-click="abilities.addToList(creature.stats.reactions)" class="md-raised">Add Ability</md-button>
+      <md-button ng-click="abilities.addToList(creature.stats.additionalAbilities)" class="md-raised">Add Ability</md-button>
     </div>
     <div ng-repeat="ability in creature.stats.additionalAbilities" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
@@ -67,7 +67,7 @@
         </button>
       </section>
     </div>
-    <div class="label">Reactions</div>
+    <div class="label">Abilities</div>
   </section>
 
   <br />

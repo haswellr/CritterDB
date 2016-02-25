@@ -1,27 +1,20 @@
-+Add description to Bestiary
-
--Add Auth service to front end that manages login and tokens
-	+/ Use email/password to get token, either by user entering it or saved in cookies
-	+/ Use token to get user info (useful if creating bestiaries or other objects where we must set ownerId)
-	+/ Send token with every $resource request
-	+ Add logout route to Auth service on front end
-	+ Use route provider to reroute to login page if not logged in: http://stackoverflow.com/questions/20531965/redirect-to-route-if-user-is-not-authenticated
-	+ Make controllers actually use user info stored in auth
+-Add description to Bestiary
+-Redirect to login page if not logged in: http://stackoverflow.com/questions/20531965/redirect-to-route-if-user-is-not-authenticated
+-Add edit/delete creature buttons to bestiary view
+-Add logout option to front end
 -Add Forgot Password route, including sending an email
 -Add Change Password UI
+-Make Bestiary list for users actually look good
 
 -Add tooltips to everything
--Add Users
--Add Bestiary list for users
 
 -Figure out how to make textareas auto expand
 
-- Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage)
+- Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage). This can auto-fill if you select a common weapon type.
 - Make Racial stats auto-fill if a standard race is chosen (size, speed, senses, languages)
 - Make Armor Class auto-fill if a standard auto-type is chosen (need to calculate based on dex as well)
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
 - Add an 'Add Action Wizard' button with modal/whatever to the Actions field on front end. This should let you put in an attack name, damage dice, whether it is finesse or not, reach, and number of targets. Alternatively it will suggest some common weapons and autofill the other values.
-- Add an 'Add Speed Wizard' button that will add a move type with a value (step=5 in feet)
 - Add 'hints' under the fields (see 'Errors Advanced' section of angular material Input demo)
 
 

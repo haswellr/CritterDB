@@ -233,7 +233,7 @@ creatureCtrl.resolve = {
 					return deferred.promise;
 				}
 				else
-					return defaultCreature;
+					return angular.copy(defaultCreature);
 			}
 		}
 

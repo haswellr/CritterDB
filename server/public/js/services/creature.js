@@ -79,6 +79,12 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 			creature.stats.hitDieSize = hitDieSize[creature.stats.size];
 			creature.stats.extraHealthFromConstitution = creature.stats.abilityScoreModifiers["constitution"] * creature.stats.numHitDie;
 			creature.stats.hitPoints = Math.floor(creature.stats.numHitDie * ((creature.stats.hitDieSize/2.0) + 0.5 + creature.stats.abilityScoreModifiers["constitution"]));
+			var sign = "+";
+			if(creature.stats.extraHealthFromConstitution<0)
+				sign = "–";
+			creature.stats.hitPointsStr = creature.stats.hitPoints + " " +
+					"(" + creature.stats.numHitDie + "d" + creature.stats.hitDieSize + " " +
+					sign + " " + Math.abs(creature.stats.extraHealthFromConstitution) + ")";
 		}
 		//make ability descriptions html safe so we can use italics and other markup
 		if(creature.stats && creature.stats.additionalAbilities){
@@ -117,7 +123,6 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 					if(mod<0)
 						sign = "–";
 				savingThrow.modifierStr = shortFormAbilities[savingThrow.ability]+" "+sign+Math.abs(mod);
-				console.log("set modifier str ("+savingThrow.ability+"): "+savingThrow.modifierStr);
 			}
 		}
 		//skills
@@ -192,6 +197,14 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 
   serv.delete = function(id, success, error){
   	api.delete({'id':id},success,error);
+  }
+
+  serv.getAllForBestiary = function(bestiaryId, success, error){
+    $resource("/api/bestiaries/:id/creatures").query({ 'id': bestiaryId}, function(data){
+    	for(var i=0;i<data.length;i++)
+    		serv.calculateCreatureDetails(data[i]);
+    	success(data);
+    },error);
   }
 
   return serv;

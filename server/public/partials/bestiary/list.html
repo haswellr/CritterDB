@@ -1,3 +1,11 @@
 <h1>bestiary 1</h1>
 <h1>bestiary 2</h1>
 <p>Bestiaries have a name, a description, and a list of creatures</p>
+
+<ul>
+	<li ng-repeat="bestiary in bestiaries">
+		<h3>{{bestiary.name}} [{{bestiary.creatureIds.length}} Creatures]</h3>
+		<p>{{bestiary.description}}</p>
+		<button ng-click="goToBestiary(bestiary._id)">Edit</button>
+	</li>
+</ul>

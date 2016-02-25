@@ -11,31 +11,36 @@
 
 <div class="loginblock">
 	<h1 class="md-display-2">Login</h1>
-	
+
 	<md-content layout-padding="">
-	  <form name="projectForm">
+	  <form name="projectForm" ng-submit="login()">
 
 	    <md-input-container class="md-block">
-	      <label>Email</label>
-	      <input required="" type="email" name="email" ng-model="project.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
+	      <label>Username</label>
+	      <input required type="text" name="username" ng-model="user.username">
 
-	      <div ng-messages="projectForm.email.$error" role="alert">
-	        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-	          Your email must be between 10 and 100 characters long and look like an e-mail address.
-	        </div>
+	      <div ng-messages="projectForm.username.$error" role="alert">
+
 	      </div>
 	    </md-input-container>
 
 	    <md-input-container class="md-block">
 	      <label>Password</label>
-	      <input required="" type="password" name="password" ng-model="project.password" minlength="8" max="20" data-ng-required="true" ng-pattern="/^.+@.+\..+$/">
+	      <input required type="password" name="password" ng-model="user.password">
 	    </md-input-container>
-    
+
+	    <div layout="row" layout-wrap>
+	    	<div flex="100">
+			    <md-checkbox ng-model="user.rememberme" aria-label="Remember Me">
+		        Remember Me
+		      </md-checkbox>
+		    </div>
+	    </div>
+
+	    <md-button ng-click="goToSignup()" class="md-raised md-button">Sign Up</md-button>
+			<md-button type="submit" class="md-raised md-button md-primary">Login</md-button>
+
     </form>
   </md-content>
-
-<!--Login Buttons -->
-	<md-button class="md-raised md-button">Sign Up</md-button>
-	<md-button class="md-raised md-button">Login</md-button>
 
 </div>
