@@ -51,7 +51,8 @@ myApp.config(['$routeProvider',
 				templateUrl: 'assets/partials/index.html'
 			}).
 			when('/login',{
-				templateUrl: 'assets/partials/login.html'
+				templateUrl: 'assets/partials/login.html',
+				controller: 'userCtrl'
 			}).
 			when('/signup',{
 				templateUrl: 'assets/partials/signup.html',
@@ -88,6 +89,6 @@ myApp.config(['$routeProvider',
 				resolve: creatureCtrl.resolve
 			}).
 			otherwise({
-				redirectTo: '/index'
+				redirectTo: '/bestiary/list'
 			});
 	}]);

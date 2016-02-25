@@ -1,12 +1,13 @@
 angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHttpRequestInterceptor', function($cookies,$http,$location,authHttpRequestInterceptor) {
   var serv = {};
+  var triedLogin = false;
+  var actionsAfterLogin = [];
 
   serv.isLoggedIn = function(){
     return(serv.user!=undefined);
   }
 
-  serv.login = function(username,password,rememberme){
-    console.log("login");
+  serv.login = function(username,password,rememberme,successCallback,errorCallback){
     if(!username)
       username = $cookies.get('bestiarymanagerusername');
     if(username){
@@ -19,17 +20,41 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
         authHttpRequestInterceptor.token = data.data;
         $http.get('/api/authenticate/user').then(function(data){
           serv.user = data.data;
-          $location.url('/');
+          if(successCallback)
+            successCallback();
         },function(err){
           console.log("error getting current user: "+err);
+          if(errorCallback)
+            errorCallback(err);
         });
       },function(err){
         console.log("error authenticating: "+err);
+        if(errorCallback)
+          errorCallback(err);
         token = undefined;
       });
     }
   }
-  serv.login(); //try login in case 'rememberme' is set
+  serv.login(undefined,undefined,undefined,function(){
+    triedLogin = true;
+    for(var i=0;i<actionsAfterLogin.length;i++)
+      actionsAfterLogin[i]();
+  },function(){
+    triedLogin = true;
+    for(var i=0;i<actionsAfterLogin.length;i++)
+      actionsAfterLogin[i]();
+  }); //try login in case 'rememberme' is set
+
+  serv.executeOnLogin = function(action){
+    if(triedLogin)
+      action();
+    else
+      actionsAfterLogin.push(action);
+  }
+
+  serv.logout = function(){
+    $http.post('/api/revokeauthentication',{});
+  }
 
   return serv;
 }]);

@@ -1,18 +1,19 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries) {
+	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
+
 	var loadCreatures = function(){
-		$scope.bestiary.creatures = [];
-		for(index in $scope.bestiary.creatureIds){
-			var creatureId = $scope.bestiary.creatureIds[index];
-			Creature.get(creatureId,function(data){
-				$scope.bestiary.creatures.push(data);
+		if($scope.bestiary._id){
+			Creature.getAllForBestiary($scope.bestiary._id,function(data){
+				$scope.bestiary.creatures = data;
 			});
 		}
 	}
 	loadCreatures();
 
 	$scope.unsavedBestiary = {
+		_id: bestiary._id,
 		name: bestiary.name+"",
 		description: bestiary.description+""
 	};
@@ -21,14 +22,19 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location) {
 		$location.url("/bestiary/add/"+$scope.bestiary._id);
 	}
 
+	$scope.goToBestiary = function(id){
+		$location.url("/bestiary/view/"+id);
+	}
+
 	$scope.cancelSave = function(){
 		$scope.unsavedBestiary = $scope.bestiary;
 	}
 
 	$scope.saveBestiaryInfo = function(){
+		console.log("saving");
 		if($scope.unsavedBestiary._id){
 			Bestiary.update($scope.unsavedBestiary._id,$scope.unsavedBestiary,function(data){
-				console.log("updated bestiary info!");
+				console.log("saved");
 				$scope.bestiary.name = data.name;
 				$scope.bestiary.description = data.description;
 			},function(err){
@@ -40,20 +46,35 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location) {
 
 //don't load controller until we've gotten the data from the server
 bestiaryCtrl.resolve = {
-			bestiary: function(Bestiary, $q, $route){
+			bestiary: function(Bestiary, $q, $route, Auth){
 				if($route.current.params.bestiaryId){
 					var deferred = $q.defer();
-					if($route.current.params.bestiaryId!=undefined){
+					Auth.executeOnLogin(function(){
 						Bestiary.get($route.current.params.bestiaryId,function(data) {
 							deferred.resolve(data);
 						}, function(errorData) {
 							deferred.reject();
 						});
-					}
+					});
 					return deferred.promise;
 				}
 				else
 					return {};
+			},
+			bestiaries: function(Bestiary, $q, $route, Auth){
+				if($route.current.params.bestiaryId==undefined){
+					var deferred = $q.defer();
+					Auth.executeOnLogin(function(){
+						Bestiary.getAllForUser(Auth.user._id,function(data) {
+							deferred.resolve(data);
+						}, function(errorData) {
+							deferred.reject();
+						});
+					});
+					return deferred.promise;
+				}
+				else
+					return [];
 			}
 		}
 
