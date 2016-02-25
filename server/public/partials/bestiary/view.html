@@ -60,7 +60,7 @@
 		      </md-input-container>
 		      <md-input-container class="md-block">
 		        <label>Description</label>
-		        <textarea ng-model="bestiary.description"></textarea>
+		        <textarea ng-model="unsavedBestiary.description"></textarea>
 		      </md-input-container>
 		      <md-button ng-click="cancelSave();close('editNav');" class="md-raised">Cancel</md-button>
       		<md-button class="md-raised md-primary" type="submit">Save</md-button>
@@ -70,14 +70,14 @@
 
 		<md-content style="width:100%;">
 			<div class="fallingColumns">
-				<div ng-repeat="creature in bestiary.creatures | filter:creatureFilter" style="position:relative;">
+				<!--<div ng-repeat="creature in bestiary.creatures | filter:creatureFilter" style="position:relative;">
 					<div class="stat-block-overlay"></div>
 					<ng-stat-block size="mini" creature="creature" class="fallingColumnsItem stat-block"></ng-stat-block>
 				</div>
 				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem stat-block"></ng-stat-block>
 				<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 				<ng-stat-block size="mini" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
-				<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+				<ng-stat-block size="preview" ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>-->
 				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 			</div>
 		</md-content>
