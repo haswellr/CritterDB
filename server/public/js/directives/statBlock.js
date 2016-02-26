@@ -3,7 +3,8 @@ angular.module('myApp').directive('ngStatBlock', [ function () {
 		restrict: 'E',
 		scope: {
 			creature: '=creature',
-			size: '=size'
+			size: '=size',
+			editCreature: '=editCreature'
 		},
 		link: function(scope, element, attrs) {
 			var setContentUrl = function(){
