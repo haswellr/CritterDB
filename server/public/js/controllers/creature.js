@@ -162,7 +162,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 	$scope.saveCreature = function(){
 		if($scope.creature._id){
 			Creature.update($scope.creature._id,$scope.creature,function(){
-				console.log("updated creature!");
+				$location.url("/bestiary/view/"+$scope.creature.bestiaryId);
 			},function(err){
 				console.log("error: "+err);
 			});
