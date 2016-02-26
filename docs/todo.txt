@@ -1,6 +1,6 @@
 -Add description to Bestiary
 -Redirect to login page if not logged in: http://stackoverflow.com/questions/20531965/redirect-to-route-if-user-is-not-authenticated
--Add edit/delete creature buttons to bestiary view
+-Add delete creature button to bestiary view
 -Add logout option to front end
 -Add Forgot Password route, including sending an email
 -Add Change Password UI
