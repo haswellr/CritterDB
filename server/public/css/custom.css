@@ -90,17 +90,27 @@
 
 .stat-block-overlay {
   z-index: 1;
-  width: calc(100% - 9px);
-  height: calc(100% - 12px);
-  margin-top: 6px;
-  margin-left: 1px;
+  opacity: 0;
   position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  cursor: pointer;
+  background: rgba(37,48,108,0.6);
+  box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.20);
+  transition: opacity 0.25s ease-out;
 }
 
 .stat-block-overlay:hover {
-  background: rgba(253,116,108,0.4); /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, rgba(40,48,72,0.4), rgba(133,147,152,0.4));
-  background: linear-gradient(to left, rgba(40,48,72,0.4), rgba(133,147,152,0.4));
+  opacity: 1;
+}
+
+.stat-block-overlay md-icon.edit-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  color: white;
 }
 
 md-toolbar.inner-header {

@@ -22,6 +22,11 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		$location.url("/bestiary/add/"+$scope.bestiary._id);
 	}
 
+	$scope.editCreature = function(creature){
+		console.log("edit creature: "+creature._id);
+		$location.url("/creature/edit/"+creature._id);
+	}
+
 	$scope.goToBestiary = function(id){
 		$location.url("/bestiary/view/"+id);
 	}
