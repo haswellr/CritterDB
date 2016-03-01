@@ -1,7 +1,5 @@
-<h1>bestiary 1</h1>
-<h1>bestiary 2</h1>
-<p>Bestiaries have a name, a description, and a list of creatures</p>
-
+<h1>Bestiary List</h1>
+<button ng-click="createBestiary()">New Bestiary</button>
 <ul>
 	<li ng-repeat="bestiary in bestiaries">
 		<h3>{{bestiary.name}} [{{bestiary.creatureIds.length}} Creatures]</h3>

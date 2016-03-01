@@ -113,6 +113,19 @@
   color: white;
 }
 
+.stat-block-overlay button.delete-icon {
+  /*font-size: 24px;
+  width: 24px;
+  height: 24px;
+  color: white;*/
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.stat-block-overlay md-icon.delete-icon:hover {
+  color: #dedede;
+}
+
 md-toolbar.inner-header {
   background-color: #fafafa;
 }
