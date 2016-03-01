@@ -97,33 +97,38 @@
   bottom: 0px;
   left: 0px;
   cursor: pointer;
-  background: rgba(37,48,108,0.6);
-  box-shadow: inset 0px 0px 10px 2px rgba(0,0,0,0.20);
-  transition: opacity 0.25s ease-out;
+  background-color: rgba(0,0,0,0.0);
+  transition: background-color 0.25s ease-out;
 }
 
 .stat-block-overlay:hover {
   opacity: 1;
+  background-color: rgba(0,0,0,0.25);
 }
 
-.stat-block-overlay md-icon.edit-icon {
-  font-size: 48px;
-  width: 48px;
-  height: 48px;
-  color: white;
+.stat-block-overlay:hover section.side-menu {
+  background-color: rgba(0,0,0,0.45);
 }
 
-.stat-block-overlay button.delete-icon {
-  /*font-size: 24px;
-  width: 24px;
-  height: 24px;
-  color: white;*/
+.stat-block-overlay section.side-menu {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 68px;
+  height: 100%;
+  padding: 6px 6px;
+  background-color: rgba(0,0,0,0.0);
+  transition: background-color 0.25s ease-out;
 }
-.stat-block-overlay md-icon.delete-icon:hover {
-  color: #dedede;
+.stat-block-overlay .md-button.md-fab:hover {
+  background-color: #fff;
+}
+.stat-block-overlay .md-button.md-fab {
+  background-color: #fff;
+}
+.stat-block-overlay .md-button.md-fab md-icon {
+  color: #777;
 }
 
 md-toolbar.inner-header {

@@ -1,6 +1,5 @@
 -Add description to Bestiary
 
--Add delete creature button to bestiary view
 -Add logout option to front end
 -Add Forgot Password route, including sending an email
 -Add Change Password UI
