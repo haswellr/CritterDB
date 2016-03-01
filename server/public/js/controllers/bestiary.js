@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -27,6 +27,19 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		$location.url("/creature/edit/"+creature._id);
 	}
 
+	$scope.createBestiary = function(){
+		var newBestiary = {
+			name: 'New Bestiary',
+			description: '',
+			ownerId: Auth.user._id
+		};
+		Bestiary.create(newBestiary,function(data){
+			$scope.goToBestiary(data._id);
+		},function(err){
+			console.log("error: "+err);
+		});
+	}
+
 	$scope.goToBestiary = function(id){
 		$location.url("/bestiary/view/"+id);
 	}
@@ -51,30 +64,42 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 //don't load controller until we've gotten the data from the server
 bestiaryCtrl.resolve = {
-			bestiary: function(Bestiary, $q, $route, Auth){
+			bestiary: function(Bestiary, $q, $route, Auth, $location){
 				if($route.current.params.bestiaryId){
 					var deferred = $q.defer();
 					Auth.executeOnLogin(function(){
-						Bestiary.get($route.current.params.bestiaryId,function(data) {
-							deferred.resolve(data);
-						}, function(errorData) {
+						if(!Auth.isLoggedIn()){
+							$location.path('/login');
 							deferred.reject();
-						});
+						}
+						else{
+							Bestiary.get($route.current.params.bestiaryId,function(data) {
+								deferred.resolve(data);
+							}, function(errorData) {
+								deferred.reject();
+							});
+						}
 					});
 					return deferred.promise;
 				}
 				else
 					return {};
 			},
-			bestiaries: function(Bestiary, $q, $route, Auth){
+			bestiaries: function(Bestiary, $q, $route, Auth, $location){
 				if($route.current.params.bestiaryId==undefined){
 					var deferred = $q.defer();
 					Auth.executeOnLogin(function(){
-						Bestiary.getAllForUser(Auth.user._id,function(data) {
-							deferred.resolve(data);
-						}, function(errorData) {
+						if(!Auth.isLoggedIn()){
+							$location.path('/login');
 							deferred.reject();
-						});
+						}
+						else{
+							Bestiary.getAllForUser(Auth.user._id,function(data) {
+								deferred.resolve(data);
+							}, function(errorData) {
+								deferred.reject();
+							});
+						}
 					});
 					return deferred.promise;
 				}
