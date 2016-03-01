@@ -4,7 +4,7 @@
 		<md-button ng-click="toggle('filterNav');close('editNav');" ng-class="{'selected':isOpen('filterNav')}" class="md-fab md-mini" aria-label="Filters">
 			<md-icon>filter_list</md-icon>
 		</md-button>
-		<md-button ng-click="toggle('editNav');close('filterNav')" ng-class="{'selected':isOpen('editNav')}" class="md-fab md-mini" aria-label="Filters">
+		<md-button ng-click="toggle('editNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-fab md-mini" aria-label="Edit">
 			<md-icon>mode_edit</md-icon>
 		</md-button>
 		<h2>
@@ -37,7 +37,7 @@
 		  </md-content>
 		</md-sidenav>
 		<!-- EDIT SIDENAV -->
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2 in-frame-sidenav edit-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
+		<md-sidenav class="md-sidenav-left md-whiteframe-z2 edit-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Edit</h1>
