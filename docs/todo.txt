@@ -19,3 +19,4 @@
 LONG TERM
 - Encounters with a bunch of notes and linked creatures
 - The ability to do auto-initiative for an encounter as well as rolling attacks + damage for creatures
+- Link encounters and creatures to each other and to locations
