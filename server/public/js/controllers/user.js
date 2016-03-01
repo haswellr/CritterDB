@@ -1,8 +1,13 @@
 
 var userCtrl = function ($scope,User,Auth,$location) {
+
 	$scope.user = {
 		rememberme: true
 	};
+
+	$scope.getCurrentUser = function(){
+		return(Auth.user);
+	}
 
 	$scope.createUser = function(){
 		User.create($scope.user,function(data){
@@ -19,6 +24,12 @@ var userCtrl = function ($scope,User,Auth,$location) {
 	$scope.login = function(){
 		Auth.login($scope.user.username,$scope.user.password,$scope.user.rememberme,function(){
 			$location.url('/');
+		});
+	}
+
+	$scope.logout = function(){
+		Auth.logout(function(data){
+			$scope.goToLogin();
 		});
 	}
 

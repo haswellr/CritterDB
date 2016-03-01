@@ -38,7 +38,6 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	}
 
 	$scope.deleteCreature = function(ev,creature){
-		console.log("delete creature: "+creature.name);
 		var confirm = $mdDialog.confirm()
 			.title("Confirm Deletion")
 			.textContent("This creature will be permanently deleted. Would you like to proceed?")
@@ -65,6 +64,23 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			$scope.goToBestiary(data._id);
 		},function(err){
 			console.log("error: "+err);
+		});
+	}
+
+	$scope.deleteBestiary = function(ev,bestiary){
+		var confirm = $mdDialog.confirm()
+			.title("Confirm Deletion")
+			.textContent("This bestiary will be permanently deleted. Would you like to proceed?")
+			.ariaLabel("Confirm Delete")
+			.targetEvent(ev)
+			.ok("Delete")
+			.cancel("Cancel");
+		$mdDialog.show(confirm).then(function() {
+			Bestiary.delete(bestiary._id,function(data){
+				var index = $scope.bestiaries.indexOf(bestiary);
+				if(index!=-1)
+					$scope.bestiaries.splice(index,1);
+			});
 		});
 	}
 
