@@ -161,10 +161,6 @@ div.body-area {
   right: 0px;
 }
 
-md-sidenav.in-frame-sidenav {
-  min-width: 250px;
-}
-
 .sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
   display: none;
 }
