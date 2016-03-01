@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -23,8 +23,36 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	}
 
 	$scope.editCreature = function(creature){
-		console.log("edit creature: "+creature._id);
 		$location.url("/creature/edit/"+creature._id);
+	}
+
+	$scope.copyCreature = function(creature){
+		var newCreature = angular.copy(creature);
+		newCreature._id = undefined;
+		newCreature.name = newCreature.name + " Copy";
+		Creature.create(newCreature,function(data){
+			$scope.editCreature(data);
+		},function(err){
+			console.log("error: "+err);
+		});
+	}
+
+	$scope.deleteCreature = function(ev,creature){
+		console.log("delete creature: "+creature.name);
+		var confirm = $mdDialog.confirm()
+			.title("Confirm Deletion")
+			.textContent("This creature will be permanently deleted. Would you like to proceed?")
+			.ariaLabel("Confirm Delete")
+			.targetEvent(ev)
+			.ok("Delete")
+			.cancel("Cancel");
+		$mdDialog.show(confirm).then(function() {
+			Creature.delete(creature._id,function(data){
+				var index = $scope.bestiary.creatures.indexOf(creature);
+				if(index!=-1)
+					$scope.bestiary.creatures.splice(index,1);
+			});
+		});
 	}
 
 	$scope.createBestiary = function(){
@@ -60,6 +88,12 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			});
 		}
 	}
+
+	$scope.creatureApi = {
+		edit: $scope.editCreature,
+		copy: $scope.copyCreature,
+		delete: $scope.deleteCreature
+	};
 };
 
 //don't load controller until we've gotten the data from the server
