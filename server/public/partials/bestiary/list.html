@@ -1,9 +1,28 @@
-<h1>Bestiary List</h1>
-<button ng-click="createBestiary()">New Bestiary</button>
-<ul>
-	<li ng-repeat="bestiary in bestiaries">
-		<h3>{{bestiary.name}} [{{bestiary.creatureIds.length}} Creatures]</h3>
-		<p>{{bestiary.description}}</p>
-		<button ng-click="goToBestiary(bestiary._id)">Edit</button>
-	</li>
-</ul>
+
+<md-toolbar class="md-whiteframe-5dp inner-header">
+	<div class="md-toolbar-tools">
+		<h2 style="margin-left:6px;">
+			<span>Your Bestiaries</span>
+		</h2>
+		<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent main-button" aria-label="Create Bestiary" style="position:absolute;right:100px;bottom:-19px;">
+			<md-icon>add</md-icon>
+		</md-button>
+	</div>
+</md-toolbar>
+
+<div layout="column" class="body-area" ng-controller="sideNavCtrl">
+	<md-content layout="column">
+		<md-card ng-repeat="bestiary in bestiaries">
+		  <md-card-title>
+		    <md-card-title-text>
+		      <span class="md-headline">{{bestiary.name}}</span>
+		      <span class="md-body-1">{{bestiary.description}}</span>
+		    </md-card-title-text>
+		  </md-card-title>
+		  <md-card-actions layout="row" layout-align="end center">
+		  	<md-button ng-click="deleteBestiary($event,bestiary)">Delete</md-button>
+		    <md-button ng-click="goToBestiary(bestiary._id)">Open</md-button>
+		  </md-card-actions>
+		</md-card>
+	</md-content>
+</div>

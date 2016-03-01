@@ -161,6 +161,15 @@ div.body-area {
   right: 0px;
 }
 
+div.body-area md-content{
+  height:100%;
+  background-color: #f6f6f6;
+}
+
+div.body-area section.sidenav-left-wrapper {
+  height:100%;
+}
+
 .sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
   display: none;
 }
@@ -223,4 +232,15 @@ button.continue-button {
 
 .defense-form md-chips-wrap {
   margin-top: 20px;
+}
+
+.header button.user-dropdown {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.header button.user-dropdown md-icon {
+  margin-top: -3px;
 }

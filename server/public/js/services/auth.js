@@ -55,8 +55,12 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
       actionsAfterLogin.push(action);
   }
 
-  serv.logout = function(){
-    $http.post('/api/revokeauthentication',{});
+  serv.logout = function(successCallback,errorCallback){
+    $http.post('/api/revokeauthentication',{}).then(function(data){
+      successCallback(data.data);
+    },function(err){
+      errorCallback(err);
+    });
   }
 
   return serv;
