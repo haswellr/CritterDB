@@ -1,6 +1,8 @@
 
 var userCtrl = function ($scope,User,Auth,$location) {
-	$scope.user = {};
+	$scope.user = {
+		rememberme: true
+	};
 
 	$scope.createUser = function(){
 		User.create($scope.user,function(data){

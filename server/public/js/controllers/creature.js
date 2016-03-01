@@ -222,18 +222,26 @@ var defaultCreature = {
 
 //don't load controller until we've gotten the data from the server
 creatureCtrl.resolve = {
-			creature: function(Creature, $q, $route){
-				if($route.current.params.creatureId){
-					var deferred = $q.defer();
-					Creature.get($route.current.params.creatureId,function(data) {
-						deferred.resolve(data);
-					}, function(errorData) {
+			creature: function(Creature, $q, $route, Auth, $location){
+				var deferred = $q.defer();
+				Auth.executeOnLogin(function(){
+					if(!Auth.isLoggedIn()){
+						$location.path('/login');
 						deferred.reject();
-					});
-					return deferred.promise;
-				}
-				else
-					return angular.copy(defaultCreature);
+					}
+					else{
+						if($route.current.params.creatureId){
+							Creature.get($route.current.params.creatureId,function(data) {
+								deferred.resolve(data);
+							}, function(errorData) {
+								deferred.reject();
+							});
+						}
+						else
+							deferred.resolve(angular.copy(defaultCreature));
+					}
+				});
+				return deferred.promise;
 			}
 		}
 

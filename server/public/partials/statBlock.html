@@ -1,7 +1,11 @@
 
 <stat-block>
-  <div ng-click="editCreature(creature)" class="stat-block-overlay" layout="column" layout-align="center center">
+  <div ng-if="editCreature" ng-click="editCreature(creature)" class="stat-block-overlay" layout="column" layout-align="center center">
       <md-icon class="edit-icon" aria-label="Edit">mode_edit</md-icon>
+      <md-icon class="delete-icon" aria-label="Delete">delete</md-icon>
+      <md-button class="md-fab md-mini delete-icon" aria-label="Edit">
+        <md-icon>mode_edit</md-icon>
+      </md-button>
   </div>
 
   <creature-heading>

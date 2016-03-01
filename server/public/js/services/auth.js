@@ -34,6 +34,9 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
         token = undefined;
       });
     }
+    else{
+      errorCallback("Unable to find user");
+    }
   }
   serv.login(undefined,undefined,undefined,function(){
     triedLogin = true;
@@ -47,7 +50,7 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
 
   serv.executeOnLogin = function(action){
     if(triedLogin)
-      action();
+      setTimeout(action);
     else
       actionsAfterLogin.push(action);
   }
