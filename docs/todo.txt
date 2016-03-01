@@ -1,12 +1,10 @@
 -Add description to Bestiary
 
--Add logout option to front end
 -Add Forgot Password route, including sending an email
 -Add Change Password UI
--Add a way to save creature without going through all sections
--Make Bestiary list for users actually look good
 
 -Add tooltips to everything
+-Speed up requests (slowdown is probably due to database lookups)
 
 -Figure out how to make textareas auto expand
 
