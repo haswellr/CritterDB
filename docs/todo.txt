@@ -1,8 +1,10 @@
 -Add description to Bestiary
 -Finish up Header (add My Bestiaries button, make a simple logo for site)
 
+-Fix up case issues when logging in by username (maybe just ignore case when performing lookups by username on backend? is that possible?)
 -Add tooltips to everything
 -Speed up requests (slowdown is probably due to database lookups)
+-Mobile/Tablets
 
 -Sort bestiary list by most recently modified
 -Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
