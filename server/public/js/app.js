@@ -88,6 +88,11 @@ myApp.config(['$routeProvider',
 				controller: 'creatureCtrl',
 				resolve: creatureCtrl.resolve
 			}).
+			when('/account/newpassword',{
+				templateUrl: 'assets/partials/account/newpassword.html',
+				controller: 'updateUserCtrl',
+				resolve: updateUserCtrl.resolve
+			}).
 			otherwise({
 				redirectTo: '/bestiary/list'
 			});

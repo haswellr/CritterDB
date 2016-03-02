@@ -47,6 +47,7 @@ app.get('/api/users/search', users.findPublicInfo);
 app.post('/api/users', users.create);	//complete
 app.put('/api/users/:id', users.updateById);	//complete
 app.delete('/api/users/:id', users.deleteById);	//complete
+app.post('/api/users/resetpassword', users.resetPassword);	//complete
 //Authentication
 app.get('/api/authenticate/user', authentication.getCurrentUser);	//complete
 app.post('/api/authenticate', authentication.authenticate);	//complete
