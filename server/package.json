@@ -12,6 +12,7 @@
         "path": "0.12.7",
         "jsonwebtoken": "5.7.0",
         "randomstring": "1.1.4",
-        "cookie-parser": "1.4.1"
+        "cookie-parser": "1.4.1",
+        "nodemailer": "2.2.1"
     }
 }

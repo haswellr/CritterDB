@@ -1,7 +1,9 @@
 angular.module('myApp').factory("User", function($resource,$sce) {
   var serv = {};
 
-  var api = $resource("/api/users/:id", null, {
+  var api = $resource("/api/users/:id", {
+    id: '@id'
+  }, {
   	'update': { method:'PUT' }
   });
 
@@ -27,6 +29,13 @@ angular.module('myApp').factory("User", function($resource,$sce) {
 
   serv.delete = function(id, success, error){
   	api.delete({'id':id},success,error);
+  }
+
+  serv.resetPassword = function(email, success, error){
+    var data = {
+      'email': email
+    };
+    $resource("/api/users/resetpassword").save(data, success,error);
   }
 
   return serv;

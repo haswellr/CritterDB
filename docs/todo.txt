@@ -1,12 +1,11 @@
 -Add description to Bestiary
-
--Add Forgot Password route, including sending an email
--Add Change Password UI
+-Finish up Header (add My Bestiaries button, make a simple logo for site)
 
 -Add tooltips to everything
 -Speed up requests (slowdown is probably due to database lookups)
 
--Figure out how to make textareas auto expand
+-Sort bestiary list by most recently modified
+-Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
 
 - Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage). This can auto-fill if you select a common weapon type.
 - Make Racial stats auto-fill if a standard race is chosen (size, speed, senses, languages)

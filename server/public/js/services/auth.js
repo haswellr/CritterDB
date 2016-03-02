@@ -23,12 +23,10 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
           if(successCallback)
             successCallback();
         },function(err){
-          console.log("error getting current user: "+err);
           if(errorCallback)
             errorCallback(err);
         });
       },function(err){
-        console.log("error authenticating: "+err);
         if(errorCallback)
           errorCallback(err);
         token = undefined;
@@ -57,6 +55,7 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
 
   serv.logout = function(successCallback,errorCallback){
     $http.post('/api/revokeauthentication',{}).then(function(data){
+      serv.user = undefined;
       successCallback(data.data);
     },function(err){
       errorCallback(err);
