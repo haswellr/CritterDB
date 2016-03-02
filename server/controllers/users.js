@@ -4,6 +4,49 @@ var User = require('../models/user');
 var Bestiary = require('../models/bestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
+var nodemailer = require('nodemailer');
+var url = require('url');
+
+var transporter = nodemailer.createTransport('smtps://' +
+    config.email.address +
+    ":" +
+    config.email.password +
+    "@smtp.gmail.com");
+
+var sendWelcomeEmail = function(email){
+    var mailOptions = {
+        from: '"'+config.email.name+'" <'+config.email.address+'>',
+        to: email,
+        subject: 'Welcome to Critter DB',
+        text: 'Thanks for joining Critter DB! I hope it helps you with all your critter management needs. Please send any feedback to critterdbmail@gmail.com.\n\nThanks,\nRyan'
+    };
+    transporter.sendMail(mailOptions,function(error, info){
+        if(error)
+            console.log(error);
+    });
+}
+
+var sendPassword = function(email,passwordUrl){
+    var mailOptions = {
+        from: '"'+config.email.name+'" <'+config.email.address+'>',
+        to: email,
+        subject: 'Lost Password',
+        text: 'You lost something! Follow this link to set your new password: '+passwordUrl+'.'
+    };
+    transporter.sendMail(mailOptions,function(error, info){
+        if(error)
+            console.log(error);
+    });
+}
+
+var getRandomPassword = function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
+}
 
 var authenticateUser = function(req, user, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -69,39 +112,47 @@ exports.create = function(req, res) {
         }
         else {
             res.send(getPublicInfo(doc));
+            sendWelcomeEmail(doc.email);
         }
     })
 }
 
+//POST accepting:
+//email
+//password
+//currentPassword (required)
 exports.updateById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
-    var user = new User(req.body);
     var options = {
         new: true           //retrieves new object from database and returns that as doc
     }
-
     User.findOne(query, function (err, doc) {
         if(err) {
             res.status(400).send(err.errmsg);
         }
         else if(doc){
-            authenticateUser(req, doc, function(err){
-                if(err)
-                    res.status(400).send(err);
-                else{
-                    //set fields that are mutable
-                    doc.email = user.email;
-                    doc.password = user.password;
-                    doc.save(function(err, doc) {
-                        if(err){
-                            res.status(400).send(err);
-                        }
-                        else if(doc){
-                            res.send(doc);
-                        }
-                    });
-                }
+            doc.comparePassword(req.body.currentPassword,function(err,isMatch){
+              if(err)
+                res.status(400).send(err);
+              else if(isMatch){
+                //set fields that are mutable
+                if(req.body.email)
+                    doc.email = req.body.email;
+                if(req.body.password)
+                    doc.password = req.body.password;
+                doc.save(function(err, doc) {
+                    if(err){
+                        res.status(400).send(err);
+                    }
+                    else if(doc){
+                        res.send(doc);
+                    }
+                });
+              }
+              else{
+                res.status(403).send("Invalid password.");
+              }
             });
         }
         else{
@@ -212,4 +263,41 @@ exports.findPublicInfo = function(req, res) {
 	else{
 		res.status(400).send("Invalid query.");
 	}
+};
+
+exports.resetPassword = function(req, res) {
+    var username = req.body.username || req.query.username;
+    var email = req.body.email || req.query.email;
+    if(username || email){
+        var query = {};
+        if(username)
+            query.username = username;
+        if(email)
+            query.email = email;
+        User.findOne(query, function (err, doc) {
+            if(err) {
+                res.status(400).send(err.errmsg);
+            }
+            else if(doc){
+                var newPassword = getRandomPassword();
+                doc.password = newPassword;
+                doc.save(function(err, doc) {
+                    if(err){
+                        res.status(400).send(err);
+                    }
+                    else if(doc){
+                        var url = req.headers.origin+'/#/account/newpassword?id='+doc._id+'&password='+newPassword;
+                        sendPassword(doc.email,url);
+                        res.send();
+                    }
+                });
+            }
+            else{
+                res.status(400).send("User not found.");
+            }
+        });
+    }
+    else{
+        res.status(400).send("Invalid query.");
+    }
 };

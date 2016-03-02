@@ -12,7 +12,7 @@
 	      <input required type="email" name="email" ng-model="user.email" unique-email ng-pattern="/^.+@.+\..+$/">
 	      <div ng-messages="signupForm.email.$error">
 	        <div ng-message="pattern">
-	          Your email must look like an e-mail address.
+	          Your email must look like an email address.
 	        </div>
 	        <div ng-message="required">
 	          This is required.
@@ -66,7 +66,7 @@
 	    </md-input-container>
 
 			<md-button ng-click="goToLogin()" class="md-raised md-button">Login</md-button>
-	    <md-button type="submit" class="md-raised md-button md-primary">Sign Up</md-button>
+	    <md-button type="submit" ng-disabled="signupForm.$invalid" class="md-raised md-button md-primary">Sign Up</md-button>
 
     </form>
   </md-content>
