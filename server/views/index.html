@@ -32,6 +32,7 @@
     <!-- Directives -->
     <script src="/assets/js/directives/statBlock.js"></script>
     <script src="/assets/js/directives/compareTo.js"></script>
+    <script src="/assets/js/directives/compareNot.js"></script>
     <script src="/assets/js/directives/uniqueUsername.js"></script>
     <script src="/assets/js/directives/uniqueEmail.js"></script>
     <!-- Services -->
@@ -67,6 +68,13 @@
                 <span>{{getCurrentUser().username}}</span><md-icon>arrow_drop_down</md-icon>
               </md-button>
               <md-menu-content width="3" >
+                <md-menu-item>
+                  <md-button ng-click="goToChangePassword()">
+                      <div layout="row">
+                        <p flex>Change Password</p>
+                      </div>
+                  </md-button>
+                </md-menu-item>
                 <md-menu-item>
                   <md-button ng-click="logout()">
                       <div layout="row">
