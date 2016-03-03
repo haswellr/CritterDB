@@ -1,21 +1,22 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header">
-	<div class="md-toolbar-tools">
-		<h2 style="margin-left:6px;">
+<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
+	<div class="md-toolbar-tools controls">
+		<h2 style="margin-left:0px;">
 			<span>My Bestiaries</span>
 		</h2>
-		<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent main-button" aria-label="Create Bestiary" style="position:absolute;right:100px;bottom:-19px;">
+		<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent main-button" aria-label="Create Bestiary">
 			<md-icon>add</md-icon>
 		</md-button>
 	</div>
 </md-toolbar>
 
 <div layout="column" class="body-area" ng-controller="sideNavCtrl">
-	<md-content layout="column">
-		<md-card ng-repeat="bestiary in bestiaries">
+	<md-content layout="column" layout-align="top center">
+		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-lastActive'">
 		  <md-card-title>
 		    <md-card-title-text>
 		      <span class="md-headline">{{bestiary.name}}</span>
+		      <br>
 		      <span class="md-body-1">{{bestiary.description}}</span>
 		    </md-card-title-text>
 		  </md-card-title>
