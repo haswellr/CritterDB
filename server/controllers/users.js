@@ -202,14 +202,14 @@ exports.findBestiariesByOwner = function(req, res) {
                 if(err)
                     res.status(400).send(err);
                 else{
-                	Bestiary.find({
-                		ownerId: doc._id
-                	}, function(err, docs){
-                		if(err)
-                			res.status(400).send(err);
-                		else
-                			res.send(docs);
-                	});
+                    Bestiary.find({
+                        ownerId: doc._id
+                    }, function(err, docs){
+                        if(err)
+                            res.status(400).send(err);
+                        else
+                            res.send(docs);
+                    });
                 }
             });
         }
@@ -241,28 +241,28 @@ exports.findPublicInfo = function(req, res) {
     var email = req.body.email || req.query.email;
     var id = req.body._id || req.query._id;
     var query = {};
-    if(username)
-    	query.username = username;
-    if(email)
-    	query.email = email;
-    if(id)
-    	query._id = id;
-    if(query.username || query.email || query._id){
-	    User.findOne(query, function (err, doc) {
-	        if(err) {
-	            res.status(400).send(err.errmsg);
-	        }
-	        else if(doc){
-	            res.send(getPublicInfo(doc));
-	        }
-	        else{
-	            res.status(400).send("User not found.");
-	        }
-	    });
-	}
-	else{
-		res.status(400).send("Invalid query.");
-	}
+    if(username || email || id){
+        if(username)
+            query.username_lower = username.toLowerCase();
+        if(email)
+            query.email = email;
+        if(id)
+            query._id = id;
+        User.findOne(query, function (err, doc) {
+            if(err) {
+                res.status(400).send(err.errmsg);
+            }
+            else if(doc){
+                res.send(getPublicInfo(doc));
+            }
+            else{
+                res.status(400).send("User not found.");
+            }
+        });
+    }
+    else{
+        res.status(400).send("Invalid query.");
+    }
 };
 
 exports.resetPassword = function(req, res) {
@@ -271,7 +271,7 @@ exports.resetPassword = function(req, res) {
     if(username || email){
         var query = {};
         if(username)
-            query.username = username;
+            query.username_lower = username.toLowerCase();
         if(email)
             query.email = email;
         User.findOne(query, function (err, doc) {
