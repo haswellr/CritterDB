@@ -1,5 +1,4 @@
 
--Add tooltips to everything
 -Speed up requests (slowdown is probably due to database lookups)
 -Mobile/Tablets
 

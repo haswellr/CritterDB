@@ -6,12 +6,15 @@
 		</h2>
 		<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent main-button" aria-label="Create Bestiary">
 			<md-icon>add</md-icon>
+			<md-tooltip>
+        Create Bestiary
+      </md-tooltip>
 		</md-button>
 	</div>
 </md-toolbar>
 
 <div layout="column" class="body-area" ng-controller="sideNavCtrl">
-	<md-content layout="column" layout-align="top center">
+	<md-content layout="column" layout-align="top center" class="background">
 		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-lastActive'">
 		  <md-card-title>
 		    <md-card-title-text>

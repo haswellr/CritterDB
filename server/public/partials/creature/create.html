@@ -1,53 +1,53 @@
 
-<div layout="column" ng-controller="sideNavCtrl">
-	<section layout="row" flex>
-		<md-content layout-padding style="min-width:60%;width:60%;">
+<div layout="column" layout-align="top center" class="body-area no-inner-header">
+	<section layout="row" flex class="content-section md-whiteframe-3dp">
+		<md-content class="content-section" layout-padding style="min-width:60%;width:60%;">
 			<md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom>
 				<md-tab label="Flavor">
 					<md-content layout-padding>
 						<div ng-include="'assets/partials/creature/create-flavor.html'"></div>
-						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary continue-button">Save and Continue</md-button>
-						<md-button ng-click="saveCreature()" class="md-raised continue-button">Save and Finish</md-button>
+						<md-button ng-click="selectedTab = selectedTab + 1;saveCreature();" class="md-raised md-primary continue-button">Save and Continue</md-button>
+						<md-button ng-click="saveAndFinish()" class="md-raised continue-button">Save and Finish</md-button>
 					</md-content>
 				</md-tab>
 				<md-tab label="Race">
 					<md-content layout-padding>
 						<div ng-include="'assets/partials/creature/create-race.html'"></div>
-						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary continue-button">Save and Continue</md-button>
-						<md-button ng-click="saveCreature()" class="md-raised continue-button">Save and Finish</md-button>
+						<md-button ng-click="selectedTab = selectedTab + 1;saveCreature();" class="md-raised md-primary continue-button">Save and Continue</md-button>
+						<md-button ng-click="saveAndFinish()" class="md-raised continue-button">Save and Finish</md-button>
 					</md-content>
 				</md-tab>
 				<md-tab label="Core">
 					<md-content layout-padding>
 						<div ng-include="'assets/partials/creature/create-stats.html'"></div>
-						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary continue-button">Save and Continue</md-button>
-						<md-button ng-click="saveCreature()" class="md-raised continue-button">Save and Finish</md-button>
+						<md-button ng-click="selectedTab = selectedTab + 1;saveCreature();" class="md-raised md-primary continue-button">Save and Continue</md-button>
+						<md-button ng-click="saveAndFinish()" class="md-raised continue-button">Save and Finish</md-button>
 					</md-content>
 				</md-tab>
 				<md-tab label="Defense">
 					<md-content layout-padding>
 						<div ng-include="'assets/partials/creature/create-defense.html'"></div>
-						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary continue-button">Save and Continue</md-button>
-						<md-button ng-click="saveCreature()" class="md-raised continue-button">Save and Finish</md-button>
+						<md-button ng-click="selectedTab = selectedTab + 1;saveCreature();" class="md-raised md-primary continue-button">Save and Continue</md-button>
+						<md-button ng-click="saveAndFinish()" class="md-raised continue-button">Save and Finish</md-button>
 					</md-content>
 				</md-tab>
 				<md-tab label="Abilities">
 					<md-content layout-padding>
 						<div ng-include="'assets/partials/creature/create-abilities.html'"></div>
-						<md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-primary continue-button">Save and Continue</md-button>
-						<md-button ng-click="saveCreature()" class="md-raised continue-button">Save and Finish</md-button>
+						<md-button ng-click="selectedTab = selectedTab + 1;saveCreature();" class="md-raised md-primary continue-button">Save and Continue</md-button>
+						<md-button ng-click="saveAndFinish()" class="md-raised continue-button">Save and Finish</md-button>
 					</md-content>
 				</md-tab>
 				<md-tab label="Challenge">
 					<md-content layout-padding>
 						<div ng-include="'assets/partials/creature/create-challenge.html'"></div>
-						<md-button ng-click="saveCreature()" class="md-raised md-accent continue-button">Save and Finish</md-button>
+						<md-button ng-click="saveAndFinish()" class="md-raised md-accent continue-button">Save and Finish</md-button>
 					</md-content>
 				</md-tab>
 			</md-tabs>
 		</md-content>
 
-		<md-content layout-padding style="max-width:450px;width:40%;">
+		<md-content class="content-section" layout-padding style="max-width:450px;width:40%;">
 			<ng-stat-block creature="creature"></ng-stat-block>
 		</md-content>
 	</section>
