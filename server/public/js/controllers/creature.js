@@ -159,10 +159,17 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		}
 	};
 
+	$scope.returnToBestiary = function(){
+		if($scope.creature._id)
+			$location.url("/bestiary/view/"+$scope.creature.bestiaryId);
+		else if($routeParams.bestiaryId)
+			$location.url("/bestiary/view/"+$routeParams.bestiaryId);
+	}
+
 	$scope.saveCreature = function(){
 		if($scope.creature._id){
 			Creature.update($scope.creature._id,$scope.creature,function(){
-				$location.url("/bestiary/view/"+$scope.creature.bestiaryId);
+
 			},function(err){
 				console.log("error: "+err);
 			});
@@ -170,11 +177,16 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		else{
 			$scope.creature.bestiaryId = $routeParams.bestiaryId;
 			Creature.create($scope.creature,function(data){
-				$location.url("/bestiary/view/"+$routeParams.bestiaryId);
+				$scope.creature = data;
 			},function(err){
 				console.log("error: "+err);
 			});
 		}
+	}
+
+	$scope.saveAndFinish = function(){
+		$scope.saveCreature();
+		$scope.returnToBestiary();
 	}
 
 	$scope.$watch("creature",function(newValue,oldValue){

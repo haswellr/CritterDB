@@ -4,12 +4,21 @@
       <section layout="column" class="side-menu">
         <md-button ng-click="creatureApi.edit(creature)" class="md-fab md-mini" aria-label="Edit">
           <md-icon>mode_edit</md-icon>
+          <md-tooltip md-direction="left">
+            Edit
+          </md-tooltip>
         </md-button>
         <md-button ng-click="creatureApi.copy(creature)" class="md-fab md-mini" aria-label="Copy">
           <md-icon>content_copy</md-icon>
+          <md-tooltip md-direction="left">
+            Copy
+          </md-tooltip>
         </md-button>
         <md-button ng-click="creatureApi.delete($event,creature)" class="md-fab md-mini" aria-label="Delete">
           <md-icon>delete</md-icon>
+          <md-tooltip md-direction="left">
+            Delete
+          </md-tooltip>
         </md-button>
       </section>
   </div>
