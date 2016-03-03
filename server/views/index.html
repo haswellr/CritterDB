@@ -29,6 +29,7 @@
     <script src="/assets/js/controllers/bestiary.js"></script>
     <script src="/assets/js/controllers/user.js"></script>
     <script src="/assets/js/controllers/sideNav.js"></script>
+    <script src="/assets/js/controllers/header.js"></script>
     <!-- Directives -->
     <script src="/assets/js/directives/statBlock.js"></script>
     <script src="/assets/js/directives/compareTo.js"></script>
@@ -52,17 +53,15 @@
 
   <body>
 
-      <md-toolbar class="header">
+      <md-toolbar ng-controller="headerCtrl" class="header">
         <div class="md-toolbar-tools">
           <div ng-controller="userCtrl" layout="row" flex>
-            <h2>
-              <a ng-href="/">
-                <img src="https://material.angularjs.org/latest/img/icons/angular-logo.svg" style="width:50px;height:50px;float:left;">
-                <span class="md-toolbar-item md-breadcrumb md-headline" style="float:left;margin-top:10px;margin-left:10px;">
-                  DMLab
-                </span>
-              </a>
-            </h2>
+            <a class="logo-button" layout="row" layout-align="left center" ng-href="/">
+              <md-icon class="logo-icon" ng-style="logoStyle" md-svg-icon="{{logoIconPath}}"></md-icon>
+              <span class="logo md-toolbar-item md-breadcrumb md-headline">
+                CritterDB
+              </span>
+            </a>
             <md-menu ng-show="getCurrentUser()">
               <md-button class="user-dropdown" aria-label="User menu" ng-click="$mdOpenMenu($event)">
                 <span>{{getCurrentUser().username}}</span><md-icon>arrow_drop_down</md-icon>
