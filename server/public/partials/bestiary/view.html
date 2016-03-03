@@ -1,23 +1,32 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
-	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls" style="max-width:none;">
+	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
 		<md-button ng-click="toggle('filterNav');close('editNav');" ng-class="{'selected':isOpen('filterNav')}" class="md-fab md-mini" aria-label="Filters">
 			<md-icon>filter_list</md-icon>
+			<md-tooltip md-direction="right">
+        Filter Creatures
+      </md-tooltip>
 		</md-button>
 		<md-button ng-click="toggle('editNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-fab md-mini" aria-label="Edit">
 			<md-icon>mode_edit</md-icon>
+			<md-tooltip>
+        Edit Bestiary Details
+      </md-tooltip>
 		</md-button>
 		<h2>
 			<span>{{bestiary.name}}</span>
 		</h2>
 		<md-button ng-click="addCreature()" class="md-fab md-mini md-accent main-button" aria-label="Add Creature">
 			<md-icon>add</md-icon>
+			<md-tooltip>
+        Create Creature
+      </md-tooltip>
 		</md-button>
 	</div>
 </md-toolbar>
 
-<div layout="column" class="body-area" ng-controller="sideNavCtrl">
-	<section class="sidenav-left-wrapper" layout="row" flex>
+<div layout="column" class="body-area" ng-controller="sideNavCtrl" layout-align="top center">
+	<section class="sidenav-left-wrapper content-section md-whiteframe-3dp" layout="row" flex>
 		<!-- FILTER SIDENAV -->
 		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">
@@ -26,6 +35,9 @@
 			    <span flex></span>
 	        <md-button ng-click="close('filterNav')" class="md-icon-button" aria-label="Favorite">
 	          <md-icon>close</md-icon>
+	          <md-tooltip>
+		        	Close
+		      	</md-tooltip>
 	        </md-button>
 	      </div>
 		  </md-toolbar>
