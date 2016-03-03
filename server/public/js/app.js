@@ -51,11 +51,11 @@ myApp.config(['$routeProvider',
 				templateUrl: 'assets/partials/index.html'
 			}).
 			when('/login',{
-				templateUrl: 'assets/partials/login.html',
+				templateUrl: 'assets/partials/account/login.html',
 				controller: 'userCtrl'
 			}).
 			when('/signup',{
-				templateUrl: 'assets/partials/signup.html',
+				templateUrl: 'assets/partials/account/signup.html',
 				controller: 'userCtrl'
 			}).
 			when('/bestiary/view/:bestiaryId',{
