@@ -7,9 +7,12 @@ var UserSchema = new Schema({
     username: {
       type: String,
       required: true,
-      index: { 
-        unique: true 
-      } 
+      index: {
+        unique: true
+      }
+    },
+    username_lower: {
+      type: String
     },
     email: {
       type: String,
@@ -24,6 +27,13 @@ var UserSchema = new Schema({
     }
 });
 
+UserSchema.pre('save', function(next) {
+  var user = this;
+
+  user.username_lower = user.username.toLowerCase();
+
+  next();
+})
 
 UserSchema.pre('save', function(next) {
     var user = this;
