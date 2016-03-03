@@ -191,6 +191,11 @@ div.body-area md-card {
   max-width: 1200px;
 }
 
+div.body-area md-sidenav.md-locked-open {
+  width: 600px;
+  max-width: 100%;
+}
+
 .sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
   display: none;
 }
