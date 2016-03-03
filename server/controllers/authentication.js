@@ -38,7 +38,7 @@ exports.authenticate = function(req, res){
 	if(req.body.email)
 		query.email = req.body.email;
 	else if(req.body.username)
-		query.username = req.body.username;
+		query.username_lower = req.body.username.toLowerCase();
 	// find the user
   User.findOne(query, function(err, user) {
 
