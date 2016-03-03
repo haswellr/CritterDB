@@ -1,0 +1,49 @@
+
+
+<div layout="row" layout-align="center center" class="body-area no-inner-header">
+	<section layout="column" class="login-area md-whiteframe-3dp">
+
+		<md-toolbar>
+		<h2 class="md-display-2">Login</h2>
+		</md-toolbar>
+
+		<md-content layout-padding class="login-body">
+		  <form name="loginForm" ng-submit="login()">
+		    <md-input-container class="md-block">
+		      <label>Username</label>
+		      <input required type="text" name="username" ng-model="user.username" compare-not="user.invalidUsername">
+		      <div ng-messages="loginForm.username.$error">
+		        <div ng-message="required">
+		          This is required.
+		        </div>
+		        <div ng-message="compareNot">
+		          Invalid username.
+		        </div>
+		      </div>
+		    </md-input-container>
+		    <md-input-container class="md-block">
+		      <label>Password</label>
+		      <input required type="password" name="password" ng-model="user.password" compare-not="user.invalidPassword">
+		      <div ng-messages="loginForm.password.$error">
+		        <div ng-message="required">
+		          This is required.
+		        </div>
+		        <div ng-message="compareNot">
+		          Invalid password.
+		        </div>
+		      </div>
+		    </md-input-container>
+		    <div layout="row" layout-wrap>
+		    	<div flex="100">
+				    <md-checkbox ng-model="user.rememberme" aria-label="Remember Me">
+			        Remember Me
+			      </md-checkbox>
+		    		<md-button ng-click="forgotPassword()" class="md-button">Forgot Your Password?</md-button>
+			    </div>
+		    </div>
+				<md-button ng-click="goToSignup()" class="md-raised md-button">Sign Up</md-button>
+		    <md-button type="submit" ng-disabled="loginForm.$invalid" class="md-raised md-button md-primary">Login</md-button>
+	    </form>
+	  </md-content>
+	</section>
+</div>

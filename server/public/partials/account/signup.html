@@ -1,0 +1,75 @@
+
+
+<div layout="row" layout-align="center center" class="body-area no-inner-header">
+	<section layout="column" class="login-area md-whiteframe-3dp">
+
+		<md-toolbar>
+		<h2 class="md-display-2">Sign Up</h2>
+		</md-toolbar>
+
+		<md-content layout-padding class="login-body">
+		  <form name="signupForm" ng-submit="createUser()">
+		    <md-input-container class="md-block">
+		      <label>Email</label>
+		      <input required type="email" name="email" ng-model="user.email" unique-email ng-pattern="/^.+@.+\..+$/">
+		      <div ng-messages="signupForm.email.$error">
+		        <div ng-message="pattern">
+		          Your email must look like an email address.
+		        </div>
+		        <div ng-message="required">
+		          This is required.
+		        </div>
+		        <div ng-message="uniqueEmail">
+		          An account with this email address already exists.
+		        </div>
+		      </div>
+		    </md-input-container>
+
+		    <md-input-container class="md-block">
+		      <label>Username</label>
+		      <input required type="text" name="username" ng-model="user.username" unique-username minlength="3" maxlength="15" md-maxlength="15">
+		      <div ng-messages="signupForm.username.$error">
+		        <div ng-message-exp="['minlength','maxlength']">
+		          Your username must be between 3 and 15 characters long.
+		        </div>
+		        <div ng-message="required">
+		          This is required.
+		        </div>
+		        <div ng-message="uniqueUsername">
+		          An account with this username already exists.
+		        </div>
+		      </div>
+		    </md-input-container>
+
+		    <md-input-container class="md-block">
+		      <label>Password</label>
+		      <input required type="password" name="password" ng-model="user.password" minlength="6">
+		      <div ng-messages="signupForm.password.$error">
+		        <div ng-message="minlength">
+		          Your password must be at least 6 characters long.
+		        </div>
+		        <div ng-message="required">
+		          This is required.
+		        </div>
+		      </div>
+		    </md-input-container>
+
+		    <md-input-container class="md-block">
+		      <label>Confirm Password</label>
+		      <input required type="password" name="confirmPassword" ng-model="user.confirmPassword" compare-to="user.password">
+		      <div ng-messages="signupForm.confirmPassword.$error">
+		        <div ng-message="compareTo">
+		          This must match your password.
+		        </div>
+		        <div ng-message="required">
+		          This is required.
+		        </div>
+		      </div>
+		    </md-input-container>
+
+				<md-button ng-click="goToLogin()" class="md-raised md-button">Login</md-button>
+		    <md-button type="submit" ng-disabled="signupForm.$invalid" class="md-raised md-button md-primary">Sign Up</md-button>
+	    </form>
+	  </md-content>
+	</section>
+</div>

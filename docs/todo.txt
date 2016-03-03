@@ -1,6 +1,5 @@
--Add description to Bestiary
+
 -Finish up Header (add My Bestiaries button, make a simple logo for site)
--Fix up login and sign up appearance
 
 -Fix up case issues when logging in by username (maybe just ignore case when performing lookups by username on backend? is that possible?)
 -Add tooltips to everything
