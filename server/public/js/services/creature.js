@@ -1,7 +1,9 @@
 angular.module('myApp').factory("Creature", function($resource,$sce) {
   var serv = {};
 
-  var api = $resource("/api/creatures/:id", null, {
+  var api = $resource("/api/creatures/:id", {
+    id: '@id'
+  }, {
   	'update': { method:'PUT' }
   });
 

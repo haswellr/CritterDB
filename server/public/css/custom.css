@@ -141,6 +141,18 @@ md-toolbar.inner-header .md-button.md-fab:not(.selected):not(.main-button) md-ic
   transition: color 0.4s ease-out;
 }
 
+md-toolbar.inner-header div.controls {
+  width: 100%;
+  max-width: 960px;
+  position: relative;
+}
+
+md-toolbar.inner-header button.main-button {
+  position: absolute;
+  right: 5%;
+  bottom: -20px;
+}
+
 div.body-area {
   position: fixed;
   top: 128px;
@@ -163,6 +175,11 @@ div.body-area section.sidenav-left-wrapper {
 
 div.body-area.no-inner-header {
   top: 64px;
+}
+
+div.body-area md-card {
+  width: 100%;
+  max-width: 960px;
 }
 
 .sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {

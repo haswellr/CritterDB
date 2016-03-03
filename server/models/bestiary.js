@@ -15,6 +15,9 @@ var BestiarySchema = new mongoose.Schema(
       ref: 'User',
       required: true,
       autopopulate: false
+    },
+    lastActive: {
+      type: Date
     }
   });
 BestiarySchema.plugin(autopopulate);

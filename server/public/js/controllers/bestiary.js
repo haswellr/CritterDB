@@ -124,7 +124,13 @@ bestiaryCtrl.resolve = {
 						}
 						else{
 							Bestiary.get($route.current.params.bestiaryId,function(data) {
-								deferred.resolve(data);
+								//save that bestiary was active
+								data.lastActive = new Date();
+								Bestiary.update(data._id,data,function(data){
+									deferred.resolve(data);
+								},function(errorData){
+									deferred.reject();
+								});
 							}, function(errorData) {
 								deferred.reject();
 							});
