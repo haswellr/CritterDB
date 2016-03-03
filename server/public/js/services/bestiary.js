@@ -1,8 +1,10 @@
 angular.module('myApp').factory("Bestiary", function($resource,$sce) {
   var serv = {};
 
-  var api = $resource("/api/bestiaries/:id", null, {
-  	'update': { method:'PUT' }
+  var api = $resource("/api/bestiaries/:id", {
+    id: '@id'
+  }, {
+    'update': { method:'PUT' }
   });
 
   serv.get = function(id, success, error){
@@ -18,7 +20,6 @@ angular.module('myApp').factory("Bestiary", function($resource,$sce) {
   }
 
   serv.update = function(id,data,success,error){
-    console.log("update...");
   	api.update({'id':id},data,success,error);
   }
 
