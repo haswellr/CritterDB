@@ -1,6 +1,6 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header">
-	<div ng-controller="sideNavCtrl" class="md-toolbar-tools">
+<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
+	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls" style="max-width:none;">
 		<md-button ng-click="toggle('filterNav');close('editNav');" ng-class="{'selected':isOpen('filterNav')}" class="md-fab md-mini" aria-label="Filters">
 			<md-icon>filter_list</md-icon>
 		</md-button>
@@ -10,7 +10,7 @@
 		<h2>
 			<span>{{bestiary.name}}</span>
 		</h2>
-		<md-button ng-click="addCreature()" class="md-fab md-mini md-accent main-button" aria-label="Add Creature" style="position:absolute;right:100px;bottom:-19px;">
+		<md-button ng-click="addCreature()" class="md-fab md-mini md-accent main-button" aria-label="Add Creature">
 			<md-icon>add</md-icon>
 		</md-button>
 	</div>
