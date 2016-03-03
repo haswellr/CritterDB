@@ -56,7 +56,7 @@ exports.authenticate = function(req, res){
           PersistentSession.findOne({'username':user.username}, function(err,persistentSession){
             if(err)
               res.status(400).send("Authentication failed.");
-            else{
+            else if(persistentSession){
               persistentSession.compareToken(persistentToken,function(err,isMatch){
                 generateNewPersistentSession(user,res,function(err,doc){
                   if(err)
@@ -70,6 +70,8 @@ exports.authenticate = function(req, res){
                 });
               });
             }
+            else
+              res.status(400).send("Authentication failed.");
           });
         }
       }
