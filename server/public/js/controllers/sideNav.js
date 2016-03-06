@@ -2,6 +2,9 @@ var sideNavCtrl = function ($scope,$mdSidenav) {
   $scope.close = function(id) {
     $mdSidenav(id).close();
   };
+  $scope.open = function(id) {
+    $mdSidenav(id).open();
+  };
   $scope.toggle = function(id) {
     $mdSidenav(id).toggle();
   };

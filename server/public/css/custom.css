@@ -292,3 +292,11 @@ button.continue-button {
   margin-left: 0px;
   transition: margin-top .75s ease-out;
 }
+
+div.no-creatures-area {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
