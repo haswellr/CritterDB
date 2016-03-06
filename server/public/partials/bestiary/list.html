@@ -14,13 +14,13 @@
 </md-toolbar>
 
 <div layout="column" class="body-area" ng-controller="sideNavCtrl">
-	<md-content layout="column" layout-align="top center" class="background">
+	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content">
 		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-lastActive'">
 		  <md-card-title>
 		    <md-card-title-text>
 		      <span class="md-headline">{{bestiary.name}}</span>
 		      <br>
-		      <span class="md-body-1">{{bestiary.description}}</span>
+		      <span class="md-body-1 text-color-secondary">{{bestiary.description}}</span>
 		    </md-card-title-text>
 		  </md-card-title>
 		  <md-card-actions layout="row" layout-align="end center">

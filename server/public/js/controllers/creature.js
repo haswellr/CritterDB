@@ -188,6 +188,12 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		$scope.saveCreature($scope.returnToBestiary);
 	}
 
+	$scope.saveAndGoToBestiaryList = function(){
+		$scope.saveCreature(function(){
+			$location.url("/bestiary/list");
+		});
+	}
+
 	$scope.$watch("creature",function(newValue,oldValue){
 		Creature.calculateCreatureDetails($scope.creature);
 	},true);
@@ -233,7 +239,7 @@ var defaultCreature = {
 
 //don't load controller until we've gotten the data from the server
 creatureCtrl.resolve = {
-			creature: function(Creature, $q, $route, Auth, $location){
+			creature: function(Creature, Bestiary, $q, $route, Auth, $location){
 				var deferred = $q.defer();
 				Auth.executeOnLogin(function(){
 					if(!Auth.isLoggedIn()){
@@ -242,14 +248,33 @@ creatureCtrl.resolve = {
 					}
 					else{
 						if($route.current.params.creatureId){
-							Creature.get($route.current.params.creatureId,function(data) {
-								deferred.resolve(data);
+							Creature.get($route.current.params.creatureId,function(creatureData) {
+								//get bestiary info for creature (this should be cached so will be quick)
+								Bestiary.get(creatureData.bestiaryId,function(bestiaryData) {
+									creatureData.bestiary = bestiaryData;
+									deferred.resolve(creatureData);
+								}, function(errorData) {
+									deferred.reject();
+								});
 							}, function(errorData) {
 								deferred.reject();
 							});
 						}
-						else
+						else if($route.current.params.bestiaryId){
+							//This means we must be creating a new creature and adding it to a bestiary,
+							// so just grab data for the current bestiary. This will be cached so it will
+							// be quick.
+							Bestiary.get($route.current.params.bestiaryId,function(bestiaryData) {
+								var creatureData = angular.copy(defaultCreature);
+								creatureData.bestiary = bestiaryData;
+								deferred.resolve(creatureData);
+							}, function(errorData) {
+								deferred.reject();
+							});
+						}
+						else{
 							deferred.resolve(angular.copy(defaultCreature));
+						}
 					}
 				});
 				return deferred.promise;
