@@ -48,11 +48,11 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			.ok("Delete")
 			.cancel("Cancel");
 		$mdDialog.show(confirm).then(function() {
-			Creature.delete(creature._id,function(data){
-				var index = $scope.bestiary.creatures.indexOf(creature);
-				if(index!=-1)
-					$scope.bestiary.creatures.splice(index,1);
-			});
+			Creature.delete(creature._id);
+			//Don't wait for delete to actually finish so that the UI feels more responsive.
+			var index = $scope.bestiary.creatures.indexOf(creature);
+			if(index!=-1)
+				$scope.bestiary.creatures.splice(index,1);
 		});
 	}
 
@@ -75,7 +75,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			.cancel("Cancel");
 		$mdDialog.show(confirm).then(function() {
 			Bestiary.delete(bestiary._id);
-			//Don't wait for delete to actually finish
+			//Don't wait for delete to actually finish so that the UI feels more responsive.
 			var index = $scope.bestiaries.indexOf(bestiary);
 			if(index!=-1)
 				$scope.bestiaries.splice(index,1);
@@ -88,6 +88,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 	$scope.goToBestiary = function(id){
 		$location.url("/bestiary/view/"+id);
+	}
+
+	$scope.goToBestiaryList = function(){
+		$location.url("/bestiary/list");
 	}
 
 	$scope.cancelSave = function(){
