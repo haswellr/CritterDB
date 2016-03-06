@@ -1,7 +1,6 @@
 
 -Mobile/Tablets
 
--Choose a color scheme for angular material
 -Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
 
 -Cross-browser

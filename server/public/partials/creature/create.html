@@ -1,5 +1,13 @@
 
-<div layout="column" layout-align="top center" class="body-area no-inner-header">
+<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
+	<div class="md-toolbar-tools controls">
+		<h2>
+			<span ng-click="saveAndGoToBestiaryList()" style="cursor:pointer;">My Bestiaries</span><span> > <span ng-click="saveAndFinish()" style="cursor:pointer;">{{creature.bestiary.name}}</span> > <b>{{creature.name}}</b></span>
+		</h2>
+	</div>
+</md-toolbar>
+
+<div layout="column" layout-align="top center" class="body-area bg-color-primary-light">
 	<section layout="row" flex class="content-section md-whiteframe-3dp">
 		<md-content class="content-section" layout-padding style="min-width:60%;width:60%;">
 			<md-tabs md-selected="selectedTab" md-dynamic-height md-border-bottom>
