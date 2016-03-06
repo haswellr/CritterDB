@@ -193,18 +193,24 @@ exports.findBestiariesByOwner = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
 
+    console.time("user.find");
     User.findOne(query, function (err, doc) {
+        console.timeEnd("user.find");
         if(err) {
             res.status(400).send(err.errmsg);
         }
         else if(doc){
+            console.time("authenticate");
             authenticateUser(req, doc, function(err){
+                console.timeEnd("authenticate");
                 if(err)
                     res.status(400).send(err);
                 else{
+                    console.time("bestiary.find");
                     Bestiary.find({
                         ownerId: doc._id
                     }, function(err, docs){
+                        console.timeEnd("bestiary.find");
                         if(err)
                             res.status(400).send(err);
                         else

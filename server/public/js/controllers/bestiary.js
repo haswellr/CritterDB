@@ -55,11 +55,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	}
 
 	$scope.createBestiary = function(){
-		var newBestiary = {
-			name: 'New Bestiary',
-			description: '',
-			ownerId: Auth.user._id
-		};
+		var newBestiary = Bestiary.generateNewBestiary(Auth.user._id);
 		Bestiary.create(newBestiary,function(data){
 			$scope.goToBestiary(data._id);
 		},function(err){
@@ -76,12 +72,16 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			.ok("Delete")
 			.cancel("Cancel");
 		$mdDialog.show(confirm).then(function() {
-			Bestiary.delete(bestiary._id,function(data){
-				var index = $scope.bestiaries.indexOf(bestiary);
-				if(index!=-1)
-					$scope.bestiaries.splice(index,1);
-			});
+			Bestiary.delete(bestiary._id);
+			//Don't wait for delete to actually finish
+			var index = $scope.bestiaries.indexOf(bestiary);
+			if(index!=-1)
+				$scope.bestiaries.splice(index,1);
 		});
+	}
+
+	$scope.doesBestiaryNeedEdits = function(bestiary){
+		return(bestiary.name==Bestiary.newBestiaryModel.name || bestiary.description==Bestiary.newBestiaryModel.description);
 	}
 
 	$scope.goToBestiary = function(id){
@@ -124,13 +124,10 @@ bestiaryCtrl.resolve = {
 						}
 						else{
 							Bestiary.get($route.current.params.bestiaryId,function(data) {
-								//save that bestiary was active
+								deferred.resolve(data);
+								//save that bestiary was active, but no need to do it until after resolving
 								data.lastActive = new Date();
-								Bestiary.update(data._id,data,function(data){
-									deferred.resolve(data);
-								},function(errorData){
-									deferred.reject();
-								});
+								Bestiary.update(data._id,data);
 							}, function(errorData) {
 								deferred.reject();
 							});

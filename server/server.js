@@ -26,7 +26,6 @@ app.get('/',function(req,res){
 	res.sendfile(path.join(__dirname+'/views/index.html'));
 });
 //Creatures
-//app.get('/api/creatures', creatures.findAll);		//REMOVE THIS
 app.get('/api/creatures/:id', creatures.findById);		//complete
 app.post('/api/creatures', creatures.create);		//complete
 app.put('/api/creatures/:id', creatures.updateById);		//complete
