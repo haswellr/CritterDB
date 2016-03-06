@@ -3,24 +3,31 @@ var config = require("../config");
 var User = require('../models/user');
 var PersistentSession = require('../models/persistentSession');
 
-var generateNewPersistentSession = function(user,res,callback){
+var generateNewPersistentSession = function(existingSession,user,res,callback){
   var query = {'username':user.username};
-  PersistentSession.findOneAndRemove(query, function(err, doc, result){
-      if(err)
-        callback(err.errmsg);
-      else{
-        persistentSession = new PersistentSession({'username':user.username});
-        persistentSession.save(function (err, doc) {
-            if(err)
-                callback(err);
-            else {
-                res.cookie('bestiarymanagertoken',persistentSession.token);
-                res.cookie('bestiarymanagerusername',user.username);
-                callback(null,doc);
-            }
-        });
-      }
-  });
+  var deletionCallback = function(err){
+    if(err)
+      callback(err);
+    else{
+      var persistentSession = new PersistentSession({'username':user.username});
+      persistentSession.save(function (err, doc) {
+          if(err)
+              callback(err);
+          else {
+              res.cookie('bestiarymanagertoken',persistentSession.token);
+              res.cookie('bestiarymanagerusername',user.username);
+              callback(null,doc);
+          }
+      });
+    }
+  }
+
+  if(!existingSession)
+    PersistentSession.findOneAndRemove(query,function(err){
+      deletionCallback(err);
+    });
+  else
+    existingSession.remove(deletionCallback);
 }
 
 //takes:
@@ -41,7 +48,6 @@ exports.authenticate = function(req, res){
 		query.username_lower = req.body.username.toLowerCase();
 	// find the user
   User.findOne(query, function(err, user) {
-
     if (err) throw err;
 
     if (!user) {
@@ -58,7 +64,7 @@ exports.authenticate = function(req, res){
               res.status(400).send("Authentication failed.");
             else if(persistentSession){
               persistentSession.compareToken(persistentToken,function(err,isMatch){
-                generateNewPersistentSession(user,res,function(err,doc){
+                generateNewPersistentSession(persistentSession,user,res,function(err,doc){
                   if(err)
                     res.status(400).send("Authentication failed. Unable to generate persistent session.");
                   else{
@@ -88,7 +94,7 @@ exports.authenticate = function(req, res){
             });
 
             if(req.body.rememberme){
-              generateNewPersistentSession(user,res,function(err,doc){
+              generateNewPersistentSession(null,user,res,function(err,doc){
                 if(err)
                   res.status(400).send("Authentication failed. Unable to generate persistent session.");
                 else{
