@@ -1,9 +1,10 @@
 
 -Mobile/Tablets
 
--Show 'Add Creature' image or something in empty bestiary. Possibly make 'Edit' button flash slowly if the bestiary needs edits.
 -Choose a color scheme for angular material
 -Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
+
+-Cross-browser
 
 - Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage). This can auto-fill if you select a common weapon type.
 - Make Racial stats auto-fill if a standard race is chosen (size, speed, senses, languages)
