@@ -14,7 +14,7 @@
       </md-tooltip>
 		</md-button>
 		<h2>
-			<span>{{bestiary.name}}</span>
+			<span ng-click="goToBestiaryList()" style="cursor:pointer;">My Bestiaries</span><span> > <b>{{bestiary.name}}</b></span>
 		</h2>
 		<md-button ng-click="addCreature()" class="md-fab md-mini md-accent main-button" aria-label="Create Creature">
 			<md-icon>add</md-icon>
@@ -88,7 +88,7 @@
 					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
 				</span>
 				<h2 class="md-headline">
-					This bestiary is empty and afraid!
+					This bestiary needs some creatures!
 				</h2>
 				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
 			</div>

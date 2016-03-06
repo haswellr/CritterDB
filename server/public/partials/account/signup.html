@@ -68,7 +68,11 @@
 		    </md-input-container>
 
 				<md-button ng-click="goToLogin()" class="md-raised md-button">Login</md-button>
-		    <md-button type="submit" ng-disabled="signupForm.$invalid" class="md-raised md-button md-primary">Sign Up</md-button>
+
+		    <md-button type="submit" ng-disabled="signupForm.$invalid || user.signupLoading" class="md-raised md-button md-primary">
+		    	<span ng-if="!user.signupLoading">Sign Up</span>
+		    	<span ng-if="user.signupLoading">Loading</span>
+		    </md-button>
 	    </form>
 	  </md-content>
 	</section>
