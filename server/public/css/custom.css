@@ -128,7 +128,7 @@ md-toolbar.inner-header h2 {
 }
 
 md-toolbar.inner-header span {
-  color: #444;
+  color: #212121;
 }
 
 md-toolbar.inner-header .md-button.md-fab:not(.selected):not(.main-button) {
@@ -159,14 +159,10 @@ div.body-area {
   bottom: 0px;
   left: 0px;
   right: 0px;
-
-
-  background-color: #f6f6f6;
 }
 
 div.body-area md-content.background{
   height:100%;
-  background-color: #f6f6f6;
 }
 
 div.body-area section.sidenav-left-wrapper {
@@ -299,4 +295,33 @@ div.no-creatures-area {
   text-align: center;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* COLORS */
+.bg-color-primary-dark {
+  background-color: #455A64;
+}
+.bg-color-primary {
+  background-color: #607D8B;
+}
+.bg-color-primary-light {
+  background-color: #CFD8DC;
+}
+.bg-color-accent {
+  background-color: #FF5722;
+}
+.bg-color-content {
+  background-color: #FFFFFF;
+}
+.text-color-primary {
+  color: #FFFFFF;
+}
+.text-color-secondary {
+  color: #727272;
+}
+.text-color-content {
+  color: #212121;
+}
+.bg-color-divider {
+  background-color: #B6B6B6;
 }
