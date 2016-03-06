@@ -4,7 +4,7 @@
 	<section layout="column" class="login-area md-whiteframe-3dp">
 
 		<md-toolbar class="md-accent">
-		<h2 class="md-display-2">Sign Up</h2>
+			<h2 class="md-display-2">Sign Up</h2>
 		</md-toolbar>
 
 		<md-content layout-padding class="login-body">
@@ -67,9 +67,9 @@
 		      </div>
 		    </md-input-container>
 
-				<md-button ng-click="goToLogin()" class="md-raised md-button">Login</md-button>
+				<md-button ng-click="goToLogin()" class="md-raised md-button" aria-label="Login">Login</md-button>
 
-		    <md-button type="submit" ng-disabled="signupForm.$invalid || user.signupLoading" class="md-raised md-button md-primary">
+		    <md-button type="submit" ng-disabled="signupForm.$invalid || user.signupLoading" class="md-raised md-button md-primary" aria-label="Sign Up">
 		    	<span ng-if="!user.signupLoading">Sign Up</span>
 		    	<span ng-if="user.signupLoading">Loading</span>
 		    </md-button>
