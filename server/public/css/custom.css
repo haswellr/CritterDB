@@ -6,7 +6,8 @@
 
 .login-area{
 	text-align: center;
-  width: 450px;
+  width: 100%;
+  height: 100%;
   background-color: #ffffff;
   border-radius: 3px;
 }
@@ -20,7 +21,26 @@
 }
 
 .login-area h2 {
-  margin: 18px auto;
+  margin: auto auto;
+  font-size: 36px;
+  line-height:42px;
+}
+@media (min-width:801px) {
+  .login-area {
+    width: 450px;
+    height: auto;
+  }
+  .login-area h2 {
+    margin: 18px auto;
+    font-size: 45px;
+    line-height:64px;
+  }
+}
+@media (min-height:0px) and (max-height:420px) {
+  .login-area h2 {
+    font-size: 28px;
+    line-height:28px;
+  }
 }
 
 section.login-area md-content.login-body{
@@ -159,10 +179,10 @@ md-toolbar.inner-header button.main-button {
 
 div.body-area {
   position: fixed;
-  top: 128px;
   bottom: 0px;
   left: 0px;
   right: 0px;
+  top: 128px;
 }
 
 div.body-area md-content.background{
@@ -171,10 +191,6 @@ div.body-area md-content.background{
 
 div.body-area section.sidenav-left-wrapper {
   height:100%;
-}
-
-div.body-area.no-inner-header {
-  top: 64px;
 }
 
 div.body-area section.content-section {
@@ -194,6 +210,10 @@ div.body-area md-card {
 div.body-area md-sidenav.md-locked-open {
   width: 600px;
   max-width: 100%;
+}
+
+div.body-area.no-inner-header {
+  top: 64px;
 }
 
 .sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
@@ -264,7 +284,8 @@ button.continue-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
+  right: 0px;
+  min-width: 30px;
 }
 
 .header button.user-dropdown md-icon {
@@ -302,6 +323,7 @@ div.no-creatures-area {
 }
 
 /* COLORS */
+/*https://www.materialpalette.com/blue-grey/deep-orange*/
 .bg-color-primary-dark {
   background-color: #455A64;
 }
@@ -328,4 +350,21 @@ div.no-creatures-area {
 }
 .bg-color-divider {
   background-color: #B6B6B6;
+}
+
+@media (min-width: 0) and (max-width: 959px) and (orientation: portrait) {
+  div.body-area {
+    top: 112px;
+  }
+  div.body-area.no-inner-header {
+    top: 56px;
+  }
+}
+@media (min-width: 0) and (max-width: 959px) and (orientation: landscape) {
+  div.body-area {
+    top: 96px;
+  }
+  div.body-area.no-inner-header {
+    top: 48px;
+  }
 }
