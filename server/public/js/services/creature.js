@@ -1,11 +1,6 @@
-angular.module('myApp').factory("Creature", function($resource,$sce) {
-  var serv = {};
+angular.module('myApp').factory("Creature", function($resource,$sce,CachedResourceAPI) {
 
-  var api = $resource("/api/creatures/:id", {
-    id: '@id'
-  }, {
-  	'update': { method:'PUT' }
-  });
+	var CreatureAPI = new CachedResourceAPI("/api/creatures/:id");
 
   var hitDieSize = {
 		"Fine": 4,
@@ -54,7 +49,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 		return(Math.floor((abilityScore - 10.0)/2.0));
 	}
 
-	serv.calculateCreatureDetails = function(creature){
+	CreatureAPI.calculateCreatureDetails = function(creature){
 		//displayed armor type
 		if(creature.stats && creature.stats.armorType){
 			if(creature.stats.armorType=="")
@@ -171,43 +166,48 @@ angular.module('myApp').factory("Creature", function($resource,$sce) {
 		}
 	}
 
-  serv.get = function(id, success, error){
-  	api.get({ 'id': id}, function(data){
-  		serv.calculateCreatureDetails(data);
-  		success(data);
-  	},error);
+	CreatureAPI.get = function(id, success, error){
+		CachedResourceAPI.prototype.get.call(this, id, function(data){
+			CreatureAPI.calculateCreatureDetails(data);
+			success(data);
+		}, error);
+	}
+
+	delete [CreatureAPI.getAll];
+
+	CreatureAPI.update = function(id, data, success, error){
+		CachedResourceAPI.prototype.update.call(this, id, data, function(data){
+			CreatureAPI.calculateCreatureDetails(data);
+			success(data);
+		}, error);
+	}
+
+	var currentBestiaryId = undefined;	//track the current bestiary - clear cache if it changes, otherwise cache things. This way we have one Bestiary's worth of creatures cached but no more - don't want to use too much memory.
+  CreatureAPI.getAllForBestiary = function(bestiaryId, success, error){
+  	if(currentBestiaryId==undefined || currentBestiaryId != bestiaryId){	//if bestiary has changed, pull new data from server
+  		currentBestiaryId = bestiaryId;	//update current bestiary
+  		this.cache.clear();							//and clear cache
+	    $resource("/api/bestiaries/:id/creatures").query({ 'id': bestiaryId}, (function(data){
+	    	for(var i=0;i<data.length;i++){
+	    		this.cache.add(data[i]._id,data[i]);
+	    		CreatureAPI.calculateCreatureDetails(data[i]);
+	    	}
+	    	if(success)
+	    		success(data);
+	    }).bind(this),error);
+	  }
+	  else {		//if bestiary hasn't changed, get data from cache
+	  	var allCreatures = this.cache.getAll();
+	  	var bestiaryCreatures = [];
+	  	for(var i=0;i<allCreatures.length;i++){
+	  		if(allCreatures[i].bestiaryId == bestiaryId)
+	  			bestiaryCreatures.push(allCreatures[i]);
+	  	}
+	  	setTimeout(function(){
+	  		success(bestiaryCreatures);
+	  	});
+	  }
   }
 
-  serv.getAll = function(success, error){
-  	api.query(function(data){
-  		for(var i=0;i<data.length;i++)
-  			serv.calculateCreatureDetails(data[i]);
-  		success(data);
-  	},error);
-  }
-
-  serv.create = function(data,success,error){
-  	api.save(data,success,error);
-  }
-
-  serv.update = function(id,data,success,error){
-  	api.update({'id':id},data,function(data){
-  		serv.calculateCreatureDetails(data);
-  		success(data);
-  	},error);
-  }
-
-  serv.delete = function(id, success, error){
-  	api.delete({'id':id},success,error);
-  }
-
-  serv.getAllForBestiary = function(bestiaryId, success, error){
-    $resource("/api/bestiaries/:id/creatures").query({ 'id': bestiaryId}, function(data){
-    	for(var i=0;i<data.length;i++)
-    		serv.calculateCreatureDetails(data[i]);
-    	success(data);
-    },error);
-  }
-
-  return serv;
+  return CreatureAPI;
 });

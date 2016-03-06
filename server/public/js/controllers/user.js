@@ -33,7 +33,9 @@ var userCtrl = function ($scope,User,Auth,$location,$mdMedia,$mdDialog,$mdToast)
 
 	$scope.logout = function(){
 		Auth.logout(function(data){
-			$scope.goToLogin();
+			//we need to clear all cached data, so reload login page rather than letting angular handle it
+			window.location.replace("/#/login");
+			window.location.reload();
 		});
 	}
 

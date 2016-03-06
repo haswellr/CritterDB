@@ -166,11 +166,9 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			$location.url("/bestiary/view/"+$routeParams.bestiaryId);
 	}
 
-	$scope.saveCreature = function(){
+	$scope.saveCreature = function(successCallback){
 		if($scope.creature._id){
-			Creature.update($scope.creature._id,$scope.creature,function(){
-
-			},function(err){
+			Creature.update($scope.creature._id,$scope.creature,successCallback,function(err){
 				console.log("error: "+err);
 			});
 		}
@@ -178,6 +176,8 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			$scope.creature.bestiaryId = $routeParams.bestiaryId;
 			Creature.create($scope.creature,function(data){
 				$scope.creature = data;
+				if(successCallback)
+					successCallback();
 			},function(err){
 				console.log("error: "+err);
 			});
@@ -185,8 +185,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 	}
 
 	$scope.saveAndFinish = function(){
-		$scope.saveCreature();
-		$scope.returnToBestiary();
+		$scope.saveCreature($scope.returnToBestiary);
 	}
 
 	$scope.$watch("creature",function(newValue,oldValue){

@@ -2,7 +2,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcryptjs'),
     randomstring = require('randomstring'),
-    SALT_WORK_FACTOR = 10;
+    SALT_WORK_FACTOR = 8;
 
 var PersistentSessionSchema = new Schema({
     username: {

@@ -1,7 +1,7 @@
 
--Speed up requests (slowdown is probably due to database lookups)
 -Mobile/Tablets
 
+-Show 'Add Creature' image or something in empty bestiary. Possibly make 'Edit' button flash slowly if the bestiary needs edits.
 -Choose a color scheme for angular material
 -Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
 
