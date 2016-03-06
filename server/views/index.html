@@ -66,9 +66,23 @@
             </a>
             <md-menu ng-show="getCurrentUser()">
               <md-button class="user-dropdown" aria-label="User menu" ng-click="$mdOpenMenu($event)">
-                <span>{{getCurrentUser().username}}</span><md-icon>arrow_drop_down</md-icon>
+                <span hide show-gt-sm>
+                  {{getCurrentUser().username}}
+                </span>
+                <md-icon hide-gt-sm>person</md-icon>
+                <md-icon>arrow_drop_down</md-icon>
               </md-button>
               <md-menu-content width="3" >
+                <div hide-gt-sm>
+                  <md-menu-item>
+                    <md-button>
+                      <div layout="row">
+                        <p flex>{{getCurrentUser().username}}</p>
+                      </div>
+                    </md-button>
+                  </md-menu-item>
+                  <md-divider></md-divider>
+                </div>
                 <md-menu-item>
                   <md-button ng-click="goToChangePassword()">
                       <div layout="row">
@@ -86,7 +100,8 @@
               </md-menu-content>
             </md-menu>
             <md-button ng-if="!getCurrentUser()" class="user-dropdown" aria-label="Login" ng-click="goToLogin()">
-              <span>Login / Sign Up</span>
+              <span hide show-gt-sm>Login / Sign Up</span>
+              <md-icon hide-gt-sm>person_outline</md-icon>
             </md-button>
           </div>
         </div>
