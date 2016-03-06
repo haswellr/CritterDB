@@ -3,9 +3,11 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
+	$scope.bestiary.creaturesLoading = true;
 	var loadCreatures = function(){
 		if($scope.bestiary._id){
 			Creature.getAllForBestiary($scope.bestiary._id,function(data){
+				$scope.bestiary.creaturesLoading = false;
 				$scope.bestiary.creatures = data;
 			});
 		}
