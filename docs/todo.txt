@@ -1,9 +1,7 @@
 
 -Mobile/Tablets
-	- Header should have a button to open a sidenav with account options rather than displaying username (or just a 'head' icon instead of username, to make things simpler)
-	- Top of 'body-area' should be higher to account for smaller toolbar headers
-	- Login/Signup should take up the full body area
 	- Icons on toolbar in bestiary view are being squashed
+	- Edit/Filter sidenavs should take up the whole body area (and their 'top' value should be correct at all media widths, just like body area)
 	- Limited text space on inner-header results in multi-line 'My Bestiaries > Current Bestiary > Current Creature'. This may not be a huge deal?
 	- Having no ability to hover results in odd UX to access modify creature icons (like edit, copy, delete). Maybe have a button that is always visible on each stat block?
 	- Not enough room on create/edit creature page. Rather than side by side there should be a button to toggle the stat-block taking up the full body area, or being totally hidden.
