@@ -161,10 +161,8 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	}
 
 	$scope.saveBestiaryInfo = function(){
-		console.log("saving");
 		if($scope.unsavedBestiary._id){
 			Bestiary.update($scope.unsavedBestiary._id,$scope.unsavedBestiary,function(data){
-				console.log("saved");
 				$scope.bestiary.name = data.name;
 				$scope.bestiary.description = data.description;
 			},function(err){
