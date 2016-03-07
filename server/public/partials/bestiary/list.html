@@ -2,14 +2,16 @@
 <md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
 	<div class="md-toolbar-tools controls">
 		<h2 style="margin-left:0px;">
-			<span>My Bestiaries</span>
+			<span><b>My Bestiaries</b></span>
 		</h2>
-		<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent main-button" aria-label="Create Bestiary">
-			<md-icon>add</md-icon>
-			<md-tooltip>
-        Create Bestiary
-      </md-tooltip>
-		</md-button>
+		<div class="right-side-controls">
+			<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent" aria-label="Bestiary Creature">
+				<md-icon>add</md-icon>
+				<md-tooltip md-direction="left">
+	        Create Bestiary
+	      </md-tooltip>
+			</md-button>
+		</div>
 	</div>
 </md-toolbar>
 

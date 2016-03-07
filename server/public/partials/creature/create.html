@@ -1,8 +1,20 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
+<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div class="md-toolbar-tools controls">
-		<h2>
-			<span ng-click="saveAndGoToBestiaryList()" style="cursor:pointer;">My Bestiaries</span><span> > <span ng-click="saveAndFinish()" style="cursor:pointer;">{{creature.bestiary.name}}</span> > <b>{{creature.name}}</b></span>
+		<md-button hide-gt-sm ng-click="saveAndFinish()" class="md-icon-button md-mini" aria-label="Back">
+			<md-icon>keyboard_backspace</md-icon>
+			<md-tooltip>
+        Back
+      </md-tooltip>
+		</md-button>
+		<h2 style="max-width:100%;">
+			<span hide show-gt-sm>
+				<span ng-click="saveAndGoToBestiaryList()" style="cursor:pointer;">My Bestiaries</span>
+				<span> > </span>
+				<span ng-click="saveAndFinish()" style="cursor:pointer;">{{creature.bestiary.name}}</span>
+				<span> > </span>
+			</span>
+			<b>{{creature.name}}</b>
 		</h2>
 	</div>
 </md-toolbar>
