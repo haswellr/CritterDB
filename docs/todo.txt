@@ -1,5 +1,5 @@
 
--Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
+-Filter with 'OR' option so that you can search for multiple creatures (to build a spur of the moment encounter, for example)
 
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
 -Ability to copy creatures from one bestiary to another
