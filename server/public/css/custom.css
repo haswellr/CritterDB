@@ -108,7 +108,6 @@ section.login-area md-content.login-body{
   right: 0px;
   bottom: 0px;
   left: 0px;
-  cursor: pointer;
   background-color: rgba(0,0,0,0.0);
   transition: background-color 0.25s ease-out;
 }
@@ -119,7 +118,7 @@ section.login-area md-content.login-body{
 }
 
 .stat-block-overlay:hover section.side-menu {
-  background-color: rgba(0,0,0,0.45);
+  background-color: rgba(0,0,0,0.70);
 }
 
 .stat-block-overlay section.side-menu {
@@ -129,11 +128,21 @@ section.login-area md-content.login-body{
   bottom: 0px;
   width: 56px;
   height: 100%;
-  padding: 6px 0px;
   background-color: rgba(0,0,0,0.0);
   transition: background-color 0.25s ease-out;
 }
-.stat-block-overlay .md-button.md-fab:hover {
+.stat-block-overlay section.side-menu button {
+  min-width: 100%;
+  padding: 6px 6px;
+  margin: 0px 0px;
+}
+
+.stat-block-overlay section.side-menu button md-icon {
+  color: #fff;
+}
+
+
+/*.stat-block-overlay .md-button.md-fab:hover {
   background-color: #fff;
 }
 .stat-block-overlay .md-button.md-fab {
@@ -141,7 +150,7 @@ section.login-area md-content.login-body{
 }
 .stat-block-overlay .md-button.md-fab md-icon {
   color: #777;
-}
+}*/
 
 md-toolbar.inner-header {
   background-color: #fafafa;

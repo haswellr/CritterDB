@@ -52,7 +52,6 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 				if($scope.creatureData.experienceByCR.hasOwnProperty($scope.creature.stats.challengeRating))
 					$scope.creature.stats.experiencePoints = $scope.creatureData.experienceByCR[$scope.creature.stats.challengeRating];
 			}
-
 		}
 	}
 
