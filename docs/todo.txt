@@ -1,10 +1,4 @@
 
--Mobile/Tablets
-	- Top header should maybe be hidden on smaller screens?
-	- Having no ability to hover results in odd UX to access modify creature icons (like edit, copy, delete). Maybe have a button that is always visible on each stat block?
-	- Not enough room on create/edit creature page. Rather than side by side there should be a button to toggle the stat-block taking up the full body area, or being totally hidden.
-
-
 -Figure out how to make textareas auto expand (like the Bestiary description in the edit panel)
 
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
