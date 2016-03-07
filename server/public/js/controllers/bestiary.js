@@ -20,6 +20,68 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		description: bestiary.description+""
 	};
 
+	$scope.creatureFilter = {
+		challengeRating: {
+			min: {
+				value: 0,
+				step: 0.125
+			},
+			max: {
+				value: 30,
+				step: 1
+			},
+			changed: function(cr){
+				//set new step
+				if(cr.value>1)
+					cr.step = 1;
+				else if(cr.value>0.5)
+					cr.step = 0.5;
+				else if(cr.value>0.25)
+					cr.step = 0.25;
+				else
+					cr.step = 0.125;
+				//fix up issues caused by dynamic step value
+				if(cr.value==1.5)
+					cr.value = 2;
+				else if(cr.value==0.75)
+					cr.value = 1;
+				else if(cr.value==0.375)
+					cr.value = 0.5;
+			}
+		},
+		filters: [{
+			name: ""
+		}],
+		addFilter: function(){
+			$scope.creatureFilter.filters.push({
+				name: ""
+			});
+		},
+		removeFilter: function(index){
+			$scope.creatureFilter.filters.splice(index,1);
+		},
+		isCreatureShown: function(creature){
+			if(creature.stats.challengeRating >= $scope.creatureFilter.challengeRating.min.value
+				&& creature.stats.challengeRating <= $scope.creatureFilter.challengeRating.max.value){
+				var foundNameInFilters = true;
+				for(var i=0;i<$scope.creatureFilter.filters.length;i++){
+					var filter = $scope.creatureFilter.filters[i];
+					if(filter.name.length>0){
+						if(creature.name.indexOf(filter.name)==-1)
+							foundNameInFilters = false;
+						else{
+							foundNameInFilters = true;
+							break;
+						}
+					}
+				}
+				return foundNameInFilters;
+			}
+			else
+				return false;
+		}
+	};
+
 	$scope.addCreature = function(){
 		$location.url("/bestiary/add/"+$scope.bestiary._id);
 	}
