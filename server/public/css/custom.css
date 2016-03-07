@@ -219,6 +219,7 @@ div.body-area .content-section {
 div.body-area md-card {
   width: 100%;
   max-width: 1200px;
+  display: inline-block;
 }
 
 div.body-area md-sidenav.bestiary-sidenav.md-locked-open {
