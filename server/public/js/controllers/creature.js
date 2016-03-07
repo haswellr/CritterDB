@@ -1,32 +1,21 @@
 
 
 
-var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location) {
+var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData) {
 	$scope.creature = creature;
 
-	$scope.creatureData = {
-		sizes: ["Fine","Diminutive","Tiny","Small","Medium","Large","Huge","Gargantuan","Colossal","Colossal+"],
-		races: ["Human","Dwarf","Elf","Halfling","Gnome","Dragonborn","Undead","Beast","Elemental","Ooze","Giant","Construct","Humanoid"],
-		alignments: ["Unaligned","Lawful Good","Lawful Neutral","Lawful Evil","Neutral Good","Neutral","Neutral Evil","Chaotic Good","Chaotic Neutral","Chaotic Evil"],
-		armorTypes: ["Natural Armor","Padded","Leather","Studded leather","Hide","Chain shirt","Scale mail","Breastplate","Half plate","Ring mail","Chain mail","Splint","Plate"],
-		abilities: ["strength","dexterity","constitution","intelligence","wisdom","charisma"],
-		skills: ["Acrobatics","Animal Handling","Arcana","Athletics","Deception","History","Insight","Intimidation","Investigation","Medicine","Nature","Perception","Performance","Persuasion","Religion","Sleight of Hand","Stealth","Survival"],
-		damageTypes: ["Slashing","Piercing","Bludgeoning","Acid","Fire","Cold","Poison","Necrotic","Radiant","Lightning","Psychic","Thunder","Force"],
-		languages: ["Common","Dwarvish","Elvish","Giant","Gnomish","Goblin","Halfling","Orc","Abyssal","Celestial","Draconic","Deep Speech","Infernal","Primordial","Sylvan","Undercommon"],
-		negativeConditions: ["Blinded","Charmed","Deafened","Encumbered","Exhaustion","Frightened","Intoxicated","Paralyzed","Poisoned","Prone","Restrained","Stunned","Unconscious"],
-		experienceByCR: {'0.0': 10,'0.125': 25,'0.25': 50,'0.5': 100,'1': 200,'2': 450,'3': 700,'4': 1100,'5': 1800,'6': 2300,'7': 2900,'8': 3900,'9': 5000,'10': 5900,'11': 7200,'12': 8400,'13': 10000,'14': 11500,'15': 13000,'16': 15000,'17': 18000,'18': 20000,'19': 22000,'20': 25000,'21': 33000,'22': 41000,'23': 50000,'24': 62000,'25': 75000,'26': 90000,'27': 105000,'28': 120000,'29': 135000,'30': 155000},
-		search: function(searchText,arrayToSearch){
-			var returnedVals = [];
-			if(searchText && arrayToSearch){
-				var searchTextLower = searchText.toLowerCase();
-				for(var i=0;i<arrayToSearch.length;i++){
-					if(arrayToSearch[i].toLowerCase().indexOf(searchTextLower)!=-1)
-						returnedVals.push(arrayToSearch[i]);
-				}
+	$scope.creatureData = CreatureData;
+	$scope.searchArray = function(searchText,arrayToSearch){
+		var returnedVals = [];
+		if(searchText && arrayToSearch){
+			var searchTextLower = searchText.toLowerCase();
+			for(var i=0;i<arrayToSearch.length;i++){
+				if(arrayToSearch[i].toLowerCase().indexOf(searchTextLower)!=-1)
+					returnedVals.push(arrayToSearch[i]);
 			}
-			return(returnedVals);
 		}
-	};
+		return(returnedVals);
+	}
 
 	$scope.challengeRating = {
 		step: 0.125,
@@ -157,6 +146,24 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 				list.splice(index,1);
 		}
 	};
+
+	$scope.race = {
+		changed: function(){
+			console.log("race changed");
+			var race = $scope.creature.stats.race;
+			console.log("race: "+race);
+			if(CreatureData.raceDefaults.hasOwnProperty(race)){
+				$scope.creature.stats.size = CreatureData.raceDefaults[race].size;
+				$scope.creature.stats.speed = CreatureData.raceDefaults[race].speed;
+				$scope.creature.stats.senses = CreatureData.raceDefaults[race].senses;
+				$scope.creature.stats.languages = CreatureData.raceDefaults[race].languages;
+			}
+		}
+	}
+	$scope.$watch("creature.stats.race",function(newValue,oldValue){
+		if(oldValue!=newValue)
+			$scope.race.changed();
+	},true);
 
 	$scope.returnToBestiary = function(){
 		if($scope.creature._id)
