@@ -67,7 +67,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 				for(var i=0;i<$scope.creatureFilter.filters.length;i++){
 					var filter = $scope.creatureFilter.filters[i];
 					if(filter.name.length>0){
-						if(creature.name.indexOf(filter.name)==-1)
+						if(creature.name.toLowerCase().indexOf(filter.name.toLowerCase())==-1)
 							foundNameInFilters = false;
 						else{
 							foundNameInFilters = true;
