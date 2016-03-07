@@ -4,11 +4,11 @@ angular.module('myApp').factory("CreatureData", function() {
 
 	CreatureData.sizes = ["Fine","Diminutive","Tiny","Small","Medium","Large",
 		"Huge","Gargantuan","Colossal","Colossal+"];
-	CreatureData.races = ["Dwarf","Hill Dwarf","Mountain Dwarf","Duergar","Elf",
-		"Drow","High Elf","Wood Elf","Halfling","Lightfoot Halfling",
-		"Stout Halfling","Human","Abberation","Beast","Celestial","Construct",
-		"Dragon","Elemental","Fey","Fiend","Giant","Humanoid","Monstrosity","Ooze",
-		"Plant","Undead"];
+	CreatureData.races = ["Dwarf","Hill Dwarf","Elf","High Elf","Halfling",
+		"Lightfoot Halfling","Human","Dragonborn","Gnome","Half-Elf","Half-Orc",
+		"Tiefling","Abberation","Beast","Celestial","Construct","Dragon",
+		"Elemental","Fey","Fiend","Giant","Humanoid","Monstrosity","Ooze","Plant",
+		"Undead"];
 	CreatureData.alignments = ["Unaligned","Lawful Good","Lawful Neutral",
 		"Lawful Evil","Neutral Good","Neutral","Neutral Evil","Chaotic Good",
 		"Chaotic Neutral","Chaotic Evil"];
@@ -30,12 +30,20 @@ angular.module('myApp').factory("CreatureData", function() {
 	CreatureData.negativeConditions = ["Blinded","Charmed","Deafened",
 		"Encumbered","Exhaustion","Frightened","Intoxicated","Paralyzed","Poisoned",
 		"Prone","Restrained","Stunned","Unconscious"];
+	CreatureData.attackTypes = ["Melee Weapon Attack","Ranged Weapon Attack",
+		"Melee or Ranged Weapon Attack","Melee Spell Attack","Ranged Spell Attack"];
 	CreatureData.experienceByCR = {'0.0': 10,'0.125': 25,'0.25': 50,'0.5': 100,
 		'1': 200,'2': 450,'3': 700,'4': 1100,'5': 1800,'6': 2300,'7': 2900,
 		'8': 3900,'9': 5000,'10': 5900,'11': 7200,'12': 8400,'13': 10000,
 		'14': 11500,'15': 13000,'16': 15000,'17': 18000,'18': 20000,'19': 22000,
 		'20': 25000,'21': 33000,'22': 41000,'23': 50000,'24': 62000,'25': 75000,
 		'26': 90000,'27': 105000,'28': 120000,'29': 135000,'30': 155000};
+	CreatureData.weaponTypes = ["Club","Dagger","Greatclub","Handaxe","Javelin",
+		"Light hammer","Mace","Quarterstaff","Sickle","Spear","Crossbow, light",
+		"Dart","Shortbow","Sling","Battleaxe","Flail","Glaive","Greataxe",
+		"Greatsword","Halberd","Lance","Longsword","Maul","Morningstar","Pike",
+		"Rapier","Scimitar","Shortsword","Trident","War pick","Warhammer","Whip",
+		"Blowgun","Crossbow, hand","Crossbow, heavy","Longbow","Net"];
 	CreatureData.raceDefaults = {
 		'Dwarf': {
 			size: "Medium",
@@ -49,25 +57,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			senses: ["Darkvision 60ft."],
 			languages: ["Common","Dwarvish"]
 		},
-		'Mountain Dwarf': {
-			size: "Medium",
-			speed: "25 ft.",
-			senses: ["Darkvision 60ft."],
-			languages: ["Common","Dwarvish"]
-		},
-		'Duergar': {
-			size: "Medium",
-			speed: "25 ft.",
-			senses: ["Darkvision 60ft."],
-			languages: ["Common","Dwarvish"]
-		},
 		'Elf': {
-			size: "Medium",
-			speed: "30 ft.",
-			senses: ["Darkvision 60ft."],
-			languages: ["Common","Elvish"]
-		},
-		'Drow': {
 			size: "Medium",
 			speed: "30 ft.",
 			senses: ["Darkvision 60ft."],
@@ -79,13 +69,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			senses: ["Darkvision 60ft."],
 			languages: ["Common","Elvish"]
 		},
-		'Wood Elf': {
-			size: "Medium",
-			speed: "36 ft.",
-			senses: ["Darkvision 60ft."],
-			languages: ["Common","Elvish"]
-		},
-		'Halfing': {
+		'Halfling': {
 			size: "Small",
 			speed: "25 ft.",
 			senses: [],
@@ -97,17 +81,41 @@ angular.module('myApp').factory("CreatureData", function() {
 			senses: [],
 			languages: ["Common","Halfling"]
 		},
-		'Stout Halfling': {
-			size: "Small",
-			speed: "25 ft.",
-			senses: [],
-			languages: ["Common","Halfling"]
-		},
 		'Human': {
 			size: "Medium",
 			speed: "30 ft.",
 			senses: [],
 			languages: ["Common"]
+		},
+		'Dragonborn': {
+			size: "Medium",
+			speed: "30 ft.",
+			senses: [],
+			languages: ["Common","Draconic"]
+		},
+		'Gnome': {
+			size: "Small",
+			speed: "25 ft.",
+			senses: ["Darkvision 60ft."],
+			languages: ["Common","Gnomish"]
+		},
+		'Half-Elf': {
+			size: "Medium",
+			speed: "30 ft.",
+			senses: ["Darkvision 60ft."],
+			languages: ["Common","Elvish"]
+		},
+		'Half-Orc': {
+			size: "Medium",
+			speed: "30 ft.",
+			senses: ["Darkvision 60ft."],
+			languages: ["Common","Orc"]
+		},
+		'Tiefling': {
+			size: "Medium",
+			speed: "30 ft.",
+			senses: ["Darkvision 60ft."],
+			languages: ["Common","Infernal"]
 		}
 	};
 	CreatureData.armorTypeDefaults = {
@@ -159,7 +167,334 @@ angular.module('myApp').factory("CreatureData", function() {
 			ac: 18,
 			maxDex: 0
 		}
-	}
-
+	};
+	CreatureData.weaponTypeDefaults = {
+		'Club': {
+			melee: true,
+			reach: 5,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 4
+		},
+		'Dagger': {
+			melee: true,
+			reach: 5,
+			finesse: true,
+			ranged: true,
+			shortRange: 20,
+			longRange: 60,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 4,
+			rangedDamageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 4
+		},
+		'Greatclub': {
+			melee: true,
+			reach: 5,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 8
+		},
+		'Handaxe': {
+			melee: true,
+			reach: 5,
+			ranged: true,
+			shortRange: 20,
+			longRange: 60,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 6,
+			rangedDamageType: "Slashing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 6
+		},
+		'Javelin': {
+			melee: true,
+			reach: 5,
+			ranged: true,
+			shortRange: 30,
+			longRange: 120,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 6,
+			rangedDamageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 6
+		},
+		'Light hammer': {
+			melee: true,
+			reach: 5,
+			ranged: true,
+			shortRange: 20,
+			longRange: 60,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 4,
+			rangedDamageType: "Bludgeoning",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 4
+		},
+		'Mace': {
+			melee: true,
+			reach: 5,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 6
+		},
+		'Quarterstaff': {
+			melee: true,
+			reach: 5,
+			veratile: true,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 6,
+			twoHandedDamageType: "Bludgeoning",
+			twoHandedDamageDiceNum: 1,
+			twoHandedDamageDiceSize: 8
+		},
+		'Sickle': {
+			melee: true,
+			reach: 5,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 4
+		},
+		'Spear': {
+			melee: true,
+			reach: 5,
+			ranged: true,
+			shortRange: 20,
+			longRange: 60,
+			versatile: true,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 6,
+			rangedDamageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 6,
+			twoHandedDamageType: "Piercing",
+			twoHandedDamageDiceNum: 1,
+			twoHandedDamageDiceSize: 8
+		},
+		'Crossbow, light': {
+			ranged: true,
+			shortRange: 80,
+			longRange: 320,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 8
+		},
+		'Dart': {
+			ranged: true,
+			shortRange: 20,
+			longRange: 60,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 4
+		},
+		'Shortbow': {
+			ranged: true,
+			shortRange: 80,
+			longRange: 320,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 6
+		},
+		'Sling': {
+			ranged: true,
+			shortRange: 30,
+			longRange: 120,
+			damageType: "Bludgeoning",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 4
+		},
+		'Battleaxe': {
+			melee: true,
+			reach: 5,
+			versatile: true,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 8,
+			twoHandedDamageType: "Slashing",
+			twoHandedDamageDiceNum: 1,
+			twoHandedDamageDiceSize: 10
+		},
+		'Flail': {
+			melee: true,
+			reach: 5,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 8
+		},
+		'Glaive': {
+			melee: true,
+			reach: 10,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 10
+		},
+		'Greataxe': {
+			melee: true,
+			reach: 5,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 12
+		},
+		'Greatsword': {
+			melee: true,
+			reach: 5,
+			damageType: "Slashing",
+			damageDiceNum: 2,
+			damageDiceSize: 6
+		},
+		'Halberd': {
+			melee: true,
+			reach: 10,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 10
+		},
+		'Longsword': {
+			melee: true,
+			reach: 5,
+			versatile: true,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 8,
+			twoHandedDamageType: "Slashing",
+			twoHandedDamageDiceNum: 1,
+			twoHandedDamageDiceSize: 10
+		},
+		'Maul': {
+			melee: true,
+			reach: 5,
+			damageType: "Bludgeoning",
+			damageDiceNum: 2,
+			damageDiceSize: 6
+		},
+		'Morningstar': {
+			melee: true,
+			reach: 5,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 8
+		},
+		'Pike': {
+			melee: true,
+			reach: 10,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 10
+		},
+		'Rapier': {
+			melee: true,
+			reach: 5,
+			finesse: true,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 8
+		},
+		'Scimitar': {
+			melee: true,
+			reach: 5,
+			finesse: true,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 6
+		},
+		'Shortsword': {
+			melee: true,
+			reach: 5,
+			finesse: true,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 6
+		},
+		'Trident': {
+			melee: true,
+			reach: 5,
+			ranged: true,
+			shortRange: 20,
+			longRange: 60,
+			versatile: true,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 6,
+			rangedDamageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 6,
+			twoHandedDamageType: "Piercing",
+			twoHandedDamageDiceNum: 1,
+			twoHandedDamageDiceSize: 8
+		},
+		'War pick': {
+			melee: true,
+			reach: 5,
+			damageType: "Piercing",
+			damageDiceNum: 1,
+			damageDiceSize: 8
+		},
+		'Warhammer': {
+			melee: true,
+			reach: 5,
+			versatile: true,
+			damageType: "Bludgeoning",
+			damageDiceNum: 1,
+			damageDiceSize: 8,
+			twoHandedDamageType: "Bludgeoning",
+			twoHandedDamageDiceNum: 1,
+			twoHandedDamageDiceSize: 10
+		},
+		'Whip': {
+			melee: true,
+			reach: 10,
+			finesse: true,
+			damageType: "Slashing",
+			damageDiceNum: 1,
+			damageDiceSize: 4
+		},
+		'Blowgun': {
+			ranged: true,
+			shortRange: 25,
+			longRange: 100,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 1
+		},
+		'Crossbow, hand': {
+			ranged: true,
+			shortRange: 30,
+			longRange: 120,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 6
+		},
+		'Crossbow, heavy': {
+			ranged: true,
+			shortRange: 100,
+			longRange: 400,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 10
+		},
+		'Longbow': {
+			ranged: true,
+			shortRange: 150,
+			longRange: 600,
+			damageType: "Piercing",
+			rangedDamageDiceNum: 1,
+			rangedDamageDiceSize: 8
+		}
+	};
+//melee
+//ranged
+//finesse
+//versatile
+//damageType, damageDiceNum, damageDiceSize
+//rangedDamageType, etc
+//shortRange,longRange
+//twoHandedDamageType, etc
   return CreatureData;
 });

@@ -3,6 +3,7 @@
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
 -Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them.
 
+-Reset password is not scaled appropriately on small screens (like phones)
 -Cross-browser
 
 - Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage). This can auto-fill if you select a common weapon type.
