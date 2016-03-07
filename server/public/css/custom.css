@@ -149,20 +149,14 @@ md-toolbar.inner-header {
 
 md-toolbar.inner-header h2 {
   margin-left: 8px;
+  max-width: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 md-toolbar.inner-header span {
   color: #212121;
-}
-
-md-toolbar.inner-header .md-button.md-fab:not(.selected):not(.main-button) {
-  background-color: #fff;
-  transition: background-color 0.4s ease-out;
-}
-
-md-toolbar.inner-header .md-button.md-fab:not(.selected):not(.main-button) md-icon {
-  color: #777;
-  transition: color 0.4s ease-out;
 }
 
 md-toolbar.inner-header div.controls {
@@ -171,10 +165,21 @@ md-toolbar.inner-header div.controls {
   position: relative;
 }
 
-md-toolbar.inner-header button.main-button {
+md-toolbar.inner-header div.right-side-controls {
   position: absolute;
-  right: 5%;
-  bottom: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 8px;
+}
+md-toolbar.inner-header div.right-side-controls button {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+md-toolbar.inner-header button.main-button {
+  position: fixed;
+  right: 21px;
+  bottom: 14px;
 }
 
 div.body-area {
@@ -189,7 +194,7 @@ div.body-area md-content.background{
   height:100%;
 }
 
-div.body-area section.sidenav-left-wrapper {
+div.body-area section.sidenav-wrapper {
   height:100%;
 }
 
@@ -208,15 +213,26 @@ div.body-area md-card {
 }
 
 div.body-area md-sidenav.md-locked-open {
-  width: 600px;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
+  position: absolute;
+  left: 0px;
+}
+@media (min-width:801px) {
+  div.body-area md-sidenav.md-locked-open {
+    width: 600px;
+    max-width: 100%;
+    left: 100%;
+    position: static;
+  }
 }
 
 div.body-area.no-inner-header {
   top: 64px;
 }
 
-.sidenav-left-wrapper md-backdrop.md-sidenav-backdrop {
+.sidenav-wrapper md-backdrop.md-sidenav-backdrop {
   display: none;
 }
 

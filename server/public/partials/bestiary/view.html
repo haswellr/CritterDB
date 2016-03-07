@@ -1,22 +1,40 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
+<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
-		<md-button ng-click="toggle('filterNav');close('editNav');" ng-class="{'selected':isOpen('filterNav')}" class="md-fab md-mini" aria-label="Filters">
-			<md-icon>filter_list</md-icon>
-			<md-tooltip md-direction="right">
-        Filter Creatures
-      </md-tooltip>
-		</md-button>
-		<md-button ng-click="toggle('editNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-fab md-mini" aria-label="Edit">
-			<md-icon>mode_edit</md-icon>
+		<md-button hide-gt-sm ng-click="goToBestiaryList()" class="md-icon-button md-mini" aria-label="Back">
+			<md-icon>keyboard_backspace</md-icon>
 			<md-tooltip>
-        Edit Bestiary Details
+        Back
       </md-tooltip>
 		</md-button>
 		<h2>
-			<span ng-click="goToBestiaryList()" style="cursor:pointer;">My Bestiaries</span><span> > <b>{{bestiary.name}}</b></span>
+			<span hide show-gt-sm>
+				<span ng-click="goToBestiaryList()" style="cursor:pointer;">My Bestiaries</span>
+				<span> > </span>
+			</span>
+			<b>{{bestiary.name}}</b>
 		</h2>
-		<md-button ng-click="addCreature()" class="md-fab md-mini md-accent main-button" aria-label="Create Creature">
+		<div class="right-side-controls">
+			<md-button ng-click="toggle('filterNav');close('editNav');" class="md-icon-button md-mini" aria-label="Filters">
+				<md-icon ng-class="{'md-accent':isOpen('filterNav')}">filter_list</md-icon>
+				<md-tooltip md-direction="left">
+	        Filter Creatures
+	      </md-tooltip>
+			</md-button>
+			<md-button ng-click="toggle('editNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
+				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
+				<md-tooltip md-direction="left">
+	        Edit Bestiary Details
+	      </md-tooltip>
+			</md-button>
+			<md-button hide show-gt-xs ng-click="addCreature()" class="md-fab md-mini md-accent" aria-label="Create Creature">
+				<md-icon>add</md-icon>
+				<md-tooltip md-direction="left">
+	        Create Creature
+	      </md-tooltip>
+			</md-button>
+		</div>
+		<md-button hide-gt-xs ng-hide="isOpen('filterNav') || isOpen('editNav')" ng-click="addCreature()" class="md-fab md-accent main-button" aria-label="Create Creature">
 			<md-icon>add</md-icon>
 			<md-tooltip>
         Create Creature
@@ -26,9 +44,26 @@
 </md-toolbar>
 
 <div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
-	<section class="sidenav-left-wrapper content-section md-whiteframe-3dp" layout="row" flex>
+	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
+		<md-content style="width:100%;">
+			<div ng-if="(!bestiary.creatures || bestiary.creatures.length==0) && !bestiary.creaturesLoading" class="no-creatures-area">
+				<span>
+					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
+					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
+					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
+				</span>
+				<h2 class="md-headline">
+					This bestiary needs some creatures!
+				</h2>
+				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
+			</div>
+			<div class="fallingColumns">
+				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
+			</div>
+		</md-content>
+
 		<!-- FILTER SIDENAV -->
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Filters</h1>
@@ -49,7 +84,7 @@
 		  </md-content>
 		</md-sidenav>
 		<!-- EDIT SIDENAV -->
-		<md-sidenav class="md-sidenav-left md-whiteframe-z2 edit-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Edit</h1>
@@ -79,22 +114,5 @@
 		    </form>
 		  </md-content>
 		</md-sidenav>
-
-		<md-content style="width:100%;">
-			<div ng-if="(!bestiary.creatures || bestiary.creatures.length==0) && !bestiary.creaturesLoading" class="no-creatures-area">
-				<span>
-					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
-					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
-					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
-				</span>
-				<h2 class="md-headline">
-					This bestiary needs some creatures!
-				</h2>
-				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
-			</div>
-			<div class="fallingColumns">
-				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
-			</div>
-		</md-content>
 	</section>
 </div>
