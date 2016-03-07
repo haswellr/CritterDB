@@ -110,6 +110,56 @@ angular.module('myApp').factory("CreatureData", function() {
 			languages: ["Common"]
 		}
 	};
+	CreatureData.armorTypeDefaults = {
+		'Padded': {
+			ac: 11,
+			maxDex: -1
+		},
+		'Leather': {
+			ac: 11,
+			maxDex: -1
+		},
+		'Studded leather': {
+			ac: 12,
+			maxDex: -1
+		},
+		'Hide': {
+			ac: 12,
+			maxDex: 2
+		},
+		'Chain shirt': {
+			ac: 13,
+			maxDex: 2
+		},
+		'Scale mail': {
+			ac: 14,
+			maxDex: 2
+		},
+		'Breastplate': {
+			ac: 14,
+			maxDex: 2
+		},
+		'Half plate': {
+			ac: 15,
+			maxDex: 2
+		},
+		'Ring mail': {
+			ac: 14,
+			maxDex: 0
+		},
+		'Chain mail': {
+			ac: 16,
+			maxDex: 0
+		},
+		'Splint': {
+			ac: 17,
+			maxDex: 0
+		},
+		'Plate': {
+			ac: 18,
+			maxDex: 0
+		}
+	}
 
   return CreatureData;
 });
