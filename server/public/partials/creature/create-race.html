@@ -2,7 +2,7 @@
   <section layout="row" flex>
     <md-autocomplete flex
         md-search-text="creature.stats.race"
-        md-items="race in creatureData.search(creature.stats.race,creatureData.races)"
+        md-items="race in searchArray(creature.stats.race,creatureData.races)"
         md-item-text="race"
         md-floating-label="Race">
       <md-item-template>
@@ -35,7 +35,7 @@
     <md-chips ng-model="creature.stats.languages" md-autocomplete-snap md-require-match="false" style="width:100%;">
       <md-autocomplete
           md-search-text="creature.stats.languagesSearch"
-          md-items="language in creatureData.search(creature.stats.languagesSearch,creatureData.languages)"
+          md-items="language in searchArray(creature.stats.languagesSearch,creatureData.languages)"
           md-item-text="language"
           placeholder="Languages">
         <span md-highlight-text="creature.stats.languagesSearch">{{language}}</span>
