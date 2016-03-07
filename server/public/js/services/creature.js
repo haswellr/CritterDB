@@ -169,7 +169,8 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 	CreatureAPI.get = function(id, success, error){
 		CachedResourceAPI.prototype.get.call(this, id, function(data){
 			CreatureAPI.calculateCreatureDetails(data);
-			success(data);
+			if(success)
+				success(data);
 		}, error);
 	}
 
@@ -178,7 +179,8 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 	CreatureAPI.update = function(id, data, success, error){
 		CachedResourceAPI.prototype.update.call(this, id, data, function(data){
 			CreatureAPI.calculateCreatureDetails(data);
-			success(data);
+			if(success)
+				success(data);
 		}, error);
 	}
 
