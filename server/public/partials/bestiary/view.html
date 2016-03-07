@@ -58,7 +58,7 @@
 				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
 			</div>
 			<div class="fallingColumns">
-				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
+				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
 			</div>
 		</md-content>
 
@@ -77,10 +77,26 @@
 	      </div>
 		  </md-toolbar>
 		  <md-content layout-padding>
-		    <md-input-container style="width:calc(100% - 16px);">
-	        <label style="padding-left:10px;bottom:calc(100% - 5px);">Search by name</label>
-	        <input ng-model="creatureFilter.name">
-	      </md-input-container>
+				<section layout="row" layout-align="center center">
+				  <md-input-container flex>
+			      <label>Min CR</label>
+			      <input ng-model="creatureFilter.challengeRating.min.value" ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.min)" step="{{creatureFilter.challengeRating.min.step}}" type="number" min="0" max="30"/>
+			    </md-input-container>
+			    <md-input-container flex>
+			      <label>Max CR</label>
+			      <input ng-model="creatureFilter.challengeRating.max.value" ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.max)" step="{{creatureFilter.challengeRating.max.step}}" type="number" min="0" max="30"/>
+			    </md-input-container>
+			  </section>
+				<section ng-repeat="filter in creatureFilter.filters track by $index" layout="column" layout-align="center top">
+			    <md-input-container style="width:calc(100% - 16px);">
+		        <label>Search by name</label>
+		        <input ng-model="filter.name">
+		      </md-input-container>
+		      <span ng-if="!$last" style="width:100%;text-align:center;">- OR -</span>
+		    </section>
+	      <section layout="row" layout-align="center center">
+	      	<md-button ng-click="creatureFilter.addFilter()" class="md-raised" aria-label="Add Filter">Add Name Filter</md-button>
+	      </section>
 		  </md-content>
 		</md-sidenav>
 		<!-- EDIT SIDENAV -->
