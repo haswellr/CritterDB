@@ -4,7 +4,6 @@
 
 -Cross-browser
 
-- Make Armor Class auto-fill if a standard auto-type is chosen (need to calculate based on dex as well)
 - Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage). This can auto-fill if you select a common weapon type.
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
 - Add an 'Add Action Wizard' button with modal/whatever to the Actions field on front end. This should let you put in an attack name, damage dice, whether it is finesse or not, reach, and number of targets. Alternatively it will suggest some common weapons and autofill the other values.

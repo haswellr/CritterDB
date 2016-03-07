@@ -149,9 +149,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 
 	$scope.race = {
 		changed: function(){
-			console.log("race changed");
 			var race = $scope.creature.stats.race;
-			console.log("race: "+race);
 			if(CreatureData.raceDefaults.hasOwnProperty(race)){
 				$scope.creature.stats.size = CreatureData.raceDefaults[race].size;
 				$scope.creature.stats.speed = CreatureData.raceDefaults[race].speed;
@@ -163,6 +161,23 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 	$scope.$watch("creature.stats.race",function(newValue,oldValue){
 		if(oldValue!=newValue)
 			$scope.race.changed();
+	},true);
+
+	$scope.armorType = {
+		changed: function(){
+			var armorType = $scope.creature.stats.armorType;
+			if(CreatureData.armorTypeDefaults.hasOwnProperty(armorType)){
+				var armorTypeDefaults = CreatureData.armorTypeDefaults[armorType];
+				var dexBonus = $scope.creature.stats.abilityScoreModifiers.dexterity;
+				if(armorTypeDefaults.maxDex>-1)
+					dexBonus = Math.min(dexBonus,armorTypeDefaults.maxDex);
+				$scope.creature.stats.armorClass = armorTypeDefaults.ac + dexBonus;
+			}
+		}
+	}
+	$scope.$watch("creature.stats.armorType",function(newValue,oldValue){
+		if(oldValue!=newValue)
+			$scope.armorType.changed();
 	},true);
 
 	$scope.returnToBestiary = function(){
