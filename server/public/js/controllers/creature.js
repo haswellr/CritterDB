@@ -1,7 +1,7 @@
 
 
 
-var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData) {
+var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog) {
 	$scope.creature = creature;
 
 	$scope.creatureData = CreatureData;
@@ -215,6 +215,26 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		});
 	}
 
+	$scope.generateAttack = function(ev){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: generateAttackCtrl,
+      templateUrl: '/assets/partials/creature/create-abilities-add-attack.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'creature': $scope.creature
+      },
+      fullscreen: useFullScreen
+    })
+    .then(function(result){
+    	if(result){
+    		$scope.creature.stats.actions.push(result);
+    	}
+    });;
+	}
+
 	$scope.$watch("creature",function(newValue,oldValue){
 		Creature.calculateCreatureDetails($scope.creature);
 	},true);
@@ -303,3 +323,123 @@ creatureCtrl.resolve = {
 		}
 
 angular.module('myApp').controller('creatureCtrl',creatureCtrl);
+
+
+var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
+
+	$scope.creatureData = CreatureData;
+
+	$scope.attack = {
+		weapon: '',
+		ability: 'strength',
+		melee: true,
+		ranged: false,
+		reach: 5,
+		shortRange: 80,
+		longRange: 320,
+		damageType: '',
+		damageDiceSize: 6,
+		damageDiceNum: 1,
+	};
+
+	var createDamageStr = function(damageType,diceSize,numDice,modifier){
+		var avgDamage = Math.floor(numDice * (diceSize/2.0)) + modifier;
+		var damageStr = avgDamage + " (" + numDice + "d" + diceSize + " + "
+				+ modifier + ") " + damageType + " damage";
+		return(damageStr);
+	}
+
+//melee, ranged, versatile, bonus damage
+	var createDescription = function(attack){
+		var ability = "strength";
+		if((attack.finesse || (attack.ranged && !attack.melee)) && creature.stats.abilityScoreModifiers["dexterity"] > creature.stats.abilityScoreModifiers["strength"])
+			ability = "dexterity";
+		var type;
+		if(attack.melee && attack.ranged)
+			type = "Melee or Ranged Weapon Attack:";
+		else if(attack.melee)
+			type = "Melee Weapon Attack:";
+		else if(attack.ranged)
+			type = "Ranged Weapon Attack:";
+		else
+			type = "Weapon Attack:";
+		var toHit = creature.stats.abilityScoreModifiers[ability]
+			+ creature.stats.proficiencyBonus;
+		var rangeStr;
+		if(attack.melee && attack.ranged)
+			rangeStr = "reach " + attack.reach + " ft. or range " + attack.shortRange
+				+ "/" + attack.longRange + " ft.";
+		else if(attack.melee)
+			rangeStr = "reach " + attack.reach + " ft.";
+		else if(attack.ranged)
+			rangeStr = "range " + attack.shortRange + "/" + attack.longRange + " ft.";
+		var damageMod = creature.stats.abilityScoreModifiers[ability];
+		var meleeDamageStr,
+			rangedDamageStr,
+			twoHandedDamageStr,
+			bonusDamageStr;
+		if(attack.melee)
+			meleeDamageStr = createDamageStr(attack.damageType,attack.damageDiceSize,attack.damageDiceNum,damageMod);
+		if(attack.ranged)
+			rangedDamageStr = createDamageStr(attack.rangedDamageType,attack.rangedDamageDiceSize,attack.rangedDamageDiceNum,damageMod);
+		if(attack.versatile)
+			twoHandedDamageStr = createDamageStr(attack.twoHandedDamageType,attack.twoHandedDamageDiceSize,attack.twoHandedDamageDiceNum,damageMod);
+		if(attack.bonusDamage)
+			bonusDamageStr = createDamageStr(attack.bonusDamageType,attack.bonusDamageDiceSize,attack.bonusDamageDiceNum,damageMod);
+		var hitStr;
+		if(attack.melee){
+			hitStr = meleeDamageStr;
+			if(attack.ranged){
+				hitStr = hitStr + " in melee, or " + rangedDamageStr + " at range";
+			}
+		}
+		else if(attack.ranged)
+			hitStr = rangedDamageStr;
+		if(attack.versatile)
+			hitStr = hitStr + ", or " + twoHandedDamageStr + " if used with two "
+				+ "hands to make a melee attack";
+		if(attack.bonusDamage)
+			hitStr = hitStr + ", plus " + bonusDamageStr;
+
+		var description = "<i>" + type + "</i> +" + toHit + " to hit, " + rangeStr
+			+ ", one creature. <i>Hit:</i> " + hitStr + ".";
+		return(description);
+	}
+
+	$scope.generateAttack = function() {
+		var ability = {
+			name: $scope.attack.weapon,
+			description: createDescription($scope.attack)
+		};
+		$mdDialog.hide(ability);
+	}
+	$scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+
+  $scope.searchArray = function(searchText,arrayToSearch){
+		var returnedVals = [];
+		if(searchText && arrayToSearch){
+			var searchTextLower = searchText.toLowerCase();
+			for(var i=0;i<arrayToSearch.length;i++){
+				if(arrayToSearch[i].toLowerCase().indexOf(searchTextLower)!=-1)
+					returnedVals.push(arrayToSearch[i]);
+			}
+		}
+		return(returnedVals);
+	}
+
+	$scope.weapon = {
+		changed: function(){
+			var weapon = $scope.attack.weapon;
+			if(CreatureData.weaponTypeDefaults.hasOwnProperty(weapon)){
+				$scope.attack = angular.copy(CreatureData.weaponTypeDefaults[weapon]);
+				$scope.attack.weapon = weapon;
+			}
+		}
+	}
+	$scope.$watch("attack.weapon",function(newValue,oldValue){
+		if(oldValue!=newValue)
+			$scope.weapon.changed();
+	},true);
+};
