@@ -404,3 +404,31 @@ div.no-creatures-area {
     top: 48px;
   }
 }
+
+md-dialog.generate-attack-dialog form {
+  /*width: 600px;
+  max-width: 100%;*/
+}
+
+md-dialog.generate-attack-dialog md-checkbox {
+  margin: 4px 4px 0px 1px;
+}
+@media (min-width: 460px) {
+  md-dialog.generate-attack-dialog md-checkbox {
+    margin: 8px 4px 0px 1px;
+  }
+}
+
+md-dialog.generate-attack-dialog md-checkbox span {
+    font-size: 12px;
+}
+@media (min-width: 350px) {
+  md-dialog.generate-attack-dialog md-checkbox span {
+    font-size: 14px;
+  }
+}
+@media (min-width: 390px) {
+  md-dialog.generate-attack-dialog md-checkbox span {
+    font-size: 16px;
+  }
+}

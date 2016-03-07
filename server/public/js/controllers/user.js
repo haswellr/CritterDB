@@ -53,7 +53,7 @@ var userCtrl = function ($scope,User,Bestiary,Auth,$location,$mdMedia,$mdDialog,
 	}
 
 	$scope.forgotPassword = function(ev){
-		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
     $mdDialog.show({
       controller: forgotPasswordCtrl,
       templateUrl: '/assets/partials/account/forgotpassword.html',

@@ -3,6 +3,7 @@
   <section class="subsection" layout="row" layout-align="center center" layout-wrap>
     <div layout="row" style="height:50px;">
       <md-button ng-click="abilities.addToList(creature.stats.actions)" class="md-raised">Add Action</md-button>
+      <md-button ng-click="generateAttack($event)" class="md-raised">Generate Attack</md-button>
     </div>
     <div ng-repeat="ability in creature.stats.actions" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
