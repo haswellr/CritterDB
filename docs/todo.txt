@@ -1,8 +1,7 @@
 
--Filter with 'OR' option so that you can search for multiple creatures (to build a spur of the moment encounter, for example)
-
--Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
 -Ability to copy creatures from one bestiary to another
+-Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
+
 -Cross-browser
 
 - Add Attack ability type in addition to actions (which has To Hit, damage die number and size, # of multiattacks if any, bonus to damage). This can auto-fill if you select a common weapon type.
