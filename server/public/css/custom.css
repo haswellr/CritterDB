@@ -222,7 +222,6 @@ div.body-area md-sidenav.bestiary-sidenav.md-locked-open {
 @media (min-width:801px) {
   div.body-area md-sidenav.bestiary-sidenav.md-locked-open {
     width: 600px;
-    max-width: 100%;
     left: 100%;
     position: static;
   }
@@ -249,7 +248,7 @@ div.body-area .create-creature-area {
 
 md-sidenav.edit-sidenav md-input-container {
   margin-bottom: 0px;
-  margin-top: 18fpx;
+  margin-top: 18px;
 }
 
 button.create-continue {
