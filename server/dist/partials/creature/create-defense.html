@@ -1,0 +1,90 @@
+<form name="defenseForm" class="defense-form">
+  <section layout="row" flex style="height:68px">
+  	<md-input-container flex>
+  	  <label>Number of Hit Die</label>
+  	  <input ng-model="creature.stats.numHitDie" type="number"/>
+  	</md-input-container>
+    <md-autocomplete flex
+        md-search-text="creature.stats.armorType"
+        md-items="armorType in searchArray(creature.stats.armorType,creatureData.armorTypes)"
+        md-item-text="armorType"
+        md-floating-label="Armor Type">
+      <md-item-template>
+        <span>{{armorType}}</span>
+      </md-item-template>
+    </md-autocomplete>
+    <md-input-container flex>
+  	  <label>Armor Class</label>
+  	  <input ng-model="creature.stats.armorClass" type="number"/>
+  	</md-input-container>
+  </section>
+
+
+	<md-chips ng-model="creature.stats.damageVulnerabilities" md-autocomplete-snap md-require-match="false">
+    <md-autocomplete
+        md-search-text="creature.stats.damageVulnerabilitiesSearch"
+        md-items="vulnerability in searchArray(creature.stats.damageVulnerabilitiesSearch,creatureData.damageTypes)"
+        md-item-text="vulnerability"
+        placeholder="Damage Vulnerabilities">
+      <span md-highlight-text="creature.stats.damageVulnerabilitiesSearch">{{vulnerability}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+      <span>
+        <em>{{$chip}}</em>
+      </span>
+    </md-chip-template>
+  </md-chips>
+
+  <br />
+
+  <md-chips ng-model="creature.stats.damageResistances" md-autocomplete-snap md-require-match="false">
+    <md-autocomplete
+        md-search-text="creature.stats.damageResistancesSearch"
+        md-items="resistance in searchArray(creature.stats.damageResistancesSearch,creatureData.damageTypes)"
+        md-item-text="resistance"
+        placeholder="Damage Resistances">
+      <span md-highlight-text="creature.stats.damageResistancesSearch">{{resistance}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+      <span>
+        <em>{{$chip}}</em>
+      </span>
+    </md-chip-template>
+  </md-chips>
+
+  <br />
+
+  <md-chips ng-model="creature.stats.damageImmunities" md-autocomplete-snap md-require-match="false">
+    <md-autocomplete
+        md-search-text="creature.stats.damageImmunitiesSearch"
+        md-items="immunity in searchArray(creature.stats.damageImmunitiesSearch,creatureData.damageTypes)"
+        md-item-text="immunity"
+        placeholder="Damage Immunities">
+      <span md-highlight-text="creature.stats.damageImmunitiesSearch">{{immunity}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+      <span>
+        <em>{{$chip}}</em>
+      </span>
+    </md-chip-template>
+  </md-chips>
+
+  <br />
+
+  <md-chips ng-model="creature.stats.conditionImmunities" md-autocomplete-snap md-require-match="false">
+    <md-autocomplete
+        md-search-text="creature.stats.conditionImmunitiesSearch"
+        md-items="immunity in searchArray(creature.stats.conditionImmunitiesSearch,creatureData.negativeConditions)"
+        md-item-text="immunity"
+        placeholder="Condition Immunities">
+      <span md-highlight-text="creature.stats.conditionImmunitiesSearch">{{immunity}}</span>
+    </md-autocomplete>
+    <md-chip-template>
+      <span>
+        <em>{{$chip}}</em>
+      </span>
+    </md-chip-template>
+  </md-chips>
+
+  <br /><br />
+</form>
