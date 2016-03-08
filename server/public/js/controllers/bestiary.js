@@ -180,7 +180,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 //don't load controller until we've gotten the data from the server
 bestiaryCtrl.resolve = {
-			bestiary: function(Bestiary, $q, $route, Auth, $location){
+			bestiary: ['Bestiary','$q','$route','Auth','$location',function(Bestiary, $q, $route, Auth, $location){
 				if($route.current.params.bestiaryId){
 					var deferred = $q.defer();
 					Auth.executeOnLogin(function(){
@@ -203,8 +203,8 @@ bestiaryCtrl.resolve = {
 				}
 				else
 					return {};
-			},
-			bestiaries: function(Bestiary, $q, $route, Auth, $location){
+			}],
+			bestiaries: ['Bestiary','$q','$route','Auth','$location',function(Bestiary, $q, $route, Auth, $location){
 				if($route.current.params.bestiaryId==undefined){
 					var deferred = $q.defer();
 					Auth.executeOnLogin(function(){
@@ -224,7 +224,7 @@ bestiaryCtrl.resolve = {
 				}
 				else
 					return [];
-			}
+			}]
 		}
 
 angular.module('myApp').controller('bestiaryCtrl',bestiaryCtrl);

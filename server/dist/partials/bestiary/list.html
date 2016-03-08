@@ -1,0 +1,34 @@
+
+<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
+	<div class="md-toolbar-tools controls">
+		<h2 style="margin-left:0px;">
+			<span><b>My Bestiaries</b></span>
+		</h2>
+		<div class="right-side-controls">
+			<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent" aria-label="Bestiary Creature">
+				<md-icon>add</md-icon>
+				<md-tooltip md-direction="left">
+	        Create Bestiary
+	      </md-tooltip>
+			</md-button>
+		</div>
+	</div>
+</md-toolbar>
+
+<div layout="column" class="body-area" ng-controller="sideNavCtrl">
+	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content">
+		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-lastActive'">
+		  <md-card-title>
+		    <md-card-title-text>
+		      <span class="md-headline">{{bestiary.name}}</span>
+		      <br>
+		      <span class="md-body-1 text-color-secondary">{{bestiary.description}}</span>
+		    </md-card-title-text>
+		  </md-card-title>
+		  <md-card-actions layout="row" layout-align="end center">
+		  	<md-button ng-click="deleteBestiary($event,bestiary)">Delete</md-button>
+		    <md-button ng-click="goToBestiary(bestiary._id)">Open</md-button>
+		  </md-card-actions>
+		</md-card>
+	</md-content>
+</div>

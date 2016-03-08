@@ -1,0 +1,148 @@
+
+<md-dialog class="generate-attack-dialog" aria-label="Generate Attack" ng-cloak>
+  <form name="attackForm" ng-submit="generateAttack()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Generate Attack</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="padding:40px 10px 0px 10px;">
+	    <section layout="row" style="width:100%;">
+        <md-autocomplete flex
+            md-search-text="attack.weapon"
+            md-items="weaponType in searchArray(attack.weapon,creatureData.weaponTypes)"
+            md-item-text="weaponType"
+            md-floating-label="Weapon">
+          <md-item-template>
+            <span>{{weaponType}}</span>
+          </md-item-template>
+        </md-autocomplete>
+        <md-input-container>
+          <md-checkbox ng-model="attack.melee" aria-label="Melee">
+            Melee
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="attack.ranged" aria-label="Ranged">
+            Ranged
+          </md-checkbox>
+        </md-input-container>
+      </section>
+      <section layout="row" style="width:100%;" layout-align="center center">
+        <md-input-container>
+          <md-checkbox ng-model="attack.finesse" aria-label="Finesse">
+            Finesse
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="attack.versatile" aria-label="Versatile">
+            Versatile
+          </md-checkbox>
+        </md-input-container>
+        <md-input-container>
+          <md-checkbox ng-model="attack.bonusDamage" aria-label="Bonus Damage">
+            Bonus Damage
+          </md-checkbox>
+        </md-input-container>
+      </section>
+      <section layout="row" style="width:100%;">
+        <md-input-container ng-if="attack.melee" flex>
+          <label>Reach (ft.)</label>
+          <input ng-model="attack.reach" type="number"/>
+        </md-input-container>
+        <md-input-container ng-if="attack.ranged" flex>
+          <label>Short Range (ft.)</label>
+          <input ng-model="attack.shortRange" type="number"/>
+        </md-input-container>
+        <md-input-container ng-if="attack.ranged" flex>
+          <label>Long Range (ft.)</label>
+          <input ng-model="attack.longRange" type="number"/>
+        </md-input-container>
+      </section>
+      <section ng-if="attack.melee" layout="row" style="width:100%;">
+        <md-autocomplete flex
+            md-search-text="attack.damageType"
+            md-items="damageType in searchArray(attack.damageType,creatureData.damageTypes)"
+            md-item-text="damageType"
+            md-floating-label="Melee Damage Type">
+          <md-item-template>
+            <span>{{damageType}}</span>
+          </md-item-template>
+        </md-autocomplete>
+        <md-input-container flex>
+          <label>Num. Damage Dice</label>
+          <input ng-model="attack.damageDiceNum" type="number"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Size of Damage Dice</label>
+          <input ng-model="attack.damageDiceSize" type="number"/>
+        </md-input-container>
+      </section>
+      <section ng-if="attack.ranged" layout="row" style="width:100%;">
+        <md-autocomplete flex
+            md-search-text="attack.rangedDamageType"
+            md-items="damageType in searchArray(attack.rangedDamageType,creatureData.damageTypes)"
+            md-item-text="damageType"
+            md-floating-label="Ranged Damage Type">
+          <md-item-template>
+            <span>{{damageType}}</span>
+          </md-item-template>
+        </md-autocomplete>
+        <md-input-container flex>
+          <label>Num. Damage Dice</label>
+          <input ng-model="attack.rangedDamageDiceNum" type="number"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Size of Damage Dice</label>
+          <input ng-model="attack.rangedDamageDiceSize" type="number"/>
+        </md-input-container>
+      </section>
+      <section ng-if="attack.versatile" layout="row" style="width:100%;">
+        <md-autocomplete flex
+            md-search-text="attack.twoHandedDamageType"
+            md-items="damageType in searchArray(attack.twoHandedDamageType,creatureData.damageTypes)"
+            md-item-text="damageType"
+            md-floating-label="Two-Handed Damage Type">
+          <md-item-template>
+            <span>{{damageType}}</span>
+          </md-item-template>
+        </md-autocomplete>
+        <md-input-container flex>
+          <label>Num. Damage Dice</label>
+          <input ng-model="attack.twoHandedDamageDiceNum" type="number"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Size of Damage Dice</label>
+          <input ng-model="attack.twoHandedDamageDiceSize" type="number"/>
+        </md-input-container>
+      </section>
+      <section ng-if="attack.bonusDamage" layout="row" style="width:100%;">
+        <md-autocomplete flex
+            md-search-text="attack.bonusDamageType"
+            md-items="damageType in searchArray(attack.bonusDamageType,creatureData.damageTypes)"
+            md-item-text="damageType"
+            md-floating-label="Bonus Damage Type">
+          <md-item-template>
+            <span>{{damageType}}</span>
+          </md-item-template>
+        </md-autocomplete>
+        <md-input-container flex>
+          <label>Num. Damage Dice</label>
+          <input ng-model="attack.bonusDamageDiceNum" type="number"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Size of Damage Dice</label>
+          <input ng-model="attack.bonusDamageDiceSize" type="number"/>
+        </md-input-container>
+      </section>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+    	<md-button type="submit" class="md-raised md-button md-primary">Generate Attack</md-button>
+  	</md-dialog-actions>
+
+  </form>
+</md-dialog>

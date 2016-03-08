@@ -1,0 +1,93 @@
+<form name="statsForm" class="stats-form">
+  <h4>Ability Scores</h4>
+  <section layout="row" layout-align="center center" layout-wrap>
+    <md-input-container flex>
+      <label>STR</label>
+      <input ng-model="creature.stats.abilityScores.strength" type="number"/>
+    </md-input-container>
+    <md-input-container flex>
+      <label>DEX</label>
+      <input ng-model="creature.stats.abilityScores.dexterity" type="number"/>
+    </md-input-container>
+    <md-input-container flex>
+      <label>CON</label>
+      <input ng-model="creature.stats.abilityScores.constitution" type="number"/>
+    </md-input-container>
+    <md-input-container flex>
+      <label>INT</label>
+      <input ng-model="creature.stats.abilityScores.intelligence" type="number"/>
+    </md-input-container>
+    <md-input-container flex>
+      <label>WIS</label>
+      <input ng-model="creature.stats.abilityScores.wisdom" type="number"/>
+    </md-input-container>
+    <md-input-container flex>
+      <label>CHA</label>
+      <input ng-model="creature.stats.abilityScores.charisma" type="number"/>
+    </md-input-container>
+  </section>
+
+  <md-input-container flex>
+    <label>Proficiency Bonus</label>
+    <input ng-model="creature.stats.proficiencyBonus" type="number"/>
+  </md-input-container>
+
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="savingThrows.add()" class="md-raised">Add Saving Throw</md-button>
+    </div>
+    <div ng-repeat="savingThrow in creature.stats.savingThrows" class="saving-throw-row">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Saving Throw</label>
+          <md-select ng-model="savingThrow.ability">
+            <md-option ng-repeat="ability in savingThrows.getUnused(savingThrow)" value="{{ability}}">
+              {{ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase()}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-checkbox ng-model="savingThrow.proficient" ng-change="savingThrow.value=undefined" aria-label="Proficient" style="margin-left:10px;margin-right:10px;">
+          Proficient
+        </md-checkbox>
+        <md-input-container flex>
+          <label>Specific Value</label>
+          <input ng-model="savingThrow.value" ng-change="savingThrow.proficient=false" type="number"/>
+        </md-input-container>
+        <button ng-click="savingThrows.remove(savingThrow)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Saving Throws</div>
+  </section>
+  <br>
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="skills.add()" class="md-raised">Add Skill</md-button>
+    </div>
+    <div ng-repeat="skill in creature.stats.skills" class="saving-throw-row">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Skill</label>
+          <md-select ng-model="skill.name">
+            <md-option ng-repeat="skillName in skills.getUnused(skill)" value="{{skillName}}">
+              {{skillName.charAt(0).toUpperCase() + skillName.slice(1).toLowerCase()}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-checkbox ng-model="skill.proficient" ng-change="skill.value=undefined" aria-label="Proficient" style="margin-left:10px;margin-right:10px;">
+          Proficient
+        </md-checkbox>
+        <md-input-container flex>
+          <label>Specific Value</label>
+          <input ng-model="skill.value" ng-change="skill.proficient=false" type="number"/>
+        </md-input-container>
+        <button ng-click="skills.remove(skill)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Skills</div>
+  </section>
+  <br />
+</form>

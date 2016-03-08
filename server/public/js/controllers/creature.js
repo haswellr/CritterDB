@@ -280,7 +280,13 @@ var defaultCreature = {
 
 //don't load controller until we've gotten the data from the server
 creatureCtrl.resolve = {
-			creature: function(Creature, Bestiary, $q, $route, Auth, $location){
+			creature: ['Creature',
+								'Bestiary',
+								'$q',
+								'$route',
+								'Auth',
+								'$location',
+								function(Creature, Bestiary, $q, $route, Auth, $location){
 				var deferred = $q.defer();
 				Auth.executeOnLogin(function(){
 					if(!Auth.isLoggedIn()){
@@ -319,7 +325,7 @@ creatureCtrl.resolve = {
 					}
 				});
 				return deferred.promise;
-			}
+			}]
 		}
 
 angular.module('myApp').controller('creatureCtrl',creatureCtrl);
@@ -331,13 +337,12 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 
 	$scope.attack = {
 		weapon: '',
-		ability: 'strength',
 		melee: true,
 		ranged: false,
 		reach: 5,
 		shortRange: 80,
 		longRange: 320,
-		damageType: '',
+		damageType: 'Slashing',
 		damageDiceSize: 6,
 		damageDiceNum: 1,
 	};

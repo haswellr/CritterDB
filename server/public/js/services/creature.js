@@ -154,7 +154,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 			creature.stats.passivePerception = 10 + mod;
 		}
 		//challenge rating
-		if(creature.stats && creature.stats.challengeRating){
+		if(creature.stats && creature.stats.challengeRating!=undefined){
 			if(creature.stats.challengeRating==0.125)
 				creature.stats.challengeRatingStr = "1/8";
 			else if(creature.stats.challengeRating==0.25)
