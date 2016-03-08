@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
 //server public folder
-app.use("/assets",express.static(path.join(__dirname,"public")));
+app.use("/assets",express.static(path.join(__dirname,"dist")));
 
 //Serve front end
 app.get('/',function(req,res){

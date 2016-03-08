@@ -1,0 +1,75 @@
+<form name="abilitiesForm" class="stats-form">
+
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="abilities.addToList(creature.stats.actions)" class="md-raised">Add Action</md-button>
+      <md-button ng-click="generateAttack($event)" class="md-raised">Generate Attack</md-button>
+    </div>
+    <div ng-repeat="ability in creature.stats.actions" class="saving-throw-row" style="height:auto;">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Name</label>
+          <input ng-model="ability.name" type="text"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="ability.description" type="text"></textarea>
+        </md-input-container>
+        <button ng-click="abilities.removeFromList(ability,creature.stats.actions)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Actions</div>
+  </section>
+
+  <br />
+
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="abilities.addToList(creature.stats.reactions)" class="md-raised">Add Reaction</md-button>
+    </div>
+    <div ng-repeat="ability in creature.stats.reactions" class="saving-throw-row" style="height:auto;">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Name</label>
+          <input ng-model="ability.name" type="text"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="ability.description" type="text"></textarea>
+        </md-input-container>
+        <button ng-click="abilities.removeFromList(ability,creature.stats.reactions)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Reactions</div>
+  </section>
+
+  <br />
+
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="abilities.addToList(creature.stats.additionalAbilities)" class="md-raised">Add Ability</md-button>
+    </div>
+    <div ng-repeat="ability in creature.stats.additionalAbilities" class="saving-throw-row" style="height:auto;">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Name</label>
+          <input ng-model="ability.name" type="text"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="ability.description" type="text"></textarea>
+        </md-input-container>
+        <button ng-click="abilities.removeFromList(ability,creature.stats.additionalAbilities)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Abilities</div>
+  </section>
+
+  <br />
+</form>
