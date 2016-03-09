@@ -349,8 +349,10 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 
 	var createDamageStr = function(damageType,diceSize,numDice,modifier){
 		var avgDamage = Math.floor(numDice * (diceSize/2.0)) + modifier;
-		var damageStr = avgDamage + " (" + numDice + "d" + diceSize + " + "
-				+ modifier + ") " + damageType + " damage";
+		var damageStr = avgDamage + " (" + numDice + "d" + diceSize;
+		if(modifier!=0)
+			damageStr = damageStr + " + "	+ modifier;
+		damageStr = damageStr + ") " + damageType + " damage";
 		return(damageStr);
 	}
 
