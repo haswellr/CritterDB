@@ -32,7 +32,7 @@ angular.module('myApp').factory("CreatureData", function() {
 		"Prone","Restrained","Stunned","Unconscious"];
 	CreatureData.attackTypes = ["Melee Weapon Attack","Ranged Weapon Attack",
 		"Melee or Ranged Weapon Attack","Melee Spell Attack","Ranged Spell Attack"];
-	CreatureData.experienceByCR = {'0.0': 10,'0.125': 25,'0.25': 50,'0.5': 100,
+	CreatureData.experienceByCR = {'0': 10,'0.125': 25,'0.25': 50,'0.5': 100,
 		'1': 200,'2': 450,'3': 700,'4': 1100,'5': 1800,'6': 2300,'7': 2900,
 		'8': 3900,'9': 5000,'10': 5900,'11': 7200,'12': 8400,'13': 10000,
 		'14': 11500,'15': 13000,'16': 15000,'17': 18000,'18': 20000,'19': 22000,
