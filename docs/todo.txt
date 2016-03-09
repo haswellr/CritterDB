@@ -3,6 +3,7 @@
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
 -Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them.
 
+-Filter button on view bestiary should be highlighted or show a little red number or something if filters are active but it is closed.
 -Reset password is not scaled appropriately on small screens (like phones)
 -Cross-browser
 
