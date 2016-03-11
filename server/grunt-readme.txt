@@ -1,4 +1,4 @@
-npm install grunt -g
+npm install grunt-cli -g
 
 then 'grunt watch' while developing to watch for changes and update accordingly.
 
