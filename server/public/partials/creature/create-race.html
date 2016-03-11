@@ -23,7 +23,14 @@
     </md-input-container>
   </section>
   <section layout="row" flex style="margin-top:-23px;margin-bottom:46px;">
-    <md-chips ng-model="creature.stats.senses" placeholder="Senses" style="width:100%;">
+    <md-chips ng-model="creature.stats.senses" md-autocomplete-snap md-require-match="false" style="width:100%;">
+      <md-autocomplete
+          md-search-text="creature.stats.sensesSearch"
+          md-items="sense in searchArray(creature.stats.sensesSearch,creatureData.senses,true)"
+          md-item-text="sense"
+          placeholder="Senses">
+        <span md-highlight-text="creature.stats.sensesSearch">{{sense}}</span>
+      </md-autocomplete>
       <md-chip-template>
         <span>
           <em>{{$chip}}</em>
@@ -35,7 +42,7 @@
     <md-chips ng-model="creature.stats.languages" md-autocomplete-snap md-require-match="false" style="width:100%;">
       <md-autocomplete
           md-search-text="creature.stats.languagesSearch"
-          md-items="language in searchArray(creature.stats.languagesSearch,creatureData.languages)"
+          md-items="language in searchArray(creature.stats.languagesSearch,creatureData.languages,true)"
           md-item-text="language"
           placeholder="Languages">
         <span md-highlight-text="creature.stats.languagesSearch">{{language}}</span>

@@ -24,6 +24,7 @@ angular.module('myApp').factory("CreatureData", function() {
 	CreatureData.damageTypes = ["Slashing","Piercing","Bludgeoning","Acid","Fire",
 		"Cold","Poison","Necrotic","Radiant","Lightning","Psychic","Thunder",
 		"Force"];
+	CreatureData.senses = [];
 	CreatureData.languages = ["Common","Dwarvish","Elvish","Giant","Gnomish",
 		"Goblin","Halfling","Orc","Abyssal","Celestial","Draconic","Deep Speech",
 		"Infernal","Primordial","Auran","Aquan","Ignan","Terran","Sylvan","Undercommon"];

@@ -23,7 +23,7 @@
 	<md-chips ng-model="creature.stats.damageVulnerabilities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.damageVulnerabilitiesSearch"
-        md-items="vulnerability in searchArray(creature.stats.damageVulnerabilitiesSearch,creatureData.damageTypes)"
+        md-items="vulnerability in searchArray(creature.stats.damageVulnerabilitiesSearch,creatureData.damageTypes,true)"
         md-item-text="vulnerability"
         placeholder="Damage Vulnerabilities">
       <span md-highlight-text="creature.stats.damageVulnerabilitiesSearch">{{vulnerability}}</span>
@@ -40,7 +40,7 @@
   <md-chips ng-model="creature.stats.damageResistances" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.damageResistancesSearch"
-        md-items="resistance in searchArray(creature.stats.damageResistancesSearch,creatureData.damageTypes)"
+        md-items="resistance in searchArray(creature.stats.damageResistancesSearch,creatureData.damageTypes,true)"
         md-item-text="resistance"
         placeholder="Damage Resistances">
       <span md-highlight-text="creature.stats.damageResistancesSearch">{{resistance}}</span>
@@ -57,7 +57,7 @@
   <md-chips ng-model="creature.stats.damageImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.damageImmunitiesSearch"
-        md-items="immunity in searchArray(creature.stats.damageImmunitiesSearch,creatureData.damageTypes)"
+        md-items="immunity in searchArray(creature.stats.damageImmunitiesSearch,creatureData.damageTypes,true)"
         md-item-text="immunity"
         placeholder="Damage Immunities">
       <span md-highlight-text="creature.stats.damageImmunitiesSearch">{{immunity}}</span>
@@ -74,7 +74,7 @@
   <md-chips ng-model="creature.stats.conditionImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
         md-search-text="creature.stats.conditionImmunitiesSearch"
-        md-items="immunity in searchArray(creature.stats.conditionImmunitiesSearch,creatureData.negativeConditions)"
+        md-items="immunity in searchArray(creature.stats.conditionImmunitiesSearch,creatureData.negativeConditions,true)"
         md-item-text="immunity"
         placeholder="Condition Immunities">
       <span md-highlight-text="creature.stats.conditionImmunitiesSearch">{{immunity}}</span>

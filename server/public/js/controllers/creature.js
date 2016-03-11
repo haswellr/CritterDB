@@ -5,8 +5,10 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 	$scope.creature = creature;
 
 	$scope.creatureData = CreatureData;
-	$scope.searchArray = function(searchText,arrayToSearch){
+	$scope.searchArray = function(searchText,arrayToSearch,includeSearch){
 		var returnedVals = [];
+		if(includeSearch)
+			returnedVals.push(searchText);
 		if(searchText && arrayToSearch){
 			var searchTextLower = searchText.toLowerCase();
 			for(var i=0;i<arrayToSearch.length;i++){
@@ -14,6 +16,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 					returnedVals.push(arrayToSearch[i]);
 			}
 		}
+		console.log("returned vals: "+JSON.stringify(returnedVals));
 		return(returnedVals);
 	}
 
