@@ -1,5 +1,11 @@
 
--IMPORTANT: database access login/password should not be stored in git! config file may need to be kept outside of git, but maybe keep a 'sample config' file in there.
+Feedback from reddit post:
+-Add ability to manually set hit die size
+-The chips for Senses/Languages/etc are confusing. It should work with a semicolon and should auto-chip when you unfocus the field? Or maybe have the 'autofill' menu also include an entry with what you have currently typed! (this could be the easiest and most consistent)
+-EXPORT TO IMAGE! This seems very important.
+-Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
+-Respond to 'Myrodis' message regarding website collaboration.
+
 
 -Ability to copy creatures from one bestiary to another. One way would be as a copy/paste where multiple creatures could be on your clipboard at once. The 'paste' button would appear on inner header if 1 or more creatures are on your clipboard. Have some way to clear your clipboard and to indicate what is on your clipboard (or at least how many creatures are on it).
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
