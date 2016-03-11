@@ -393,7 +393,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 		if(attack.versatile)
 			twoHandedDamageStr = createDamageStr(attack.twoHandedDamageType,attack.twoHandedDamageDiceSize,attack.twoHandedDamageDiceNum,damageMod);
 		if(attack.bonusDamage)
-			bonusDamageStr = createDamageStr(attack.bonusDamageType,attack.bonusDamageDiceSize,attack.bonusDamageDiceNum,damageMod);
+			bonusDamageStr = createDamageStr(attack.bonusDamageType,attack.bonusDamageDiceSize,attack.bonusDamageDiceNum,0);
 		var hitStr;
 		if(attack.melee){
 			hitStr = meleeDamageStr;
