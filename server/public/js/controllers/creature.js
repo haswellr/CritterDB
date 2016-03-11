@@ -16,7 +16,6 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 					returnedVals.push(arrayToSearch[i]);
 			}
 		}
-		console.log("returned vals: "+JSON.stringify(returnedVals));
 		return(returnedVals);
 	}
 
