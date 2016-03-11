@@ -18,7 +18,7 @@ var sendWelcomeEmail = function(email){
         from: '"'+config.email.name+'" <'+config.email.address+'>',
         to: email,
         subject: 'Welcome to Critter DB',
-        text: 'Thanks for joining Critter DB! I hope it helps you with all your critter management needs. Please send any feedback to critterdbmail@gmail.com.\n\nThanks,\nRyan'
+        text: 'Thanks for joining Critter DB! I hope it helps you with all your critter management needs. Please send any feedback to contact@critterdb.com.\n\nThanks,\nRyan'
     };
     transporter.sendMail(mailOptions,function(error, info){
         if(error)
