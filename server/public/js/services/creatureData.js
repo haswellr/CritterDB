@@ -26,7 +26,7 @@ angular.module('myApp').factory("CreatureData", function() {
 		"Force"];
 	CreatureData.languages = ["Common","Dwarvish","Elvish","Giant","Gnomish",
 		"Goblin","Halfling","Orc","Abyssal","Celestial","Draconic","Deep Speech",
-		"Infernal","Primordial","Sylvan","Undercommon"];
+		"Infernal","Primordial","Auran","Aquan","Ignan","Terran","Sylvan","Undercommon"];
 	CreatureData.negativeConditions = ["Blinded","Charmed","Deafened",
 		"Encumbered","Exhaustion","Frightened","Intoxicated","Paralyzed","Poisoned",
 		"Prone","Restrained","Stunned","Unconscious"];
