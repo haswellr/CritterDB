@@ -72,4 +72,32 @@
   </section>
 
   <br />
+
+  <section class="subsection" layout="row" layout-align="center center" layout-wrap>
+    <div layout="row" style="height:50px;">
+      <md-button ng-click="abilities.addToList(creature.stats.legendaryActions)" class="md-raised">Add Legendary Action</md-button>
+    </div>
+    <div ng-repeat="ability in creature.stats.legendaryActions" class="saving-throw-row" style="height:auto;">
+      <section layout="row" style="width:100%;">
+        <md-input-container flex>
+          <label>Name</label>
+          <input ng-model="ability.name" type="text"/>
+        </md-input-container>
+        <md-input-container flex>
+          <label>Description</label>
+          <textarea ng-model="ability.description" type="text"></textarea>
+        </md-input-container>
+        <button ng-click="abilities.removeFromList(ability,creature.stats.legendaryActions)" class="md-primary remove-saving-throw">
+          <md-icon md-svg-icon="md-close"></md-icon>
+        </button>
+      </section>
+    </div>
+    <div class="label">Legendary Actions</div>
+    <md-input-container ng-if="creature.stats.legendaryActions.length>0" class="sub-number" flex>
+      <label>Per Round</label>
+      <input ng-model="creature.stats.legendaryActionsPerRound" min="1" type="number"/>
+    </md-input-container>
+  </section>
+
+  <br />
 </form>
