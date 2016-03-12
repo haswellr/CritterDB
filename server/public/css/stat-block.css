@@ -1,0 +1,164 @@
+
+div.stat-block table.ability-scores {
+  width: 100%;
+  border: 0px;
+  border-collapse: collapse;
+}
+div.stat-block table.ability-scores th, td {
+  width: 50px;
+  text-align: center;
+}
+div.stat-block div.tapered-rule {
+  background-color: #922610;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: calc(100% - 12px);
+    height: 4px;
+
+    background: url("/assets/img/tapered-rule.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+div.stat-block div.top-stats {
+  color: #7A200D;
+}
+
+div.stat-block div.header-bar {
+  height: 4px;
+  background: rgba(230,154,40,1.0);
+  border: 1px solid rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+  margin: 0px 1px;
+}
+
+div.stat-block {
+  display: inline-block;
+  font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial,
+                sans-serif;
+  font-size: 13px;
+  background: rgba(253,241,220,0.85);
+  padding: 7px;
+  border: 1px rgba(122,32,13,0.15) solid;
+  box-shadow: 0 0 0.25em rgba(134,116,83,0.5);
+
+  /* We don't want the box-shadow in front of the bar divs. */
+  position: relative;
+  z-index: 0;
+
+  margin: 4px 4px;
+
+  /* This is possibly overriden by next CSS rule. */
+
+  /*-webkit-columns: 325px;
+     -moz-columns: 325px;
+          columns: 325px;
+  -webkit-column-gap: 40px;
+     -moz-column-gap: 40px;
+          column-gap: 40px;*/
+
+  /* When height is constrained, we want sequential filling of columns. */
+  -webkit-column-fill: auto;
+     -moz-column-fill: auto;
+          column-fill: auto;
+}
+
+:host([data-two-column]) #content-wrap {
+  /* One column is 400px and the gap between them is 40px. */
+  width: 840px;
+}
+
+div.stat-block > h3 {
+  border-bottom: 1px solid #7A200D;
+  color: #7A200D;
+  font-size: 21px;
+  font-variant: small-caps;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin: 0;
+  margin-bottom: 0.3em;
+
+  break-before: column;
+  break-inside: avoid-column;
+  break-after: avoid-column;
+}
+
+/* For user-level p elems. */
+div.stat-block > p {
+  margin-top: 0.3em;
+  margin-bottom: 0.9em;
+  line-height: 1.5;
+}
+
+/* Last child shouldn't have bottom margin, too much white space. */
+div.stat-block > *:last-child {
+  margin-bottom: 0;
+}
+
+div.stat-block div.creature-heading > h1 {
+  font-family: 'Libre Baskerville', 'Lora', 'Calisto MT',
+               'Bookman Old Style', Bookman, 'Goudy Old Style',
+               Garamond, 'Hoefler Text', 'Bitstream Charter',
+               Georgia, serif;
+  color: #7A200D;
+  font-weight: 700;
+  margin: 0px;
+  font-size: 23px;
+  letter-spacing: 1px;
+  font-variant: small-caps;
+}
+
+div.stat-block div.creature-heading > h2 {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 12px;
+  margin: 0;
+}
+
+div.stat-block div.property-line {
+  line-height: 1.2;
+  display: block;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+div.stat-block div.property-line > h4 {
+  margin: 0;
+  display: inline;
+  font-weight: bold;
+}
+
+div.stat-block div.property-line > p:first-of-type {
+  display: inline;
+  text-indent: 0;
+}
+
+div.stat-block div.property-line > p {
+  text-indent: 1em;
+  margin: 0;
+}
+
+div.stat-block div.property-block {
+  margin-top: 0.3em;
+  margin-bottom: 0.8em;
+  line-height: 1.35;
+  display: block;
+}
+
+div.stat-block div.property-block > h4 {
+  margin: 0;
+  display: inline;
+  font-weight: bold;
+  font-style: italic;
+}
+
+div.stat-block div.property-block > p:first-of-type {
+  display: inline;
+  text-indent: 0;
+}
+
+div.stat-block div.property-block > p {
+  text-indent: 1em;
+  margin: 0;
+  white-space: pre-wrap;
+}

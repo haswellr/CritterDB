@@ -73,6 +73,11 @@ myApp.config(['$routeProvider',
 				controller: 'updateUserCtrl',
 				resolve: updateUserCtrl.resolve
 			}).
+			when('/creature/export/:creatureId',{
+				templateUrl: 'assets/partials/creature/export.html',
+				controller: 'exportCreatureCtrl',
+				resolve: creatureCtrl.resolve
+			}).
 			otherwise({
 				redirectTo: '/bestiary/list'
 			});

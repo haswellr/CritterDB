@@ -20,9 +20,13 @@ module.exports = function (grunt) {
       }
     },
     concat: {
-      dist: {
+      vendor: {
         src: ['public/js/vendor/angular/angular.min.js','public/js/vendor/**/*.min.js'],
         dest: 'dist/js/vendor.min.js'
+      },
+      source: {
+        src: ['public/js/**/*.js','!public/js/annotated/**','!public/js/vendor/**'],
+        dest: 'dist/js/app.min.js'
       }
     },
     clean: {
@@ -65,7 +69,7 @@ module.exports = function (grunt) {
       },
       js:  {
         files: 'public/js/**/*.js',
-        tasks: [ 'ngAnnotate', 'concat', 'uglify', 'clean:annotations']
+        tasks: ['concat']
       },
       fonts: {
         files: 'public/fonts/**',
@@ -92,6 +96,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // register at least this one task
-  grunt.registerTask('default', [ 'clean', 'ngAnnotate', 'concat', 'uglify', 'clean:annotations', 'copy', 'cssmin']);
+  grunt.registerTask('default', [ 'clean', 'ngAnnotate', 'concat:vendor', 'uglify', 'clean:annotations', 'copy', 'cssmin']);
 
 };
