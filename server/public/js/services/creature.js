@@ -90,6 +90,12 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 				ability.descriptionHtml = $sce.trustAsHtml(ability.description);
 			}
 		}
+		if(creature.stats && creature.stats.legendaryActions){
+			for(var index in creature.stats.legendaryActions){
+				var ability = creature.stats.legendaryActions[index];
+				ability.descriptionHtml = $sce.trustAsHtml(ability.description);
+			}
+		}
 		//make description html safe so we can use italics and other markup
 		if(creature.flavor && creature.flavor.description!=undefined){
 			creature.flavor.descriptionHtml = $sce.trustAsHtml(creature.flavor.description);

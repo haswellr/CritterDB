@@ -282,6 +282,14 @@ button.create-continue {
   opacity: 0.64;
 }
 
+.stats-form section.subsection md-input-container.sub-number {
+  position: absolute;
+  top: -2px;
+  right: 7px;
+  width: 20%;
+  font-size: 14px;
+}
+
 .stats-form section.subsection md-checkbox {
   margin: 18px 10px 0px 10px;
   /*background-color: rgba(0,0,0,0.075);*/
