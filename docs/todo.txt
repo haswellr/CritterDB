@@ -1,6 +1,7 @@
 
 Feedback from reddit post:
 -Add ability to manually set hit die size
+-Pre-parse text for ability fields to handle newlines and spaces (replace with <br> or &nbsp).
 -EXPORT TO IMAGE! This seems very important.
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -Respond to 'Myrodis' message regarding website collaboration.

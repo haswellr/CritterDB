@@ -29,8 +29,8 @@ angular.module('myApp').factory("CreatureData", function() {
 		"Goblin","Halfling","Orc","Abyssal","Celestial","Draconic","Deep Speech",
 		"Infernal","Primordial","Auran","Aquan","Ignan","Terran","Sylvan","Undercommon"];
 	CreatureData.negativeConditions = ["Blinded","Charmed","Deafened",
-		"Encumbered","Exhaustion","Frightened","Grappled","Intoxicated","Paralyzed","Poisoned",
-		"Prone","Restrained","Stunned","Unconscious"];
+		"Encumbered","Exhaustion","Frightened","Grappled","Intoxicated","Paralyzed","Petrified",
+		"Poisoned","Prone","Restrained","Stunned","Unconscious"];
 	CreatureData.attackTypes = ["Melee Weapon Attack","Ranged Weapon Attack",
 		"Melee or Ranged Weapon Attack","Melee Spell Attack","Ranged Spell Attack"];
 	CreatureData.experienceByCR = {'0': 10,'0.125': 25,'0.25': 50,'0.5': 100,
