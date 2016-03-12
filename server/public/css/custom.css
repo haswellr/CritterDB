@@ -90,13 +90,12 @@ section.login-area md-content.login-body{
   -webkit-column-fill: auto;
   -moz-column-fill: auto;
   column-fill: auto;
-  margin: 0px 9.5px;
-  width: calc(100% - 12px);
+  padding: 3px 3px;
 }
 
 .fallingColumnsItem {
   -webkit-column-break-inside: avoid;
-  -moz-column-inside: avoid;
+  -moz-column-break-inside: avoid;
   column-break-inside: avoid;
 }
 
