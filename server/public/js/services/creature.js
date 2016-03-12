@@ -1,19 +1,6 @@
-angular.module('myApp').factory("Creature", function($resource,$sce,CachedResourceAPI) {
+angular.module('myApp').factory("Creature", function($resource,$sce,CachedResourceAPI,CreatureData) {
 
 	var CreatureAPI = new CachedResourceAPI("/api/creatures/:id");
-
-  var hitDieSize = {
-		"Fine": 4,
-		"Diminutive": 4,
-		"Tiny": 4,
-		"Small": 6,
-		"Medium": 8,
-		"Large": 10,
-		"Huge": 12,
-		"Gargantuan": 20,
-		"Colossal": 20,
-		"Colossal+": 20
-	};
 
 	var shortFormAbilities = {
 		"strength": "Str",
@@ -73,7 +60,8 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 		}
 		//hit points
 		if(creature.stats && creature.stats.size && creature.stats.abilityScoreModifiers && creature.stats.numHitDie){
-			creature.stats.hitDieSize = hitDieSize[creature.stats.size];
+			if(!creature.stats.hitDieSize)
+				creature.stats.hitDieSize = CreatureData.hitDieSizeBySize[creature.stats.size];
 			creature.stats.extraHealthFromConstitution = creature.stats.abilityScoreModifiers["constitution"] * creature.stats.numHitDie;
 			creature.stats.hitPoints = Math.floor(creature.stats.numHitDie * ((creature.stats.hitDieSize/2.0) + 0.5 + creature.stats.abilityScoreModifiers["constitution"]));
 			var sign = "+";

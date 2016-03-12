@@ -163,6 +163,16 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			$scope.race.changed();
 	},true);
 
+	$scope.size = {
+		changed: function(){
+			$scope.creature.stats.hitDieSize = CreatureData.hitDieSizeBySize[$scope.creature.stats.size];
+		}
+	}
+	$scope.$watch("creature.stats.size",function(newValue,oldValue){
+		if(oldValue!=newValue)
+			$scope.size.changed();
+	},true);
+
 	$scope.armorType = {
 		changed: function(){
 			var armorType = $scope.creature.stats.armorType;

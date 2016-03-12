@@ -45,6 +45,18 @@ angular.module('myApp').factory("CreatureData", function() {
 		"Greatsword","Halberd","Lance","Longsword","Maul","Morningstar","Pike",
 		"Rapier","Scimitar","Shortsword","Trident","War pick","Warhammer","Whip",
 		"Blowgun","Crossbow, hand","Crossbow, heavy","Longbow","Net"];
+	CreatureData.hitDieSizeBySize = {
+		"Fine": 4,
+		"Diminutive": 4,
+		"Tiny": 4,
+		"Small": 6,
+		"Medium": 8,
+		"Large": 10,
+		"Huge": 12,
+		"Gargantuan": 20,
+		"Colossal": 20,
+		"Colossal+": 20
+	};
 	CreatureData.raceDefaults = {
 		'Dwarf': {
 			size: "Medium",
