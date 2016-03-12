@@ -2,7 +2,7 @@
   <section layout="row" flex style="height:68px">
   	<md-input-container flex>
   	  <label>Number of Hit Die</label>
-  	  <input ng-model="creature.stats.numHitDie" type="number"/>
+  	  <input ng-model="creature.stats.numHitDie" min="1" type="number"/>
   	</md-input-container>
     <md-autocomplete flex
         md-search-text="creature.stats.armorType"

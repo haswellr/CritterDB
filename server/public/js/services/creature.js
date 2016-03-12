@@ -111,7 +111,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 			for(var index in creature.stats.savingThrows){
 				var savingThrow = creature.stats.savingThrows[index];
 				var mod = creature.stats.abilityScoreModifiers[savingThrow.ability];
-				if(savingThrow.value)
+				if(savingThrow.value != undefined)
 					mod = savingThrow.value;
 				else if(savingThrow.proficient)
 					mod = mod + creature.stats.proficiencyBonus;
@@ -128,7 +128,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 				var skill = creature.stats.skills[index];
 				var ability = skillAbilities[skill.name];
 				var mod = creature.stats.abilityScoreModifiers[ability];
-				if(skill.value)
+				if(skill.value != undefined)
 					mod = skill.value;
 				else if(skill.proficient)
 					mod = mod + creature.stats.proficiencyBonus;
