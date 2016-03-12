@@ -130,6 +130,9 @@ var StatBlock = new mongoose.Schema(
             type: Number,
             default: 10
         },
+        hitDieSize: {
+            type: Number
+        },
         numHitDie: {
             type: Number,
             default: 1

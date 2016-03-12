@@ -4,6 +4,10 @@
   	  <label>Number of Hit Die</label>
   	  <input ng-model="creature.stats.numHitDie" min="1" type="number"/>
   	</md-input-container>
+    <md-input-container flex>
+      <label>Size of Hit Die</label>
+      <input ng-model="creature.stats.hitDieSize" min="1" type="number"/>
+    </md-input-container>
     <md-autocomplete flex
         md-search-text="creature.stats.armorType"
         md-items="armorType in searchArray(creature.stats.armorType,creatureData.armorTypes)"
