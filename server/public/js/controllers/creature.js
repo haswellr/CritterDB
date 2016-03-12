@@ -1,6 +1,4 @@
 
-
-
 var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog) {
 	$scope.creature = creature;
 
