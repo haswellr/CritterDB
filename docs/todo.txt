@@ -2,7 +2,6 @@
 Feedback from reddit post:
 -EXPORT TO IMAGE! This seems very important.
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
--Legendary Actions (maybe allow for custom ability sections too/instead?)
 
 -'Generate Spellcasting' action
 -Autofill special abilities for races as well
