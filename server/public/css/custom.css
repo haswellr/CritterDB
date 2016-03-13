@@ -439,3 +439,7 @@ md-dialog.generate-attack-dialog md-checkbox span {
     font-size: 16px;
   }
 }
+
+div.save-image-stat-block {
+  display: block;
+}

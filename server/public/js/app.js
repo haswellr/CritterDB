@@ -73,9 +73,9 @@ myApp.config(['$routeProvider',
 				controller: 'updateUserCtrl',
 				resolve: updateUserCtrl.resolve
 			}).
-			when('/creature/export/:creatureId',{
-				templateUrl: 'assets/partials/creature/export.html',
-				controller: 'exportCreatureCtrl',
+			when('/creature/image/:creatureId',{
+				templateUrl: 'assets/partials/creature/image.html',
+				controller: 'creatureImageCtrl',
 				resolve: creatureCtrl.resolve
 			}).
 			otherwise({

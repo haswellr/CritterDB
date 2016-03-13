@@ -16,7 +16,7 @@ Feedback from reddit post:
 -Filter button on view bestiary should be highlighted or show a little red number or something if filters are active but it is closed.
 -Ability to remove name filters (maybe name filters should be chips?)
 -Reset password is not scaled appropriately on small screens (like phones)
--Cross-browser
+-Cross-browser - columns don't work on firefox, IE is totally untested.
 
 - Add autofill for abilities based on the ability name and abilities in the monster manual.
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
