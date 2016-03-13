@@ -45,6 +45,7 @@ div.stat-block {
   /* We don't want the box-shadow in front of the bar divs. */
   position: relative;
   z-index: 0;
+  width: calc(100% - 22px);
 
   margin: 4px 4px;
 
