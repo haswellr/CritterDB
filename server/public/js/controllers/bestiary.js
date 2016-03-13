@@ -90,6 +90,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		$location.url("/creature/edit/"+creature._id);
 	}
 
+	$scope.saveImageOfCreature = function(creature){
+		$location.url("/creature/image/"+creature._id);
+	}
+
 	$scope.copyCreature = function(creature){
 		var newCreature = angular.copy(creature);
 		newCreature._id = undefined;
@@ -174,7 +178,8 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	$scope.creatureApi = {
 		edit: $scope.editCreature,
 		copy: $scope.copyCreature,
-		delete: $scope.deleteCreature
+		delete: $scope.deleteCreature,
+		saveImage: $scope.saveImageOfCreature
 	};
 };
 
