@@ -1,10 +1,13 @@
 
+-Hide save-as-image icon on create creature page when on small screen sizes/mobile. (DONE BUT CHECK THAT IT WORKED)
+
 Imortant:
 -Upgrade to more robust database service
+-About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -Different views for viewing bestiary? maybe a way to increase font size on a/all stat blocks, and a way to switch to landscape mode
 -UI is not working correctly on Chrome or Safari on iOS.
--Move HTML -> image exporting to the back end so that we can do it properly.
+-Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least)
 
 -Autofill special abilities for races as well
 
