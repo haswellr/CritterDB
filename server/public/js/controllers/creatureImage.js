@@ -6,11 +6,16 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 		width: 500,
 		background: true,
 		border: true,
-		landscape: false
+		landscape: false,
+		showCRTag: false
 	};
 	$scope.$watch("image.background",function(newValue,oldValue){
 		if(oldValue!=newValue)
 			$scope.image.border = newValue;
+	},true);
+	$scope.$watch("image.landscape",function(newValue,oldValue){
+		if(oldValue!=newValue && newValue==true)
+			$scope.image.showCRTag = false;
 	},true);
 
 	$scope.getStatBlockStyle = function(){
@@ -39,6 +44,7 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 			style['column-count'] = 2;
 			style['-webkit-column-count'] = 2;
 			style['-moz-column-count'] = 2;
+			style['overflow'] = "hidden";
 		}
 		return(style);
 	}
@@ -51,10 +57,14 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 		$location.url("/bestiary/list");
 	}
 
+	$scope.editCreature = function(){
+		$location.url("/creature/edit/"+$scope.creature._id);
+	}
+
 	$scope.saveImage = function(){
 		var element = document.getElementById('stat-block');
 		html2canvas.render(element, {
-			logging: true
+
 		}).then(function(canvas){
 			var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 

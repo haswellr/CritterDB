@@ -1,6 +1,5 @@
 
 Feedback from reddit post:
--EXPORT TO IMAGE! This seems very important. (consider having a few options - with background, without background, custom background color, landscape mode)
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -Different views for viewing bestiary? maybe a way to increase font size on a/all stat blocks, and a way to switch to landscape mode
 -UI is not working correctly on Chrome or Safari on iOS.

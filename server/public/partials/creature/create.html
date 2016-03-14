@@ -17,6 +17,12 @@
 			<b>{{creature.name}}</b>
 		</h2>
 		<div class="right-side-controls">
+			<md-button ng-click="saveAsImage()" class="md-icon-button md-mini" aria-label="Save Image">
+				<md-icon>photo</md-icon>
+				<md-tooltip md-direction="left">
+	        Save As Image
+	      </md-tooltip>
+			</md-button>
 			<md-button hide-gt-sm ng-click="toggle('statblockNav');" class="md-icon-button md-mini" aria-label="Flip to Stat Block">
 				<md-icon ng-if="isOpen('statblockNav')" class="md-accent">flip_to_back</md-icon>
 				<md-icon ng-if="!isOpen('statblockNav')">flip_to_front</md-icon>

@@ -225,6 +225,12 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		});
 	}
 
+	$scope.saveAsImage = function(){
+		$scope.saveCreature(function(){
+			$location.url("/creature/image/"+$scope.creature._id);
+		});
+	}
+
 	$scope.generateAttack = function(ev){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
     $mdDialog.show({

@@ -15,6 +15,14 @@
 			</span>
 			<b>{{creature.name}}</b>
 		</h2>
+		<div class="right-side-controls">
+			<md-button ng-click="editCreature()" class="md-icon-button md-mini" aria-label="Edit Creature">
+				<md-icon>edit</md-icon>
+				<md-tooltip md-direction="left">
+	        Edit Creature
+	      </md-tooltip>
+			</md-button>
+		</div>
 	</div>
 </md-toolbar>
 
@@ -29,18 +37,30 @@
 			<div layout="column">
 				<md-content class="content-section" layout-padding ng-style="getStatBlockStyle()">
 					<div id="stat-block">
-						<ng-stat-block creature="creature" stat-block-style="getBackgroundStyle()"></ng-stat-block>
+						<ng-stat-block creature="creature" stat-block-style="getBackgroundStyle()" hide-cr-tag="!image.showCRTag"></ng-stat-block>
 					</div>
 				</md-content>
 			</div>
 			<div layout="column" layout-align="center center" style="width:100%;margin-right:16px;">
-				<md-checkbox ng-model="image.background" aria-label="Show Background" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
-	        Show Background
-	      </md-checkbox>
-				<md-checkbox ng-if="image.background" ng-model="image.border" aria-label="Show Background" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
-	        Show Border
-	      </md-checkbox>
-	      <p style="text-align:center;font-size:12px;"><i>Your stat block will be saved as you see it here. Please make sure it fits within the window.</i></p>
+				<div layout="row" layout-align="center center">
+					<div layout="column" layout-align="center start">
+						<md-checkbox ng-model="image.background" aria-label="Show Background" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
+			        Show Background
+			      </md-checkbox>
+						<md-checkbox ng-model="image.border" aria-label="Show Background" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
+			        Show Border
+			      </md-checkbox>
+			    </div>
+			    <div layout="column" layout-align="center start">
+						<md-checkbox ng-model="image.landscape" aria-label="Landscape Mode" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
+			        Landscape
+			      </md-checkbox>
+			      <md-checkbox ng-model="image.showCRTag" aria-label="Show CR Tag" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
+			        Show CR Tag
+			      </md-checkbox>
+			    </div>
+		    </div>
+	      <p style="text-align:center;font-size:12px;"><i>Your stat block will be saved as you see it here. Please ensure that it fits within the window.</i></p>
 				<md-button ng-click="saveImage()" class="md-raised md-primary">Save Image</md-button>
 			</div>
 		</div>
