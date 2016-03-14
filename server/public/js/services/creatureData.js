@@ -295,7 +295,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 80,
 			longRange: 320,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 8
 		},
@@ -303,7 +303,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 20,
 			longRange: 60,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 4
 		},
@@ -311,7 +311,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 80,
 			longRange: 320,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6
 		},
@@ -319,7 +319,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 30,
 			longRange: 120,
-			damageType: "Bludgeoning",
+			rangedDamageType: "Bludgeoning",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 4
 		},
@@ -472,7 +472,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 25,
 			longRange: 100,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 1
 		},
@@ -480,7 +480,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 30,
 			longRange: 120,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6
 		},
@@ -488,7 +488,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 100,
 			longRange: 400,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 10
 		},
@@ -496,7 +496,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 150,
 			longRange: 600,
-			damageType: "Piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 8
 		}
