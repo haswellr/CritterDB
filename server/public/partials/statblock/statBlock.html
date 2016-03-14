@@ -1,32 +1,32 @@
 
 <div id="{{'stat-block-'+creature._id}}" class="stat-block" ng-style="statBlockStyle()">
   <div ng-if="creatureApi" class="stat-block-overlay" layout="column" layout-align="center center">
-      <section layout="column" class="side-menu">
-        <md-button ng-click="creatureApi.edit(creature)" class="md-mini" aria-label="Edit">
-          <md-icon>mode_edit</md-icon>
-          <md-tooltip md-direction="left">
-            Edit
-          </md-tooltip>
-        </md-button>
-        <md-button ng-click="creatureApi.copy(creature)" class="md-mini" aria-label="Copy">
-          <md-icon>content_copy</md-icon>
-          <md-tooltip md-direction="left">
-            Copy
-          </md-tooltip>
-        </md-button>
-        <md-button ng-click="creatureApi.saveImage(creature)" class="md-mini" aria-label="Copy">
-          <md-icon>photo</md-icon>
-          <md-tooltip md-direction="left">
-            Save as image
-          </md-tooltip>
-        </md-button>
-        <md-button ng-click="creatureApi.delete($event,creature)" class="md-mini" aria-label="Delete">
-          <md-icon>delete</md-icon>
-          <md-tooltip md-direction="left">
-            Delete
-          </md-tooltip>
-        </md-button>
-      </section>
+    <section layout="column" class="side-menu">
+      <md-button ng-click="creatureApi.edit(creature)" class="md-mini" aria-label="Edit">
+        <md-icon>mode_edit</md-icon>
+        <md-tooltip md-direction="left">
+          Edit
+        </md-tooltip>
+      </md-button>
+      <md-button hide show-gt-sm ng-click="creatureApi.saveImage(creature)" class="md-mini" aria-label="Copy">
+        <md-icon>photo</md-icon>
+        <md-tooltip md-direction="left">
+          Save as image
+        </md-tooltip>
+      </md-button>
+      <md-button ng-click="creatureApi.copy(creature)" class="md-mini" aria-label="Copy">
+        <md-icon>content_copy</md-icon>
+        <md-tooltip md-direction="left">
+          Copy
+        </md-tooltip>
+      </md-button>
+      <md-button ng-click="creatureApi.delete($event,creature)" class="md-mini" aria-label="Delete">
+        <md-icon>delete</md-icon>
+        <md-tooltip md-direction="left">
+          Delete
+        </md-tooltip>
+      </md-button>
+    </section>
   </div>
 
   <div id="{{'stat-block-inner-'+creature._id}}" class="stat-block-inner">
@@ -34,8 +34,8 @@
     <div class="creature-heading">
       <h1 style="margin-right:40px;">{{creature.name}}</h1>
       <h2>{{creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase()}} {{creature.stats.race.toLowerCase()}}, {{creature.stats.alignment.toLowerCase()}}</h2>
-      <h1 style="position:absolute;top:10px;right:6px;">{{creature.stats.challengeRatingStr}}</h1>
-      <h1 style="position:absolute;top:34px;right:6px;font-size:10px;">CR</h1>
+      <h1 ng-hide="hideCrTag==true" style="position:absolute;top:10px;right:6px;">{{creature.stats.challengeRatingStr}}</h1>
+      <h1 ng-hide="hideCrTag" style="position:absolute;top:34px;right:6px;font-size:10px;">CR</h1>
     </div>
 
     <div class="tapered-rule"></div>
