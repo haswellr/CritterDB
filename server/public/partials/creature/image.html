@@ -19,33 +19,32 @@
 </md-toolbar>
 
 <div layout="column" layout-align="top center" class="body-area">
-	<section layout="column" flex class="content-section md-whiteframe-3dp" style="overflow-y:auto;overflow-x:hidden;">
-		<div hide-gt-sm layout="row" style="width:100%;" class="save-image-stat-block" layout-align="start center">
-			<md-content class="content-section" layout-padding ng-style="getStatBlockStyle()">
-				<div id="stat-block">
-					<ng-stat-block creature="creature" stat-block-style="getBackgroundStyle()"></ng-stat-block>
-				</div>
-			</md-content>
-		</div>
-		<div layout="row" style="width:100%;margin-top:20px;" layout-align="start center">
-			<div hide show-gt-sm layout="column">
+	<section hide-gt-sm layout="column" layout-align="center center" flex class="content-section md-whiteframe-3dp">
+		<h3>Screen Too Small</h3>
+		<p style="max-width:400px;text-align:center;">Sorry! We can't save an image of your creature at this screen size. Please try on a desktop or tablet with a larger window.</p>
+		<md-button ng-click="returnToBestiary()" class="md-raised md-primary">OK</md-button>
+	</section>
+	<section hide show-gt-sm layout="column" flex class="content-section md-whiteframe-3dp" style="overflow-y:auto;overflow-x:hidden;">
+		<div layout-gt-sm="row" layout="column" style="width:100%;margin-top:20px;" layout-align="start center">
+			<div layout="column">
 				<md-content class="content-section" layout-padding ng-style="getStatBlockStyle()">
 					<div id="stat-block">
 						<ng-stat-block creature="creature" stat-block-style="getBackgroundStyle()"></ng-stat-block>
 					</div>
 				</md-content>
 			</div>
-			<div layout="column" layout-align="center center" style="width:100%;display:inline-block;">
+			<div layout="column" layout-align="center center" style="width:100%;margin-right:16px;">
 				<md-checkbox ng-model="image.background" aria-label="Show Background" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
 	        Show Background
 	      </md-checkbox>
 				<md-checkbox ng-if="image.background" ng-model="image.border" aria-label="Show Background" style="margin-left:10px;margin-right:10px;margin-bottom:10px;margin-top:10px;">
 	        Show Border
 	      </md-checkbox>
+	      <p style="text-align:center;font-size:12px;"><i>Your stat block will be saved as you see it here. Please make sure it fits within the window.</i></p>
 				<md-button ng-click="saveImage()" class="md-raised md-primary">Save Image</md-button>
 			</div>
 		</div>
-		<md-content layout="row" class="content-section create-creature-area"  style="margin: 16px; padding:16px;width:calc(100% - 32px);padding-bottom:42px;display:block;overflow-y:hidden;">
+		<md-content hide show-gt-sm layout="row" class="content-section create-creature-area"  style="margin: 16px 16px 0px 16px; padding:16px;width:calc(100% - 32px);overflow-y:hidden;">
 			<md-slider-container layout="row" style="width:100%;">
 	      <span style="margin-right:16px;min-width:25px;max-width:42px;height:25px;margin-top:14px;">Width</span>
 	      <md-slider flex min="250" max="800" ng-model="image.width" aria-label="width" id="width-slider">

@@ -5,7 +5,8 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 	$scope.image = {
 		width: 500,
 		background: true,
-		border: true
+		border: true,
+		landscape: false
 	};
 	$scope.$watch("image.background",function(newValue,oldValue){
 		if(oldValue!=newValue)
@@ -15,7 +16,8 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 	$scope.getStatBlockStyle = function(){
 		var style = {
 			'width': $scope.image.width + 'px',
-			'min-width': $scope.image.width + 'px'
+			'min-width': $scope.image.width + 'px',
+			'max-height': '100%'
 		};
 		return(style);
 	}
@@ -33,6 +35,11 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 		}
 		if(!$scope.image.background)
 			style.background = "none";
+		if($scope.image.landscape){
+			style['column-count'] = 2;
+			style['-webkit-column-count'] = 2;
+			style['-moz-column-count'] = 2;
+		}
 		return(style);
 	}
 
@@ -46,7 +53,9 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 
 	$scope.saveImage = function(){
 		var element = document.getElementById('stat-block');
-		html2canvas.render(element, {}).then(function(canvas){
+		html2canvas.render(element, {
+			logging: true
+		}).then(function(canvas){
 			var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 
 			var link = document.createElement('a');
