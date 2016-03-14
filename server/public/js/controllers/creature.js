@@ -373,7 +373,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 		return(damageStr);
 	}
 
-//melee, ranged, versatile, bonus damage
+	//melee, ranged, versatile, bonus damage
 	var createDescription = function(attack){
 		var ability = "strength";
 		if((attack.finesse || (attack.ranged && !attack.melee)) && creature.stats.abilityScoreModifiers["dexterity"] > creature.stats.abilityScoreModifiers["strength"])

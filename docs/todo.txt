@@ -4,9 +4,7 @@ Feedback from reddit post:
 -Different views for viewing bestiary? maybe a way to increase font size on a/all stat blocks, and a way to switch to landscape mode
 -UI is not working correctly on Chrome or Safari on iOS.
 
--Damage type seems to not be working on generate attack for ranged weapons (like Hand Crossbow, Longbow, etc.).
 -Autofill special abilities for races as well
-
 
 -Fill in CreatureData.senses (Darkvision 60ft., Darkvision 30ft., Tremorsense 60ft. etc);
 -Ability to copy creatures from one bestiary to another. One way would be as a copy/paste where multiple creatures could be on your clipboard at once. The 'paste' button would appear on inner header if 1 or more creatures are on your clipboard. Have some way to clear your clipboard and to indicate what is on your clipboard (or at least how many creatures are on it).
