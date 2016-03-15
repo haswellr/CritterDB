@@ -112,7 +112,12 @@ var updateUserCtrl = function ($scope,User,Auth,$location,user) {
 
 //don't load controller until we've gotten the data from the server
 updateUserCtrl.resolve = {
-			user: function(User, $q, $route, Auth, $location){
+			user: ['User',
+						'$q',
+						'$route',
+						'Auth',
+						'$location',
+						function(User, $q, $route, Auth, $location){
 				var deferred = $q.defer();
 				Auth.executeOnLogin(function(){
 					var user = null;
@@ -134,7 +139,7 @@ updateUserCtrl.resolve = {
 					}
 				});
 				return deferred.promise;
-			}
+			}]
 		}
 
 
