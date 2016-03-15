@@ -80,6 +80,9 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		removeFilter: function(index){
 			$scope.creatureFilter.filters.splice(index,1);
 		},
+		resetFilters: function(){
+			$scope.creatureFilter.filters = [];
+		},
 		areFiltersActive: function(){
 			var active = false;
 			for(var i=0;i<$scope.creatureFilter.filters.length;i++){
@@ -109,27 +112,32 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		isCreatureShown: function(creature){
 			if(creature.stats.challengeRating >= $scope.creatureFilter.challengeRating.min.value
 				&& creature.stats.challengeRating <= $scope.creatureFilter.challengeRating.max.value){
-				var andFilterGroups = [];
-				var currentAndFilterGroup = undefined;
-				//follow order of operations - do ANDs, then ORs. We do this by calculating all groups
-				//of consecutive ANDs, then doing OR between those groups.
-				for(var i=0;i<$scope.creatureFilter.filters.length;i++){
-					var filter = $scope.creatureFilter.filters[i];
-					var passes = filter.doesCreaturePass(creature);
-					if(currentAndFilterGroup==undefined)
-						currentAndFilterGroup = passes;
-					else
-						currentAndFilterGroup = currentAndFilterGroup && passes;
-					if(filter.operator=="or" || (i+1)==($scope.creatureFilter.filters.length)){
-						andFilterGroups.push(currentAndFilterGroup);
-						currentAndFilterGroup = undefined;
+				if($scope.creatureFilter.filters.length>0){
+					var andFilterGroups = [];
+					var currentAndFilterGroup = undefined;
+					//follow order of operations - do ANDs, then ORs. We do this by calculating all groups
+					//of consecutive ANDs, then doing OR between those groups.
+					for(var i=0;i<$scope.creatureFilter.filters.length;i++){
+						var filter = $scope.creatureFilter.filters[i];
+						var passes = filter.doesCreaturePass(creature);
+						if(currentAndFilterGroup==undefined)
+							currentAndFilterGroup = passes;
+						else
+							currentAndFilterGroup = currentAndFilterGroup && passes;
+						if(filter.operator=="or" || (i+1)==($scope.creatureFilter.filters.length)){
+							andFilterGroups.push(currentAndFilterGroup);
+							currentAndFilterGroup = undefined;
+						}
 					}
+					var matches = false;
+					for(var i=0;i<andFilterGroups.length;i++){
+						matches = matches || andFilterGroups[i];
+					}
+					return(matches);
 				}
-				var matches = false;
-				for(var i=0;i<andFilterGroups.length;i++){
-					matches = matches || andFilterGroups[i];
+				else{
+					return true;
 				}
-				return(matches);
 			}
 			else
 				return false;
