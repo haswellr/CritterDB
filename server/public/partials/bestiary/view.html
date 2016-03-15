@@ -16,7 +16,7 @@
 		</h2>
 		<div class="right-side-controls">
 			<md-button ng-click="toggle('filterNav');close('editNav');" class="md-icon-button md-mini" aria-label="Filters">
-				<md-icon ng-class="{'md-accent':isOpen('filterNav')}">filter_list</md-icon>
+				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
 	        Filter Creatures
 	      </md-tooltip>
@@ -87,15 +87,24 @@
 			      <input ng-model="creatureFilter.challengeRating.max.value" ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.max)" step="{{creatureFilter.challengeRating.max.step}}" type="number" min="0" max="30"/>
 			    </md-input-container>
 			  </section>
-				<section ng-repeat="filter in creatureFilter.filters track by $index" layout="column" layout-align="center top">
-			    <md-input-container style="width:calc(100% - 16px);">
-		        <label>Search by name</label>
-		        <input ng-model="filter.name">
-		      </md-input-container>
-		      <span ng-if="!$last" style="width:100%;text-align:center;">- OR -</span>
+				<section ng-repeat="filter in creatureFilter.filters track by $index" layout="column" layout-align="center top" ng-class="{'and-filter':creatureFilter.fillBackground(true,$index)}" style="padding: 0px;">
+					<div layout="row" ng-class="{'and-filter':creatureFilter.fillBackground(false,$index)}">
+				    <md-input-container style="width:calc(100% - 16px);margin-left:6px;">
+			        <label>Filter by name, faction, or environment</label>
+			        <input ng-model="filter.text">
+			      </md-input-container>
+			      <button ng-click="creatureFilter.removeFilter($index)" class="md-primary remove-saving-throw" style="margin-top:25px;margin-left:4px;margin-right:6px;">
+		          <md-icon md-svg-icon="md-close"></md-icon>
+		        </button>
+		      </div>
+		      <div ng-if="!$last" layout="row" layout-align="center center">
+		      	<md-button ng-click="filter.toggleOperator()" aria-label="Toggle And/Or Operator">
+		      		{{filter.operator.toUpperCase()}}
+		      	</md-button>
+		      </div>
 		    </section>
 	      <section layout="row" layout-align="center center">
-	      	<md-button ng-click="creatureFilter.addFilter()" class="md-raised" aria-label="Add Filter">Add Name Filter</md-button>
+	      	<md-button ng-click="creatureFilter.addFilter()" class="md-raised" aria-label="Add Filter">Add Filter</md-button>
 	      </section>
 		  </md-content>
 		</md-sidenav>
