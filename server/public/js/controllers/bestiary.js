@@ -20,6 +20,29 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		description: bestiary.description+""
 	};
 
+	function Filter(){
+		return {
+			text: "",
+			operator: "or",
+			toggleOperator: function(){
+				if(this.operator=="or")
+					this.operator = "and";
+				else
+					this.operator = "or";
+			},
+			doesCreaturePass: function(creature){
+				if(this.text.length>0){
+					var lowerText = this.text.toLowerCase();
+					var matchesName = creature.name.toLowerCase().indexOf(lowerText)!=-1;
+					var matchesFaction = creature.flavor.faction.toLowerCase().indexOf(lowerText)!=-1;
+					var matchesEnvironment = creature.flavor.environment.toLowerCase().indexOf(lowerText)!=-1;
+					return(matchesName || matchesEnvironment || matchesFaction);
+				}
+				else
+					return true;
+			}
+		};
+	}
 	$scope.creatureFilter = {
 		challengeRating: {
 			min: {
@@ -49,33 +72,64 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 					cr.value = 0.5;
 			}
 		},
-		filters: [{
-			name: ""
-		}],
+		filters: [new Filter()],
 		addFilter: function(){
-			$scope.creatureFilter.filters.push({
-				name: ""
-			});
+			var filter = new Filter();
+			$scope.creatureFilter.filters.push(filter);
 		},
 		removeFilter: function(index){
 			$scope.creatureFilter.filters.splice(index,1);
 		},
+		areFiltersActive: function(){
+			var active = false;
+			for(var i=0;i<$scope.creatureFilter.filters.length;i++){
+				var filter = $scope.creatureFilter.filters[i];
+				if(filter.text.length>0){
+					active = true;
+					break;
+				}
+			}
+			if($scope.creatureFilter.challengeRating.min.value>0 || $scope.creatureFilter.challengeRating.max.value<30){
+				active = true;
+			}
+			return active;
+		},
+		fillBackground: function(isBody,index){
+			var show = false;
+			var filter = $scope.creatureFilter.filters[index];
+			var prevFilter = undefined;
+			if(index>0)
+				prevFilter = $scope.creatureFilter.filters[index-1];
+			if(isBody && filter.operator=="and")
+				show = true;
+			else if(!isBody && prevFilter!=undefined && prevFilter.operator=="and" && filter.operator!="and")
+				show = true;
+			return show;
+		},
 		isCreatureShown: function(creature){
 			if(creature.stats.challengeRating >= $scope.creatureFilter.challengeRating.min.value
 				&& creature.stats.challengeRating <= $scope.creatureFilter.challengeRating.max.value){
-				var foundNameInFilters = true;
+				var andFilterGroups = [];
+				var currentAndFilterGroup = undefined;
+				//follow order of operations - do ANDs, then ORs. We do this by calculating all groups
+				//of consecutive ANDs, then doing OR between those groups.
 				for(var i=0;i<$scope.creatureFilter.filters.length;i++){
 					var filter = $scope.creatureFilter.filters[i];
-					if(filter.name.length>0){
-						if(creature.name.toLowerCase().indexOf(filter.name.toLowerCase())==-1)
-							foundNameInFilters = false;
-						else{
-							foundNameInFilters = true;
-							break;
-						}
+					var passes = filter.doesCreaturePass(creature);
+					if(currentAndFilterGroup==undefined)
+						currentAndFilterGroup = passes;
+					else
+						currentAndFilterGroup = currentAndFilterGroup && passes;
+					if(filter.operator=="or" || (i+1)==($scope.creatureFilter.filters.length)){
+						andFilterGroups.push(currentAndFilterGroup);
+						currentAndFilterGroup = undefined;
 					}
 				}
-				return foundNameInFilters;
+				var matches = false;
+				for(var i=0;i<andFilterGroups.length;i++){
+					matches = matches || andFilterGroups[i];
+				}
+				return(matches);
 			}
 			else
 				return false;

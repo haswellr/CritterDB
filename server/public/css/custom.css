@@ -443,3 +443,7 @@ md-dialog.generate-attack-dialog md-checkbox span {
 div.save-image-stat-block {
   display: block;
 }
+
+.and-filter {
+  background-color: rgba(207,216,220,0.20);
+}
