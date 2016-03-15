@@ -185,7 +185,7 @@ angular.module('myApp').factory("CreatureData", function() {
 		'Club': {
 			melee: true,
 			reach: 5,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 4
 		},
@@ -196,17 +196,17 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 20,
 			longRange: 60,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 4,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 4
 		},
 		'Greatclub': {
 			melee: true,
 			reach: 5,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 8
 		},
@@ -216,10 +216,10 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 20,
 			longRange: 60,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 6,
-			rangedDamageType: "slashing",
+			rangedDamageType: "Slashing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6
 		},
@@ -229,10 +229,10 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 30,
 			longRange: 120,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 6,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6
 		},
@@ -242,17 +242,17 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 20,
 			longRange: 60,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 4,
-			rangedDamageType: "bludgeoning",
+			rangedDamageType: "Bludgeoning",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 4
 		},
 		'Mace': {
 			melee: true,
 			reach: 5,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 6
 		},
@@ -260,17 +260,17 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			veratile: true,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 6,
-			twoHandedDamageType: "bludgeoning",
+			twoHandedDamageType: "Bludgeoning",
 			twoHandedDamageDiceNum: 1,
 			twoHandedDamageDiceSize: 8
 		},
 		'Sickle': {
 			melee: true,
 			reach: 5,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 4
 		},
@@ -281,13 +281,13 @@ angular.module('myApp').factory("CreatureData", function() {
 			shortRange: 20,
 			longRange: 60,
 			versatile: true,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 6,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6,
-			twoHandedDamageType: "piercing",
+			twoHandedDamageType: "Piercing",
 			twoHandedDamageDiceNum: 1,
 			twoHandedDamageDiceSize: 8
 		},
@@ -295,7 +295,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 80,
 			longRange: 320,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 8
 		},
@@ -303,7 +303,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 20,
 			longRange: 60,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 4
 		},
@@ -311,7 +311,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 80,
 			longRange: 320,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6
 		},
@@ -319,7 +319,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 30,
 			longRange: 120,
-			rangedDamageType: "bludgeoning",
+			rangedDamageType: "Bludgeoning",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 4
 		},
@@ -327,45 +327,45 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			versatile: true,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 8,
-			twoHandedDamageType: "slashing",
+			twoHandedDamageType: "Slashing",
 			twoHandedDamageDiceNum: 1,
 			twoHandedDamageDiceSize: 10
 		},
 		'Flail': {
 			melee: true,
 			reach: 5,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 8
 		},
 		'Glaive': {
 			melee: true,
 			reach: 10,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 10
 		},
 		'Greataxe': {
 			melee: true,
 			reach: 5,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 12
 		},
 		'Greatsword': {
 			melee: true,
 			reach: 5,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 2,
 			damageDiceSize: 6
 		},
 		'Halberd': {
 			melee: true,
 			reach: 10,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 10
 		},
@@ -373,31 +373,31 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			versatile: true,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 8,
-			twoHandedDamageType: "slashing",
+			twoHandedDamageType: "Slashing",
 			twoHandedDamageDiceNum: 1,
 			twoHandedDamageDiceSize: 10
 		},
 		'Maul': {
 			melee: true,
 			reach: 5,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 2,
 			damageDiceSize: 6
 		},
 		'Morningstar': {
 			melee: true,
 			reach: 5,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 8
 		},
 		'Pike': {
 			melee: true,
 			reach: 10,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 10
 		},
@@ -405,7 +405,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			finesse: true,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 8
 		},
@@ -413,7 +413,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			finesse: true,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 6
 		},
@@ -421,7 +421,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			finesse: true,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 6
 		},
@@ -432,20 +432,20 @@ angular.module('myApp').factory("CreatureData", function() {
 			shortRange: 20,
 			longRange: 60,
 			versatile: true,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 6,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6,
-			twoHandedDamageType: "piercing",
+			twoHandedDamageType: "Piercing",
 			twoHandedDamageDiceNum: 1,
 			twoHandedDamageDiceSize: 8
 		},
 		'War pick': {
 			melee: true,
 			reach: 5,
-			damageType: "piercing",
+			damageType: "Piercing",
 			damageDiceNum: 1,
 			damageDiceSize: 8
 		},
@@ -453,10 +453,10 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 5,
 			versatile: true,
-			damageType: "bludgeoning",
+			damageType: "Bludgeoning",
 			damageDiceNum: 1,
 			damageDiceSize: 8,
-			twoHandedDamageType: "bludgeoning",
+			twoHandedDamageType: "Bludgeoning",
 			twoHandedDamageDiceNum: 1,
 			twoHandedDamageDiceSize: 10
 		},
@@ -464,7 +464,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			melee: true,
 			reach: 10,
 			finesse: true,
-			damageType: "slashing",
+			damageType: "Slashing",
 			damageDiceNum: 1,
 			damageDiceSize: 4
 		},
@@ -472,7 +472,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 25,
 			longRange: 100,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 1
 		},
@@ -480,7 +480,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 30,
 			longRange: 120,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 6
 		},
@@ -488,7 +488,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 100,
 			longRange: 400,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 10
 		},
@@ -496,7 +496,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			ranged: true,
 			shortRange: 150,
 			longRange: 600,
-			rangedDamageType: "piercing",
+			rangedDamageType: "Piercing",
 			rangedDamageDiceNum: 1,
 			rangedDamageDiceSize: 8
 		}
