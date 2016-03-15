@@ -1,16 +1,16 @@
 
--Hide save-as-image icon on create creature page when on small screen sizes/mobile. (DONE BUT CHECK THAT IT WORKED)
 
 Imortant:
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
--Different views for viewing bestiary? maybe a way to increase font size on a/all stat blocks, and a way to switch to landscape mode
 -UI is not working correctly on Chrome or Safari on iOS.
--Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least)
+-Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least). Also add ability to export to HTML.
 
 -Autofill special abilities for races as well
 -Generate Spellcasting in addition to Generate Attack
+-Filter by Faction
+-Reorder abilities/actions/etc
 
 -Fill in CreatureData.senses (Darkvision 60ft., Darkvision 30ft., Tremorsense 60ft. etc);
 -Ability to copy creatures from one bestiary to another. One way would be as a copy/paste where multiple creatures could be on your clipboard at once. The 'paste' button would appear on inner header if 1 or more creatures are on your clipboard. Have some way to clear your clipboard and to indicate what is on your clipboard (or at least how many creatures are on it).
