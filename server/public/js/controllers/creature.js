@@ -358,7 +358,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 		reach: 5,
 		shortRange: 80,
 		longRange: 320,
-		damageType: 'slashing',
+		damageType: 'Slashing',
 		damageDiceSize: 6,
 		damageDiceNum: 1,
 	};
@@ -369,7 +369,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 		var damageStr = avgDamage + " (" + numDice + "d" + diceSize;
 		if(modifier!=0)
 			damageStr = damageStr + " + "	+ modifier;
-		damageStr = damageStr + ") " + damageType + " damage";
+		damageStr = damageStr + ") " + damageType.toLowerCase() + " damage";
 		return(damageStr);
 	}
 
