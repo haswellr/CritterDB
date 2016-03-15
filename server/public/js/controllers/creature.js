@@ -358,7 +358,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 		reach: 5,
 		shortRange: 80,
 		longRange: 320,
-		damageType: 'Slashing',
+		damageType: 'slashing',
 		damageDiceSize: 6,
 		damageDiceNum: 1,
 	};
