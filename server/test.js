@@ -1,4 +1,3 @@
-
 angular.module('myApp').factory("CreatureData", function() {
 
 	var CreatureData = {};
@@ -502,8 +501,7 @@ angular.module('myApp').factory("CreatureData", function() {
 			rangedDamageDiceSize: 8
 		}
 	};
-	CreatureData.spells = //import must be on its own line
-		@import "../../data/spells.json";
+	CreatureData.spells = @import("config.js");
 
 //melee
 //ranged
