@@ -1,10 +1,10 @@
 module.exports = function (grunt) {
+  //js > imported > annotated > dist
   grunt.initConfig({
-
     // define source files and their destinations
     uglify: {
         files: {
-            src: ['public/js/annotated/**/*.js'],
+            src: ['staging/annotated/**/*.js'],
             dest: 'dist/js/app.min.js',
             flatten: true   // remove all unnecessary nesting
         }
@@ -13,8 +13,8 @@ module.exports = function (grunt) {
       dist: {
         files: [{
             expand: true,
-            src: ['public/js/**/*.js','!public/js/**/*.annotated.js','!public/js/vendor/**/*.js'],
-            dest: 'public/js/annotated',
+            src: ['staging/imported/**/*.js'],
+            dest: 'staging/annotated',
             extDot: 'last'
         }]
       }
@@ -25,12 +25,12 @@ module.exports = function (grunt) {
         dest: 'dist/js/vendor.min.js'
       },
       source: {
-        src: ['public/js/**/*.js','!public/js/annotated/**','!public/js/vendor/**'],
+        src: ['staging/**/*.js'],
         dest: 'dist/js/app.min.js'
       }
     },
     clean: {
-      annotations: ['public/js/annotated/'],
+      staging: ['staging/'],
       partials: ['dist/partials/'],
       img: ['dist/img/'],
       fonts: ['dist/fonts']
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
       },
       js:  {
         files: 'public/js/**/*.js',
-        tasks: ['concat']
+        tasks: ['import','concat','clean:staging']
       },
       fonts: {
         files: 'public/fonts/**',
@@ -83,6 +83,16 @@ module.exports = function (grunt) {
         files: 'public/partials/**',
         tasks: ['clean:partials','copy:partials']
       }
+    },
+    import: {
+      dist: {
+        files: [{
+          expand: true,
+          src: ['public/js/**/*.js','!public/js/vendor/**/*.js'],
+          dest: 'staging/imported',
+          extDot: 'last'
+        }]
+      }
     }
   });
 
@@ -94,8 +104,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-import');
 
   // register at least this one task
-  grunt.registerTask('default', [ 'clean', 'ngAnnotate', 'concat:vendor', 'uglify', 'clean:annotations', 'copy', 'cssmin']);
+  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'uglify', 'clean:staging', 'copy', 'cssmin']);
 
 };

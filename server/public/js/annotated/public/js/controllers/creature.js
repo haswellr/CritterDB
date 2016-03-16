@@ -255,6 +255,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		Creature.calculateCreatureDetails($scope.creature);
 	},true);
 }
+creatureCtrl.$inject = ["$scope", "creature", "Creature", "$routeParams", "Bestiary", "$location", "CreatureData", "$mdMedia", "$mdDialog"];
 
 var defaultCreature = {
 	name: "New Creature",
@@ -467,6 +468,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 			$scope.weapon.changed();
 	},true);
 };
+generateAttackCtrl.$inject = ["$scope", "creature", "CreatureData", "$mdDialog"];
 
 var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 
