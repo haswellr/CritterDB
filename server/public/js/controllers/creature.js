@@ -468,7 +468,8 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 	},true);
 };
 
-var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog) {
+//FINISH ME
+/*var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 
 	$scope.creatureData = CreatureData;
 
@@ -517,3 +518,4 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 		return(returnedVals);
 	}
 };
+*/
