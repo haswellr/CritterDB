@@ -81,7 +81,15 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			$scope.creatureFilter.filters.splice(index,1);
 		},
 		resetFilters: function(){
-			$scope.creatureFilter.filters = [];
+			$scope.creatureFilter.filters = [new Filter()];
+			$scope.creatureFilter.challengeRating.min = {
+				value: 0,
+				step: 0.125
+			};
+			$scope.creatureFilter.challengeRating.max = {
+				value: 30,
+				step: 1
+			};
 		},
 		areFiltersActive: function(){
 			var active = false;
