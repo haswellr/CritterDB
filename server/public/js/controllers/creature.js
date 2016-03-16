@@ -76,7 +76,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 						ability: $scope.creatureData.abilities[i],
 						proficient: true
 					};
-					$scope.creature.stats.savingThrows.push(newSavingThrow);
+					$scope.creature.stats.savingThrows.splice(0,0,newSavingThrow);
 					break;
 				}
 			}
@@ -120,7 +120,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 						name: $scope.creatureData.skills[i],
 						proficient: true
 					};
-					$scope.creature.stats.skills.push(newSkill);
+					$scope.creature.stats.skills.splice(0,0,newSkill);
 					break;
 				}
 			}
@@ -138,7 +138,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 				name: "",
 				description: ""
 			};
-			list.push(newAbility);
+			list.splice(0,0,newAbility);
 		},
 		removeFromList: function(ability,list){
 			var index = list.indexOf(ability);
