@@ -251,6 +251,26 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
     });;
 	}
 
+	$scope.generateSpellcasting = function(ev){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: generateSpellcastingCtrl,
+      templateUrl: '/assets/partials/creature/create-abilities-add-spellcasting.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'creature': $scope.creature
+      },
+      fullscreen: useFullScreen
+    })
+    .then(function(result){
+    	if(result){
+    		$scope.creature.stats.actions.splice(0,0,result);
+    	}
+    });;
+	}
+
 	$scope.$watch("creature",function(newValue,oldValue){
 		Creature.calculateCreatureDetails($scope.creature);
 	},true);
@@ -477,18 +497,27 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 			type: 'Innate',	//wizard, cleric, innate, etc
 			ability: 'intelligence',
 			level: 1,				//1-20
-			spells: {
-				innate: [],
-				byLevel: {
-					1: [],
-					2: [],
-					3: [],
-					4: [],
-					5: [],
-					6: [],
-					7: [],
-					8: [],
-					9: []
+			spells: [
+				{
+					name: ""
+				}
+			],
+			nameChanged: function(spell){
+				var add = false;
+				console.log("name changed, spell name: "+spell.name);
+				if(spell.name!="" && this.spells.length>0){
+					console.log("ok 1");
+					var lastSpell = this.spells[this.spells.length-1];
+					console.log("last spell name: "+lastSpell.name);
+					if(lastSpell.name!="")
+						add = true;
+				}
+				if(add){
+					console.log("adding");
+					this.spells.push({
+						name: "",
+						perDay: 0
+					});
 				}
 			}
 		}

@@ -1,0 +1,67 @@
+
+<md-dialog class="generate-attack-dialog" aria-label="Generate Attack" ng-cloak>
+  <form name="attackForm" ng-submit="generateSpellcasting()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Generate Spellcasting</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+	    <md-tabs class="generate-spellcasting-tabs" md-selected="selectedTab" md-dynamic-height md-border-bottom>
+        <md-tab label="Core">
+          <md-content layout-padding>
+            <div layout="row">
+              <md-input-container flex>
+                <label>Spellcaster Type</label>
+                <md-select ng-model="spellcasting.type">
+                  <md-option ng-repeat="type in creatureData.spellcasterTypes" value="{{type}}">
+                    {{type}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container flex>
+                <label>Spellcaster Ability</label>
+                <md-select ng-model="spellcasting.ability">
+                  <md-option ng-repeat="ability in creatureData.abilities" value="{{ability}}">
+                    {{ability.charAt(0).toUpperCase() + ability.slice(1).toLowerCase()}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <div layout="row">
+              <md-input-container ng-if="spellcasting.type!='Innate'" flex>
+                <label>Spellcaster Level</label>
+                <input ng-model="spellcasting.level" min="1" max="20" type="number"/>
+              </md-input-container>
+            </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Spells">
+          <md-content layout-padding>
+            <div ng-repeat="spell in spellcasting.spells" class="spell-row" layout="row">
+              <md-input-container flex>
+                <label>Spell Name</label>
+                <input ng-model="spell.name" ng-change="spellcasting.nameChanged(spell)" type="text"/>
+              </md-input-container>
+              <md-input-container ng-if="spellcasting.type=='Innate'" class="per-day" flex>
+                <label>Uses Per Day</label>
+                <input ng-model="spell.perDay" type="text"/>
+              </md-input-container>
+            </div>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+    	<md-button type="submit" class="md-raised md-button">Generate Spellcasting</md-button>
+      <md-button ng-click="selectedTab = selectedTab + 1;" class="md-raised md-button md-primary">Continue</md-button>
+  	</md-dialog-actions>
+
+  </form>
+</md-dialog>
