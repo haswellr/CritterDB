@@ -3,7 +3,26 @@
   <section class="subsection" layout="row" layout-align="center center" layout-wrap>
     <div layout="row" style="height:50px;">
       <md-button ng-click="abilities.addToList(creature.stats.actions)" class="md-raised">Add Action</md-button>
-      <md-button ng-click="generateAttack($event)" class="md-raised">Generate Attack</md-button>
+      <md-menu style="padding:0px;">
+        <md-button ng-click="$mdOpenMenu($event)" class="md-raised" style="height:38px;">
+          Generate
+          <md-icon>arrow_drop_down</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+          <md-menu-item>
+            <md-button ng-click="generateAttack($event)">
+              <md-icon md-svg-src="/assets/img/icons/battered-axe.svg" style="opacity:0.87;"></md-icon>
+              Generate Attack
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="generateSpellcasting($event)">
+              <md-icon md-svg-src="/assets/img/icons/scroll-unfurled.svg" style="opacity:0.87;"></md-icon>
+              Generate Spellcasting
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
     </div>
     <div ng-repeat="ability in creature.stats.actions" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
