@@ -1,0 +1,320 @@
+{
+	'Club': {
+		melee: true,
+		reach: 5,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 4
+	},
+	'Dagger': {
+		melee: true,
+		reach: 5,
+		finesse: true,
+		ranged: true,
+		shortRange: 20,
+		longRange: 60,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 4,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 4
+	},
+	'Greatclub': {
+		melee: true,
+		reach: 5,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 8
+	},
+	'Handaxe': {
+		melee: true,
+		reach: 5,
+		ranged: true,
+		shortRange: 20,
+		longRange: 60,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 6,
+		rangedDamageType: "Slashing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 6
+	},
+	'Javelin': {
+		melee: true,
+		reach: 5,
+		ranged: true,
+		shortRange: 30,
+		longRange: 120,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 6,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 6
+	},
+	'Light hammer': {
+		melee: true,
+		reach: 5,
+		ranged: true,
+		shortRange: 20,
+		longRange: 60,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 4,
+		rangedDamageType: "Bludgeoning",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 4
+	},
+	'Mace': {
+		melee: true,
+		reach: 5,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 6
+	},
+	'Quarterstaff': {
+		melee: true,
+		reach: 5,
+		veratile: true,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 6,
+		twoHandedDamageType: "Bludgeoning",
+		twoHandedDamageDiceNum: 1,
+		twoHandedDamageDiceSize: 8
+	},
+	'Sickle': {
+		melee: true,
+		reach: 5,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 4
+	},
+	'Spear': {
+		melee: true,
+		reach: 5,
+		ranged: true,
+		shortRange: 20,
+		longRange: 60,
+		versatile: true,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 6,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 6,
+		twoHandedDamageType: "Piercing",
+		twoHandedDamageDiceNum: 1,
+		twoHandedDamageDiceSize: 8
+	},
+	'Crossbow, light': {
+		ranged: true,
+		shortRange: 80,
+		longRange: 320,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 8
+	},
+	'Dart': {
+		ranged: true,
+		shortRange: 20,
+		longRange: 60,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 4
+	},
+	'Shortbow': {
+		ranged: true,
+		shortRange: 80,
+		longRange: 320,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 6
+	},
+	'Sling': {
+		ranged: true,
+		shortRange: 30,
+		longRange: 120,
+		rangedDamageType: "Bludgeoning",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 4
+	},
+	'Battleaxe': {
+		melee: true,
+		reach: 5,
+		versatile: true,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 8,
+		twoHandedDamageType: "Slashing",
+		twoHandedDamageDiceNum: 1,
+		twoHandedDamageDiceSize: 10
+	},
+	'Flail': {
+		melee: true,
+		reach: 5,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 8
+	},
+	'Glaive': {
+		melee: true,
+		reach: 10,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 10
+	},
+	'Greataxe': {
+		melee: true,
+		reach: 5,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 12
+	},
+	'Greatsword': {
+		melee: true,
+		reach: 5,
+		damageType: "Slashing",
+		damageDiceNum: 2,
+		damageDiceSize: 6
+	},
+	'Halberd': {
+		melee: true,
+		reach: 10,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 10
+	},
+	'Longsword': {
+		melee: true,
+		reach: 5,
+		versatile: true,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 8,
+		twoHandedDamageType: "Slashing",
+		twoHandedDamageDiceNum: 1,
+		twoHandedDamageDiceSize: 10
+	},
+	'Maul': {
+		melee: true,
+		reach: 5,
+		damageType: "Bludgeoning",
+		damageDiceNum: 2,
+		damageDiceSize: 6
+	},
+	'Morningstar': {
+		melee: true,
+		reach: 5,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 8
+	},
+	'Pike': {
+		melee: true,
+		reach: 10,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 10
+	},
+	'Rapier': {
+		melee: true,
+		reach: 5,
+		finesse: true,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 8
+	},
+	'Scimitar': {
+		melee: true,
+		reach: 5,
+		finesse: true,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 6
+	},
+	'Shortsword': {
+		melee: true,
+		reach: 5,
+		finesse: true,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 6
+	},
+	'Trident': {
+		melee: true,
+		reach: 5,
+		ranged: true,
+		shortRange: 20,
+		longRange: 60,
+		versatile: true,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 6,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 6,
+		twoHandedDamageType: "Piercing",
+		twoHandedDamageDiceNum: 1,
+		twoHandedDamageDiceSize: 8
+	},
+	'War pick': {
+		melee: true,
+		reach: 5,
+		damageType: "Piercing",
+		damageDiceNum: 1,
+		damageDiceSize: 8
+	},
+	'Warhammer': {
+		melee: true,
+		reach: 5,
+		versatile: true,
+		damageType: "Bludgeoning",
+		damageDiceNum: 1,
+		damageDiceSize: 8,
+		twoHandedDamageType: "Bludgeoning",
+		twoHandedDamageDiceNum: 1,
+		twoHandedDamageDiceSize: 10
+	},
+	'Whip': {
+		melee: true,
+		reach: 10,
+		finesse: true,
+		damageType: "Slashing",
+		damageDiceNum: 1,
+		damageDiceSize: 4
+	},
+	'Blowgun': {
+		ranged: true,
+		shortRange: 25,
+		longRange: 100,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 1
+	},
+	'Crossbow, hand': {
+		ranged: true,
+		shortRange: 30,
+		longRange: 120,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 6
+	},
+	'Crossbow, heavy': {
+		ranged: true,
+		shortRange: 100,
+		longRange: 400,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 10
+	},
+	'Longbow': {
+		ranged: true,
+		shortRange: 150,
+		longRange: 600,
+		rangedDamageType: "Piercing",
+		rangedDamageDiceNum: 1,
+		rangedDamageDiceSize: 8
+	}
+}
