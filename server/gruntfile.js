@@ -71,6 +71,10 @@ module.exports = function (grunt) {
         files: 'public/js/**/*.js',
         tasks: ['import','concat','clean:staging']
       },
+      data: {
+        files: 'public/data/**',
+        tasks: ['import','concat','clean:staging']
+      },
       fonts: {
         files: 'public/fonts/**',
         tasks: ['clean:fonts','copy:fonts']

@@ -468,14 +468,13 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 	},true);
 };
 
-//FINISH ME
-/*var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog) {
+var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 
 	$scope.creatureData = CreatureData;
 
 	$scope.spellcasting = (function(){
 		return {
-			type: 'Wizard',	//wizard, cleric, innate, etc
+			type: 'Innate',	//wizard, cleric, innate, etc
 			ability: 'intelligence',
 			level: 1,				//1-20
 			spells: {
@@ -518,4 +517,3 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 		return(returnedVals);
 	}
 };
-*/

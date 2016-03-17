@@ -1,0 +1,74 @@
+{
+	'Dwarf': {
+		size: "Medium",
+		speed: "25 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Dwarvish"]
+	},
+	'Hill Dwarf': {
+		size: "Medium",
+		speed: "25 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Dwarvish"]
+	},
+	'Elf': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Elvish"]
+	},
+	'High Elf': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Elvish"]
+	},
+	'Halfling': {
+		size: "Small",
+		speed: "25 ft.",
+		senses: [],
+		languages: ["Common","Halfling"]
+	},
+	'Lightfoot Halfling': {
+		size: "Small",
+		speed: "25 ft.",
+		senses: [],
+		languages: ["Common","Halfling"]
+	},
+	'Human': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: [],
+		languages: ["Common"]
+	},
+	'Dragonborn': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: [],
+		languages: ["Common","Draconic"]
+	},
+	'Gnome': {
+		size: "Small",
+		speed: "25 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Gnomish"]
+	},
+	'Half-Elf': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Elvish"]
+	},
+	'Half-Orc': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Orc"]
+	},
+	'Tiefling': {
+		size: "Medium",
+		speed: "30 ft.",
+		senses: ["Darkvision 60ft."],
+		languages: ["Common","Infernal"]
+	}
+}
