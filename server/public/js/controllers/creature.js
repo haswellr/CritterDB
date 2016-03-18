@@ -492,36 +492,57 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 
 	$scope.creatureData = CreatureData;
 
+	$scope.spellLevels = [];
+	var initializeSpellLevelArray = function(){
+		for(var i=0;i<=9;i++){
+			$scope.spellLevels.push(i);
+		}
+	}
+	initializeSpellLevelArray();
+	$scope.getSpellLevelText = function(level){
+		if(level==0)
+			return("Cantrips");
+		else
+			return("Level "+level+" spells");
+	}
+
 	$scope.spellcasting = (function(){
 		return {
 			type: 'Innate',	//wizard, cleric, innate, etc
 			ability: 'intelligence',
 			level: 1,				//1-20
-			spells: [
-				{
-					name: ""
-				}
-			],
-			spellsByLevel: {
+			spells: {
+				level0: [],
 				level1: [],
-				level2: []
+				level2: [],
+				level3: [],
+				level4: [],
+				level5: [],
+				level6: [],
+				level7: [],
+				level8: [],
+				level9: [],
+				atWill: [],
+				perDay1: [],
+				perDay2: [],
+				perDay3: []
 			},
-			nameChanged: function(spell){
-				var add = false;
-				console.log("name changed, spell name: "+spell.name);
-				if(spell.name!="" && this.spells.length>0){
-					console.log("ok 1");
-					var lastSpell = this.spells[this.spells.length-1];
-					console.log("last spell name: "+lastSpell.name);
-					if(lastSpell.name!="")
-						add = true;
+			hasSpellSlotsOfLevel: function(level){
+				if(this.type){
+					var spellcaster = CreatureData.spellcasters[this.type];
+					if(level==0)
+						return true;
+					else if(this.level){
+						var spellSlots = spellcaster.level[this.level].spellSlots;
+						if(spellSlots.hasOwnProperty(level-1) && spellSlots[level-1]!=0)
+							return true;
+					}
+					else {
+						return false;
+					}
 				}
-				if(add){
-					console.log("adding");
-					this.spells.push({
-						name: "",
-						perDay: 0
-					});
+				else{
+					return false;
 				}
 			}
 		}
@@ -552,21 +573,21 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 		return(returnedVals);
 	};
 
-	$scope.searchSpells = function(searchText,casterClass,level,includeSearch){
+	$scope.searchSpellNames = function(searchText,level){
 		var returnedVals = [];
-		if(includeSearch)
-			returnedVals.push(searchText);
+		returnedVals.push(searchText);
 		if(searchText){
 			var searchTextLower = searchText.toLowerCase();
-			var classLower = (casterClass ? casterClass.toLowerCase() : undefined);
+			var classLower = ($scope.spellcasting.type!='Innate' ? $scope.spellcasting.type.toLowerCase() : null);
 			for(var i=0;i<CreatureData.spells.length;i++){
 				var spell = CreatureData.spells[i];
-				var matchesLevel = (level==undefined || level==null || spell.level==level);
-				var matchesClass = (casterClass==undefined || casterClass==null || spell.tags.indexOf(classLower)!=-1);
+				var matchesLevel = (level==undefined || level==null || spell.level==level || (level==0 && spell.level.toLowerCase()=="cantrip"));
+				var matchesClass = (classLower==undefined || classLower==null || spell.tags.indexOf(classLower)!=-1);
 				var matchesName = (spell.name.toLowerCase().indexOf(searchTextLower)!=-1);
-				var matchesSchool = (spell.school.toLowerCase().indexOf(searchTextLower)!=-1);
+				var school = spell[school] || "";
+				var matchesSchool = (school.toLowerCase().indexOf(searchTextLower)!=-1);
 				if(matchesLevel && matchesClass && (matchesName || matchesSchool))
-					returnedVals.push(arrayToSearch[i]);
+					returnedVals.push(spell.name);
 			}
 		}
 		return(returnedVals);
