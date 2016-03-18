@@ -448,23 +448,21 @@ div.save-image-stat-block {
   background-color: rgba(207,216,220,0.20);
 }
 
-md-tabs.generate-spellcasting-tabs md-tab-content md-input-container {
+md-dialog-content.generate-spellcasting-content md-input-container {
   width: 450px;
 }
 
-md-tabs.generate-spellcasting-tabs md-tab-content md-input-container.per-day {
+md-dialog-content.generate-spellcasting-content md-input-container.per-day {
   width: 0px;
 }
 
-md-tabs.generate-spellcasting-tabs md-tab-content div.spell-row {
+md-dialog-content.generate-spellcasting-content div.spell-row {
   -webkit-transition: all linear 0.5s;
   transition: all linear 0.5s;
-  max-height: 100px;
   opacity: 1;
 }
 
-md-tabs.generate-spellcasting-tabs md-tab-content div.spell-row.ng-enter {
+md-dialog-content.generate-spellcasting-content div.spell-row.ng-enter {
   max-height: 0px;
-  margin-top: -100px;
   opacity: 0;
 }
