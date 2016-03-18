@@ -502,6 +502,10 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 					name: ""
 				}
 			],
+			spellsByLevel: {
+				level1: [],
+				level2: []
+			},
 			nameChanged: function(spell){
 				var add = false;
 				console.log("name changed, spell name: "+spell.name);
@@ -534,8 +538,10 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
     $mdDialog.cancel();
   };
 
-  $scope.searchArray = function(searchText,arrayToSearch){
+  $scope.searchArray = function(searchText,arrayToSearch,includeSearch){
 		var returnedVals = [];
+		if(includeSearch)
+			returnedVals.push(searchText);
 		if(searchText && arrayToSearch){
 			var searchTextLower = searchText.toLowerCase();
 			for(var i=0;i<arrayToSearch.length;i++){
