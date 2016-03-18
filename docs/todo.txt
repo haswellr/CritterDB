@@ -8,6 +8,7 @@ Imortant:
 -Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least). Also add ability to export to HTML.
 
 -Autofill special abilities for races as well
+-Maybe alignment should be an autofill not a select?
 -Generate Spellcasting in addition to Generate Attack
 -Reorder abilities/actions/etc
 
