@@ -64,8 +64,9 @@ angular.module('myApp').factory("CreatureData", function() {
 		@import "../../data/armorTypeDefaults.json";
 	CreatureData.weaponTypeDefaults =  //import must be on its own line
 		@import "../../data/weaponTypeDefaults.json";
-	CreatureData.spellcasterTypes = ["Innate","Bard","Cleric","Druid","Paladin","Ranger","Sorceror",
-		"Warlock","Wizard"];
+	CreatureData.spellcasters =
+		@import "../../data/spellcasters.json";
+	CreatureData.spellcasterTypes = Object.keys(CreatureData.spellcasters);
 	CreatureData.spells = //import must be on its own line
 		@import "../../data/spells.json";
 

@@ -550,5 +550,25 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 			}
 		}
 		return(returnedVals);
-	}
+	};
+
+	$scope.searchSpells = function(searchText,casterClass,level,includeSearch){
+		var returnedVals = [];
+		if(includeSearch)
+			returnedVals.push(searchText);
+		if(searchText){
+			var searchTextLower = searchText.toLowerCase();
+			var classLower = (casterClass ? casterClass.toLowerCase() : undefined);
+			for(var i=0;i<CreatureData.spells.length;i++){
+				var spell = CreatureData.spells[i];
+				var matchesLevel = (level==undefined || level==null || spell.level==level);
+				var matchesClass = (casterClass==undefined || casterClass==null || spell.tags.indexOf(classLower)!=-1);
+				var matchesName = (spell.name.toLowerCase().indexOf(searchTextLower)!=-1);
+				var matchesSchool = (spell.school.toLowerCase().indexOf(searchTextLower)!=-1);
+				if(matchesLevel && matchesClass && (matchesName || matchesSchool))
+					returnedVals.push(arrayToSearch[i]);
+			}
+		}
+		return(returnedVals);
+	};
 };
