@@ -39,14 +39,15 @@
           </md-input-container>
         </div>
         <div ng-if="spellcasting.type!='Innate'">
-          <div layout="row">
-            <md-chips ng-model="spellcasting.spellsByLevel.level1" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+          <div ng-repeat="level in spellLevels" ng-if="spellcasting.hasSpellSlotsOfLevel(level)" layout="row">
+            <md-chips ng-model="spellcasting.spells['level'+level]" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
               <md-autocomplete
-                  md-search-text="spellSearch.level1"
-                  md-items="spell in searchArray(spellSearch.level1,creatureData.senses,true)"
-                  md-item-text="spell"
-                  placeholder="Level 1 Spells">
-                <span md-highlight-text="spellSearch.level1">{{spell}}</span>
+                  md-autoselect
+                  md-search-text="spellSearch['level'+level]"
+                  md-items="spellName in searchSpellNames(spellSearch['level'+level],level)"
+                  md-item-text="spellName"
+                  placeholder="{{getSpellLevelText(level)}}">
+                <span md-highlight-text="spellSearch['level'+level]">{{spellName}}</span>
               </md-autocomplete>
               <md-chip-template>
                 <span>
