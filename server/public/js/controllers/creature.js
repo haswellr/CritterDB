@@ -534,6 +534,21 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 				perDay2: [],
 				perDay1: []
 			},
+			getHighestSpellSlotLevel: function(){
+				if(this.type){
+					var spellcaster = CreatureData.spellcasters[this.type];
+					if(this.level){
+						var spellSlots = spellcaster.level[this.level].spellSlots;
+						return(spellSlots.length);
+					}
+					else{
+						return 0;
+					}
+				}
+				else {
+					return 0;
+				}
+			},
 			hasSpellSlotsOfLevel: function(level){
 				if(this.type){
 					var spellcaster = CreatureData.spellcasters[this.type];

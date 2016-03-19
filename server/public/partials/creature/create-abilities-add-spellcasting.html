@@ -56,7 +56,7 @@
             </md-checkbox>
           </md-input-container>
         </div>
-        <div ng-if="spellcasting.type!='Innate'">
+        <div ng-if="spellcasting.type!='Innate' && spellcasting.type!='Warlock'">
           <div ng-repeat="level in spellLevels" ng-if="spellcasting.hasSpellSlotsOfLevel(level)" layout="row" class="spell-row">
             <md-chips ng-model="spellcasting.spells['level'+level]" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
               <md-autocomplete
@@ -66,6 +66,42 @@
                   md-item-text="spellName"
                   placeholder="{{getSpellLevelText(level)}}">
                 <span md-highlight-text="spellSearch['level'+level]">{{spellName}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <em>{{$chip}}</em>
+                </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+        </div>
+        <div ng-if="spellcasting.type=='Warlock'">
+          <div layout="row" class="spell-row">
+            <md-chips ng-model="spellcasting.spells.level0" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+              <md-autocomplete
+                  md-autoselect
+                  md-search-text="spellSearch.level0"
+                  md-items="spellName in searchSpellNames(spellSearch.level0,0)"
+                  md-item-text="spellName"
+                  placeholder="Cantrips">
+                <span md-highlight-text="spellSearch.level0">{{spellName}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <em>{{$chip}}</em>
+                </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+          <div layout="row" class="spell-row">
+            <md-chips ng-model="spellcasting.spells['level'+spellcasting.getHighestSpellSlotLevel()]" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+              <md-autocomplete
+                  md-autoselect
+                  md-search-text="spellSearch.warlock"
+                  md-items="spellName in searchSpellNames(spellSearch.warlock)"
+                  md-item-text="spellName"
+                  placeholder="Spells">
+                <span md-highlight-text="spellSearch.warlock">{{spellName}}</span>
               </md-autocomplete>
               <md-chip-template>
                 <span>
