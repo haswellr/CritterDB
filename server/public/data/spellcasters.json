@@ -1,6 +1,18 @@
 {
-	"Innate": {},
+	"Innate": {
+		"components": {
+			"material": false,
+			"somatic": true,
+			"verbal": true
+		}
+	},
 	"Bard": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "charisma",
 		"level": {
 			"1": {
 				"spellSlots": [2]
@@ -65,6 +77,12 @@
 		}
 	},
 	"Cleric": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "wisdom",
 		"level": {
 			"1": {
 				"spellSlots": [2]
@@ -129,6 +147,12 @@
 		}
 	},
 	"Druid": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "wisdom",
 		"level": {
 			"1": {
 				"spellSlots": [2]
@@ -193,6 +217,12 @@
 		}
 	},
 	"Paladin": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "charisma",
 		"level": {
 			"1": {
 				"spellSlots": []
@@ -257,6 +287,12 @@
 		}
 	},
 	"Ranger": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "wisdom",
 		"level": {
 			"1": {
 				"spellSlots": []
@@ -321,6 +357,12 @@
 		}
 	},
 	"Sorcerer": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "charisma",
 		"level": {
 			"1": {
 				"spellSlots": [2]
@@ -385,6 +427,12 @@
 		}
 	},
 	"Warlock": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "charisma",
 		"level": {
 			"1": {
 				"spellSlots": [1]
@@ -449,6 +497,12 @@
 		}
 	},
 	"Wizard": {
+		"components": {
+			"material": true,
+			"somatic": true,
+			"verbal": true
+		},
+		"ability": "intelligence",
 		"level": {
 			"1": {
 				"spellSlots": [2]

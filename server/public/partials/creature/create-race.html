@@ -25,6 +25,7 @@
   <section layout="row" flex style="margin-top:-23px;margin-bottom:46px;">
     <md-chips ng-model="creature.stats.senses" md-autocomplete-snap md-require-match="false" style="width:100%;">
       <md-autocomplete
+          md-autoselect
           md-search-text="creature.stats.sensesSearch"
           md-items="sense in searchArray(creature.stats.sensesSearch,creatureData.senses,true)"
           md-item-text="sense"
@@ -41,6 +42,7 @@
   <section layout="row" flex style="margin-bottom:45px;">
     <md-chips ng-model="creature.stats.languages" md-autocomplete-snap md-require-match="false" style="width:100%;">
       <md-autocomplete
+          md-autoselect
           md-search-text="creature.stats.languagesSearch"
           md-items="language in searchArray(creature.stats.languagesSearch,creatureData.languages,true)"
           md-item-text="language"

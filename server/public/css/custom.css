@@ -452,17 +452,31 @@ md-dialog-content.generate-spellcasting-content md-input-container {
   width: 450px;
 }
 
+md-dialog-content.generate-spellcasting-content div.sub-area {
+  position: relative;
+  background-color: #f7f7f7;
+  margin: 8px;
+  padding: 0px;
+}
+
+md-dialog-content.generate-spellcasting-content div.sub-area span.label {
+  position: absolute;
+  top: 0px;
+  left: 6px;
+  transform: matrix(0.75,0,0,0.75,0,6);
+  transform-origin: 0px 0px;
+  color: rgba(0,0,0,0.541176);
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
 md-dialog-content.generate-spellcasting-content md-input-container.per-day {
   width: 0px;
 }
 
 md-dialog-content.generate-spellcasting-content div.spell-row {
-  -webkit-transition: all linear 0.5s;
-  transition: all linear 0.5s;
-  opacity: 1;
+  margin-bottom: 22px;
 }
 
-md-dialog-content.generate-spellcasting-content div.spell-row.ng-enter {
-  max-height: 0px;
-  opacity: 0;
+md-dialog-content.generate-spellcasting-content div.spell-row:first-child {
+  margin-top: -10px;
 }
