@@ -266,7 +266,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
     })
     .then(function(result){
     	if(result){
-    		$scope.creature.stats.actions.splice(0,0,result);
+    		$scope.creature.stats.additionalAbilities.splice(0,0,result);
     	}
     });;
 	}
@@ -562,6 +562,17 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 						this.components = angular.copy(spellcaster.components);
 					}
 				}
+			},
+			getSaveDC: function(creature){
+				var dc = 8 +
+					creature.stats.proficiencyBonus +
+					creature.stats.abilityScoreModifiers[this.ability];
+				return(dc);
+			},
+			getSpellAttackBonus: function(creature){
+				var bonus = creature.stats.proficiencyBonus +
+					creature.stats.abilityScoreModifiers[this.ability];
+				return(bonus);
 			}
 		}
 	})();
@@ -570,10 +581,165 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 			$scope.spellcasting.typeChanged();
 	},true);
 
+	var generateStatsText = function(){
+		var text = "(spell save DC " +
+			$scope.spellcasting.getSaveDC(creature) +
+			", +" +
+			$scope.spellcasting.getSpellAttackBonus(creature) +
+			" to hit with spell attacks)";
+		return(text);
+	}
+
+	var generateComponentText = function(){
+		var text = "";
+		var requiredComponents = [];
+		var notRequiredComponents = [];
+		for(var key in $scope.spellcasting.components){
+			if($scope.spellcasting.components.hasOwnProperty(key)){
+				var componentType = $scope.spellcasting.components[key];
+				if(componentType)
+					requiredComponents.push(key);
+				else
+					notRequiredComponents.push(key);
+			}
+		}
+		if(requiredComponents.length<3){
+			if($scope.spellcasting.type=="Innate"){
+				text = text + ", requiring ";
+				if(notRequiredComponents.length==1){
+					text = text + "no " +
+						notRequiredComponents[0] +
+						" components";
+				}
+				else if(notRequiredComponents.length==2){
+					text = text + "only " +
+						requiredComponents[0] +
+						" components";
+				}
+				else{
+					text = text +"no components";
+				}
+			}
+			else{
+				text = "It requires ";
+				if(notRequiredComponents.length==1){
+					text = text + "no " +
+						notRequiredComponents[0] +
+						" components to cast its spells";
+				}
+				else if(notRequiredComponents.length==2){
+					text = text + "only " +
+						requiredComponents[0] +
+						" components to cast its spells";
+				}
+				else{
+					text = text +"no components to cast its spells";
+				}
+				text = text + ". ";
+			}
+		}
+		return(text);
+	}
+
+	var generateSpellLine = function(type,spells){
+		var text = type + ": ";
+		for(var i=0;i<spells.length;i++){
+			var spell = spells[i];
+			text = text + "<i>" + spell.toLowerCase() + "</i>";
+			if(i<(spells.length-1))
+				text = text + ", ";
+		}
+		return(text);
+	}
+
+	function getOrdinal(n) {
+	  var s=["th","st","nd","rd"],
+	      v=n%100;
+	  return n+(s[(v-20)%10]||s[v]||s[0]);
+	}
+
+	var generateSpellBlock = function(){
+		var text = "";
+		var tryAddLine = function(title,levelStr,level){
+			var spellcasterData = CreatureData.spellcasters[$scope.spellcasting.type];
+			var slots = undefined;
+			if(level && spellcasterData.hasOwnProperty("level")){
+				var dataByLevel = spellcasterData["level"];
+				if(dataByLevel.hasOwnProperty($scope.spellcasting.level)){
+					var slotsByLevel = dataByLevel[$scope.spellcasting.level].spellSlots;
+					if(slotsByLevel){
+						slots = slotsByLevel[level-1];
+					}
+				}
+			}
+			if($scope.spellcasting.spells[levelStr].length>0 && (slots==undefined || slots>0)){
+				if(slots>0){
+					title = title + " ("+ slots +" slots)";
+				}
+				text = text +
+					generateSpellLine(title,$scope.spellcasting.spells[levelStr]) +
+					"\n";
+			}
+		}
+		if($scope.spellcasting.type=="Innate"){
+			tryAddLine("At will","atWill");
+			tryAddLine("3/day","perDay3");
+			tryAddLine("2/day","perDay2");
+			tryAddLine("1/day","perDay1");
+		}
+		else{
+			var slots = 0;
+			tryAddLine("Cantrip (at will)","level0");
+			for(var i=1;i<=9;i++){
+				var title = getOrdinal(i);
+				tryAddLine(getOrdinal(i)+" level","level"+i,i);
+			}
+		}
+		if(text[text.length-1]=='\n')
+			text = text.substring(0,text.length-1);	//cut off the ending newline
+		return(text);
+	}
+
+	var generateInnateDescription = function(){
+		var name = creature.name.toLowerCase();
+		var abilityStr = $scope.spellcasting.ability.charAt(0).toUpperCase() +  $scope.spellcasting.ability.slice(1).toLowerCase();
+		var text = "The " + name + "'s innate spellcasting ability is " +
+			abilityStr + " " + generateStatsText() + ". It can innately cast the " +
+			"following spells" + generateComponentText() + ":\n\n" +
+			generateSpellBlock();
+		return(text);
+	}
+
+	var generateClassDescription = function(){
+		var name = creature.name.toLowerCase();
+		var abilityStr = $scope.spellcasting.ability.charAt(0).toUpperCase() +  $scope.spellcasting.ability.slice(1).toLowerCase();
+		var levelStr = getOrdinal($scope.spellcasting.level)+"-level";
+		var classStr = $scope.spellcasting.type.toLowerCase();
+		var text = "The " + name + " is a " + levelStr + " spellcaster. Its " +
+			"spellcasting ability is " + abilityStr + " " + generateStatsText() +
+			". " + generateComponentText() + "The " + name + " has the following " +
+			classStr + " spells prepared:\n\n" + generateSpellBlock();
+		return(text);
+	}
+
+	var generateDescription = function(){
+		if($scope.spellcasting.type=='Innate')
+			return(generateInnateDescription());
+		else
+			return(generateClassDescription());
+	}
+
+	var generateTitle = function(){
+		if($scope.spellcasting.type=='Innate')
+			return("Innate Spellcasting");
+		else
+			return("Spellcasting");
+	}
+
 	$scope.generateSpellcasting = function() {
 		var ability = {
-			name: "Spellcasting",
-			description: "Spellcasting description"
+			name: generateTitle(),
+			description: generateDescription()
 		};
 		$mdDialog.hide(ability);
 	}
