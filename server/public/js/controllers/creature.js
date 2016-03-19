@@ -144,6 +144,28 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			var index = list.indexOf(ability);
 			if(index!=-1)
 				list.splice(index,1);
+		},
+		canMoveUp: function(item,list){
+			var index = list.indexOf(item);
+			return(index>0);
+		},
+		moveUp: function(item,list){
+			var index = list.indexOf(item);
+			if(index>0){
+				list.splice(index,1);
+				list.splice(index-1,0,item);
+			}
+		},
+		canMoveDown: function(item,list){
+			var index = list.indexOf(item);
+			return(index!=-1 && index<(list.length-1));
+		},
+		moveDown: function(item,list){
+			var index = list.indexOf(item);
+			if(index!=-1 && index<(list.length-1)){
+				list.splice(index,1);
+				list.splice(index+1,0,item);
+			}
 		}
 	};
 

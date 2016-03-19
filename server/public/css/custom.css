@@ -270,7 +270,6 @@ button.create-continue {
   border-radius: 3px;
   position: relative !important;
   padding-bottom: 10px;
-  padding-left: 10px;
 }
 
 .stats-form section.subsection div.controls {
@@ -317,12 +316,29 @@ button.create-continue {
 }
 
 .stats-form section.subsection button.remove-saving-throw {
-  margin: 25px 8px 0px 6px;
+  margin: 22px 8px 0px 6px;
 }
 
 .stats-form section.subsection div.saving-throw-row {
   width: 100%;
   height: 60px;
+}
+
+.stats-form section.subsection div.saving-throw-row div.move-controls {
+  padding-top: 12px;
+}
+
+.stats-form section.subsection div.saving-throw-row div.move-controls button {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  padding: 0px;
+}
+
+.stats-form section.subsection div.saving-throw-row div.move-controls md-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
 }
 
 button.continue-button {

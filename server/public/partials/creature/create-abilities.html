@@ -11,17 +11,29 @@
     </div>
     <div ng-repeat="ability in creature.stats.actions" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
-        <md-input-container flex>
-          <label>Name</label>
-          <input ng-model="ability.name" type="text"/>
-        </md-input-container>
-        <md-input-container flex>
-          <label>Description</label>
-          <textarea ng-model="ability.description" type="text"></textarea>
-        </md-input-container>
-        <button ng-click="abilities.removeFromList(ability,creature.stats.actions)" class="md-primary remove-saving-throw">
-          <md-icon md-svg-icon="md-close"></md-icon>
-        </button>
+        <div layout="column" class="move-controls">
+          <md-button ng-click="abilities.moveUp(ability,creature.stats.actions)" ng-disabled="!abilities.canMoveUp(ability,creature.stats.actions)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_up</md-icon>
+          </md-button>
+          <md-button ng-click="abilities.moveDown(ability,creature.stats.actions)" ng-disabled="!abilities.canMoveDown(ability,creature.stats.actions)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_down</md-icon>
+          </md-button>
+        </div>
+        <div layout="column" layout-gt-sm="row" style="width:100%;">
+          <md-input-container flex>
+            <label>Name</label>
+            <input ng-model="ability.name" type="text"/>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Description</label>
+            <textarea ng-model="ability.description" type="text"></textarea>
+          </md-input-container>
+        </div>
+        <div layout="column">
+          <button ng-click="abilities.removeFromList(ability,creature.stats.actions)" class="md-primary remove-saving-throw">
+            <md-icon md-svg-icon="md-close"></md-icon>
+          </button>
+        </div>
       </section>
     </div>
     <div class="label">Actions</div>
@@ -35,17 +47,29 @@
     </div>
     <div ng-repeat="ability in creature.stats.reactions" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
-        <md-input-container flex>
-          <label>Name</label>
-          <input ng-model="ability.name" type="text"/>
-        </md-input-container>
-        <md-input-container flex>
-          <label>Description</label>
-          <textarea ng-model="ability.description" type="text"></textarea>
-        </md-input-container>
-        <button ng-click="abilities.removeFromList(ability,creature.stats.reactions)" class="md-primary remove-saving-throw">
-          <md-icon md-svg-icon="md-close"></md-icon>
-        </button>
+        <div layout="column" class="move-controls">
+          <md-button ng-click="abilities.moveUp(ability,creature.stats.reactions)" ng-disabled="!abilities.canMoveUp(ability,creature.stats.reactions)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_up</md-icon>
+          </md-button>
+          <md-button ng-click="abilities.moveDown(ability,creature.stats.reactions)" ng-disabled="!abilities.canMoveDown(ability,creature.stats.reactions)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_down</md-icon>
+          </md-button>
+        </div>
+        <div layout="column" layout-gt-sm="row" style="width:100%;">
+          <md-input-container flex>
+            <label>Name</label>
+            <input ng-model="ability.name" type="text"/>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Description</label>
+            <textarea ng-model="ability.description" type="text"></textarea>
+          </md-input-container>
+        </div>
+        <div layout="column">
+          <button ng-click="abilities.removeFromList(ability,creature.stats.reactions)" class="md-primary remove-saving-throw">
+            <md-icon md-svg-icon="md-close"></md-icon>
+          </button>
+        </div>
       </section>
     </div>
     <div class="label">Reactions</div>
@@ -62,17 +86,29 @@
     </div>
     <div ng-repeat="ability in creature.stats.additionalAbilities" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
-        <md-input-container flex>
-          <label>Name</label>
-          <input ng-model="ability.name" type="text"/>
-        </md-input-container>
-        <md-input-container flex>
-          <label>Description</label>
-          <textarea ng-model="ability.description" type="text"></textarea>
-        </md-input-container>
-        <button ng-click="abilities.removeFromList(ability,creature.stats.additionalAbilities)" class="md-primary remove-saving-throw">
-          <md-icon md-svg-icon="md-close"></md-icon>
-        </button>
+        <div layout="column" class="move-controls">
+          <md-button ng-click="abilities.moveUp(ability,creature.stats.additionalAbilities)" ng-disabled="!abilities.canMoveUp(ability,creature.stats.additionalAbilities)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_up</md-icon>
+          </md-button>
+          <md-button ng-click="abilities.moveDown(ability,creature.stats.additionalAbilities)" ng-disabled="!abilities.canMoveDown(ability,creature.stats.additionalAbilities)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_down</md-icon>
+          </md-button>
+        </div>
+        <div layout="column" layout-gt-sm="row" style="width:100%;">
+          <md-input-container flex>
+            <label>Name</label>
+            <input ng-model="ability.name" type="text"/>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Description</label>
+            <textarea ng-model="ability.description" type="text"></textarea>
+          </md-input-container>
+        </div>
+        <div layout="column">
+          <button ng-click="abilities.removeFromList(ability,creature.stats.additionalAbilities)" class="md-primary remove-saving-throw">
+            <md-icon md-svg-icon="md-close"></md-icon>
+          </button>
+        </div>
       </section>
     </div>
     <div class="label">Abilities</div>
@@ -86,17 +122,29 @@
     </div>
     <div ng-repeat="ability in creature.stats.legendaryActions" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
-        <md-input-container flex>
-          <label>Name</label>
-          <input ng-model="ability.name" type="text"/>
-        </md-input-container>
-        <md-input-container flex>
-          <label>Description</label>
-          <textarea ng-model="ability.description" type="text"></textarea>
-        </md-input-container>
-        <button ng-click="abilities.removeFromList(ability,creature.stats.legendaryActions)" class="md-primary remove-saving-throw">
-          <md-icon md-svg-icon="md-close"></md-icon>
-        </button>
+        <div layout="column" class="move-controls">
+          <md-button ng-click="abilities.moveUp(ability,creature.stats.legendaryActions)" ng-disabled="!abilities.canMoveUp(ability,creature.stats.legendaryActions)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_up</md-icon>
+          </md-button>
+          <md-button ng-click="abilities.moveDown(ability,creature.stats.legendaryActions)" ng-disabled="!abilities.canMoveDown(ability,creature.stats.legendaryActions)" class="md-icon-button" aria-label="Move Up">
+            <md-icon>keyboard_arrow_down</md-icon>
+          </md-button>
+        </div>
+        <div layout="column" layout-gt-sm="row" style="width:100%;">
+          <md-input-container flex>
+            <label>Name</label>
+            <input ng-model="ability.name" type="text"/>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Description</label>
+            <textarea ng-model="ability.description" type="text"></textarea>
+          </md-input-container>
+        </div>
+        <div layout="column">
+          <button ng-click="abilities.removeFromList(ability,creature.stats.legendaryActions)" class="md-primary remove-saving-throw">
+            <md-icon md-svg-icon="md-close"></md-icon>
+          </button>
+        </div>
       </section>
     </div>
     <div class="label">Legendary Actions</div>
