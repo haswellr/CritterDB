@@ -273,6 +273,16 @@ button.create-continue {
   padding-left: 10px;
 }
 
+.stats-form section.subsection div.controls {
+  height: 50px;
+  margin-top: 23px;
+}
+@media (min-width: 450px) {
+  .stats-form section.subsection div.controls {
+    margin-top: 0px;
+  }
+}
+
 .stats-form section.subsection div.label {
   position: absolute;
   top: 5px;
