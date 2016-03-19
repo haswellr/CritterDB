@@ -13,6 +13,7 @@
     <md-dialog-content style="padding:40px 10px 0px 10px;">
 	    <section layout="row" style="width:100%;">
         <md-autocomplete flex
+            md-autoselect
             md-search-text="attack.weapon"
             md-items="weaponType in searchArray(attack.weapon,creatureData.weaponTypes)"
             md-item-text="weaponType"
@@ -65,6 +66,7 @@
       </section>
       <section ng-if="attack.melee" layout="row" style="width:100%;">
         <md-autocomplete flex
+            md-autoselect
             md-search-text="attack.damageType"
             md-items="damageType in searchArray(attack.damageType,creatureData.damageTypes)"
             md-item-text="damageType"
@@ -84,6 +86,7 @@
       </section>
       <section ng-if="attack.ranged" layout="row" style="width:100%;">
         <md-autocomplete flex
+            md-autoselect
             md-search-text="attack.rangedDamageType"
             md-items="damageType in searchArray(attack.rangedDamageType,creatureData.damageTypes)"
             md-item-text="damageType"
@@ -103,6 +106,7 @@
       </section>
       <section ng-if="attack.versatile" layout="row" style="width:100%;">
         <md-autocomplete flex
+            md-autoselect
             md-search-text="attack.twoHandedDamageType"
             md-items="damageType in searchArray(attack.twoHandedDamageType,creatureData.damageTypes)"
             md-item-text="damageType"
@@ -122,6 +126,7 @@
       </section>
       <section ng-if="attack.bonusDamage" layout="row" style="width:100%;">
         <md-autocomplete flex
+            md-autoselect
             md-search-text="attack.bonusDamageType"
             md-items="damageType in searchArray(attack.bonusDamageType,creatureData.damageTypes)"
             md-item-text="damageType"

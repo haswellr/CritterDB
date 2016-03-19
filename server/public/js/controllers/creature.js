@@ -5,8 +5,6 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 	$scope.creatureData = CreatureData;
 	$scope.searchArray = function(searchText,arrayToSearch,includeSearch){
 		var returnedVals = [];
-		if(includeSearch)
-			returnedVals.push(searchText);
 		if(searchText && arrayToSearch){
 			var searchTextLower = searchText.toLowerCase();
 			for(var i=0;i<arrayToSearch.length;i++){
@@ -14,6 +12,8 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 					returnedVals.push(arrayToSearch[i]);
 			}
 		}
+		if(includeSearch)
+			returnedVals.push(searchText);
 		return(returnedVals);
 	}
 
@@ -461,7 +461,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
     $mdDialog.cancel();
   };
 
-  $scope.searchArray = function(searchText,arrayToSearch){
+  $scope.searchArray = function(searchText,arrayToSearch,includeSearch){
 		var returnedVals = [];
 		if(searchText && arrayToSearch){
 			var searchTextLower = searchText.toLowerCase();
@@ -470,6 +470,8 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 					returnedVals.push(arrayToSearch[i]);
 			}
 		}
+		if(includeSearch)
+			returnedVals.push(searchText);
 		return(returnedVals);
 	}
 
@@ -509,8 +511,13 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 	$scope.spellcasting = (function(){
 		return {
 			type: 'Innate',	//wizard, cleric, innate, etc
-			ability: 'intelligence',
+			ability: 'charisma',
 			level: 1,				//1-20
+			components: {
+				material: false,
+				somatic: true,
+				verbal: true
+			},
 			spells: {
 				level0: [],
 				level1: [],
@@ -523,9 +530,9 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 				level8: [],
 				level9: [],
 				atWill: [],
-				perDay1: [],
+				perDay3: [],
 				perDay2: [],
-				perDay3: []
+				perDay1: []
 			},
 			hasSpellSlotsOfLevel: function(level){
 				if(this.type){
@@ -544,9 +551,24 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 				else{
 					return false;
 				}
+			},
+			typeChanged: function(){
+				var spellcaster = CreatureData.spellcasters[this.type];
+				if(spellcaster){
+					if(spellcaster.ability){
+						this.ability = spellcaster.ability;
+					}
+					if(spellcaster.components){
+						this.components = angular.copy(spellcaster.components);
+					}
+				}
 			}
 		}
 	})();
+	$scope.$watch("spellcasting.type",function(newValue,oldValue){
+		if(oldValue!=newValue)
+			$scope.spellcasting.typeChanged();
+	},true);
 
 	$scope.generateSpellcasting = function() {
 		var ability = {
@@ -561,8 +583,6 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 
   $scope.searchArray = function(searchText,arrayToSearch,includeSearch){
 		var returnedVals = [];
-		if(includeSearch)
-			returnedVals.push(searchText);
 		if(searchText && arrayToSearch){
 			var searchTextLower = searchText.toLowerCase();
 			for(var i=0;i<arrayToSearch.length;i++){
@@ -570,12 +590,13 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 					returnedVals.push(arrayToSearch[i]);
 			}
 		}
+		if(includeSearch)
+			returnedVals.push(searchText);
 		return(returnedVals);
 	};
 
 	$scope.searchSpellNames = function(searchText,level){
 		var returnedVals = [];
-		returnedVals.push(searchText);
 		if(searchText){
 			var searchTextLower = searchText.toLowerCase();
 			var classLower = ($scope.spellcasting.type!='Innate' ? $scope.spellcasting.type.toLowerCase() : null);
@@ -590,6 +611,7 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 					returnedVals.push(spell.name);
 			}
 		}
+		returnedVals.push(searchText);
 		return(returnedVals);
 	};
 };

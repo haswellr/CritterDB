@@ -38,8 +38,26 @@
             <input ng-model="spellcasting.level" min="1" max="20" type="number"/>
           </md-input-container>
         </div>
+        <div layout="row" layout-align="center center" class="sub-area" style="margin-top:-28px;">
+          <span class="label">Components</span>
+          <md-input-container style="width:auto;">
+            <md-checkbox ng-model="spellcasting.components.material" aria-label="Material Components">
+              Material
+            </md-checkbox>
+          </md-input-container>
+          <md-input-container style="width:auto;">
+            <md-checkbox ng-model="spellcasting.components.somatic" aria-label="Somatic Components">
+              Somatic
+            </md-checkbox>
+          </md-input-container>
+          <md-input-container style="width:auto;">
+            <md-checkbox ng-model="spellcasting.components.verbal" aria-label="Verbal Components">
+              Verbal
+            </md-checkbox>
+          </md-input-container>
+        </div>
         <div ng-if="spellcasting.type!='Innate'">
-          <div ng-repeat="level in spellLevels" ng-if="spellcasting.hasSpellSlotsOfLevel(level)" layout="row">
+          <div ng-repeat="level in spellLevels" ng-if="spellcasting.hasSpellSlotsOfLevel(level)" layout="row" class="spell-row">
             <md-chips ng-model="spellcasting.spells['level'+level]" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
               <md-autocomplete
                   md-autoselect
@@ -48,6 +66,76 @@
                   md-item-text="spellName"
                   placeholder="{{getSpellLevelText(level)}}">
                 <span md-highlight-text="spellSearch['level'+level]">{{spellName}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <em>{{$chip}}</em>
+                </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+        </div>
+        <div ng-if="spellcasting.type=='Innate'">
+          <div layout="row" class="spell-row">
+            <md-chips ng-model="spellcasting.spells.atWill" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+              <md-autocomplete
+                  md-autoselect
+                  md-search-text="spellSearch.atWill"
+                  md-items="spellName in searchSpellNames(spellSearch.atWill)"
+                  md-item-text="spellName"
+                  placeholder="At Will">
+                <span md-highlight-text="spellSearch.atWill">{{spellName}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <em>{{$chip}}</em>
+                </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+          <div layout="row" class="spell-row">
+            <md-chips ng-model="spellcasting.spells.perDay3" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+              <md-autocomplete
+                  md-autoselect
+                  md-search-text="spellSearch.perDay3"
+                  md-items="spellName in searchSpellNames(spellSearch.perDay3)"
+                  md-item-text="spellName"
+                  placeholder="3/day">
+                <span md-highlight-text="spellSearch.perDay3">{{spellName}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <em>{{$chip}}</em>
+                </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+          <div layout="row" class="spell-row">
+            <md-chips ng-model="spellcasting.spells.perDay2" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+              <md-autocomplete
+                  md-autoselect
+                  md-search-text="spellSearch.perDay2"
+                  md-items="spellName in searchSpellNames(spellSearch.perDay2)"
+                  md-item-text="spellName"
+                  placeholder="2/day">
+                <span md-highlight-text="spellSearch.perDay2">{{spellName}}</span>
+              </md-autocomplete>
+              <md-chip-template>
+                <span>
+                  <em>{{$chip}}</em>
+                </span>
+              </md-chip-template>
+            </md-chips>
+          </div>
+          <div layout="row" class="spell-row">
+            <md-chips ng-model="spellcasting.spells.perDay1" md-autocomplete-snap md-require-match="false" style="width:100%;max-width:960px;">
+              <md-autocomplete
+                  md-autoselect
+                  md-search-text="spellSearch.perDay1"
+                  md-items="spellName in searchSpellNames(spellSearch.perDay1)"
+                  md-item-text="spellName"
+                  placeholder="1/day">
+                <span md-highlight-text="spellSearch.perDay1">{{spellName}}</span>
               </md-autocomplete>
               <md-chip-template>
                 <span>

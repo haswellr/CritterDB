@@ -9,6 +9,7 @@
       <input ng-model="creature.stats.hitDieSize" min="1" type="number"/>
     </md-input-container>
     <md-autocomplete flex
+        md-autoselect
         md-search-text="creature.stats.armorType"
         md-items="armorType in searchArray(creature.stats.armorType,creatureData.armorTypes)"
         md-item-text="armorType"
@@ -26,6 +27,7 @@
 
 	<md-chips ng-model="creature.stats.damageVulnerabilities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
+        md-autoselect
         md-search-text="creature.stats.damageVulnerabilitiesSearch"
         md-items="vulnerability in searchArray(creature.stats.damageVulnerabilitiesSearch,creatureData.damageTypes,true)"
         md-item-text="vulnerability"
@@ -43,6 +45,7 @@
 
   <md-chips ng-model="creature.stats.damageResistances" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
+        md-autoselect
         md-search-text="creature.stats.damageResistancesSearch"
         md-items="resistance in searchArray(creature.stats.damageResistancesSearch,creatureData.damageTypes,true)"
         md-item-text="resistance"
@@ -60,6 +63,7 @@
 
   <md-chips ng-model="creature.stats.damageImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
+        md-autoselect
         md-search-text="creature.stats.damageImmunitiesSearch"
         md-items="immunity in searchArray(creature.stats.damageImmunitiesSearch,creatureData.damageTypes,true)"
         md-item-text="immunity"
@@ -77,6 +81,7 @@
 
   <md-chips ng-model="creature.stats.conditionImmunities" md-autocomplete-snap md-require-match="false">
     <md-autocomplete
+        md-autoselect
         md-search-text="creature.stats.conditionImmunitiesSearch"
         md-items="immunity in searchArray(creature.stats.conditionImmunitiesSearch,creatureData.negativeConditions,true)"
         md-item-text="immunity"
