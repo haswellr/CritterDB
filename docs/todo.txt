@@ -9,8 +9,6 @@ Imortant:
 
 -Autofill special abilities for races as well
 -Maybe alignment should be an autofill not a select?
--Generate Spellcasting in addition to Generate Attack
--! Autofill with chips should set chip text when an option is clicked - it is not doing this due to 'mdChipOnBlur' directive. FIX!. Also implement md-auto-select with autofill and decide whether typed text should be first or last in the list.
 -Reorder abilities/actions/etc
 
 -Fill in CreatureData.senses (Darkvision 60ft., Darkvision 30ft., Tremorsense 60ft. etc);
