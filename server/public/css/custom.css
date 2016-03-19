@@ -277,7 +277,7 @@ button.create-continue {
   height: 50px;
   margin-top: 23px;
 }
-@media (min-width: 450px) {
+@media (min-width: 500px) {
   .stats-form section.subsection div.controls {
     margin-top: 0px;
   }
