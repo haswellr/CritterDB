@@ -95,10 +95,17 @@
           </md-button>
         </div>
         <div layout="column" layout-gt-sm="row" style="width:100%;">
-          <md-input-container flex>
-            <label>Name</label>
-            <input ng-model="ability.name" type="text"/>
-          </md-input-container>
+          <md-autocomplete flex
+              md-search-text="ability.name"
+              md-selected-item-change="abilities.changed(ability)"
+              md-search-text-change="abilities.changed(ability)"
+              md-items="creatureAbility in searchAbilities(ability.name)"
+              md-item-text="creatureAbility.name"
+              md-floating-label="Name">
+            <md-item-template>
+              <span>{{creatureAbility.name}}</span>
+            </md-item-template>
+          </md-autocomplete>
           <md-input-container flex>
             <label>Description</label>
             <textarea ng-model="ability.description" type="text"></textarea>
