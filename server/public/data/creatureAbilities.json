@@ -49,7 +49,7 @@
   },
   {
     "name": "Brute",
-    "description": "A melee weapon deals one extra die of its damage when The {{name}} hits with it."
+    "description": "A melee weapon deals one extra die of its damage when the {{name}} hits with it."
   },
   {
     "name": "Damage Transfer",
@@ -133,7 +133,7 @@
   },
   {
     "name": "Illumination",
-    "description": "The {{name}} sheds bright light in a 10­foot radius and dim light for an additional 10 feet."
+    "description": "The {{name}} sheds bright light in a 10 foot radius and dim light for an additional 10 feet."
   },
   {
     "name": "Immutable Form",
@@ -165,7 +165,7 @@
   },
   {
     "name": "Keen Hearing and Sight",
-    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or Sight."
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or sight."
   },
   {
     "name": "Keen Senses",
@@ -221,7 +221,7 @@
   },
   {
     "name": "Rampage",
-    "description": "When the {{name}} reduces a creature to 0 hit points with a melee attack on its turn, the {{name}} can take a bonus action to move up to half its speed and make a bite attack."
+    "description": "When the {{name}} reduces a creature to 0 hit points with a melee attack on its turn, the {{name}} can take a bonus action to move up to half its speed and make another attack."
   },
   {
     "name": "Reactive",
