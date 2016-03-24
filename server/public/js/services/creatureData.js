@@ -1,5 +1,5 @@
 
-angular.module('myApp').factory("CreatureData", function() {
+angular.module('myApp').factory("CreatureData", function($resource) {
 
 	var CreatureData = {};
 
@@ -69,6 +69,8 @@ angular.module('myApp').factory("CreatureData", function() {
 	CreatureData.spellcasterTypes = Object.keys(CreatureData.spellcasters);
 	CreatureData.spells = //import must be on its own line
 		@import "../../data/spells.json";
+	CreatureData.creatureAbilities = //import must be on its own line
+		@import "../../data/creatureAbilities.json";
 
 //melee
 //ranged

@@ -1,0 +1,354 @@
+[
+  {
+    "name": "Acid Absorption",
+    "description": "Whenever the {{name}} is subjected to acid damage, it takes no damage and instead regains a number of hit points equal to the acid damage dealt."
+  },
+  {
+    "name": "Air Form",
+    "description": "The {{name}} can enter a hostile creature’s space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
+  },
+  {
+    "name": "Antimagic Susceptibility",
+    "description": "The {{name}} is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the {{name}} must succeed on a Constitution saving throw against the caster’s spell save DC or fall unconscious for 1 minute."
+  },
+  {
+    "name": "Ambusher",
+    "description": "The {{name}} has advantage on attack rolls against any creature it has surprised."
+  },
+  {
+    "name": "Amorphous",
+    "description": "The {{name}} can move through a space as narrow as 1 inch wide without squeezing."
+  },
+  {
+    "name": "Amphibious",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Assassinate",
+    "description": "During its first turn, the {{name}} has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit the {{name}} scores against a surprised creature is a critical hit."
+  },
+  {
+    "name": "Aversion to Fire",
+    "description": "If the {{name}} takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
+  },
+  {
+    "name": "Beast of Burden",
+    "description": "The {{name}} is considered to be a Large animal for the purpose of determining its carrying capacity."
+  },
+  {
+    "name": "Blind Senses",
+    "description": "The {{name}} can’t use its blindsight while deafened and unable to smell."
+  },
+  {
+    "name": "Blood Frenzy",
+    "description": "The {{name}} has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
+  },
+  {
+    "name": "Brave",
+    "description": "The {{name}} has advantage on saving throws against being frightened."
+  },
+  {
+    "name": "Brute",
+    "description": "A melee weapon deals one extra die of its damage when The {{name}} hits with it."
+  },
+  {
+    "name": "Damage Transfer",
+    "description": "While it is grappling a creature, the {{name}} takes only half the damage dealt to it, and the creature grappled by the {{name}} takes the other half."
+  },
+  {
+    "name": "Dark Devotion",
+    "description": "The {{name}} has advantage on saving throws against being charmed or frightened."
+  },
+  {
+    "name": "Devil's Sight",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Divine Awareness",
+    "description": "The {{name}} knows if it hears a lie."
+  },
+  {
+    "name": "Duregar Resilience",
+    "description": "The {{name}} has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
+  },
+  {
+    "name": "Earth Glide",
+    "description": "The {{name}} can burrow through nonmagical, unworked earth and stone. While doing so, the {{name}} doesn’t disturb the material it moves through."
+  },
+  {
+    "name": "Echolocation",
+    "description": "The {{name}} can’t use its blindsight while deafened."
+  },
+  {
+    "name": "Elemental Demise",
+    "description": "If the {{name}} dies, its body disintegrates, leaving behind only equipment the {{name}} was wearing or carrying."
+  },
+  {
+    "name": "Ephemeral",
+    "description": "The {{name}} can’t wear or carry anything."
+  },
+  {
+    "name": "Ethereal Jaunt",
+    "description": "As a bonus action, the {{name}} can magically shift from the Material Plane to the Ethereal Plane, or vice versa."
+  },
+  {
+    "name": "Evasion",
+    "description": "If the {{name}} is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the {{name}} instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
+  },
+  {
+    "name": "False Appearance",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal {{name}}."
+  },
+  {
+    "name": "Fey Ancestry",
+    "description": "The {{name}} has advantage on saving throws against being charmed, and magic can’t put the {{name}} to sleep."
+  },
+  {
+    "name": "Fire Absorption",
+    "description": "Whenever the {{name}} is subjected to fire damage, it takes no damage and instead regains a number of hit points equal to the fire damage dealt."
+  },
+  {
+    "name": "Flyby",
+    "description": "The {{name}} doesn’t provoke opportunity attacks when it flies out of an enemy’s reach."
+  },
+  {
+    "name": "Freedom of Movement",
+    "description": "The {{name}} ignores difficult terrain, and magical effects can’t reduce its speed or cause it to be restrained. It can spend 5 feet of movement to escape from nonmagical restraints or being grappled."
+  },
+  {
+    "name": "Gnome Cunning",
+    "description": "The {{name}} has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
+  },
+  {
+    "name": "Grappler",
+    "description": "The {{name}} has advantage on attack rolls against any creature grappled by it."
+  },
+  {
+    "name": "Hold Breath",
+    "description": "The {{name}} can hold its breath for 15 minutes."
+  },
+  {
+    "name": "Ice Walk",
+    "description": "The {{name}} can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn’t cost it extra moment."
+  },
+  {
+    "name": "Illumination",
+    "description": "The {{name}} sheds bright light in a 10­foot radius and dim light for an additional 10 feet."
+  },
+  {
+    "name": "Immutable Form",
+    "description": "The {{name}} is immune to any spell or effect that would alter its form."
+  },
+  {
+    "name": "Incorporeal Movement",
+    "description": "The {{name}} can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+  },
+  {
+    "name": "Inscrutable",
+    "description": "The {{name}} is immune to any effect that would sense its emotions or read its thoughts, as well as any divination spell that it refuses. Wisdom (Insight) checks made to ascertain the {{name}}'s intentions or sincerity have disadvantage."
+  },
+  {
+    "name": "Invisibility",
+    "description": "The {{name}} is invisible."
+  },
+  {
+    "name": "Iron Scent",
+    "description": "The {{name}} can pinpoint, by scent, the location of ferrous metal within 30 feet of it."
+  },
+  {
+    "name": "Keen Hearing",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing."
+  },
+  {
+    "name": "Keen Hearing and Smell",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Sight",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or Sight."
+  },
+  {
+    "name": "Keen Senses",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on sight, hearing or smell."
+  },
+  {
+    "name": "Keen Sight",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+  {
+    "name": "Keen Sight and Smell",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on sight or smell."
+  },
+  {
+    "name": "Keen Smell",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Labyrinthine Recall",
+    "description": "The {{name}} can perfectly recall any path it has traveled."
+  },
+  {
+    "name": "Light Sensitivity",
+    "description": "While in bright light, the {{name}} has disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Lightning Absorption",
+    "description": "Whenever the {{name}} is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
+  },
+  {
+    "name": "Limited Amphibiousness",
+    "description": "The {{name}} can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating."
+  },
+  {
+    "name": "Limited Magic Immunity",
+    "description": "The {{name}} can’t be affected or detected by spells of 6th level or lower unless it wishes to be. It has advantage on saving throws against all other spells and magical effects."
+  },
+  {
+    "name": "Magic Resistance",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },  
+  {
+    "name": "Magic Weapons",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Nimble Escape",
+    "description": "The {{name}} can take the Disengage or Hide action as a bonus action on each of its turns."
+  },
+  {
+    "name": "Pack Tactics",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Rampage",
+    "description": "When the {{name}} reduces a creature to 0 hit points with a melee attack on its turn, the {{name}} can take a bonus action to move up to half its speed and make a bite attack."
+  },
+  {
+    "name": "Reactive",
+    "description": "The {{name}} can take one reaction on every turn in a combat."
+  },
+  {
+    "name": "Reckless",
+    "description": "At the start of its turn, the {{name}} can gain advantage on all melee weapon attack rolls it makes during that turn, but attack rolls against it have advantage until the start of its next turn."
+  },
+  {
+    "name": "Running Leap",
+    "description": "With a 10-foot running start, the {{name}} can long jump up to 25 feet."
+  },
+  {
+    "name": "Rust Metal",
+    "description": "Any nonmagical weapon made of metal that hits the {{name}} corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal that hits the {{name}} is destroyed after dealing damage."
+  },
+  {
+    "name": "Sense Magic",
+    "description": "The {{name}} senses magic within 120 feet of it at will. This trait otherwise works like the detect magic spell but isn’t itself magical"
+  },
+  {
+    "name": "Shielded Mind",
+    "description": "The {{name}} is immune to scrying and to any effect that would sense its emotions, read its thoughts, or detect its location."
+  },
+  {
+    "name": "Siege Monster",
+    "description": "The {{name}} deals double damage to objects and structures."
+  },
+  {
+    "name": "Shadow Stealth",
+    "description": "While in dim light or darkness, the {{name}} can take the Hide action as a bonus action."
+  },
+  {
+    "name": "Shark Telepathy",
+    "description": "The {{name}} can magically command any shark within 120 feet of it, using a limited telepathy."
+  },
+  {
+    "name": "Snow Camouflage",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in snowy terrain."
+  },
+  {
+    "name": "Speak with Beasts and Plants",
+    "description": "The {{name}} can communicate with beasts and plants as if they shared a language."
+  },
+  {
+    "name": "Spider Climb",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Standing Leap",
+    "description": "The {{name}}’s long jump is up to 10 feet and its high jump is up to 5 feet, with or without a running start."
+  },
+  {
+    "name": "Steadfast",
+    "description": "The {{name}} can’t be frightened while it can see an allied creature within 30 feet of it."
+  },
+  {
+    "name": "Stone Camouflage",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+  },
+  {
+    "name": "Sunlight Sensitivity",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Weakness",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, ability checks, and saving throws."
+  },
+  {
+    "name": "Sure Footed",
+    "description": "The {{name}} has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
+  },
+  {
+    "name": "Swarm",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny {{name}}. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Telepathic Bond",
+    "description": "The {{name}} ignores the range restriction on its telepathy when communicating with a creature it has charmed. The two don’t even need to be on the same plane of existence."
+  },
+  {
+    "name": "Treasure Sense",
+    "description": "The {{name}} can pinpoint, by scent, the location of precious metals and stones, such as coins and gems, within 60 feet of it."
+  },
+  {
+    "name": "Tunneler",
+    "description": "The {{name}} can burrow through solid rock at half its burrow speed and leaves a 10-foot-diameter tunnel in its wake."
+  },
+  {
+    "name": "Two Heads",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious."
+  },
+  {
+    "name": "Two-Headed",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious."
+  },
+  {
+    "name": "Undead Fortitude",
+    "description": "If damage reduces the {{name}} to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the {{name}} drops to 1 hit point instead."
+  },
+  {
+    "name": "Underwater Camouflage",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made while underwater."
+  },
+  {
+    "name": "Varaiable Illumination",
+    "description": "The {{name}} sheds bright light in a 5- to 20-foot radius and dim light for an additional number of feet equal to the chosen radius. The {{name}} can alter the radius as a bonus action."
+  },
+  {
+    "name": "Wakeful",
+    "description": "When one of the {{name}}'s heads is asleep, another head is awake."
+  },
+  {
+    "name": "Water Breathing",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Form",
+    "description": "The {{name}} can enter a hostile creature’s space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
+  },
+  {
+    "name": "Web Sense",
+    "description": "While in contact with a web, the {{name}} knows the exact location of any other creature in contact with the same web."
+  },
+  {
+    "name": "Web Walker",
+    "description": "The {{name}} ignores movement restrictions caused by webbing."
+  }
+]

@@ -16,6 +16,19 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			returnedVals.push(searchText);
 		return(returnedVals);
 	}
+	$scope.searchAbilities = function(abilityName){
+		var returnedVals = [];
+		if(abilityName){
+			var searchTextLower = abilityName.toLowerCase();
+			for(var i=0;i<CreatureData.creatureAbilities.length;i++){
+				if(CreatureData.creatureAbilities[i].name.toLowerCase().indexOf(searchTextLower)!=-1)
+					returnedVals.push(CreatureData.creatureAbilities[i]);
+			}
+		}
+		else
+			return(CreatureData.creatureAbilities);
+		return(returnedVals);
+	}
 
 	$scope.challengeRating = {
 		step: 0.125,
@@ -165,6 +178,19 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			if(index!=-1 && index<(list.length-1)){
 				list.splice(index,1);
 				list.splice(index+1,0,item);
+			}
+		},
+		changed: function(ability){
+			console.log("changed: "+ability.name);
+			var matchingAbilities = $scope.searchAbilities(ability.name);
+			var nameLower = ability.name.toLowerCase();
+			for(var i=0;i<matchingAbilities.length;i++){
+				console.log(matchingAbilities[i].name.toLowerCase()+" vs "+nameLower);
+				if(matchingAbilities[i].name.toLowerCase()==nameLower){
+					var creatureName = $scope.creature.name.toLowerCase();
+					ability.description = matchingAbilities[i].description.replace(/{{name}}/g,creatureName);
+					break;	//just find the first matching one
+				}
 			}
 		}
 	};
