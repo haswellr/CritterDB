@@ -181,11 +181,9 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			}
 		},
 		changed: function(ability){
-			console.log("changed: "+ability.name);
 			var matchingAbilities = $scope.searchAbilities(ability.name);
 			var nameLower = ability.name.toLowerCase();
 			for(var i=0;i<matchingAbilities.length;i++){
-				console.log(matchingAbilities[i].name.toLowerCase()+" vs "+nameLower);
 				if(matchingAbilities[i].name.toLowerCase()==nameLower){
 					var creatureName = $scope.creature.name.toLowerCase();
 					ability.description = matchingAbilities[i].description.replace(/{{name}}/g,creatureName);
