@@ -5,7 +5,8 @@ Imortant:
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -UI is not working correctly on Chrome or Safari on iOS.
--Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least). Also add ability to export to HTML.
+-Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least).
+-Add ability to export to HTML and to Natural Crit
 
 -Autofill special abilities for races as well
 -Maybe alignment should be an autofill not a select?
