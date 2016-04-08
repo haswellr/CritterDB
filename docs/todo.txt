@@ -1,7 +1,6 @@
 
 
 Imortant:
--Add sorting to ability autocomplete based on how close of a match it is.
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
