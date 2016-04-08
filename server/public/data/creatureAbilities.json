@@ -1,354 +1,1738 @@
 [
   {
-    "name": "Acid Absorption",
+    "name": "Abberant Ground (Gibbering Mouther)",
+    "description": "The ground in a 10-foot radius around the {{name}} is doughlike difficult terrain. Each creature that starts its turn in that area must succeed on a DC 10 Strength saving throw or have its speed reduced to 0 until the start of its next turn."
+  },
+  {
+    "name": "Acid Absorption (Clay Golem)",
     "description": "Whenever the {{name}} is subjected to acid damage, it takes no damage and instead regains a number of hit points equal to the acid damage dealt."
   },
   {
-    "name": "Air Form",
+    "name": "Adhesive (Mimic)",
+    "description": "The {{name}} adheres to anything that touches it. A Huge or smaller creature adhered to the mimic is also grappled by it (escape DC 13). Ability checks made to escape this grapple have disadvantage."
+  },
+  {
+    "name": "Air Form (Air Elemental)",
     "description": "The {{name}} can enter a hostile creature’s space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
   },
   {
-    "name": "Antimagic Susceptibility",
+    "name": "Angelic Weapons (Deva)",
+    "description": "The {{name}}'s weapon attacks are magical. When the {{name}} hits with any weapon, the weapon deals an extra 4d8 radiant damage."
+  },
+  {
+    "name": "Angelic Weapons (Planetar)",
+    "description": "The {{name}}'s weapon attacks are magical. When the {{name}} hits with any weapon, the weapon deals an extra 5d8 radiant damage."
+  },
+  {
+    "name": "Angelic Weapons (Solar)",
+    "description": "The {{name}}'s weapon attacks are magical. When the {{name}} hits with any weapon, the weapon deals an extra 6d8 radiant damage."
+  },
+  {
+    "name": "Antimagic Susceptibility (Animated Armor)",
     "description": "The {{name}} is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the {{name}} must succeed on a Constitution saving throw against the caster’s spell save DC or fall unconscious for 1 minute."
   },
   {
-    "name": "Ambusher",
+    "name": "Antimagic Susceptibility (Flying Sword)",
+    "description": "The {{name}} is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the {{name}} must succeed on a Constitution saving throw against the caster’s spell save DC or fall unconscious for 1 minute."
+  },
+  {
+    "name": "Antimagic Susceptibility (Rug of Smothering)",
+    "description": "The {{name}} is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the {{name}} must succeed on a Constitution saving throw against the caster’s spell save DC or fall unconscious for 1 minute."
+  },
+  {
+    "name": "Ambusher (Doppelganger)",
     "description": "The {{name}} has advantage on attack rolls against any creature it has surprised."
   },
   {
-    "name": "Amorphous",
+    "name": "Amorphous (Black Pudding)",
     "description": "The {{name}} can move through a space as narrow as 1 inch wide without squeezing."
   },
   {
-    "name": "Amphibious",
+    "name": "Amorphous (Gray Ooze)",
+    "description": "The {{name}} can move through a space as narrow as 1 inch wide without squeezing."
+  },
+  {
+    "name": "Amorphous (Ochre Jelly)",
+    "description": "The {{name}} can move through a space as narrow as 1 inch wide without squeezing."
+  },
+  {
+    "name": "Amorphous (Shadow)",
+    "description": "The {{name}} can move through a space as narrow as 1 inch wide without squeezing."
+  },
+  {
+    "name": "Amphibious (Aboleth)",
     "description": "The {{name}} can breathe air and water."
   },
   {
-    "name": "Assassinate",
+    "name": "Amphibious (Adult Black Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Adult Bronze Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Adult Gold Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Adult Green Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Ancient Black Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Ancient Bronze Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Ancient Gold Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Ancient Green Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Black Dragon Wyrmling)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Bronze Dragon Wyrmling)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Chuul)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Crab)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Dragon Turtle)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Frog)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Giant Crab)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Giant Frog)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Giant Toad)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Green Dragon Wyrmling)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Green Hag)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Gold Dragon Wyrmling)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Kraken)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Merfolk)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Merrow)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Sea Hag)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Storm Giant)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Young Black Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Young Bronze Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Young Gold Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Amphibious (Young Green Dragon)",
+    "description": "The {{name}} can breathe air and water."
+  },
+  {
+    "name": "Assassinate (Assassin)",
     "description": "During its first turn, the {{name}} has advantage on attack rolls against any creature that hasn’t taken a turn. Any hit the {{name}} scores against a surprised creature is a critical hit."
   },
   {
-    "name": "Aversion to Fire",
+    "name": "Aversion of Fire (Flesh Golem)",
     "description": "If the {{name}} takes fire damage, it has disadvantage on attack rolls and ability checks until the end of its next turn."
   },
   {
-    "name": "Beast of Burden",
+    "name": "Barbed Hide (Barbed Devil)",
+    "description": "At the start of each of its turns, the {{name}} deals 5 (1d10) piercing damage to any creature grappling it."
+  },
+  {
+    "name": "Beast of Burden (Mule)",
     "description": "The {{name}} is considered to be a Large animal for the purpose of determining its carrying capacity."
   },
   {
-    "name": "Blind Senses",
+    "name": "Berserk (Clay Golem)",
+    "description": "Whenever the {{name}} starts its turn with 60 hit points or fewer, roll a d6. On a 6, the {{name}} goes berserk. On each of its turns while berserk, the {{name}} attacks the nearest creature it can see. If no creature is near enough to move to and attack, the {{name}} attacks an object, with preference for an object smaller than itself. Once the {{name}} goes berserk, it continues to do so until it is destroyed or regains all its hit points."
+  },
+  {
+    "name": "Berserk (Flesh Golem)",
+    "description": "Whenever the {{name}} starts its turn with 40 hit points or fewer, roll a d6. On a 6, the {{name}} goes berserk. On each of its turns while berserk, the {{name}} attacks the nearest creature it can see. If no creature is near enough to move to and attack, the {{name}} attacks an object, with preference for an object smaller than itself. Once the {{name}} goes berserk, it continues to do so until it is destroyed or regains all its hit points. \n The {{name}}’s creator, if within 60 feet of the berserk {{name}}, can try to calm it by speaking firmly and persuasively. The {{name}} must be able to hear its creator, who must take an action to make a DC 15 Charisma (Persuasion) check. If the check succeeds, the {{name}} ceases being berserk. If it takes damage while still at 40 hit points or fewer, the {{name}} might go berserk again."
+  },
+  {
+    "name": "Blind Senses (Grimlock)",
     "description": "The {{name}} can’t use its blindsight while deafened and unable to smell."
   },
   {
-    "name": "Blood Frenzy",
+    "name": "Blood Frenzy (Giant Shark)",
     "description": "The {{name}} has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
   },
   {
-    "name": "Brave",
+    "name": "Blood Frenzy (Hunter Shark)",
+    "description": "The {{name}} has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
+  },
+  {
+    "name": "Blood Frenzy (Quipper)",
+    "description": "The {{name}} has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
+  },
+  {
+    "name": "Blood Frenzy (Sahuagin)",
+    "description": "The {{name}} has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
+  },
+  {
+    "name": "Blood Frenzy (Swarm of Quippers)",
+    "description": "The {{name}} has advantage on melee attack rolls against any creature that doesn’t have all its hit points."
+  },
+  {
+    "name": "Bound (Shield Guardian)",
+    "description": "The {{name}} is magically bound to an amulet. As long as the {{name}} and its amulet are on the same plane of existence, the amulet’s wearer can telepathically call the {{name}} to travel to it, and the {{name}} knows the distance and direction to the amulet. If the {{name}} is within 60 feet of the amulet’s wearer, half of any damage the wearer takes (rounded up) is transferred to the {{name}}."
+  },
+  {
+    "name": "Brave (Gladiator)",
     "description": "The {{name}} has advantage on saving throws against being frightened."
   },
   {
-    "name": "Brute",
+    "name": "Brave (Knight)",
+    "description": "The {{name}} has advantage on saving throws against being frightened."
+  },
+  {
+    "name": "Brute (Bugbear)",
     "description": "A melee weapon deals one extra die of its damage when the {{name}} hits with it."
   },
   {
-    "name": "Damage Transfer",
+    "name": "Brute (Gladiator)",
+    "description": "A melee weapon deals one extra die of its damage when the {{name}} hits with it."
+  },
+  {
+    "name": "Charge (Wereboar)",
+    "description": "If the {{name}} moves at least 15 feet straight toward a target and then hits it with its tusks on the same turn, the target takes an extra 7 (2d6) slashing damage. If the target is a creature, it must succeed on a DC 13 Strength saving throw or be knocked prone."
+  },
+  {
+    "name": "Confer Fire Resistance (Nightmare)",
+    "description": "The {{name}} can grant resistance to fire damage to anyone riding it."
+  },
+  {
+    "name": "Consume Life (Will-o'-Wisp)",
+    "description": "The {{name}} can grant resistance to fire damage to anyone riding it."
+  },
+  {
+    "name": "Corrode Metal (Gray Ooze)",
+    "description": "Any nonmagical weapon made of metal that hits {{name}} corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal that hits {{name}} is destroyed after dealing damage. \nThe {{name}} can eat through 2-inch-thick, nonmagical metal in 1 round."
+  },
+  {
+    "name": "Corrosive Form (Black Pudding)",
+    "description": "A creature that touches {{name}} or hits it with a melee attack while within 5 feet of it takes 4 (1d8) acid damage. Any nonmagical weapon made of metal or wood that hits {{name}} corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal or wood that hits {{name}} is destroyed after dealing damage. \n {{name}} can eat through 2-inch-thick, nonmagical wood or metal in 1 round."
+  },
+  {
+    "name": "Damage Transfer (Cloaker)",
+    "description": "While attached a creature, the {{name}} takes only half the damage dealt to it (rounded down), and that creature takes the other half."
+  },
+  {
+    "name": "Damage Transfer (Rug of Smothering)",
     "description": "While it is grappling a creature, the {{name}} takes only half the damage dealt to it, and the creature grappled by the {{name}} takes the other half."
   },
   {
-    "name": "Dark Devotion",
+    "name": "Dark Devotion (Cult Fanatic)",
     "description": "The {{name}} has advantage on saving throws against being charmed or frightened."
   },
   {
-    "name": "Devil's Sight",
+    "name": "Dark Devotion (Cultist)",
+    "description": "The {{name}} has advantage on saving throws against being charmed or frightened."
+  },
+  {
+    "name": "Death Burst (Dust Mephit)",
+    "description": "When the {{name}} dies, it explodes in a burst of dust. Each creature within 5 feet of it must then succeed on a DC 10 Constitution saving throw or be blinded for 1 minute. A blinded creature can repeat the saving throw on each of its turns, ending the effect on itself on a success."
+  },
+  {
+    "name": "Death Burst (Magma Mephit)",
+    "description": "When the {{name}} dies, it explodes in a burst of lava. Each creature within 5 feet of it must then succeed on a DC 11 Dexterity saving throw, taking 7 (2d6) fire damage on a failed save, or half as much damage on a successful one."
+  },
+  {
+    "name": "Death Burst (Magmin)",
+    "description": "When the {{name}} dies, it explodes in a burst of fire and magma. Each creature within 10 feet of it must make a DC 11 Dexterity saving throw, taking 7 (2d6) fire damage on a failed save, or half as much damage on a successful one. Flammable objects that aren’t being worn or carried in that area are ignited."
+  },
+  {
+    "name": "Death Burst (Ice Mephit)",
+    "description": "When the {{name}} dies, it explodes in a burst of jagged ice. Each creature within 5 feet of it must then succeed on a DC 10 Dexterity saving throw, taking 4 (1d8) slashing damage on a failed save, or half as much damage on a successful one."
+  },
+  {
+    "name": "Death Burst (Steam Mephit)",
+    "description": "When the {{name}} dies, it explodes in a cloud of steam. Each creature within 5 feet of it must then succeed on a DC 10 Dexterity saving throw, taking 4 (1d8) fire damage on a failed save, or half as much damage on a successful one."
+  },
+  {
+    "name": "Death Throes (Balor)",
+    "description": "When the {{name}} dies, it explodes, and each creature within 30 feet of it must make a DC 20 Dexterity saving throw, taking 70 (20d6) fire damage on a failed save, or half as much damage on a successful one. The explosion ignites flammable objects in that area that aren’t being worn or carried, and it destroys the {{name}}’s weapons."
+  },
+  {
+    "name": "Devil's Sight (Barbed Devil)",
     "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
   },
   {
-    "name": "Divine Awareness",
+    "name": "Devil's Sight (Bearded Devil)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Devil's Sight (Bone Devil)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Devil's Sight (Chain Devil)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Devil's Sight (Horned Devil)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Devil's Sight (Ice Devil)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Devil's Sight (Imp)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Devil's Sight (Lemure)",
+    "description": "Magical darkness doesn’t impede The {{name}}’s darkvision."
+  },
+  {
+    "name": "Divine Awareness (Planetar)",
     "description": "The {{name}} knows if it hears a lie."
   },
   {
-    "name": "Duregar Resilience",
+    "name": "Divine Awareness (Solar)",
+    "description": "The {{name}} knows if it hears a lie."
+  },
+  {
+    "name": "Duergar Resilience (Duergar)",
     "description": "The {{name}} has advantage on saving throws against poison, spells, and illusions, as well as to resist being charmed or paralyzed."
   },
   {
-    "name": "Earth Glide",
+    "name": "Earth Glide (Earth Elemental)",
     "description": "The {{name}} can burrow through nonmagical, unworked earth and stone. While doing so, the {{name}} doesn’t disturb the material it moves through."
   },
   {
-    "name": "Echolocation",
+    "name": "Earth Glide (Xorn)",
+    "description": "The {{name}} can burrow through nonmagical, unworked earth and stone. While doing so, the {{name}} doesn’t disturb the material it moves through."
+  },
+  {
+    "name": "Echolocation (Bat)",
     "description": "The {{name}} can’t use its blindsight while deafened."
   },
   {
-    "name": "Elemental Demise",
-    "description": "If the {{name}} dies, its body disintegrates, leaving behind only equipment the {{name}} was wearing or carrying."
+    "name": "Echolocation (Darkmantle)",
+    "description": "The {{name}} can’t use its blindsight while deafened."
   },
   {
-    "name": "Ephemeral",
+    "name": "Echolocation (Giant Bat)",
+    "description": "The {{name}} can’t use its blindsight while deafened."
+  },
+  {
+    "name": "Echolocation (Killer Whale)",
+    "description": "The {{name}} can’t use its blindsight while deafened."
+  },
+  {
+    "name": "Echolocation (Swarm of Bats)",
+    "description": "The {{name}} can’t use its blindsight while deafened."
+  },
+  {
+    "name": "Elemental Demise (Djinni)",
+    "description": "If the {{name}} dies, its body disintegrates into a warm breeze, leaving behind only equipment the {{name}} was wearing or carrying."
+  },
+  {
+    "name": "Elemental Demise (Efreeti)",
+    "description": "If the {{name}} dies, its body disintegrates in a flash of fire and puff of smoke, leaving behind only equipment the {{name}} was wearing or carrying."
+  },
+  {
+    "name": "Ephemeral (Will-o'-Wisp)",
     "description": "The {{name}} can’t wear or carry anything."
   },
   {
-    "name": "Ethereal Jaunt",
+    "name": "Ethereal Jaunt (Phase Spider)",
     "description": "As a bonus action, the {{name}} can magically shift from the Material Plane to the Ethereal Plane, or vice versa."
   },
   {
-    "name": "Evasion",
+    "name": "Evasion (Assassin)",
     "description": "If the {{name}} is subjected to an effect that allows it to make a Dexterity saving throw to take only half damage, the {{name}} instead takes no damage if it succeeds on the saving throw, and only half damage if it fails."
   },
   {
-    "name": "False Appearance",
-    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal {{name}}."
+    "name": "Faultless Tracker (Invisible Stalker)",
+    "description": "The {{name}} is given a quarry by its summoner. The {{name}} knows the direction and distance to its quarry as long as the two of them are on the same plane of existence. The {{name}} also knows the location of its summoner."
   },
   {
-    "name": "Fey Ancestry",
+    "name": "False Appearance (Animated Armor)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal suit of armor."
+  },
+  {
+    "name": "False Appearance (Awakened Shrub)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal shrub."
+  },
+  {
+    "name": "False Appearance (Awakened Tree)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal tree."
+  },
+  {
+    "name": "False Appearance (Cloaker)",
+    "description": "While the {{name}} remains motionless without it's underside exposed, it is indistinguishable from a dark leather cloak."
+  },
+  {
+    "name": "False Appearance (Dark Mantle)",
+    "description": "While the {{name}} remains motionless without, it is indistinguishable from a cave formation such as a stalactite or stalagmite."
+  },
+  {
+    "name": "False Appearance (Flying Sword)",
+    "description": "While the {{name}} remains motionless and isn't flying, it is indistinguishable from a normal sword."
+  },
+  {
+    "name": "False Appearance (Gargoyle)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a inanimate statue."
+  },
+  {
+    "name": "False Appearance (Gray Ooze)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from an oily pool or wet rock."
+  },
+  {
+    "name": "False Appearance (Ice Mephit)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from an ordinary shard of ice."
+  },
+  {
+    "name": "False Appearance (Magma Mephit)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from an ordinary mound of magma."
+  },
+  {
+    "name": "False Appearance (Mimic)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from an ordinary object."
+  },
+  {
+    "name": "False Appearance (Roper)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal cave formation, such as a stalagmite."
+  },
+  {
+    "name": "False Appearance (Rug of Smothering)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal rug."
+  },
+  {
+    "name": "False Appearance (Shrieker)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from an ordinary fungus."
+  },
+  {
+    "name": "False Appearance (Treant)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from a normal tree."
+  },
+  {
+    "name": "False Appearance (Violet Fungus)",
+    "description": "While the {{name}} remains motionless, it is indistinguishable from an ordinary fungus."
+  },
+  {
+    "name": "Fey Ancestry (Drider)",
     "description": "The {{name}} has advantage on saving throws against being charmed, and magic can’t put the {{name}} to sleep."
   },
   {
-    "name": "Fire Absorption",
+    "name": "Fey Ancestry (Elf, Drow)",
+    "description": "The {{name}} has advantage on saving throws against being charmed, and magic can’t put the {{name}} to sleep."
+  },
+  {
+    "name": "Fear Aura (Pit Fiend)",
+    "description": "Any creature hostile to the {{name}} that starts its turn within 20 feet of the {{name}} must make a DC 21 Wisdom saving throw, unless the {{name}} is incapacitated. On a failed save, the creature is frightened until the start of its next turn. If a creature’s saving throw is successful, the creature is immune to the {{name}}’s Fear Aura for the next 24 hours."
+  },
+  {
+    "name": "Fire Absorption (Iron Golem)",
     "description": "Whenever the {{name}} is subjected to fire damage, it takes no damage and instead regains a number of hit points equal to the fire damage dealt."
   },
   {
-    "name": "Flyby",
+    "name": "Fire Aura (Balor)",
+    "description": "At the start of each of the {{name}}’s turns, each creature within 5 feet of it takes 10 (3d6) fire damage, and flammable objects in the aura that aren’t being worn or carried ignite. A creature that touches the {{name}} or hits it with a melee attack while within 5 feet of it takes 10 (3d6) fire damage."
+  },
+  {
+    "name": "Fire Form (Fire Elemental)",
+    "description": "The {{name}} can move through a space as narrow as 1 inch wide without squeezing. A creature that touches the {{name}} or hits it with a melee attack while within 5 feet of it takes 5 (1d10) fire damage. In addition, the {{name}} can enter a hostile creature’s space and stop there. The first time it enters a creature’s space on a turn, that creature takes 5 (1d10) fire damage and catches fire; until someone."
+  },
+  {
+    "name": "Flyby (Flying Snake)",
     "description": "The {{name}} doesn’t provoke opportunity attacks when it flies out of an enemy’s reach."
   },
   {
-    "name": "Freedom of Movement",
+    "name": "Flyby (Giant Owl)",
+    "description": "The {{name}} doesn’t provoke opportunity attacks when it flies out of an enemy’s reach."
+  },
+  {
+    "name": "Flyby (Owl)",
+    "description": "The {{name}} doesn’t provoke opportunity attacks when it flies out of an enemy’s reach."
+  },
+  {
+    "name": "Freedom of Movement (Kraken)",
     "description": "The {{name}} ignores difficult terrain, and magical effects can’t reduce its speed or cause it to be restrained. It can spend 5 feet of movement to escape from nonmagical restraints or being grappled."
   },
   {
-    "name": "Gnome Cunning",
+    "name": "Freeze (Water Elemental)",
+    "description": "If the {{name}} takes cold damage, it partially freezes; its speed is reduced by 20 feet until the end of its next turn."
+  },
+  {
+    "name": "Gibbering (Gibbering Mouther)",
+    "description": "The {{name}} babbles incoherently while it can see any creature and isn’t incapacitated. Each creature that starts its turn within 20 feet of the {{name}} and can hear the gibbering must succeed on a DC 10 Wisdom saving throw. On a failure, the creature can’t take reactions until the start of its next turn and rolls a d8 to determine what it does during its turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action or bonus action and uses all its movement to move in a randomly determined direction. On a 7 or 8, the creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can’t make such an attack."
+  },
+  {
+    "name": "Gnome Cunning (Gnome, Deep)",
     "description": "The {{name}} has advantage on Intelligence, Wisdom, and Charisma saving throws against magic."
   },
   {
-    "name": "Grappler",
+    "name": "Grappler (Mimic)",
     "description": "The {{name}} has advantage on attack rolls against any creature grappled by it."
   },
   {
-    "name": "Hold Breath",
+    "name": "Grasping Tendrils (Roper)",
+    "description": "The {{name}} babbles incoherently while it can see any creature and isn’t incapacitated. Each creature that starts its turn within 20 feet of the {{name}} and can hear the gibbering must succeed on a DC 10 Wisdom saving throw. On a failure, the creature can’t take reactions until the start of its next turn and rolls a d8 to determine what it does during its turn. On a 1 to 4, the creature does nothing. On a 5 or 6, the creature takes no action or bonus action and uses all its movement to move in a randomly determined direction. On a 7 or 8, the creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can’t make such an attack."
+  },
+  {
+    "name": "Heated Body (Azer)",
+    "description": "A creature that touches the {{name}} or hits it with a melee attack while within 5 feet of it takes 5 (1d10) fire damage."
+  },
+  {
+    "name": "Heated Body (Remorhaz)",
+    "description": "A creature that touches the {{name}} or hits it with a melee attack while within 5 feet of it takes 10 (3d6) fire damage."
+  },
+  {
+    "name": "Heated Body (Salamander)",
+    "description": "A creature that touches the {{name}} or hits it with a melee attack while within 5 feet of it takes 7 (2d6) fire damage."
+  },
+  {
+    "name": "Heated Weapons (Azer)",
+    "description": "Any metal melee weapon the {{name}} wields deals an extra 3 (1d6) fire damage on a hit."
+  },
+  {
+    "name": "Heated Weapons (Salamander)",
+    "description": "Any metal melee weapon the {{name}} wields deals an extra 3 (1d6) fire damage on a hit."
+  },
+  {
+    "name": "Hellish Rejuvenation (Lemure)",
+    "description": "A {{name}} that dies in the Nine Hells comes back to life with all its hit points in 1d10 days unless it is killed by a good-aligned creature with a bless spell cast on that creature or its remains are sprinkled with holy water."
+  },
+  {
+    "name": "Hellish Weapons (Erinyes)",
+    "description": "The {{name}}'s weapon attacks are magical and deal an extra 13 (3d8) poison damage on a hit."
+  },
+  {
+    "name": "Hold Breath (Crocodile)",
     "description": "The {{name}} can hold its breath for 15 minutes."
   },
   {
-    "name": "Ice Walk",
+    "name": "Hold Breath (Giant Crocodile)",
+    "description": "The {{name}} can hold its breath for 30 minutes."
+  },
+  {
+    "name": "Hold Breath (Giant Octopus)",
+    "description": "While out of water, the {{name}} can hold its breath for 1 hour."
+  },
+  {
+    "name": "Hold Breath (Hydra)",
+    "description": "The {{name}} can hold its breath for 1 hour."
+  },
+  {
+    "name": "Hold Breath (Killer Whale)",
+    "description": "The {{name}} can hold its breath for 30 minutes."
+  },
+  {
+    "name": "Hold Breath (Lizardfolk)",
+    "description": "The {{name}} can hold its breath for 15 minutes."
+  },
+  {
+    "name": "Hold Breath (Octopus)",
+    "description": "While out of water, the {{name}} can hold its breath for 30 minutes."
+  },
+  {
+    "name": "Hold Breath (Plesiosaurus)",
+    "description": "The {{name}} can hold its breath for 1 hour."
+  },
+  {
+    "name": "Horrific Appearance (Sea Hag)",
+    "description": "Any humanoid that starts its turn within 30 feet of the hag and can see the hag’s true form must make a DC 11 Wisdom saving throw. On a failed save, the creature is frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, with disadvantage if the hag is within line of sight, ending the effect on itself on a success. If a creature’s saving throw is successful or the effect ends for it, the creature is immune to the hag’s Horrific Appearance for the next 24 hours. \n Unless the target is surprised or the revelation of the hag’s true form is sudden, the target can avert its eyes and avoid making the initial saving throw. Until the start of its next turn, a creature that averts its eyes has disadvantage on attack rolls against the hag."
+  },
+  {
+    "name": "Ice Walk (Adult White Dragon)",
     "description": "The {{name}} can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn’t cost it extra moment."
   },
   {
-    "name": "Illumination",
-    "description": "The {{name}} sheds bright light in a 10 foot radius and dim light for an additional 10 feet."
+    "name": "Ice Walk (Ancient White Dragon)",
+    "description": "The {{name}} can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn’t cost it extra moment."
   },
   {
-    "name": "Immutable Form",
+    "name": "Ice Walk (White Dragon Wyrmling)",
+    "description": "The {{name}} can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn’t cost it extra moment."
+  },
+  {
+    "name": "Ice Walk (Young White Dragon)",
+    "description": "The {{name}} can move across and climb icy surfaces without needing to make an ability check. Additionally, difficult terrain composed of ice or snow doesn’t cost it extra moment."
+  },
+  {
+    "name": "Ignited Illumination (Magmin)",
+    "description": "As a bonus action, the {{name}} can set itself ablaze or extinguish its flames. While ablaze, the {{name}} sheds bright light in a 10-­‐foot radius and dim light for an additional 10 feet."
+  },
+  {
+    "name": "Illumination (Azer)",
+    "description": "The {{name}} sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
+  },
+  {
+    "name": "Illumination (Fire Elemental)",
+    "description": "The {{name}} sheds bright light in a 30-foot radius and dim light for an additional 30 feet."
+  },
+  {
+    "name": "Illumination (Giant Fire Beetle)",
+    "description": "The {{name}} sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
+  },
+  {
+    "name": "Illumination (Nightmare)",
+    "description": "The {{name}} sheds bright light in a 10-foot radius and dim light for an additional 10 feet."
+  },
+  {
+    "name": "Immutable Form (Clay Golem)",
     "description": "The {{name}} is immune to any spell or effect that would alter its form."
   },
   {
-    "name": "Incorporeal Movement",
+    "name": "Immutable Form (Flesh Golem)",
+    "description": "The {{name}} is immune to any spell or effect that would alter its form."
+  },
+  {
+    "name": "Immutable Form (Iron Golem)",
+    "description": "The {{name}} is immune to any spell or effect that would alter its form."
+  },
+  {
+    "name": "Immutable Form (Stone Golem)",
+    "description": "The {{name}} is immune to any spell or effect that would alter its form."
+  },
+  {
+    "name": "Incorporeal Movement (Avatar of Death)",
     "description": "The {{name}} can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
   },
   {
-    "name": "Inscrutable",
+    "name": "Incorporeal Movement (Ghost)",
+    "description": "The {{name}} can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+  },
+  {
+    "name": "Incorporeal Movement (Specter)",
+    "description": "The {{name}} can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+  },
+  {
+    "name": "Incorporeal Movement (Will-o'-Wisp)",
+    "description": "The {{name}} can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+  },
+  {
+    "name": "Incorporeal Movement (Wraith)",
+    "description": "The {{name}} can move through other creatures and objects as if they were difficult terrain. It takes 5 (1d10) force damage if it ends its turn inside an object."
+  },
+  {
+    "name": "Inscrutable (Androsphinx)",
     "description": "The {{name}} is immune to any effect that would sense its emotions or read its thoughts, as well as any divination spell that it refuses. Wisdom (Insight) checks made to ascertain the {{name}}'s intentions or sincerity have disadvantage."
   },
   {
-    "name": "Invisibility",
+    "name": "Inscrutable (Gynosphinx)",
+    "description": "The {{name}} is immune to any effect that would sense its emotions or read its thoughts, as well as any divination spell that it refuses. Wisdom (Insight) checks made to ascertain the {{name}}'s intentions or sincerity have disadvantage."
+  },
+  {
+    "name": "Invisibility (Imp)",
+    "description": "The {{name}} magically turns is invisible until it attacks or until its concentration ends (as if concentrating on a spell). Any equipment the {{name}} wears or carries is invisible with it."
+  },
+  {
+    "name": "Invisibility (Invisible Stalker)",
     "description": "The {{name}} is invisible."
   },
   {
-    "name": "Iron Scent",
+    "name": "Invisibility (Quasit)",
+    "description": "The {{name}} magically turns is invisible until it attacks or uses Scare, or until its concentration ends (as if concentrating on a spell). Any equipment the {{name}} wears or carries is invisible with it."
+  },
+  {
+    "name": "Invisibility (Sprite)",
+    "description": "The {{name}} is invisible."
+  },
+  {
+    "name": "Invisibility (Will-o'-Wisp)",
+    "description": "The {{name}} is invisible."
+  },
+  {
+    "name": "Iron Scent (Rust Monster)",
     "description": "The {{name}} can pinpoint, by scent, the location of ferrous metal within 30 feet of it."
   },
   {
-    "name": "Keen Hearing",
+    "name": "Keen Hearing (Bat)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing."
   },
   {
-    "name": "Keen Hearing and Smell",
+    "name": "Keen Hearing (Giant Bat)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing."
+  },
+  {
+    "name": "Keen Hearing (Killer Whale)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing."
+  },
+  {
+    "name": "Keen Hearing (Swarm of Bats)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing."
+  },
+  {
+    "name": "Keen Hearing and Smell (Blink Dog)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
   },
   {
-    "name": "Keen Hearing and Sight",
+    "name": "Keen Hearing and Smell (Dire Wolf)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Giant Weasel)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Grimlock)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Hell Hound)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Jackal)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Mastiff)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Weasel)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Winter Wolf)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Wolf)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Worg)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Weretiger)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Smell (Werewolf)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or smell."
+  },
+  {
+    "name": "Keen Hearing and Sight (Giant Owl)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or sight."
   },
   {
-    "name": "Keen Senses",
+    "name": "Keen Hearing and Sight (Owl)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+  },
+  {
+    "name": "Keen Hearing and Sight (Scout)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on hearing or sight."
+  },
+  {
+    "name": "Keen Senses (Pseudodragon)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on sight, hearing or smell."
   },
   {
-    "name": "Keen Sight",
+    "name": "Keen Sight (Blood Hawk)",
     "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
   },
   {
-    "name": "Keen Sight and Smell",
+    "name": "Keen Sight (Eagle)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+  {
+    "name": "Keen Sight (Giant Eagle)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+  {
+    "name": "Keen Sight (Griffon)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+  {
+    "name": "Keen Sight (Hawk)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+    {
+    "name": "Keen Sight (Hippogriff)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+  {
+    "name": "Keen Sight (Roc)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on sight."
+  },
+  {
+    "name": "Keen Sight and Smell (Giant Vulture)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on sight or smell."
   },
   {
-    "name": "Keen Smell",
+    "name": "Keen Sight and Smell (Owlbear)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on sight or smell."
+  },
+  {
+    "name": "Keen Sight and Smell (Vulture)",
+    "description": "The {{name}} has advantage on Wisdom (Perception) checks that rely on sight or smell."
+  },
+  {
+    "name": "Keen Smell (Badger)",
     "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
   },
   {
-    "name": "Labyrinthine Recall",
+    "name": "Keen Smell (Black Bear)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Cat)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Cloud Giant)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Giant Badger)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Giant Rat)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+    {
+    "name": "Keen Smell (Lion)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Panther)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Polar Bear)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Rat)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Saber-Toother Tiger)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+    {
+    "name": "Keen Smell (Swarm of Rats)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+    {
+    "name": "Keen Smell (Tiger)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Troll)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Werebear)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Keen Smell (Wererat)",
+    "description": "The {{name}} has advantage on Wisdom (perception) checks that rely on smell."
+  },
+  {
+    "name": "Labyrinthine Recall (Minotaur)",
     "description": "The {{name}} can perfectly recall any path it has traveled."
   },
   {
-    "name": "Light Sensitivity",
+    "name": "Light Sensitivity (Cloaker)",
     "description": "While in bright light, the {{name}} has disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight."
   },
   {
-    "name": "Lightning Absorption",
+    "name": "Lightning Absorption (Flesh Golem)",
     "description": "Whenever the {{name}} is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
   },
   {
-    "name": "Limited Amphibiousness",
+    "name": "Lightning Absorption (Shambling Mound)",
+    "description": "Whenever the {{name}} is subjected to lightning damage, it takes no damage and instead regains a number of hit points equal to the lightning damage dealt."
+  },  
+  {
+    "name": "Limited Telepathy (Otyugh)",
+    "description": "The {{name}} can magically transmit simple messages and images to any creature within 120 feet of it that can understand a language. This form of telepathy doesn’t allow the receiving creature to telepathically respond."
+  },
+  {
+    "name": "Limited Telepathy (Pseudodragon)",
+    "description": "The {{name}} can magically communicate simple ideas, emotions, and images telepathically with any creature within 100 feet of it that can understand a language."
+  },
+  {
+    "name": "Limited Amphibiousness (Sahuagin)",
     "description": "The {{name}} can breathe air and water, but it needs to be submerged at least once every 4 hours to avoid suffocating."
   },
   {
-    "name": "Limited Magic Immunity",
+    "name": "Limited Magic Immunity (Rakshasha)",
     "description": "The {{name}} can’t be affected or detected by spells of 6th level or lower unless it wishes to be. It has advantage on saving throws against all other spells and magical effects."
   },
   {
-    "name": "Magic Resistance",
+    "name": "Magic Resistance (Archmage)",
     "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
-  },  
+  },
   {
-    "name": "Magic Weapons",
+    "name": "Magic Resistance (Balor)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Barbed Devil)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Bearded Devil)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Bone Devil)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Chain Devil)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Clay Golem)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Deva)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Dryad)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Erinyes)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Flesh Golem)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Glabrezu)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Hezrou)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Horned Devil)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Ice Devil)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Imp)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Iron Golem)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Marilith)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Mummy Lord)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Nalfeshnee)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Night Hag)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Planetar)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Pit Fiend)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Pseudodragon)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Quasit)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Satyr)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Solar)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Stone Golem)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Tarrasque)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Unicorn)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Resistance (Vrock)",
+    "description": "The {{name}} has advantage on saving throws against spells and other magical effects."
+  },
+  {
+    "name": "Magic Weapons (Androsphinx)",
     "description": "The {{name}} weapon attacks are magical."
   },
   {
-    "name": "Nimble Escape",
+    "name": "Magic Weapons (Balor)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Clay Golem)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Couatl)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Flesh Golem)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Gynosphinx)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Iron Golem)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Marilith)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Oni)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Pit Fiend)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Stone Golem)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Magic Weapons (Unicorn)",
+    "description": "The {{name}} weapon attacks are magical."
+  },
+  {
+    "name": "Martial Advantage (Hobgoblin)",
+    "description": "Once per turn, the {{name}} can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the {{name}} that isn’t incapacitated."
+  },
+  {
+    "name": "Mimicry (Green Hag)",
+    "description": "The {{name}} can mimic animal sounds and humanoid voices. A creature that hears the sounds can tell they are imitations with a successful DC 14 Wisdom (Insight) check."
+  },
+  {
+    "name": "Mimicry (Raven)",
+    "description": "The {{name}} can mimic simple sounds it has heard, such as a person whispering, a baby crying, or an animal chittering. A creature that hears the sounds can tell they are imitations with a successful DC 10 Wisdom (Insight) check."
+  },
+  {
+    "name": "Misty Escape (Vampire)",
+    "description": "When it drops to 0 hit points outside its resting place, the {{name}} transforms into a cloud of mist (as in the Shapechanger trait) instead of falling unconscious, provided that it isn’t in sunlight or running water. If it can’t transform, it is destroyed. \n While it has 0 hit points in mist form, it can’t revert to its {{name}} form, and it must reach its resting place within 2 hours or be destroyed. Once in its resting place, it reverts to its {{name}} form. It is then paralyzed until it regains at least 1 hit point. After spending 1 hour in its resting place with 0 hit points, it regains 1 hit point."
+  },
+  {
+    "name": "Mucous Cloud (Aboleth)",
+    "description": "While underwater, the {{name}} is surrounded by transformative mucus. A creature that touches the {{name}} or that hits it with a melee attack while within 5 feet of it must make a DC 14 Constitution saving throw. On a failure, the creature is diseased for 1d4 hours. The diseased creature can breathe only underwater."
+  },
+  {
+    "name": "Multiple Heads (Hydra)",
+    "description": "The {{name}} has five heads. While it has more than one head, the {{name}} has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious. \n Whenever the {{name}} takes 25 or more damage in a single turn, one of its heads dies. If all its heads die, the {{name}} dies. \n At the end of its turn, it grows two heads for each of its heads that died since its last turn, unless it has taken fire damage since its last turn. The {{name}} regains 10 hit points for each head regrown in this way."
+  },
+  {
+    "name": "Nimble Escape (Goblin)",
     "description": "The {{name}} can take the Disengage or Hide action as a bonus action on each of its turns."
   },
   {
-    "name": "Pack Tactics",
+    "name": "Ooze Cube (Gelatinous Cube)",
+    "description": "The {{name}} takes up its entire space. Other creatures can enter the space, but a creature that does so is subjected to the {{name}}’s Engulf and has disadvantage on the saving throw. \n Creatures inside the {{name}} can be seen but have total cover. \n A creature within 5 feet of the {{name}} can take an action to pull a creature or object out of the {{name}}. Doing so requires a successful DC 12 Strength check, and the creature making the attempt takes 10 (3d6) acid damage. \n The {{name}} can hold only one Large creature or up to four Medium or smaller creatures inside it at a time."
+  },
+  {
+    "name": "Pack Tactics (Baboon)",
     "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
   },
   {
-    "name": "Rampage",
+    "name": "Pack Tactics (Blood Hawk)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Dire Wolf)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Giant Rat)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Giant Vulture)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Hell Hound)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Hyena)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Jackal)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Kobold)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Lion)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Reef Shark)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Vulture)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Vulture)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Winter Wolf)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Wolf)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Thug)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Pack Tactics (Tribal Warrior)",
+    "description": "The {{name}} has advantage on an attack roll against a creature if at least one of the {{name}}'s allies is within 5 feet of the creature and the ally isn't incapacitated ."
+  },
+  {
+    "name": "Petrifying Gaze (Basilisk)",
+    "description": "If a creature starts its turn within 30 feet of the {{name}} and the two of them can see each other, the {{name}} can force the creature to make a DC 12 Constitution saving throw if the {{name}} isn’t incapacitated. On a failed save, the creature magically begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a failure, the creature is petrified until freed by the greater restoration spell or other magic. \n A creature that isn’t surprised can avert its eyes to avoid the saving throw at the start of its turn. If it does so, it can’t see the {{name}} until the start of its next turn, when it can avert its eyes again. If it looks at the {{name}} in the meantime, it must immediately make the save. \n If the {{name}} sees its reflection within 30 feet of it in bright light, it mistakes itself for a rival and targets itself with its gaze."
+  },
+  {
+    "name": "Pounce (Lion)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one bite attack against it as a bonus action."
+  },
+  {
+    "name": "Pounce (Panther)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one bite attack against it as a bonus action."
+  },
+  {
+    "name": "Pounce (Saber-Toothed Tiger)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one bite attack against it as a bonus action."
+  },
+  {
+    "name": "Pounce (Tiger)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one bite attack against it as a bonus action."
+  },
+  {
+    "name": "Pounce (Weretiger)",
+    "description": "If the {{name}} moves at least 15 feet straight toward a creature and then hits it with a claw attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one bite attack against it as a bonus action."
+  },
+  {
+    "name": "Probing Telepathy (Aboleth)",
+    "description": "If a creature communicates telepathically with the {{name}}, the {{name}} learns the creature’s greatest desires if the {{name}} can see the creature."
+  },
+  {
+    "name": "Rampage (Giant Hyena)",
     "description": "When the {{name}} reduces a creature to 0 hit points with a melee attack on its turn, the {{name}} can take a bonus action to move up to half its speed and make another attack."
   },
   {
-    "name": "Reactive",
+    "name": "Rampage (Gnoll)",
+    "description": "When the {{name}} reduces a creature to 0 hit points with a melee attack on its turn, the {{name}} can take a bonus action to move up to half its speed and make another attack."
+  },
+  {
+    "name": "Reactive (Marilith)",
     "description": "The {{name}} can take one reaction on every turn in a combat."
   },
   {
-    "name": "Reckless",
+    "name": "Reactive Heads (Hydra)",
+    "description": "For each head the {{name}} has beyond one, it gets an extra reaction that can be used only for opportunity attacks."
+  },
+  {
+    "name": "Reckless (Berserker)",
     "description": "At the start of its turn, the {{name}} can gain advantage on all melee weapon attack rolls it makes during that turn, but attack rolls against it have advantage until the start of its next turn."
   },
   {
-    "name": "Running Leap",
+    "name": "Reckless (Minotaur)",
+    "description": "At the start of its turn, the {{name}} can gain advantage on all melee weapon attack rolls it makes during that turn, but attack rolls against it have advantage until the start of its next turn."
+  },
+  {
+    "name": "Reflective Carapace (Tarrasque)",
+    "description": "At the start of its turn, the {{name}} can gain advantage on all melee weapon attack rolls it makes during that turn, but attack rolls against it have advantage until the start of its next turn."
+  },
+  {
+    "name": "Regeneration (Oni)",
+    "description": "The {{name}} regains 10 hit points at the start of its turn if it has at least 1 hit point."
+  },
+  {
+    "name": "Regeneration (Shield Guardian)",
+    "description": "The {{name}} regains 10 hit points at the start of its turn if it has at least 1 hit point."
+  },
+  {
+    "name": "Regeneration (Troll)",
+    "description": "The {{name}} regains 10 hit points at the start of its turn. If the {{name}} takes acid or fire damage, this trait doesn’t function at the start of the {{name}}’s next turn. The {{name}} dies only if it starts its turn with 0 hit points and doesn’t regenerate."
+  },
+  {
+    "name": "Regeneration (Vampire)",
+    "description": "The {{name}} regains 20 hit points at the start of its turn if it has at least 1 hit point and isn’t in sunlight or running water. If the {{name}} takes radiant damage or damage from holy water, this trait doesn’t function at the start of the {{name}}’s next turn."
+  },
+  {
+    "name": "Regeneration (Vampire Spawn)",
+    "description": "The {{name}} regains 10 hit points at the start of its turn if it has at least 1 hit point and isn’t in sunlight or running water. If the {{name}} takes radiant damage or damage from holy water, this trait doesn’t function at the start of the {{name}}’s next turn."
+  },
+  {
+    "name": "Rejuvenation (Guardian Naga)",
+    "description": "If it dies, the {{name}} returns to life in 1d6 days and regains all its hit points. Only a <i>wish</i> spell can prevent this trait from functioning."
+  },
+  {
+    "name": "Rejuvenation (Lich)",
+    "description": "If it has a phylactery, a destroyed {{name}} gains a new body in 1d10 days, regaining all its hit points and becoming active again. The new body appears within 5 feet of the phylactery."
+  },
+  {
+    "name": "Rejuvenation (Mummy Lord)",
+    "description": "A destroyed {{name}} gains a new body in 24 hours if its heart is intact, regaining all its hit points and becoming active again. The new body appears within 5 feet of the {{name}}’s heart."
+  },
+  {
+    "name": "Rejuvenation (Spirit Naga)",
+    "description": "If it dies, the {{name}} returns to life in 1d6 days and regains all its hit points. Only a <i>wish</i> spell can prevent this trait from functioning."
+  },
+  {
+    "name": "Relentless (Boar)",
+    "description": "If the {{name}} takes 7 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
+  },
+  {
+    "name": "Relentless (Giant Boar)",
+    "description": "If the {{name}} takes 10 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
+  },
+  {
+    "name": "Relentless (Wereboar)",
+    "description": "If the {{name}} takes 14 damage or less that would reduce it to 0 hit points, it is reduced to 1 hit point instead."
+  },
+  {
+    "name": "Running Leap (Lion)",
     "description": "With a 10-foot running start, the {{name}} can long jump up to 25 feet."
   },
   {
-    "name": "Rust Metal",
+    "name": "Rust Metal (Rust Monster)",
     "description": "Any nonmagical weapon made of metal that hits the {{name}} corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls. If its penalty drops to −5, the weapon is destroyed. Nonmagical ammunition made of metal that hits the {{name}} is destroyed after dealing damage."
   },
   {
-    "name": "Sense Magic",
+    "name": "Sense Magic (Chuul)",
     "description": "The {{name}} senses magic within 120 feet of it at will. This trait otherwise works like the detect magic spell but isn’t itself magical"
   },
   {
-    "name": "Shielded Mind",
+    "name": "Shielded Mind (Couatl)",
     "description": "The {{name}} is immune to scrying and to any effect that would sense its emotions, read its thoughts, or detect its location."
   },
   {
-    "name": "Siege Monster",
+    "name": "Siege Monster (Earth Elemental)",
     "description": "The {{name}} deals double damage to objects and structures."
   },
   {
-    "name": "Shadow Stealth",
+    "name": "Siege Monster (Kraken)",
+    "description": "The {{name}} deals double damage to objects and structures."
+  },
+  {
+    "name": "Siege Monster (Tarrasque)",
+    "description": "The {{name}} deals double damage to objects and structures."
+  },
+  {
+    "name": "Siege Monster (Treant)",
+    "description": "The {{name}} deals double damage to objects and structures."
+  },
+  {
+    "name": "Shadow Stealth (Shadow)",
     "description": "While in dim light or darkness, the {{name}} can take the Hide action as a bonus action."
   },
   {
-    "name": "Shark Telepathy",
+    "name": "Shapechanger (Doppelganger)",
+    "description": "The {{name}} can use its action to polymorph into a Small or Medium humanoid it has seen, or back into its true form. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Imp)",
+    "description": "The {{name}} can use its action to polymorph into a beast form that resembles a rat (speed 20 ft.), a raven (20 ft., fly 60 ft.), or a spider (20 ft., climb 20 ft.), or back into its true form. Its statistics are the same in each form, except for the speed changes noted. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Mimic)",
+    "description": "The {{name}} can use its action to polymorph into an object or back into its true, amorphous form. Its statistics are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Quasit)",
+    "description": "The {{name}} can use its action to polymorph into a beast form that resembles a bat (speed 10 ft. fly 40 ft.), a centipede (40 ft., climb 40 ft.), or a toad (40 ft., swim 40 ft.), or back into its true form. Its statistics are the same in each form, except for the speed changes noted. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Succubus/Incubus)",
+    "description": "The {{name}} can use its action to polymorph into a Small or Medium humanoid, or back into its true form. Without wings, the {{name}} loses its flying speed. Other than its size and speed, its statistics are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Vampire)",
+    "description": "If the {{name}} isn’t in sunlight or running water, it can use its action to polymorph into a Tiny bat or a Medium cloud of mist, or back into its true form. While in bat form, the {{name}} can’t speak, its walking speed is 5 feet, and it has a flying speed of 30 feet. Its statistics, other than its size and speed, are unchanged. Anything it is wearing transforms with it, but nothing it is carrying does. It reverts to its true form if it dies. While in mist form, the {{name}} can’t take any actions, speak, or manipulate objects. It is weightless, has a flying speed of 20 feet, can hover, and can enter a hostile creature’s space and stop there. In addition, if air can pass through a space, the mist can do so without squeezing, and it can’t pass through water. It has advantage on Strength, Dexterity, and Constitution saving throws, and it is immune to all nonmagical damage, except the damage it takes from sunlight."
+  },
+  {
+    "name": "Shapechanger (Werebear)",
+    "description": "The {{name}} can use its action to polymorph into a Large bear-humanoid hybrid or into a Large bear, or back into its true form, which is humanoid. Its statistics, other than its size and AC, are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Wereboar)",
+    "description": "The {{name}} can use its action to polymorph into a boar-humanoid hybrid or into a boar, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Wererat)",
+    "description": "The {{name}} can use its action to polymorph into a rat-humanoid hybrid or into a giant rat, or back into its true form, which is humanoid. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Weretiger)",
+    "description": "The {{name}} can use its action to polymorph into a tiger-humanoid hybrid or into a tiger, or back into its true form, which is humanoid. Its statistics, other than its size, are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shapechanger (Werewolf)",
+    "description": "The {{name}} can use its action to polymorph into a wolf-humanoid hybrid or into a wolf, or back into its true form, which is humanoid. Its statistics, other than its AC, are the same in each form. Any equipment it is wearing or carrying isn’t transformed. It reverts to its true form if it dies."
+  },
+  {
+    "name": "Shark Telepathy (Sahuagin)",
     "description": "The {{name}} can magically command any shark within 120 feet of it, using a limited telepathy."
   },
   {
-    "name": "Snow Camouflage",
+    "name": "Sneak Attack (Assassin)",
+    "description": "Once per turn, the {{name}} deals an extra 14 (4d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the {{name}} that isn’t incapacitated and the {{name}} doesn’t have disadvantage on the attack roll."
+  },
+  {
+    "name": "Sneak Attack (Spy)",
+    "description": "The {{name}} deals an extra 7 (2d6) damage when it hits a target with a weapon attack and has advantage on the attack roll, or when the target is within 5 feet of an ally of the {{name}} that isn’t incapacitated and the {{name}} doesn’t have disadvantage on the attack roll."
+  },
+  {
+    "name": "Spell Storing (Shield Guardian)",
+    "description": "A spellcaster who wears the {{name}}’s amulet can cause the {{name}} to store one spell of 4th level or lower. To do so, the wearer must cast the spell on the {{name}}. The spell has no effect but is stored within the {{name}}. When commanded to do so by the wearer or when a situation arises that was predefined by the spellcaster, the {{name}} casts the stored spell with any parameters set by the original caster, requiring no components. When the spell is cast or a new spell is stored, any previously stored spell is lost."
+  },
+  {
+    "name": "Snow Camouflage (Winter Wolf)",
     "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in snowy terrain."
   },
   {
-    "name": "Speak with Beasts and Plants",
+    "name": "Speak with Beasts and Plants (Dryad)",
     "description": "The {{name}} can communicate with beasts and plants as if they shared a language."
   },
   {
-    "name": "Spider Climb",
+    "name": "Spider Climb (Black Pudding)",
     "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
   },
   {
-    "name": "Standing Leap",
+    "name": "Spider Climb (Drider)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Ettercap)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Giant Spider)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Giant Wolf Spider)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Ochre Jelly)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Phase Spider)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Roper)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Spider)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Swarm of Ravens)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Vampire)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Spider Climb (Vampire Spawn)",
+    "description": "The {{name}} can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check."
+  },
+  {
+    "name": "Standing Leap (Bulette)",
+    "description": "The {{name}}’s long jump is up to 30 feet and its high jump is up to 15 feet, with or without a running start."
+  },
+  {
+    "name": "Standing Leap (Frog)",
     "description": "The {{name}}’s long jump is up to 10 feet and its high jump is up to 5 feet, with or without a running start."
   },
   {
-    "name": "Steadfast",
+    "name": "Standing Leap (Giant Frog)",
+    "description": "The {{name}}’s long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start."
+  },
+  {
+    "name": "Standing Leap (Giant Toad)",
+    "description": "The {{name}}’s long jump is up to 20 feet and its high jump is up to 10 feet, with or without a running start."
+  },
+  {
+    "name": "Steadfast (Bearded Devil)",
     "description": "The {{name}} can’t be frightened while it can see an allied creature within 30 feet of it."
   },
   {
-    "name": "Stone Camouflage",
+    "name": "Stench (Hezrou)",
+    "description": "Any creature that starts its turn within 10 feet of the {{name}} must succeed on a DC 14 Constitution saving throw or be poisoned until the start of its next turn. On a successful saving throw, the creature is immune to the {{name}}’s stench for 24 hours."
+  },
+  {
+    "name": "Suprise Attack (Bugbear)",
+    "description": "If the {{name}} surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack."
+  },
+  {
+    "name": "Suprise Attack (Doppelganger)",
+    "description": "If the {{name}} surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 10 (3d6) damage from the attack."
+  },
+  {
+    "name": "Stone Camouflage (Gnome, Deep)",
     "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
   },
   {
-    "name": "Sunlight Sensitivity",
+    "name": "Stone Camouflage (Grick)",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+  },
+  {
+    "name": "Stone Camouflage (Grimlock)",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+  },
+  {
+    "name": "Stone Camouflage (Stone Giant)",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+  },
+  {
+    "name": "Stone Camouflage (Xorn)",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in rocky terrain."
+  },
+  {
+    "name": "Sunlight Sensitivity (Elf, Drow)",
     "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
   },
   {
-    "name": "Sunlight Weakness",
+    "name": "Sunlight Sensitivity (Drider)",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Sensitivity (Duergar)",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Sensitivity (Kobold)",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Sensitivity (Specter)",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Sensitivity (Wight)",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Sensitivity (Wraith)",
+    "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+  },
+  {
+    "name": "Sunlight Weakness (Shadow)",
     "description": "While in sunlight, the {{name}} has disadvantage on attack rolls, ability checks, and saving throws."
   },
   {
-    "name": "Sure Footed",
+    "name": "Sure Footed (Giant Goat)",
     "description": "The {{name}} has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
   },
   {
-    "name": "Swarm",
-    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny {{name}}. The swarm can’t regain hit points or gain temporary hit points."
+    "name": "Sure Footed (Goat)",
+    "description": "The {{name}} has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
   },
   {
-    "name": "Telepathic Bond",
+    "name": "Sure Footed (Mule)",
+    "description": "The {{name}} has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
+  },
+  {
+    "name": "Swarm (Swarm of Bats)",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny bat. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Swarm (Swarm of Bats)",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny insect. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Swarm (Swarm of Poisonous Snakes)",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny snake. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Swarm (Swarm of Quippers)",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny quipper. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Swarm (Swarm of Rats)",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny rat. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Swarm (Swarm of Ravens)",
+    "description": "The {{name}} can occupy another creature’s space and vice versa, and the swarm can move through any opening large enough for a Tiny raven. The swarm can’t regain hit points or gain temporary hit points."
+  },
+  {
+    "name": "Tail Spike Regrowth (Manticore)",
+    "description": "The {{name}} has twenty-four tail spikes. Used spikes regrow when the {{name}} finishes a long rest."
+  },
+  {
+    "name": "Telepathic Bond (Homunculus)",
+    "description": "While the {{name}} is on the same plane of existence as its master, it can magically convey what it senses to its master, and the two can communcate telepathically."
+  },
+  {
+    "name": "Telepathic Bond (Succubus/Incubus)",
     "description": "The {{name}} ignores the range restriction on its telepathy when communicating with a creature it has charmed. The two don’t even need to be on the same plane of existence."
   },
   {
-    "name": "Treasure Sense",
+    "name": "Trampling Charge (Gorgon)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 16 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one attack with its hooves against it as a bonus action."
+  },
+  {
+    "name": "Trampling Charge (Elephant)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 12 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one stomp attack against it as a bonus action."
+  },
+  {
+    "name": "Trampling Charge (Mammoth)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 18 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one stomp attack against it as a bonus action."
+  },
+  {
+    "name": "Trampling Charge (Triceratops)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a DC 13 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make one stomp attack against it as a bonus action."
+  },
+  {
+    "name": "Trampling Charge (Warhorse)",
+    "description": "If the {{name}} moves at least 20 feet straight toward a creature and then hits it with a hooves attack on the same turn, that target must succeed on a DC 14 Strength saving throw or be knocked prone. If the target is prone, the {{name}} can make another attack with its hooves against it as a bonus action."
+  },
+  {
+    "name": "Transparent (Gelatinous Cube)",
+    "description": "Even when the {{name}} is in plain sight, it takes a successful DC 15 Wisdom (Perception) check to spot a {{name}} that has neither moved nor attacked. A creature that tries to enter the {{name}}’s space while unaware of the {{name}} is surprised by the {{name}}."
+  },
+  {
+    "name": "Treasure Sense (Xorn)",
     "description": "The {{name}} can pinpoint, by scent, the location of precious metals and stones, such as coins and gems, within 60 feet of it."
   },
   {
-    "name": "Tunneler",
+    "name": "Tree Stride (Dryad)",
+    "description": "Once on her turn, the {{name}} can use 10 feet of her movement to step magically into one living tree within her reach and emerge from a second living tree within 60 feet of the first tree, appearing in an unoccupied space within 5 feet of the second tree. Both trees must be Large or bigger."
+  },
+  {
+    "name": "Tunneler (Purple Worm)",
     "description": "The {{name}} can burrow through solid rock at half its burrow speed and leaves a 10-foot-diameter tunnel in its wake."
   },
   {
-    "name": "Two Heads",
+    "name": "Turning Defiance (Ghast)",
+    "description": "The {{name}} and any ghouls within 30 feet of it have advantage on saving throws against effects that turn undead."
+  },
+  {
+    "name": "Two Heads (Ettin)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, and knocked unconscious."
   },
   {
-    "name": "Two-Headed",
+    "name": "Two-Headed (Death Dog)",
     "description": "The {{name}} has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious."
   },
   {
-    "name": "Undead Fortitude",
+    "name": "Undead Fortitude (Zombie)",
     "description": "If damage reduces the {{name}} to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the {{name}} drops to 1 hit point instead."
   },
   {
-    "name": "Underwater Camouflage",
+    "name": "Underwater Camouflage (Giant Octopus)",
     "description": "The {{name}} has advantage on Dexterity (Stealth) checks made while underwater."
   },
   {
-    "name": "Variable Illumination",
+    "name": "Underwater Camouflage (Octopus)",
+    "description": "The {{name}} has advantage on Dexterity (Stealth) checks made while underwater."
+  },
+  {
+    "name": "Vampire Weakness (Vampire)",
+    "description": "The {{name}} has the following flaws: \n <i>Forbiddance</i>. The {{name}} can’t enter a residence without an invitation from one of the occupants. \n <i>Harmed by Running Water</i>. The {{name}} takes 20 acid damage if it ends its turn in running water. \n <i>Stake to the Heart</i>. If a piercing weapon made of wood is driven into the {{name}}’s heart while the {{name}} is incapacitated in its resting place, the {{name}} is paralyzed until the stake is removed. \n <i>Sunlight Hypersensitivity</i>. The {{name}} takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+  },
+  {
+    "name": "Variable Illumination (Will-o'-Wisp)",
     "description": "The {{name}} sheds bright light in a 5- to 20-foot radius and dim light for an additional number of feet equal to the chosen radius. The {{name}} can alter the radius as a bonus action."
   },
   {
-    "name": "Wakeful",
+    "name": "Wakeful (Ettin)",
     "description": "When one of the {{name}}'s heads is asleep, another head is awake."
   },
   {
-    "name": "Water Breathing",
+    "name": "Wakeful (Hydra)",
+    "description": "While the {{name}} sleeps, at least one of its heads is awake."
+  },
+  {
+    "name": "Water Breathing (Giant Octopus)",
     "description": "The {{name}} can breathe only underwater."
   },
   {
-    "name": "Water Form",
+    "name": "Water Breathing (Giant Sea Horse)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Giant Shark)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Hunter Shark)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Octopus)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Quipper)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Reef Shark)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Sea Horse)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Breathing (Swarm of Quippers)",
+    "description": "The {{name}} can breathe only underwater."
+  },
+  {
+    "name": "Water Form (Water Elemental)",
     "description": "The {{name}} can enter a hostile creature’s space and stop there. It can move through a space as narrow as 1 inch wide without squeezing."
   },
   {
-    "name": "Web Sense",
+    "name": "Water Susceptibility (Fire Elemental)",
+    "description": "For every 5 feet the {{name}} moves in water, or for every gallon of water splashed on it, it takes 1 cold damage."
+  },
+  {
+    "name": "Web Sense (Ettercap)",
     "description": "While in contact with a web, the {{name}} knows the exact location of any other creature in contact with the same web."
   },
   {
-    "name": "Web Walker",
+    "name": "Web Sense (Giant Spider)",
+    "description": "While in contact with a web, the {{name}} knows the exact location of any other creature in contact with the same web."
+  },
+  {
+    "name": "Web Sense (Giant Wolf Spider)",
+    "description": "While in contact with a web, the {{name}} knows the exact location of any other creature in contact with the same web."
+  },
+  {
+    "name": "Web Sense (Spider)",
+    "description": "While in contact with a web, the {{name}} knows the exact location of any other creature in contact with the same web."
+  },
+  {
+    "name": "Web Walker (Drider)",
+    "description": "The {{name}} ignores movement restrictions caused by webbing."
+  },
+  {
+    "name": "Web Walker (Ettercap)",
+    "description": "The {{name}} ignores movement restrictions caused by webbing."
+  },
+  {
+    "name": "Web Walker (Giant Spider)",
+    "description": "The {{name}} ignores movement restrictions caused by webbing."
+  },
+  {
+    "name": "Web Walker (Giant Wolf Spider)",
+    "description": "The {{name}} ignores movement restrictions caused by webbing."
+  },
+  {
+    "name": "Web Walker (Phase Spider)",
+    "description": "The {{name}} ignores movement restrictions caused by webbing."
+  },
+  {
+    "name": "Web Walker (Spider)",
     "description": "The {{name}} ignores movement restrictions caused by webbing."
   }
 ]
