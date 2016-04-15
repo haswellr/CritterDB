@@ -19,7 +19,6 @@ Imortant:
 -Reset password is not scaled appropriately on small screens (like phones)
 -Cross-browser - columns don't work on firefox, IE is totally untested.
 
-- Flesh out autofill for abilities based on the ability name and abilities in the monster manual - some need a default value for some of the more specific numbers.
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
 - Add 'hints' under the fields (see 'Errors Advanced' section of angular material Input demo)
 
