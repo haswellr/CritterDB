@@ -164,6 +164,14 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		$location.url("/creature/image/"+creature._id);
 	}
 
+	$scope.exportCreatureToHTML = function(creature){
+
+	}
+
+	$scope.exportCreatureToNaturalCrit = function(creature){
+
+	}
+
 	$scope.copyCreature = function(creature){
 		var newCreature = angular.copy(creature);
 		newCreature._id = undefined;
@@ -249,7 +257,9 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		edit: $scope.editCreature,
 		copy: $scope.copyCreature,
 		delete: $scope.deleteCreature,
-		saveImage: $scope.saveImageOfCreature
+		exportImage: $scope.saveImageOfCreature,
+		exportHTML: $scope.exportCreatureToHTML,
+		exportNaturalCrit: $scope.exportCreatureToNaturalCrit
 	};
 };
 
