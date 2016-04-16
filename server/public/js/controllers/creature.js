@@ -294,7 +294,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
     	if(result){
     		$scope.creature.stats.actions.splice(0,0,result);
     	}
-    });;
+    });
 	}
 
 	$scope.generateSpellcasting = function(ev){

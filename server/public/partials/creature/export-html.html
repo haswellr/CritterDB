@@ -1,0 +1,28 @@
+
+<md-dialog id="export-dialog" class="export-modal" aria-label="Export HTML" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Export as HTML</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="padding:40px 10px 0px 10px;">
+    <section layout="row" class="row">
+      <p style="text-align:center;font-size:12px;">
+        <i>HTML exports use Valloric's incredible stat block templates, <a href="https://github.com/Valloric/statblock5e" target="_blank">found here</a>. As explained there, the HTML will only work correctly in Chrome.</i>
+      </p>
+    </section>
+    <section layout="row" class="row">
+      <md-input-container class="md-block">
+        <label>HTML</label>
+        <textarea ng-model="export.html" md-select-on-focus readonly></textarea>
+      </md-input-container>
+    </section>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+  	<md-button ng-disabled="loading" id="copy-to-clipboard" class="md-raised md-button md-primary">Copy to Clipboard</md-button
+>	</md-dialog-actions>
+</md-dialog>

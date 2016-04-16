@@ -1,12 +1,13 @@
 
 
 Imortant:
+-Add ability to export to HTML and to Natural Crit
+	+ Add correct menu options to Create/Edit creature page as well
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -UI is not working correctly on Chrome or Safari on iOS.
 -Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least).
--Add ability to export to HTML and to Natural Crit
 -Bug: Sometimes when in the create/edit creature page the current bestiary is not shown on the inner header so it is difficult/confusing to go back to it
 
 -Autofill special abilities for races as well

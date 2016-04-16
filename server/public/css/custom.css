@@ -543,3 +543,19 @@ md-dialog-content.generate-spellcasting-content div.spell-row {
 md-dialog-content.generate-spellcasting-content div.spell-row:first-child {
   margin-top: -10px;
 }
+
+md-dialog.export-modal {
+  width: 500px;
+}
+
+md-dialog.export-modal section.row {
+  width: 100%;
+}
+
+md-dialog.export-modal md-input-container {
+  width: 100%;
+}
+
+md-dialog.export-modal textarea {
+  max-height: 400px;
+}

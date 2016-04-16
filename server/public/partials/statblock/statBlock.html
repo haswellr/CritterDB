@@ -31,13 +31,13 @@
     <!-- Export Secondary Control Menu -->
     <section ng-if="secondaryControls.export" layout="column" ng-class="{'secondary-menu-visible':secondaryControls.export}" class="secondary-menu">
       <md-button style="opacity:0;">HIDDEN</md-button>
-      <md-button ng-click="creatureApi.exportImage(creature)" aria-label="Edit">
+      <md-button hide show-gt-sm ng-click="creatureApi.exportImage(creature)" aria-label="Export Image">
         Export to Image
       </md-button>
-      <!--<md-button hide show-gt-sm ng-click="creatureApi.exportHTML(creature)" aria-label="Export">
+      <md-button ng-click="creatureApi.exportHTML($event,creature)" aria-label="Export HTML">
         Export to HTML
       </md-button>
-      <md-button ng-click="creatureApi.exportNaturalCrit(creature)" aria-label="Copy">
+      <!--<md-button ng-click="creatureApi.exportNaturalCrit(creature)" aria-label="Copy">
         Export to Natural Crit
       </md-button>-->
     </section>

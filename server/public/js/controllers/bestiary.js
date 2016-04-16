@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -164,11 +164,22 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		$location.url("/creature/image/"+creature._id);
 	}
 
-	$scope.exportCreatureToHTML = function(creature){
-
+	$scope.exportCreatureToHTML = function(ev,creature){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: exportHtmlCtrl,
+      templateUrl: '/assets/partials/creature/export-html.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'creature': creature
+      },
+      fullscreen: useFullScreen
+    });
 	}
 
-	$scope.exportCreatureToNaturalCrit = function(creature){
+	$scope.exportCreatureToNaturalCrit = function(ev,creature){
 
 	}
 
