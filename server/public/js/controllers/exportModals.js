@@ -33,27 +33,175 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			'<h4>Speed</h4>\n' +
 			'<p>' + creature.stats.speed + '</p>\n' +
 			'</property-line>\n' +
-			'<abilities-block data-cha="' + creature.stats.abilityScores.charisma + '" data-con="' + creature.stats.abilityScores.constitution + '" data-dex="' + creature.stats.abilityScores.dexterity + '" data-int="' + creature.stats.abilityScores.intelligence + '" data-str="' + creature.stats.abilityScores.strength + '" data-wis="' + creature.stats.abilityScores.wisdom + '"\n';
-			'</abilities-block>\n' +
-			//CONTINUE FROM HERE (damage immunities, etc)
+			'<abilities-block data-cha="' + creature.stats.abilityScores.charisma + '" data-con="' + creature.stats.abilityScores.constitution + '" data-dex="' + creature.stats.abilityScores.dexterity + '" data-int="' + creature.stats.abilityScores.intelligence + '" data-str="' + creature.stats.abilityScores.strength + '" data-wis="' + creature.stats.abilityScores.wisdom + '">\n' +
+			'</abilities-block>\n';
+		if(creature.stats.savingThrows.length>0){
+			html = html +
+				'<property-line>\n' +
+				'<h4>Saving Throws</h4>\n' +
+				'<p>';
+			for(var i=0;i<creature.stats.savingThrows.length;i++){
+				if(i>0)
+					html = html + ', ';
+				html = html + creature.stats.savingThrows[i].modifierStr;
+			}
+			html = html +
+				'</p>\n' +
+				'</property-line>\n';
+		}
+		if(creature.stats.skills.length>0){
+			html = html +
+				'<property-line>\n' +
+				'<h4>Skills</h4>\n' +
+				'<p>';
+			for(var i=0;i<creature.stats.skills.length;i++){
+				if(i>0)
+					html = html + ', ';
+				html = html + creature.stats.skills[i].modifierStr;
+			}
+			html = html +
+				'</p>\n' +
+				'</property-line>\n';
+		}
+		if(creature.stats.damageVulnerabilities.length>0){
+			html = html +
+				'<property-line>\n' +
+				'<h4>Damage Vulnerabilities</h4>\n' +
+				'<p>';
+			for(var i=0;i<creature.stats.damageVulnerabilities.length;i++){
+				if(i>0)
+					html = html + ', ';
+				html = html + creature.stats.damageVulnerabilities[i].toLowerCase();
+			}
+			html = html +
+				'</p>\n' +
+				'</property-line>\n';
+		}
+		if(creature.stats.damageResistances.length>0){
+			html = html +
+				'<property-line>\n' +
+				'<h4>Damage Resistances</h4>\n' +
+				'<p>';
+			for(var i=0;i<creature.stats.damageResistances.length;i++){
+				if(i>0)
+					html = html + ', ';
+				html = html + creature.stats.damageResistances[i].toLowerCase();
+			}
+			html = html +
+				'</p>\n' +
+				'</property-line>\n';
+		}
+		if(creature.stats.damageImmunities.length>0){
+			html = html +
+				'<property-line>\n' +
+				'<h4>Damage Immunities</h4>\n' +
+				'<p>';
+			for(var i=0;i<creature.stats.damageImmunities.length;i++){
+				if(i>0)
+					html = html + ', ';
+				html = html + creature.stats.damageImmunities[i].toLowerCase();
+			}
+			html = html +
+				'</p>\n' +
+				'</property-line>\n';
+		}
+		if(creature.stats.conditionImmunities.length>0){
+			html = html +
+				'<property-line>\n' +
+				'<h4>Condition Immunities</h4>\n' +
+				'<p>';
+			for(var i=0;i<creature.stats.conditionImmunities.length;i++){
+				if(i>0)
+					html = html + ', ';
+				html = html + creature.stats.conditionImmunities[i].toLowerCase();
+			}
+			html = html +
+				'</p>\n' +
+				'</property-line>\n';
+		}
+		//Senses
+		html = html +
+			'<property-line>\n' +
+			'<h4>Senses</h4>\n' +
+			'<p>';
+		for(var i=0;i<creature.stats.senses.length;i++){
+			if(i>0)
+				html = html + ', ';
+			html = html + creature.stats.senses[i].toLowerCase();
+		}
+		if(creature.stats.senses.length>0)
+			html = html + ', ';
+		html = html +
+			'passive Perception ' + creature.stats.passivePerception + '\n' +
+			'</p>\n' +
+			'</property-line>\n';
+		//Languages
+		html = html +
+			'<property-line>\n' +
+			'<h4>Languages</h4>\n' +
+			'<p>';
+		if(creature.stats.languages.length==0)
+			html = html + '—';
+		else {
+			for(var i=0;i<creature.stats.languages.length;i++){
+				if(i>0)
+					html = html + ', ';
+				var language = creature.stats.languages[i];
+				html = html + language.charAt(0).toUpperCase() + language.slice(1).toLowerCase();
+			}
+		}
+		html = html +
+			'</p>\n' +
+			'</property-line>\n';
+		//Challenge Rating
+		html = html +
+			'<property-line>\n' +
+			'<h4>Challenge</h4>\n' +
+			'<p>' + creature.stats.challengeRatingStr + ' (' + creature.stats.experiencePoints + ' XP)\n' +
+			'</p>\n' +
+			'</property-line>\n';
+		html = html + 
+			'</top-stats>\n';
 		return html;
 	}
 
-	var generateProperties = function(title,abilities){
-		var html = "";
+	var generateAbility = function(ability){
+		var html = '<property-block>\n' +
+			'<h4>' + ability.name + '</h4>\n' +
+			'<p>' + ability.description + '</p>\n' +
+			'</property-block>\n';
+		return(html);
+	}
 
+	var generateProperties = function(title,abilities){
+		var html = '';
+		if(abilities && abilities.length>0){
+			if(title)
+				html = html + '<h3>' + title + '</h3>\n';
+			for(var i=0;i<abilities.length;i++){
+				html = html + generateAbility(abilities[i]);
+			}
+		}
 		return html;
 	}
 
 	var generateLegendaryActions = function(creature){
-		var html = "";
-
+		var html = '';
+		if(creature.stats.legendaryActions && creature.stats.legendaryActions.length>0) {
+			html = html + '<h3>Legendary Actions</h3>\n' +
+				'<p>The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.</p>\n' +
+				'\n' +
+				generateProperties(null,creature.stats.legendaryActions);
+		}
 		return html;
 	}
 
 	var generateDescription = function(creature){
-		var html = "";
-
+		var html = '';
+		if(creature.flavor.description && creature.flavor.description.length>0){
+			html = html + '<h3>Description</h3>\n' +
+				'<p>' + creature.flavor.descriptionHtml + '</p>\n';
+		}
 		return html;
 	}
 
@@ -62,9 +210,9 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			'<stat-block>\n' +
 			generateHeading(creature) +
 			generateTopStats(creature) +
-			generateProperties('',creature.additionalAbilities) +
-			generateProperties('Actions',creature.actions) +
-			generateProperties('Reactions',creature.reactions) +
+			generateProperties('',creature.stats.additionalAbilities) +
+			generateProperties('Actions',creature.stats.actions) +
+			generateProperties('Reactions',creature.stats.reactions) +
 			generateLegendaryActions(creature) +
 			generateDescription(creature) +
 			'</statblock>\n' +
