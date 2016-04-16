@@ -36,6 +36,12 @@ module.exports = function (grunt) {
       fonts: ['dist/fonts']
     },
     copy: {
+      data: {
+        expand: true,
+        cwd: 'public/data',
+        src: '**',
+        dest: 'dist/data/'
+      },
       partials: {
         expand: true,
         cwd: 'public/partials',
@@ -73,7 +79,7 @@ module.exports = function (grunt) {
       },
       data: {
         files: 'public/data/**',
-        tasks: ['import','concat','clean:staging']
+        tasks: ['import','concat','clean:staging','copy:data']
       },
       fonts: {
         files: 'public/fonts/**',
