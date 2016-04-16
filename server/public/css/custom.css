@@ -138,18 +138,55 @@ section.login-area md-content.login-body{
 
 .stat-block-overlay section.side-menu button md-icon {
   color: #fff;
+  transition: 0.10s ease-out all;
 }
 
+.stat-block-overlay section.side-menu button md-icon.disabled {
+  color: rgba(255,255,255,0.26);
+}
 
-/*.stat-block-overlay .md-button.md-fab:hover {
-  background-color: #fff;
+.stat-block-overlay section.secondary-menu {
+  position: absolute;
+  right: 56px;
+  top: 0px;
+  bottom: 0px;
+  width: 200px;
+  max-width: calc(100% - 56px);
+  height: 100%;
+  background-color: rgba(0,0,0,0.0);
+  transition: 0.10s ease-out all;
 }
-.stat-block-overlay .md-button.md-fab {
-  background-color: #fff;
+.stat-block-overlay section.secondary-menu.ng-enter {
+  width: 0px;
+  opacity: 0;
 }
-.stat-block-overlay .md-button.md-fab md-icon {
-  color: #777;
-}*/
+.stat-block-overlay section.secondary-menu.ng-enter-active {
+  width: 200px;
+  opacity: 1.0;
+}
+.stat-block-overlay section.secondary-menu.ng-leave-active {
+  width: 0px;
+  opacity: 0;
+}
+
+.stat-block-overlay section.secondary-menu button {
+  min-width: 100%;
+  padding: 6px 6px;
+  margin: 0px 0px;
+  border-radius: 0px;
+  color: #fff;
+  text-align: right;
+  transition: background-color 0.25s ease-out;
+  background-color: rgba(0,0,0,0.50);
+}
+.stat-block-overlay section.secondary-menu button:hover {
+  background-color: rgba(0,0,0,0.70);
+}
+
+.stat-block-overlay section.secondary-menu button md-icon {
+  color: #fff;
+  margin-left: 4px;
+}
 
 md-toolbar.inner-header {
   background-color: #fafafa;
