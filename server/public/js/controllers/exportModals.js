@@ -11,6 +11,18 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		$scope.export.html = generateHTML(creature);
 	});
 
+	var convertExtraWhitespace = function(text){
+		function escapeSpaces (str) {
+		    return str.replace(/^ +/mg, function (match) {
+		        return match.replace(/ /g, "&nbsp;");
+		    });
+		}
+		if(text)
+				return(escapeSpaces(text).replace(/(?:\r\n|\r|\n)/g, '<br />'));
+			else
+				return(text);
+	}
+
 	var generateHeading = function(creature){
 		var html = '<creature-heading>\n' +
 			'<h1>'+creature.name+'</h1>\n' +
@@ -168,7 +180,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 	var generateAbility = function(ability){
 		var html = '<property-block>\n' +
 			'<h4>' + ability.name + '</h4>\n' +
-			'<p>' + ability.description + '</p>\n' +
+			'<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
 			'</property-block>\n';
 		return(html);
 	}
@@ -200,7 +212,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		var html = '';
 		if(creature.flavor.description && creature.flavor.description.length>0){
 			html = html + '<h3>Description</h3>\n' +
-				'<p>' + creature.flavor.descriptionHtml + '</p>\n';
+				'<p>' + convertExtraWhitespace(creature.flavor.description) + '</p>\n';
 		}
 		return html;
 	}
@@ -256,6 +268,14 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		);
 		e.clearSelection();
 	});
+
+	$scope.downloadHtml = function() {
+		var uriContent = "data:application/octet-stream," + encodeURIComponent($scope.export.html);
+		var link = document.createElement('a');
+		link.download = creature.name+".html";
+		link.href = uriContent;
+		link.click();
+	}
 
 	$scope.cancel = function() {
     $mdDialog.cancel();
