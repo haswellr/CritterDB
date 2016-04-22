@@ -23,35 +23,42 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 				return(text);
 	}
 
+	var tabs = function(count){
+		var output = "";
+		for(var i=0;i<count;i++)
+			output = output + "\t";
+		return output;
+	}
+
 	var generateHeading = function(creature){
-		var html = '<creature-heading>\n' +
-			'<h1>'+creature.name+'</h1>\n' +
-			'<h2>'+ creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase() + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '</h2>\n' +
-			'</creature-heading>';
+		var html = tabs(3) + '<creature-heading>\n' +
+			tabs(4) + '<h1>'+creature.name+'</h1>\n' +
+			tabs(4) + '<h2>'+ creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase() + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '</h2>\n' +
+			tabs(3) + '</creature-heading>\n';
 		return html;
 	}
 
 	var generateTopStats = function(creature){
-		var html = '<top-stats>\n' +
-			'<property-line>\n' +
-			'<h4>Armor Class</h4>\n' +
-			'<p>' + creature.stats.armorClass + ' ' + (creature.stats.armorType ? ('(' + creature.stats.armorType.toLowerCase() + ')') : '') + '</p>\n' +
-			'</property-line>\n' +
-			'<property-line>\n' +
-			'<h4>Hit Points</h4>\n' +
-			'<p>' + creature.stats.hitPointsStr + '</p>\n' +
-			'</property-line>\n' +
-			'<property-line>\n' +
-			'<h4>Speed</h4>\n' +
-			'<p>' + creature.stats.speed + '</p>\n' +
-			'</property-line>\n' +
-			'<abilities-block data-cha="' + creature.stats.abilityScores.charisma + '" data-con="' + creature.stats.abilityScores.constitution + '" data-dex="' + creature.stats.abilityScores.dexterity + '" data-int="' + creature.stats.abilityScores.intelligence + '" data-str="' + creature.stats.abilityScores.strength + '" data-wis="' + creature.stats.abilityScores.wisdom + '">\n' +
-			'</abilities-block>\n';
+		var html = tabs(3) + '<top-stats>\n' +
+			tabs(4) + '<property-line>\n' +
+			tabs(5) + '<h4>Armor Class</h4>\n' +
+			tabs(5) + '<p>' + creature.stats.armorClass + ' ' + (creature.stats.armorType ? ('(' + creature.stats.armorType.toLowerCase() + ')') : '') + '</p>\n' +
+			tabs(4) + '</property-line>\n' +
+			tabs(4) + '<property-line>\n' +
+			tabs(5) + '<h4>Hit Points</h4>\n' +
+			tabs(5) + '<p>' + creature.stats.hitPointsStr + '</p>\n' +
+			tabs(4) + '</property-line>\n' +
+			tabs(4) + '<property-line>\n' +
+			tabs(5) + '<h4>Speed</h4>\n' +
+			tabs(5) + '<p>' + creature.stats.speed + '</p>\n' +
+			tabs(4) + '</property-line>\n' +
+			tabs(4) + '<abilities-block data-cha="' + creature.stats.abilityScores.charisma + '" data-con="' + creature.stats.abilityScores.constitution + '" data-dex="' + creature.stats.abilityScores.dexterity + '" data-int="' + creature.stats.abilityScores.intelligence + '" data-str="' + creature.stats.abilityScores.strength + '" data-wis="' + creature.stats.abilityScores.wisdom + '">\n' +
+			tabs(4) + '</abilities-block>\n';
 		if(creature.stats.savingThrows.length>0){
 			html = html +
-				'<property-line>\n' +
-				'<h4>Saving Throws</h4>\n' +
-				'<p>';
+				tabs(4) + '<property-line>\n' +
+				tabs(5) + '<h4>Saving Throws</h4>\n' +
+				tabs(5) + '<p>';
 			for(var i=0;i<creature.stats.savingThrows.length;i++){
 				if(i>0)
 					html = html + ', ';
@@ -59,13 +66,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			}
 			html = html +
 				'</p>\n' +
-				'</property-line>\n';
+				tabs(4) + '</property-line>\n';
 		}
 		if(creature.stats.skills.length>0){
 			html = html +
-				'<property-line>\n' +
-				'<h4>Skills</h4>\n' +
-				'<p>';
+				tabs(4) + '<property-line>\n' +
+				tabs(5) + '<h4>Skills</h4>\n' +
+				tabs(5) + '<p>';
 			for(var i=0;i<creature.stats.skills.length;i++){
 				if(i>0)
 					html = html + ', ';
@@ -73,13 +80,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			}
 			html = html +
 				'</p>\n' +
-				'</property-line>\n';
+				tabs(4) + '</property-line>\n';
 		}
 		if(creature.stats.damageVulnerabilities.length>0){
 			html = html +
-				'<property-line>\n' +
-				'<h4>Damage Vulnerabilities</h4>\n' +
-				'<p>';
+				tabs(4) + '<property-line>\n' +
+				tabs(5) + '<h4>Damage Vulnerabilities</h4>\n' +
+				tabs(5) + '<p>';
 			for(var i=0;i<creature.stats.damageVulnerabilities.length;i++){
 				if(i>0)
 					html = html + ', ';
@@ -87,13 +94,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			}
 			html = html +
 				'</p>\n' +
-				'</property-line>\n';
+				tabs(4) + '</property-line>\n';
 		}
 		if(creature.stats.damageResistances.length>0){
 			html = html +
-				'<property-line>\n' +
-				'<h4>Damage Resistances</h4>\n' +
-				'<p>';
+				tabs(4) + '<property-line>\n' +
+				tabs(5) + '<h4>Damage Resistances</h4>\n' +
+				tabs(5) + '<p>';
 			for(var i=0;i<creature.stats.damageResistances.length;i++){
 				if(i>0)
 					html = html + ', ';
@@ -101,13 +108,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			}
 			html = html +
 				'</p>\n' +
-				'</property-line>\n';
+				tabs(4) + '</property-line>\n';
 		}
 		if(creature.stats.damageImmunities.length>0){
 			html = html +
-				'<property-line>\n' +
-				'<h4>Damage Immunities</h4>\n' +
-				'<p>';
+				tabs(4) + '<property-line>\n' +
+				tabs(5) + '<h4>Damage Immunities</h4>\n' +
+				tabs(5) + '<p>';
 			for(var i=0;i<creature.stats.damageImmunities.length;i++){
 				if(i>0)
 					html = html + ', ';
@@ -115,13 +122,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			}
 			html = html +
 				'</p>\n' +
-				'</property-line>\n';
+				tabs(4) + '</property-line>\n';
 		}
 		if(creature.stats.conditionImmunities.length>0){
 			html = html +
-				'<property-line>\n' +
-				'<h4>Condition Immunities</h4>\n' +
-				'<p>';
+				tabs(4) + '<property-line>\n' +
+				tabs(5) + '<h4>Condition Immunities</h4>\n' +
+				tabs(5) + '<p>';
 			for(var i=0;i<creature.stats.conditionImmunities.length;i++){
 				if(i>0)
 					html = html + ', ';
@@ -129,13 +136,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			}
 			html = html +
 				'</p>\n' +
-				'</property-line>\n';
+				tabs(4) + '</property-line>\n';
 		}
 		//Senses
 		html = html +
-			'<property-line>\n' +
-			'<h4>Senses</h4>\n' +
-			'<p>';
+			tabs(4) + '<property-line>\n' +
+			tabs(5) + '<h4>Senses</h4>\n' +
+			tabs(5) + '<p>';
 		for(var i=0;i<creature.stats.senses.length;i++){
 			if(i>0)
 				html = html + ', ';
@@ -144,14 +151,14 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		if(creature.stats.senses.length>0)
 			html = html + ', ';
 		html = html +
-			'passive Perception ' + creature.stats.passivePerception + '\n' +
+			tabs(5) + 'passive Perception ' + creature.stats.passivePerception +
 			'</p>\n' +
-			'</property-line>\n';
+			tabs(4) + '</property-line>\n';
 		//Languages
 		html = html +
-			'<property-line>\n' +
-			'<h4>Languages</h4>\n' +
-			'<p>';
+			tabs(4) + '<property-line>\n' +
+			tabs(5) + '<h4>Languages</h4>\n' +
+			tabs(5) + '<p>';
 		if(creature.stats.languages.length==0)
 			html = html + '—';
 		else {
@@ -164,24 +171,24 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		}
 		html = html +
 			'</p>\n' +
-			'</property-line>\n';
+			tabs(4) + '</property-line>\n';
 		//Challenge Rating
 		html = html +
-			'<property-line>\n' +
-			'<h4>Challenge</h4>\n' +
-			'<p>' + creature.stats.challengeRatingStr + ' (' + creature.stats.experiencePoints + ' XP)\n' +
+			tabs(4) + '<property-line>\n' +
+			tabs(5) + '<h4>Challenge</h4>\n' +
+			tabs(5) + '<p>' + creature.stats.challengeRatingStr + ' (' + creature.stats.experiencePoints + ' XP)' +
 			'</p>\n' +
-			'</property-line>\n';
+			tabs(4) + '</property-line>\n';
 		html = html + 
-			'</top-stats>\n';
+			tabs(3) + '</top-stats>\n';
 		return html;
 	}
 
 	var generateAbility = function(ability){
-		var html = '<property-block>\n' +
-			'<h4>' + ability.name + '</h4>\n' +
-			'<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
-			'</property-block>\n';
+		var html = tabs(3) + '<property-block>\n' +
+			tabs(4) + '<h4>' + ability.name + '</h4>\n' +
+			tabs(4) + '<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
+			tabs(3) + '</property-block>\n';
 		return(html);
 	}
 
@@ -189,7 +196,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		var html = '';
 		if(abilities && abilities.length>0){
 			if(title)
-				html = html + '<h3>' + title + '</h3>\n';
+				html = html + tabs(3) + '<h3>' + title + '</h3>\n';
 			for(var i=0;i<abilities.length;i++){
 				html = html + generateAbility(abilities[i]);
 			}
@@ -200,8 +207,8 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 	var generateLegendaryActions = function(creature){
 		var html = '';
 		if(creature.stats.legendaryActions && creature.stats.legendaryActions.length>0) {
-			html = html + '<h3>Legendary Actions</h3>\n' +
-				'<p>The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.</p>\n' +
+			html = html + tabs(3) + '<h3>Legendary Actions</h3>\n' +
+				tabs(3) + '<p>The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.</p>\n' +
 				'\n' +
 				generateProperties(null,creature.stats.legendaryActions);
 		}
@@ -211,15 +218,15 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 	var generateDescription = function(creature){
 		var html = '';
 		if(creature.flavor.description && creature.flavor.description.length>0){
-			html = html + '<h3>Description</h3>\n' +
-				'<p>' + convertExtraWhitespace(creature.flavor.description) + '</p>\n';
+			html = html + tabs(3) + '<h3>Description</h3>\n' +
+				tabs(3) + '<p>' + convertExtraWhitespace(creature.flavor.description) + '</p>\n';
 		}
 		return html;
 	}
 
 	var generateHTML = function(creature){
-		var html = header +
-			'<stat-block>\n' +
+		var html = header + '\n' +
+			tabs(2) + '<stat-block>\n' +
 			generateHeading(creature) +
 			generateTopStats(creature) +
 			generateProperties('',creature.stats.additionalAbilities) +
@@ -227,8 +234,8 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 			generateProperties('Reactions',creature.stats.reactions) +
 			generateLegendaryActions(creature) +
 			generateDescription(creature) +
-			'</statblock>\n' +
-			'</body>\n' +
+			tabs(2) + '</statblock>\n' +
+			tabs(1) + '</body>\n' +
 			'</html>\n';
 		return(html);
 	}
