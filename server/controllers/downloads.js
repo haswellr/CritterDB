@@ -14,8 +14,6 @@ exports.downloadData = function(req, res) {
     var mimeType = mime.lookup(filename)
     var safeFilename = filename.replace(/\s+/g,'-');
 
-    console.log("testing 222");
-
     res.setHeader('Content-disposition', 'attachment; filename='+safeFilename);
     res.setHeader('Content-type', 'text/html');
     res.send(data);
