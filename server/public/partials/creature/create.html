@@ -17,12 +17,39 @@
 			<b>{{creature.name}}</b>
 		</h2>
 		<div class="right-side-controls">
-			<md-button hide show-gt-sm ng-click="saveAsImage()" class="md-icon-button md-mini" aria-label="Save Image">
-				<md-icon>photo</md-icon>
-				<md-tooltip md-direction="left">
-	        Save As Image
-	      </md-tooltip>
-			</md-button>
+      <md-menu md-position-mode="target-right target">
+        <md-button class="md-icon-button md-mini" aria-label="Export Creature" ng-click="$mdOpenMenu($event)">
+          <md-icon>save</md-icon>
+					<md-tooltip md-direction="left">
+						Export
+	      	</md-tooltip>
+        </md-button>
+        <md-menu-content width="3" >
+          <div hide show-gt-sm>
+            <md-menu-item>
+              <md-button ng-click="exportToImage()">
+                <div layout="row">
+                  <p flex>Export to Image</p>
+                </div>
+              </md-button>
+            </md-menu-item>
+          </div>
+          <md-menu-item>
+            <md-button ng-click="exportToHTML($event)">
+                <div layout="row">
+                  <p flex>Export to HTML</p>
+                </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="exportToNaturalCrit($event)">
+                <div layout="row">
+                  <p flex>Export to Natural Crit</p>
+                </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
 			<md-button hide-gt-sm ng-click="toggle('statblockNav');" class="md-icon-button md-mini" aria-label="Flip to Stat Block">
 				<md-icon ng-if="isOpen('statblockNav')" class="md-accent">flip_to_back</md-icon>
 				<md-icon ng-if="!isOpen('statblockNav')">flip_to_front</md-icon>

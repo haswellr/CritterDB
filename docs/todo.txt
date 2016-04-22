@@ -1,13 +1,10 @@
 
 
 Imortant:
--Add ability to export to HTML and to Natural Crit
-	+ Add correct menu options to Create/Edit creature page as well
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -UI is not working correctly on Chrome or Safari on iOS.
--Move HTML -> image exporting to the back end so that we can do it properly (MAYBE - but explore this option at least).
 -Bug: Sometimes when in the create/edit creature page the current bestiary is not shown on the inner header so it is difficult/confusing to go back to it
 
 -Autofill special abilities for races as well
@@ -18,7 +15,6 @@ Imortant:
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
 -Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them.
 
--Reset password is not scaled appropriately on small screens (like phones)
 -Cross-browser - columns don't work on firefox, IE is totally untested.
 
 - Add a 'CR Calculator' helper based on avg damage etc (check that this stuff is in the basic rules though)
