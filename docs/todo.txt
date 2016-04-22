@@ -3,9 +3,6 @@
 Imortant:
 -Add ability to export to HTML and to Natural Crit
 	+ Add correct menu options to Create/Edit creature page as well
-	+ Move HTML export creation to back end
-		- Beautify/format outputted html (see tidyjs?)
-		- Save outputted HTML as HTML file rather than to clipboard
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
