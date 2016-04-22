@@ -186,7 +186,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 
 	var generateAbility = function(ability){
 		var html = tabs(3) + '<property-block>\n' +
-			tabs(4) + '<h4>' + ability.name + '</h4>\n' +
+			tabs(4) + '<h4>' + ability.name + '.' + '</h4>\n' +
 			tabs(4) + '<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
 			tabs(3) + '</property-block>\n';
 		return(html);

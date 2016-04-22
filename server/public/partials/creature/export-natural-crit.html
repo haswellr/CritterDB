@@ -1,0 +1,37 @@
+
+<md-dialog id="export-dialog" class="export-modal" aria-label="Export Natural Crit" ng-cloak>
+  <form action="/api/downloads" method="post">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Export to Natural Crit</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="padding:40px 10px 28px 10px;">
+      <section layout="row" class="row">
+        <p style="text-align:center;font-size:12px;">
+          <i>Natural Crit is a very handy tool that lets you format your homebrew creations to make them look similar to the official source materials. <a href="http://www.naturalcrit.com/homebrew/" target="_blank">Find it here</a>. Natural Crit's website only officially supports Chrome.</i>
+        </p>
+      </section>
+      <!-- This section just holds form data for POST -->
+      <section layout="row" class="row" style="display:none;">
+        <md-input-container class="md-block">
+          <label>Filename</label>
+          <input name="filename" ng-model="export.filename" readonly></input>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>HTML</label>
+          <textarea name="data" ng-model="export.data" md-select-on-focus readonly></textarea>
+        </md-input-container>
+      </section>
+      <!-- - -->
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-disabled="loading" id="copy-to-clipboard" class="md-raised md-button">Copy to Clipboard</md-button>
+      <md-button type="submit" ng-disabled="loading" class="md-raised md-button md-primary">Download as Text</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

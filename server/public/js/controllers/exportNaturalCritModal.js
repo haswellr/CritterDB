@@ -3,14 +3,14 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 	var header = "";
 	Creature.calculateCreatureDetails(creature);
 
-	var convertExtraWhitespace = function(text){
+	var convertWhitespaceAndHtml = function(text){
 		function escapeSpaces (str) {
 		    return str.replace(/^ +/mg, function (match) {
 		        return match.replace(/ /g, "&nbsp;");
 		    });
 		}
 		if(text)
-				return(escapeSpaces(text).replace(/(?:\r\n|\r|\n)/g, '\n>'));
+				return(escapeSpaces(text).replace(/(?:\r\n|\r|\n)/g, '\n>').replace(/(?:<i>|<\/i>)/g,'*'));
 			else
 				return(text);
 	}
@@ -29,9 +29,16 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 		return html;
 	}
 
-	var generatePropertyLine = function(title,text) {
+	var generatePropertyLine = function(title,text){
 		var html = '- **' + title + '** ' + text + newline;
-		return(html);
+		return html;
+	}
+
+	var generateAbilityScoreLine = function(creature){
+		var html = '|STR|DEX|CON|INT|WIS|CHA|' + newline +
+			'|:---:|:---:|:---:|:---:|:---:|:---:|' + newline +
+			'|'+creature.stats.abilityScoreStrs.strength+'|'+creature.stats.abilityScoreStrs.dexterity+'|'+creature.stats.abilityScoreStrs.constitution+'|'+creature.stats.abilityScoreStrs.intelligence+'|'+creature.stats.abilityScoreStrs.wisdom+'|'+creature.stats.abilityScoreStrs.charisma+'|'+newline;
+		return html;
 	}
 
 	var generateTopStats = function(creature){
@@ -39,152 +46,116 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 			generatePropertyLine('Hit Points',creature.stats.hitPointsStr) + 
 			generatePropertyLine('Speed',creature.stats.speed) +
 			generateTaperedLine() +
-			//TODO - CONTINUE CONVERTING FROM HERE
-			tabs(4) + '<abilities-block data-cha="' + creature.stats.abilityScores.charisma + '" data-con="' + creature.stats.abilityScores.constitution + '" data-dex="' + creature.stats.abilityScores.dexterity + '" data-int="' + creature.stats.abilityScores.intelligence + '" data-str="' + creature.stats.abilityScores.strength + '" data-wis="' + creature.stats.abilityScores.wisdom + '">\n' +
-			tabs(4) + '</abilities-block>\n';
+			generateAbilityScoreLine(creature) +
+			generateTaperedLine();
 		if(creature.stats.savingThrows.length>0){
-			html = html +
-				tabs(4) + '<property-line>\n' +
-				tabs(5) + '<h4>Saving Throws</h4>\n' +
-				tabs(5) + '<p>';
+			var propertyText = '';
 			for(var i=0;i<creature.stats.savingThrows.length;i++){
 				if(i>0)
-					html = html + ', ';
-				html = html + creature.stats.savingThrows[i].modifierStr;
+					propertyText = propertyText + ', ';
+				propertyText = propertyText + creature.stats.savingThrows[i].modifierStr;
 			}
 			html = html +
-				'</p>\n' +
-				tabs(4) + '</property-line>\n';
+				generatePropertyLine('Saving Throws',propertyText);
 		}
 		if(creature.stats.skills.length>0){
-			html = html +
-				tabs(4) + '<property-line>\n' +
-				tabs(5) + '<h4>Skills</h4>\n' +
-				tabs(5) + '<p>';
+			var propertyText = '';
 			for(var i=0;i<creature.stats.skills.length;i++){
 				if(i>0)
-					html = html + ', ';
-				html = html + creature.stats.skills[i].modifierStr;
+					propertyText = propertyText + ', ';
+				propertyText = propertyText + creature.stats.skills[i].modifierStr;
 			}
 			html = html +
-				'</p>\n' +
-				tabs(4) + '</property-line>\n';
+				generatePropertyLine('Skills',propertyText);
 		}
 		if(creature.stats.damageVulnerabilities.length>0){
-			html = html +
-				tabs(4) + '<property-line>\n' +
-				tabs(5) + '<h4>Damage Vulnerabilities</h4>\n' +
-				tabs(5) + '<p>';
+			var propertyText = '';
 			for(var i=0;i<creature.stats.damageVulnerabilities.length;i++){
 				if(i>0)
-					html = html + ', ';
-				html = html + creature.stats.damageVulnerabilities[i].toLowerCase();
+					propertyText = propertyText + ', ';
+				propertyText = propertyText + creature.stats.damageVulnerabilities[i].toLowerCase();
 			}
 			html = html +
-				'</p>\n' +
-				tabs(4) + '</property-line>\n';
+				generatePropertyLine('Damage Vulnerabilities',propertyText);
 		}
 		if(creature.stats.damageResistances.length>0){
-			html = html +
-				tabs(4) + '<property-line>\n' +
-				tabs(5) + '<h4>Damage Resistances</h4>\n' +
-				tabs(5) + '<p>';
+			var propertyText = '';
 			for(var i=0;i<creature.stats.damageResistances.length;i++){
 				if(i>0)
-					html = html + ', ';
-				html = html + creature.stats.damageResistances[i].toLowerCase();
+					propertyText = propertyText + ', ';
+				propertyText = propertyText + creature.stats.damageResistances[i].toLowerCase();
 			}
 			html = html +
-				'</p>\n' +
-				tabs(4) + '</property-line>\n';
+				generatePropertyLine('Damage Resistances',propertyText);
 		}
 		if(creature.stats.damageImmunities.length>0){
-			html = html +
-				tabs(4) + '<property-line>\n' +
-				tabs(5) + '<h4>Damage Immunities</h4>\n' +
-				tabs(5) + '<p>';
+			var propertyText = '';
 			for(var i=0;i<creature.stats.damageImmunities.length;i++){
 				if(i>0)
-					html = html + ', ';
-				html = html + creature.stats.damageImmunities[i].toLowerCase();
+					propertyText = propertyText + ', ';
+				propertyText = propertyText + creature.stats.damageImmunities[i].toLowerCase();
 			}
 			html = html +
-				'</p>\n' +
-				tabs(4) + '</property-line>\n';
+				generatePropertyLine('Damage Immunities',propertyText);
 		}
 		if(creature.stats.conditionImmunities.length>0){
-			html = html +
-				tabs(4) + '<property-line>\n' +
-				tabs(5) + '<h4>Condition Immunities</h4>\n' +
-				tabs(5) + '<p>';
+			var propertyText = '';
 			for(var i=0;i<creature.stats.conditionImmunities.length;i++){
 				if(i>0)
-					html = html + ', ';
-				html = html + creature.stats.conditionImmunities[i].toLowerCase();
+					propertyText = propertyText + ', ';
+				propertyText = propertyText + creature.stats.conditionImmunities[i].toLowerCase();
 			}
 			html = html +
-				'</p>\n' +
-				tabs(4) + '</property-line>\n';
+				generatePropertyLine('Condition Immunities',propertyText);
 		}
-		//Senses
-		html = html +
-			tabs(4) + '<property-line>\n' +
-			tabs(5) + '<h4>Senses</h4>\n' +
-			tabs(5) + '<p>';
+		var sensesText = '';
 		for(var i=0;i<creature.stats.senses.length;i++){
 			if(i>0)
-				html = html + ', ';
-			html = html + creature.stats.senses[i].toLowerCase();
+				sensesText = sensesText + ', ';
+			sensesText = sensesText + creature.stats.senses[i].toLowerCase();
 		}
 		if(creature.stats.senses.length>0)
-			html = html + ', ';
+			sensesText = sensesText + ', ';
+		sensesText = sensesText + 'passive Perception ' + creature.stats.passivePerception;
 		html = html +
-			tabs(5) + 'passive Perception ' + creature.stats.passivePerception +
-			'</p>\n' +
-			tabs(4) + '</property-line>\n';
-		//Languages
-		html = html +
-			tabs(4) + '<property-line>\n' +
-			tabs(5) + '<h4>Languages</h4>\n' +
-			tabs(5) + '<p>';
+			generatePropertyLine('Senses',sensesText);
+
+		var languagesText = '';
 		if(creature.stats.languages.length==0)
-			html = html + '—';
-		else {
+			languagesText = '—';
+		else{
 			for(var i=0;i<creature.stats.languages.length;i++){
 				if(i>0)
-					html = html + ', ';
+					languagesText = languagesText + ', ';
 				var language = creature.stats.languages[i];
-				html = html + language.charAt(0).toUpperCase() + language.slice(1).toLowerCase();
+				languagesText = languagesText + language.charAt(0).toUpperCase() + language.slice(1).toLowerCase();
 			}
 		}
 		html = html +
-			'</p>\n' +
-			tabs(4) + '</property-line>\n';
+			generatePropertyLine('Languages',languagesText);
 		//Challenge Rating
+		var challengeText = creature.stats.challengeRatingStr + ' (' + creature.stats.experiencePoints + ' XP)';
 		html = html +
-			tabs(4) + '<property-line>\n' +
-			tabs(5) + '<h4>Challenge</h4>\n' +
-			tabs(5) + '<p>' + creature.stats.challengeRatingStr + ' (' + creature.stats.experiencePoints + ' XP)' +
-			'</p>\n' +
-			tabs(4) + '</property-line>\n';
-		html = html + 
-			tabs(3) + '</top-stats>\n';
+			generatePropertyLine('Challenge',challengeText);
+		html = html +
+			generateTaperedLine();
 		return html;
 	}
 
 	var generateAbility = function(ability){
-		var html = tabs(3) + '<property-block>\n' +
-			tabs(4) + '<h4>' + ability.name + '</h4>\n' +
-			tabs(4) + '<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
-			tabs(3) + '</property-block>\n';
-		return(html);
+		var html = '***' + ability.name + '.' + '*** ' + convertWhitespaceAndHtml(ability.description) + newline +
+			newline;
+		return html;
 	}
 
-	var generateProperties = function(title,abilities){
+	var generateProperties = function(title,abilities,subtext){
 		var html = '';
 		if(abilities && abilities.length>0){
 			if(title)
-				html = html + tabs(3) + '<h3>' + title + '</h3>\n';
+				html = html + '### ' + title + newline;
+			if(subtext)
+				html = html + subtext + newline +
+					newline;
 			for(var i=0;i<abilities.length;i++){
 				html = html + generateAbility(abilities[i]);
 			}
@@ -193,44 +164,34 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 	}
 
 	var generateLegendaryActions = function(creature){
-		var html = '';
-		if(creature.stats.legendaryActions && creature.stats.legendaryActions.length>0) {
-			html = html + tabs(3) + '<h3>Legendary Actions</h3>\n' +
-				tabs(3) + '<p>The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.</p>\n' +
-				'\n' +
-				generateProperties(null,creature.stats.legendaryActions);
-		}
-		return html;
+		var subtext = 'The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.';
+		return generateProperties('Legendary Actions',creature.stats.legendaryActions,subtext);
 	}
 
 	var generateDescription = function(creature){
 		var html = '';
 		if(creature.flavor.description && creature.flavor.description.length>0){
-			html = html + tabs(3) + '<h3>Description</h3>\n' +
-				tabs(3) + '<p>' + convertExtraWhitespace(creature.flavor.description) + '</p>\n';
+			html = html + '### Description' + newline +
+				convertWhitespaceAndHtml(creature.flavor.description) + newline;
 		}
 		return html;
 	}
 
-	var generateHTML = function(creature){
-		var html = header + '\n' +
-			tabs(2) + '<stat-block>\n' +
+	var generateNaturalCritData = function(creature){
+		var html = '___' + newline +
 			generateHeading(creature) +
 			generateTopStats(creature) +
 			generateProperties('',creature.stats.additionalAbilities) +
 			generateProperties('Actions',creature.stats.actions) +
 			generateProperties('Reactions',creature.stats.reactions) +
 			generateLegendaryActions(creature) +
-			generateDescription(creature) +
-			tabs(2) + '</statblock>\n' +
-			tabs(1) + '</body>\n' +
-			'</html>\n';
+			generateDescription(creature);
 		return(html);
 	}
 
 	$scope.export = {
-		html: '',
-		filename: creature.name + '.html'
+		data: generateNaturalCritData(creature),
+		filename: creature.name + '.txt'
 	};
 
 	$scope.onCopy = function(e) {
@@ -239,14 +200,14 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 	var clipboard = new Clipboard('#copy-to-clipboard', {
 		text: function(trigger){
-			return($scope.export.html);
+			return($scope.export.data);
 		}
 	});
 
 	clipboard.on('success', function(e) {
 		$mdToast.show(
 			$mdToast.simple()
-				.textContent("HTML copied to clipboard!")
+				.textContent("Text copied to clipboard!")
 				.position("bottom right")
 				.parent(document.getElementById('export-dialog'))
 				.hideDelay(3000)
@@ -257,7 +218,7 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 	clipboard.on('error', function(e) {
 		$mdToast.show(
 			$mdToast.simple()
-				.textContent("Press CTRL-C to copy HTML!")
+				.textContent("Press CTRL-C to copy output!")
 				.position("bottom right")
 				.parent(document.getElementById('export-dialog'))
 				.hideDelay(3000)
@@ -271,4 +232,4 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 };
 
-angular.module('myApp').controller('exportHtmlCtrl',exportHtmlCtrl);
+angular.module('myApp').controller('exportNaturalCritCtrl',exportNaturalCritCtrl);

@@ -180,7 +180,18 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	}
 
 	$scope.exportCreatureToNaturalCrit = function(ev,creature){
-
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: exportNaturalCritCtrl,
+      templateUrl: '/assets/partials/creature/export-natural-crit.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'creature': creature
+      },
+      fullscreen: useFullScreen
+    });
 	}
 
 	$scope.copyCreature = function(creature){
