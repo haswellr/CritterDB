@@ -17,27 +17,29 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 	var newline = "\n>";
 
-	var generateHeading = function(creature){
-		var html = '## ' + creature.name + newline +
-			'*' + creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase() + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '*' + newline +
-			'___' + newline;
+	var generateTaperedLine = function(){
+		var html = '___' + newline;
 		return html;
 	}
 
+	var generateHeading = function(creature){
+		var html = '## ' + creature.name + newline +
+			'*' + creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase() + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '*' + newline +
+			generateTaperedLine();
+		return html;
+	}
+
+	var generatePropertyLine = function(title,text) {
+		var html = '- **' + title + '** ' + text + newline;
+		return(html);
+	}
+
 	var generateTopStats = function(creature){
-		var html = tabs(3) + '<top-stats>\n' +
-			tabs(4) + '<property-line>\n' +
-			tabs(5) + '<h4>Armor Class</h4>\n' +
-			tabs(5) + '<p>' + creature.stats.armorClass + ' ' + (creature.stats.armorType ? ('(' + creature.stats.armorType.toLowerCase() + ')') : '') + '</p>\n' +
-			tabs(4) + '</property-line>\n' +
-			tabs(4) + '<property-line>\n' +
-			tabs(5) + '<h4>Hit Points</h4>\n' +
-			tabs(5) + '<p>' + creature.stats.hitPointsStr + '</p>\n' +
-			tabs(4) + '</property-line>\n' +
-			tabs(4) + '<property-line>\n' +
-			tabs(5) + '<h4>Speed</h4>\n' +
-			tabs(5) + '<p>' + creature.stats.speed + '</p>\n' +
-			tabs(4) + '</property-line>\n' +
+		var html = generatePropertyLine('Armor Class',creature.stats.armorClass + ' ' + (creature.stats.armorType ? ('(' + creature.stats.armorType.toLowerCase() + ')') : '')) +
+			generatePropertyLine('Hit Points',creature.stats.hitPointsStr) + 
+			generatePropertyLine('Speed',creature.stats.speed) +
+			generateTaperedLine() +
+			//TODO - CONTINUE CONVERTING FROM HERE
 			tabs(4) + '<abilities-block data-cha="' + creature.stats.abilityScores.charisma + '" data-con="' + creature.stats.abilityScores.constitution + '" data-dex="' + creature.stats.abilityScores.dexterity + '" data-int="' + creature.stats.abilityScores.intelligence + '" data-str="' + creature.stats.abilityScores.strength + '" data-wis="' + creature.stats.abilityScores.wisdom + '">\n' +
 			tabs(4) + '</abilities-block>\n';
 		if(creature.stats.savingThrows.length>0){
