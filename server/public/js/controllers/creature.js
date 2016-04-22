@@ -271,10 +271,40 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		});
 	}
 
-	$scope.saveAsImage = function(){
+	$scope.exportToImage = function(){
 		$scope.saveCreature(function(){
 			$location.url("/creature/image/"+$scope.creature._id);
 		});
+	}
+
+	$scope.exportToHTML = function(ev){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: exportHtmlCtrl,
+      templateUrl: '/assets/partials/creature/export-html.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'creature': $scope.creature
+      },
+      fullscreen: useFullScreen
+    });
+	}
+
+	$scope.exportToNaturalCrit = function(ev){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: exportNaturalCritCtrl,
+      templateUrl: '/assets/partials/creature/export-natural-crit.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'creature': $scope.creature
+      },
+      fullscreen: useFullScreen
+    });
 	}
 
 	$scope.generateAttack = function(ev){

@@ -261,7 +261,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 				.textContent("HTML copied to clipboard!")
 				.position("bottom right")
 				.parent(document.getElementById('export-dialog'))
-				.hideDelay(3000)
+				.hideDelay(2000)
 		);
 		e.clearSelection();
 	});

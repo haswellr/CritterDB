@@ -210,7 +210,7 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 				.textContent("Text copied to clipboard!")
 				.position("bottom right")
 				.parent(document.getElementById('export-dialog'))
-				.hideDelay(3000)
+				.hideDelay(2000)
 		);
 		e.clearSelection();
 	});
