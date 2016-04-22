@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 
 //Controllers
 var creatures = require('./controllers/creatures');
+var downloads = require('./controllers/downloads');
 var bestiaries = require('./controllers/bestiaries');
 var users = require('./controllers/users');
 var authentication = require('./controllers/authentication');
@@ -26,31 +27,30 @@ app.get('/',function(req,res){
 	res.sendfile(path.join(__dirname+'/views/index.html'));
 });
 //Creatures
-app.get('/api/creatures/:id', creatures.findById);		//complete
-app.post('/api/creatures', creatures.create);		//complete
-app.put('/api/creatures/:id', creatures.updateById);		//complete
-app.delete('/api/creatures/:id', creatures.deleteById);		//complete
+app.get('/api/creatures/:id', creatures.findById);
+app.post('/api/creatures', creatures.create);
+app.put('/api/creatures/:id', creatures.updateById);
+app.delete('/api/creatures/:id', creatures.deleteById);
 //Bestiaries
-app.get('/api/bestiaries/:id/creatures', bestiaries.findCreaturesByBestiary);	//complete
-app.get('/api/bestiaries', bestiaries.findAll);		//REMOVE THIS
-app.get('/api/bestiaries/:id', bestiaries.findById);	//complete
-app.post('/api/bestiaries', bestiaries.create);	//complete
-app.put('/api/bestiaries/:id', bestiaries.updateById);	//complete
-app.delete('/api/bestiaries/:id', bestiaries.deleteById);	//complete
+app.get('/api/bestiaries/:id/creatures', bestiaries.findCreaturesByBestiary);
+app.get('/api/bestiaries/:id', bestiaries.findById);
+app.post('/api/bestiaries', bestiaries.create);
+app.put('/api/bestiaries/:id', bestiaries.updateById);
+app.delete('/api/bestiaries/:id', bestiaries.deleteById);
 //Users
-app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);	//complete
-app.get('/api/users', users.findAll);		//REMOVE THIS
-//app.get('/api/users/:id', users.findById);		//REMOVE THIS
-app.get('/api/users/:id/public', users.findPublicInfoById);	//complete
+app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);
+app.get('/api/users/:id/public', users.findPublicInfoById);
 app.get('/api/users/search', users.findPublicInfo);
-app.post('/api/users', users.create);	//complete
-app.put('/api/users/:id', users.updateById);	//complete
-app.delete('/api/users/:id', users.deleteById);	//complete
-app.post('/api/users/resetpassword', users.resetPassword);	//complete
+app.post('/api/users', users.create);
+app.put('/api/users/:id', users.updateById);
+app.delete('/api/users/:id', users.deleteById);
+app.post('/api/users/resetpassword', users.resetPassword);
 //Authentication
-app.get('/api/authenticate/user', authentication.getCurrentUser);	//complete
-app.post('/api/authenticate', authentication.authenticate);	//complete
-app.post('/api/revokeauthentication', authentication.revokeAuthentication);	//complete
+app.get('/api/authenticate/user', authentication.getCurrentUser);
+app.post('/api/authenticate', authentication.authenticate);
+app.post('/api/revokeauthentication', authentication.revokeAuthentication);
+//Downloads
+app.post('/api/downloads', downloads.downloadData);
 
 app.listen(3000);
 console.log('Listening on port 3000...');

@@ -234,7 +234,8 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 	}
 
 	$scope.export = {
-		html: ''
+		html: '',
+		filename: creature.name + '.html'
 	};
 
 	$scope.onCopy = function(e) {
@@ -268,14 +269,6 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		);
 		e.clearSelection();
 	});
-
-	$scope.downloadHtml = function() {
-		var uriContent = "data:application/octet-stream," + encodeURIComponent($scope.export.html);
-		var link = document.createElement('a');
-		link.download = creature.name+".html";
-		link.href = uriContent;
-		link.click();
-	}
 
 	$scope.cancel = function() {
     $mdDialog.cancel();
