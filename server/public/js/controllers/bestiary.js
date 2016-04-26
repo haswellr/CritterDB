@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -207,6 +207,12 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 	$scope.copyCreature = function(creature){
 		CreatureClipboard.add(creature);
+		$mdToast.show(
+			$mdToast.simple()
+				.textContent("Copied '" + creature.name + "' to clipboard.")
+				.position("bottom right")
+				.hideDelay(2000)
+		);
 	}
 
 	$scope.deleteCreature = function(ev,creature){
@@ -287,12 +293,20 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		var totalToCopy = creatures.length;
 		var finishedCopy = function(){
 			copiedCount = copiedCount + 1;
-			if(copiedCount==totalToCopy)
+			if(copiedCount==totalToCopy){
 				loadCreatures();
+				$mdToast.show(
+					$mdToast.simple()
+						.textContent(totalToCopy + " creatures pasted.")
+						.position("bottom right")
+						.hideDelay(2000)
+				);
+			}
 		}
 		for(var i=0;i<creatures.length;i++){
 			var newCreature = angular.copy(creatures[i]);
 			newCreature._id = undefined;
+			newCreature.bestiaryId = $scope.bestiary._id;
 			Creature.create(newCreature,finishedCopy,finishedCopy);
 		}
 	}
