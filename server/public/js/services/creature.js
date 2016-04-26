@@ -170,6 +170,14 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 
 	delete [CreatureAPI.getAll];
 
+	CreatureAPI.create = function(data, success, error){
+		CachedResourceAPI.prototype.create.call(this, data, function(data){
+			CreatureAPI.calculateCreatureDetails(data);
+			if(success)
+				success(data);
+		}, error);
+	}
+
 	CreatureAPI.update = function(id, data, success, error){
 		CachedResourceAPI.prototype.update.call(this, id, data, function(data){
 			CreatureAPI.calculateCreatureDetails(data);

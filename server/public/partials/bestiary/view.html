@@ -15,13 +15,19 @@
 			<b>{{bestiary.name}}</b>
 		</h2>
 		<div class="right-side-controls">
-			<md-button ng-click="toggle('filterNav');close('editNav');" class="md-icon-button md-mini" aria-label="Filters">
+			<md-button ng-click="toggle('clipboardNav');close('filterNav');close('editNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Filters">
+				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
+				<md-tooltip md-direction="left">
+	        Clipboard
+	      </md-tooltip>
+			</md-button>
+			<md-button ng-click="toggle('filterNav');close('clipboardNav');close('editNav');" class="md-icon-button md-mini" aria-label="Filters">
 				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
 	        Filter Creatures
 	      </md-tooltip>
 			</md-button>
-			<md-button ng-click="toggle('editNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
+			<md-button ng-click="toggle('editNav');close('clipboardNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
 				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
 				<md-tooltip md-direction="left">
 	        Edit Bestiary Details
@@ -62,6 +68,31 @@
 			</div>
 		</md-content>
 
+		<!-- CLIPBOARD SIDENAV -->
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav" md-is-locked-open="isOpen('clipboardNav')" md-component-id="clipboardNav">
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Clipboard</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('clipboardNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+		  <md-content layout-padding>
+		  	<form ng-submit="pasteClipboard();close('clipboardNav');" name="clipboardForm">
+			    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index">
+			      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
+			      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw" style="margin-top:25px;margin-left:4px;margin-right:6px;" type="button">
+		          <md-icon md-svg-icon="md-close"></md-icon>
+		        </button>
+
+		      </div>
+		      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
+      		<md-button class="md-raised md-primary" type="submit">Paste</md-button>
+		    </form>
+		  </md-content>
+		</md-sidenav>
 		<!-- FILTER SIDENAV -->
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2 bestiary-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">

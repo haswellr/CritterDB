@@ -1,6 +1,12 @@
 
 
 Imortant:
+-Ability to copy creatures from one bestiary to another.
+	+ Improve/Finalize UI for Clipboard sidenav
+	+ Check that the clipboard works on mobile
+	+ Check that the Bestiary title cuts off at the correct width to make room for Clipboard button.
+	+ Save Clipboard to cookies (check that it can handle the size though)
+
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
@@ -11,7 +17,6 @@ Imortant:
 -Maybe alignment should be an autofill not a select?
 
 -Fill in CreatureData.senses (Darkvision 60ft., Darkvision 30ft., Tremorsense 60ft. etc);
--Ability to copy creatures from one bestiary to another. One way would be as a copy/paste where multiple creatures could be on your clipboard at once. The 'paste' button would appear on inner header if 1 or more creatures are on your clipboard. Have some way to clear your clipboard and to indicate what is on your clipboard (or at least how many creatures are on it).
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
 -Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them.
 
