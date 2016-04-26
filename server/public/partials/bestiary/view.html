@@ -20,6 +20,9 @@
 				<md-tooltip md-direction="left">
 	        Clipboard
 	      </md-tooltip>
+	      <div class="counter">
+	      	{{CreatureClipboard.getAll().length}}
+	      </div>
 			</md-button>
 			<md-button ng-click="toggle('filterNav');close('clipboardNav');close('editNav');" class="md-icon-button md-mini" aria-label="Filters">
 				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
@@ -79,17 +82,20 @@
 	        </md-button>
 	      </div>
 		  </md-toolbar>
-		  <md-content layout-padding>
+		  <md-content layout-padding class="creature-clipboard" style="overflow:hidden;">
 		  	<form ng-submit="pasteClipboard();close('clipboardNav');" name="clipboardForm">
-			    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index">
-			      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
-			      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw" style="margin-top:25px;margin-left:4px;margin-right:6px;" type="button">
-		          <md-icon md-svg-icon="md-close"></md-icon>
-		        </button>
-
-		      </div>
-		      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
-      		<md-button class="md-raised md-primary" type="submit">Paste</md-button>
+		  		<div class="content">
+				    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index" class="mini-statblock-item">
+				      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
+				      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw remove-mini-statblock" type="button">
+			          <md-icon md-svg-icon="md-close"></md-icon>
+			        </button>
+			      </div>
+			    </div>
+		      <div class="action-bar">
+			      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
+	      		<md-button class="md-raised md-primary" type="submit">Paste</md-button>
+	      	</div>
 		    </form>
 		  </md-content>
 		</md-sidenav>

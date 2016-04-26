@@ -76,6 +76,53 @@ section.login-area md-content.login-body{
   background: rgba(0, 0, 0, 0.2);
 }
 
+md-content.creature-clipboard {
+  overflow: hidden;
+  height: 100%;
+}
+
+md-content.creature-clipboard form {
+  display: inline-block;
+  position: absolute;
+  width: calc(100% - 32px);
+  bottom: 0;
+  top: 0;
+  overflow-y: auto;
+}
+
+md-content.creature-clipboard div.mini-statblock-item {
+  position: relative;
+}
+
+md-content.creature-clipboard .remove-mini-statblock {
+  position: absolute;
+  right: -5px;
+  top: 0px;
+  width: 16px;
+  height: 16px;
+}
+
+.md-icon-button div.counter {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  line-height: 12px;
+  font-size: 12px;
+  text-align: center;
+  background: rgb(255,110,64);
+  border-radius: 50%;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  color: white;
+  padding-top: 2px;
+  padding-left: 1px;
+}
+
 .fallingColumns {
   position: relative;
   -webkit-column-width: 341.375px;
@@ -194,7 +241,7 @@ md-toolbar.inner-header {
 
 md-toolbar.inner-header h2 {
   margin-left: 8px;
-  max-width: 60%;
+  max-width: calc(100% - 175px);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

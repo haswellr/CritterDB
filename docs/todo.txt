@@ -2,11 +2,11 @@
 
 Imortant:
 -Ability to copy creatures from one bestiary to another.
-	+ Improve/Finalize UI for Clipboard sidenav
+	+ Fix clipboard UI so it works with >8 creatures
 	+ Check that the clipboard works on mobile
-	+ Check that the Bestiary title cuts off at the correct width to make room for Clipboard button.
 	+ Save Clipboard to cookies (check that it can handle the size though)
 
+-Add Google Analytics
 -Upgrade to more robust database service
 -About page
 -Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
