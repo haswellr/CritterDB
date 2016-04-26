@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -194,7 +194,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
     });
 	}
 
-	$scope.copyCreature = function(creature){
+	$scope.copyCreatureInPlace = function(creature){
 		var newCreature = angular.copy(creature);
 		newCreature._id = undefined;
 		newCreature.name = newCreature.name + " Copy";
@@ -203,6 +203,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		},function(err){
 			console.log("error: "+err);
 		});
+	}
+
+	$scope.copyCreature = function(creature){
+		CreatureClipboard.add(creature);
 	}
 
 	$scope.deleteCreature = function(ev,creature){
@@ -272,6 +276,24 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			},function(err){
 				console.log("error: "+err);
 			});
+		}
+	}
+
+	$scope.CreatureClipboard = CreatureClipboard;
+
+	$scope.pasteClipboard = function(){
+		var creatures = CreatureClipboard.getAll();
+		var copiedCount = 0;
+		var totalToCopy = creatures.length;
+		var finishedCopy = function(){
+			copiedCount = copiedCount + 1;
+			if(copiedCount==totalToCopy)
+				loadCreatures();
+		}
+		for(var i=0;i<creatures.length;i++){
+			var newCreature = angular.copy(creatures[i]);
+			newCreature._id = undefined;
+			Creature.create(newCreature,finishedCopy,finishedCopy);
 		}
 	}
 
