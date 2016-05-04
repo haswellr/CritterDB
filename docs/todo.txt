@@ -2,7 +2,6 @@
 
 Imortant:
 -Ability to copy creatures from one bestiary to another.
-	+ Fix clipboard UI so it works with >8 creatures
 	+ Check that the clipboard works on mobile
 	+ Save Clipboard to cookies (check that it can handle the size though)
 

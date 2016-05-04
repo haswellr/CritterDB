@@ -82,22 +82,20 @@
 	        </md-button>
 	      </div>
 		  </md-toolbar>
-		  <md-content layout-padding class="creature-clipboard" style="overflow:hidden;">
-		  	<form ng-submit="pasteClipboard();close('clipboardNav');" name="clipboardForm">
-		  		<div class="content">
-				    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index" class="mini-statblock-item">
-				      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
-				      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw remove-mini-statblock" type="button">
-			          <md-icon md-svg-icon="md-close"></md-icon>
-			        </button>
-			      </div>
-			    </div>
-		      <div class="action-bar">
-			      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
-	      		<md-button class="md-raised md-primary" type="submit">Paste</md-button>
-	      	</div>
-		    </form>
+		  <md-content layout-padding class="creature-clipboard">
+		  	<div class="container">
+			    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index" class="mini-statblock-item">
+			      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
+			      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw remove-mini-statblock" type="button">
+		          <md-icon md-svg-icon="md-close"></md-icon>
+		        </button>
+		      </div>
+		    </div>
 		  </md-content>
+		  <div class="action-bar">
+	      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
+    		<md-button ng-click="pasteClipboard();close('clipboardNav');" class="md-raised md-primary" type="submit">Paste</md-button>
+    	</div>
 		</md-sidenav>
 		<!-- FILTER SIDENAV -->
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2 bestiary-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
@@ -140,7 +138,7 @@
 		      	</md-button>
 		      </div>
 		    </section>
-	      <section layout="row" layout-align="center center">
+	      <section layout="row" layout-align="start center">
 	      	<md-button ng-click="creatureFilter.resetFilters()" class="md-raised" aria-label="Reset Filters">Reset Filters</md-button>
 	      	<md-button ng-click="creatureFilter.addFilter()" class="md-raised md-primary" aria-label="Add Filter">Add Filter</md-button>
 	      </section>

@@ -77,17 +77,21 @@ section.login-area md-content.login-body{
 }
 
 md-content.creature-clipboard {
-  overflow: hidden;
-  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-md-content.creature-clipboard form {
+md-content.creature-clipboard .container {
   display: inline-block;
-  position: absolute;
-  width: calc(100% - 32px);
-  bottom: 0;
+  position: relative;
+  width: calc(100% - 16px);
   top: 0;
   overflow-y: auto;
+}
+
+md-content.creature-clipboard .action-bar {
+  position: absolute;
+  bottom: 0px;
 }
 
 md-content.creature-clipboard div.mini-statblock-item {
