@@ -1,10 +1,19 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header" layout-align="center center">
-	<div class="md-toolbar-tools controls">
+<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
+	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
 		<h2 style="margin-left:0px;">
 			<span><b>My Bestiaries</b></span>
 		</h2>
 		<div class="right-side-controls">
+			<md-button ng-click="toggle('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
+				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
+				<md-tooltip md-direction="left">
+	        Clipboard
+	      </md-tooltip>
+	      <div class="counter">
+	      	{{CreatureClipboard.getAll().length}}
+	      </div>
+			</md-button>
 			<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent" aria-label="Bestiary Creature">
 				<md-icon>add</md-icon>
 				<md-tooltip md-direction="left">
@@ -16,6 +25,32 @@
 </md-toolbar>
 
 <div layout="column" class="body-area" ng-controller="sideNavCtrl">
+	<!-- CLIPBOARD SIDENAV -->
+	<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="clipboardNav">
+	  <md-toolbar class="md-accent">
+	  	<div class="md-toolbar-tools">
+		    <h1 class="md-toolbar-tools">Clipboard</h1>
+		    <span flex></span>
+        <md-button ng-click="close('clipboardNav')" class="md-icon-button" aria-label="Close">
+          <md-icon>close</md-icon>
+        </md-button>
+      </div>
+	  </md-toolbar>
+	  <md-content layout-padding class="creature-clipboard">
+	  	<div class="container">
+		    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index" class="mini-statblock-item">
+		      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
+		      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw remove-mini-statblock" type="button">
+	          <md-icon md-svg-icon="md-close"></md-icon>
+	        </button>
+	      </div>
+	    </div>
+	  </md-content>
+	  <div class="action-bar">
+      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
+  	</div>
+	</md-sidenav>
+	<!-- BESTIARY LIST -->
 	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content">
 		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-lastActive'">
 		  <md-card-title>
