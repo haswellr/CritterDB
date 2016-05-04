@@ -2,8 +2,7 @@
 
 Imortant:
 -Ability to copy creatures from one bestiary to another.
-	+ Check that the clipboard works on mobile
-	+ Save Clipboard to cookies (check that it can handle the size though)
+	+ Possibly show Clipboard on Bestiary list screen, although don't allow pasting from there
 
 -Add Google Analytics
 -Upgrade to more robust database service
