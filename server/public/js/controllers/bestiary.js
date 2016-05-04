@@ -207,12 +207,6 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 	$scope.copyCreature = function(creature){
 		CreatureClipboard.add(creature);
-		$mdToast.show(
-			$mdToast.simple()
-				.textContent("Copied '" + creature.name + "' to clipboard.")
-				.position("bottom right")
-				.hideDelay(2000)
-		);
 	}
 
 	$scope.deleteCreature = function(ev,creature){
