@@ -11,7 +11,8 @@ var authenticateBestiaryByOwner = function(req, bestiary, callback){
             if(err)
                 callback("Failed to authenticate token.");
             else{
-                if(decoded._doc._id != bestiary.ownerId)
+                var bestiaryOwnerId = bestiary.owner._id || bestiary.owner;
+                if(decoded._doc._id != bestiaryOwnerId)
                     callback("Not authorized for access.");
                 else
                     callback(null);
@@ -33,6 +34,8 @@ exports.findById = function(req, res) {
         }
         else if(doc){
             //Do not authenticate by owner because this is public
+            //Hide owner's password
+            doc.password = undefined;
             res.send(doc);
         }
         else{
@@ -53,8 +56,11 @@ exports.findAll = function(req, res) {
 };
 
 exports.create = function(req, res) {
+    //Handle the case where user sends an owner object instead of an owner id, since the field name
+    //'owner' can be confusing.
+    if(req.body && req.body.owner && req.body.owner._id)
+        req.body.owner = req.body.owner._id;
     var publishedBestiary = new PublishedBestiary(req.body);
-
     authenticateBestiaryByOwner(req, publishedBestiary, function(err){
         if(err)
             res.status(400).send(err);

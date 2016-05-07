@@ -11,7 +11,7 @@ var PublishedBestiarySchema = new mongoose.Schema(
     description: {
       type: String
     },
-    ownerId: {
+    owner: {  //I wish we could call this 'ownerId' and then autopopulate a field called 'owner' but we can't
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
