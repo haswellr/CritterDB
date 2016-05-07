@@ -33,14 +33,12 @@ app.post('/api/creatures', creatures.create);
 app.put('/api/creatures/:id', creatures.updateById);
 app.delete('/api/creatures/:id', creatures.deleteById);
 //Bestiaries
-app.get('/api/bestiaries', bestiaries.findAll);	//REMOVE THIS
 app.get('/api/bestiaries/:id/creatures', bestiaries.findCreaturesByBestiary);
 app.get('/api/bestiaries/:id', bestiaries.findById);
 app.post('/api/bestiaries', bestiaries.create);
 app.put('/api/bestiaries/:id', bestiaries.updateById);
 app.delete('/api/bestiaries/:id', bestiaries.deleteById);
 //Published Bestiaries
-app.get('/api/publishedbestiaries', publishedBestiaries.findAll);	//REMOVE THIS
 app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
 app.post('/api/publishedbestiaries', publishedBestiaries.create);
 app.put('/api/publishedbestiaries/:id', publishedBestiaries.updateById);
