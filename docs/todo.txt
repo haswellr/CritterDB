@@ -1,12 +1,12 @@
 
 
-Imortant:
+Imortant/Current:
+- Implement public bestiaries
+	+ SRD bestiary
 
-
--Add Google Analytics
+-BUG: When saving as image in landscape mode, Reactions don't show?
 -Upgrade to more robust database service
 -About page
--Add a way to view SRD creatures and copy them into your own bestiaries (see below - this was already planned)
 -UI is not working correctly on Chrome or Safari on iOS.
 -Bug: Sometimes when in the create/edit creature page the current bestiary is not shown on the inner header so it is difficult/confusing to go back to it
 
