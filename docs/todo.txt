@@ -2,9 +2,14 @@
 
 Imortant/Current:
 - Implement public bestiaries
+	+ 'Published Bestiaries' on the back end
+	+ A button to publish a bestiary (mobile may need to condense buttons to one 'options' button) - rather than modifying the bestiary this will actually create a separate object which is a published bestiary
+	+ A route to view a published bestiary (creator can delete or edit name & description)
+	+ A way to 'like', 'comment', and 'favorite' bestiaries.
+	+ Security determining when you can edit a bestiary and when you can view it
+	+ Back end routes for recent & popular bestiaries
 	+ SRD bestiary
 
--BUG: When saving as image in landscape mode, Reactions don't show?
 -Upgrade to more robust database service
 -About page
 -UI is not working correctly on Chrome or Safari on iOS.
