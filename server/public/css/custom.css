@@ -245,7 +245,7 @@ md-toolbar.inner-header {
 
 md-toolbar.inner-header h2 {
   margin-left: 8px;
-  max-width: calc(100% - 175px);
+  max-width: calc(100% - 125px);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
