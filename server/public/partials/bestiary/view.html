@@ -1,7 +1,7 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
-		<md-button hide-gt-sm ng-click="goToBestiaryList()" class="md-icon-button md-mini" aria-label="Back">
+		<md-button hide-gt-sm ng-href="{{getBestiaryListPath()}}" class="md-icon-button md-mini" aria-label="Back">
 			<md-icon>keyboard_backspace</md-icon>
 			<md-tooltip>
         Back
@@ -9,7 +9,7 @@
 		</md-button>
 		<h2>
 			<span hide show-gt-sm>
-				<span ng-click="goToBestiaryList()" style="cursor:pointer;">My Bestiaries</span>
+				<a ng-href="{{getBestiaryListPath()}}" style="cursor:pointer;">My Bestiaries</a>
 				<span> > </span>
 			</span>
 			<b>{{bestiary.name}}</b>

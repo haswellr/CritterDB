@@ -62,7 +62,7 @@
 		  </md-card-title>
 		  <md-card-actions layout="row" layout-align="end center">
 		  	<md-button ng-click="deleteBestiary($event,bestiary)">Delete</md-button>
-		    <md-button ng-click="goToBestiary(bestiary._id)">Open</md-button>
+		    <md-button ng-href="{{getBestiaryPath(bestiary)}}">Open</md-button>
 		  </md-card-actions>
 		</md-card>
 	</md-content>
