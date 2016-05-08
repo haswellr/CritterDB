@@ -15,7 +15,7 @@
 			<b>{{bestiary.name}}</b>
 		</h2>
 		<div class="right-side-controls">
-			<md-button ng-click="toggle('clipboardNav');close('filterNav');close('editNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
+			<md-button ng-click="toggle('clipboardNav');close('filterNav');close('editNav');close('menuNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
 				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
 				<md-tooltip md-direction="left">
 	        Clipboard
@@ -24,19 +24,20 @@
 	      	{{CreatureClipboard.getAll().length}}
 	      </div>
 			</md-button>
-			<md-button ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Publish">
+			<!-- NON-MOBILE BUTTONS -->
+			<md-button hide show-gt-xs ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Publish">
 				<md-icon>publish</md-icon>
 				<md-tooltip md-direction="left">
 	        Publish Bestiary
 	      </md-tooltip>
 			</md-button>
-			<md-button ng-click="toggle('filterNav');close('clipboardNav');close('editNav');" class="md-icon-button md-mini" aria-label="Filters">
+			<md-button hide show-gt-xs ng-click="toggle('filterNav');close('clipboardNav');close('editNav');close('menuNav');" class="md-icon-button md-mini" aria-label="Filters">
 				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
 	        Filter Creatures
 	      </md-tooltip>
 			</md-button>
-			<md-button ng-click="toggle('editNav');close('clipboardNav');close('filterNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
+			<md-button hide show-gt-xs ng-click="toggle('editNav');close('clipboardNav');close('filterNav');close('menuNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
 				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
 				<md-tooltip md-direction="left">
 	        Edit Bestiary Details
@@ -48,12 +49,14 @@
 	        Create Creature
 	      </md-tooltip>
 			</md-button>
+			<!-- MOBILE MENU BUTTON -->
+			<md-button hide-gt-xs ng-click="toggle('menuNav');close('clipboardNav');close('filterNav');close('editNav');" ng-class="{'selected':isOpen('menuNav')}" class="md-icon-button md-mini" aria-label="Menu">
+				<md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
+			</md-button>
+			<!-- - -->
 		</div>
 		<md-button hide-gt-xs ng-hide="isOpen('filterNav') || isOpen('editNav')" ng-click="addCreature()" class="md-fab md-accent main-button" aria-label="Create Creature">
 			<md-icon>add</md-icon>
-			<md-tooltip>
-        Create Creature
-      </md-tooltip>
 		</md-button>
 	</div>
 </md-toolbar>
@@ -180,6 +183,32 @@
       		<md-button class="md-raised md-primary" type="submit">Save</md-button>
 		    </form>
 		  </md-content>
+		</md-sidenav>
+		<!-- MENU SIDENAV -->
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="menuNav">
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Bestiary Actions</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('menuNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+		  	<md-list>
+		  		<md-list-item ng-click="toggle('editNav');close('filterNav');close('clipboardNav');close('menuNav');">
+		  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
+		  			<p>Edit</p>
+		 			</md-list-item>
+		 			<md-list-item ng-click="toggle('filterNav');close('editNav');close('clipboardNav');close('menuNav');">
+		  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
+		  			<p>Filter</p>
+		 			</md-list-item>
+		 			<md-list-item ng-click="publishBestiary($event,bestiary);close('menuNav');">
+		 				<md-icon style="margin-bottom:16px">publish</md-icon>
+		  			<p>Publish</p>
+		 			</md-list-item>
+		  	</md-list>
 		</md-sidenav>
 	</section>
 </div>
