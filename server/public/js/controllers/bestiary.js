@@ -86,12 +86,12 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		return(bestiary.name==Bestiary.newBestiaryModel.name || bestiary.description==Bestiary.newBestiaryModel.description);
 	}
 
-	$scope.goToBestiary = function(id){
-		$location.url("/bestiary/view/"+id);
+	$scope.getBestiaryListPath = function(){
+		return("/#/bestiary/list");
 	}
 
-	$scope.goToBestiaryList = function(){
-		$location.url("/bestiary/list");
+	$scope.getBestiaryPath = function(bestiary){
+		return("/#/bestiary/view/"+bestiary._id);
 	}
 
 	$scope.cancelSave = function(){

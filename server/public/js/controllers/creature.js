@@ -265,10 +265,21 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		$scope.saveCreature($scope.returnToBestiary);
 	}
 
-	$scope.saveAndGoToBestiaryList = function(){
-		$scope.saveCreature(function(){
-			$location.url("/bestiary/list");
-		});
+	$scope.$on("$destroy", function() {
+		$scope.saveCreature();
+	});
+
+	$scope.getBestiaryPath = function(){
+		var bestiaryId = "";
+		if($scope.creature._id)
+			bestiaryId = $scope.creature.bestiaryId;
+		else if($routeParams.bestiaryId)
+			bestiaryId = $routeParams.bestiaryId;
+		return("/#/bestiary/view/"+bestiaryId);
+	}
+
+	$scope.getBestiaryListPath = function(){
+		return("/#/bestiary/list");
 	}
 
 	$scope.creatureApi = new CreatureAPI({export:true});
