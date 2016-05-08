@@ -162,7 +162,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 	$scope.saveImageOfCreature = function(creature){
 		$location.url("/creature/image/"+creature._id);
-	}
+	}	
 
 	$scope.exportCreatureToHTML = function(ev,creature){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
@@ -250,6 +250,21 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			if(index!=-1)
 				$scope.bestiaries.splice(index,1);
 		});
+	}
+
+	$scope.publishBestiary = function(ev,bestiary){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: publishBestiaryCtrl,
+      templateUrl: '/assets/partials/bestiary/publish-bestiary.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'baseBestiary': bestiary
+      },
+      fullscreen: useFullScreen
+    });
 	}
 
 	$scope.doesBestiaryNeedEdits = function(bestiary){

@@ -1,0 +1,30 @@
+
+<md-dialog aria-label="Publish Bestiary" ng-cloak style="width:600px;">
+  <form name="publishForm" ng-submit="publish()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Publish Bestiary</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input ng-model="publishedBestiary.name">
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea ng-model="publishedBestiary.description" expand-textarea></textarea>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()" class="md-raised md-button">Cancel</md-button>
+      <md-button type="submit" class="md-raised md-button md-primary">Publish</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
