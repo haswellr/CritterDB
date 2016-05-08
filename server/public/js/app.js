@@ -53,6 +53,11 @@ myApp.config(['$routeProvider',
 				controller: 'creatureCtrl',
 				resolve: creatureCtrl.resolve
 			}).
+			when('/publishedbestiary/view/:bestiaryId',{
+				templateUrl: 'assets/partials/publishedBestiary/view.html',
+				controller: 'publishedBestiaryCtrl',
+				resolve: publishedBestiaryCtrl.resolve
+			}).
 			when('/creature/view/:creatureId',{
 				templateUrl: 'assets/partials/creature/view.html',
 				controller: 'creatureCtrl',
