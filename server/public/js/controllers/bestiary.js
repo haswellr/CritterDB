@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -20,196 +20,11 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		description: bestiary.description+""
 	};
 
-	function Filter(){
-		return {
-			text: "",
-			operator: "or",
-			toggleOperator: function(){
-				if(this.operator=="or")
-					this.operator = "and";
-				else
-					this.operator = "or";
-			},
-			doesCreaturePass: function(creature){
-				if(this.text.length>0){
-					var lowerText = this.text.toLowerCase();
-					var matchesName = creature.name.toLowerCase().indexOf(lowerText)!=-1;
-					var matchesFaction = creature.flavor.faction.toLowerCase().indexOf(lowerText)!=-1;
-					var matchesEnvironment = creature.flavor.environment.toLowerCase().indexOf(lowerText)!=-1;
-					return(matchesName || matchesEnvironment || matchesFaction);
-				}
-				else
-					return true;
-			}
-		};
-	}
-	$scope.creatureFilter = {
-		challengeRating: {
-			min: {
-				value: 0,
-				step: 0.125
-			},
-			max: {
-				value: 30,
-				step: 1
-			},
-			changed: function(cr){
-				//set new step
-				if(cr.value>1)
-					cr.step = 1;
-				else if(cr.value>0.5)
-					cr.step = 0.5;
-				else if(cr.value>0.25)
-					cr.step = 0.25;
-				else
-					cr.step = 0.125;
-				//fix up issues caused by dynamic step value
-				if(cr.value==1.5)
-					cr.value = 2;
-				else if(cr.value==0.75)
-					cr.value = 1;
-				else if(cr.value==0.375)
-					cr.value = 0.5;
-			}
-		},
-		filters: [new Filter()],
-		addFilter: function(){
-			var filter = new Filter();
-			$scope.creatureFilter.filters.push(filter);
-		},
-		removeFilter: function(index){
-			$scope.creatureFilter.filters.splice(index,1);
-		},
-		resetFilters: function(){
-			$scope.creatureFilter.filters = [new Filter()];
-			$scope.creatureFilter.challengeRating.min = {
-				value: 0,
-				step: 0.125
-			};
-			$scope.creatureFilter.challengeRating.max = {
-				value: 30,
-				step: 1
-			};
-		},
-		areFiltersActive: function(){
-			var active = false;
-			for(var i=0;i<$scope.creatureFilter.filters.length;i++){
-				var filter = $scope.creatureFilter.filters[i];
-				if(filter.text.length>0){
-					active = true;
-					break;
-				}
-			}
-			if($scope.creatureFilter.challengeRating.min.value>0 || $scope.creatureFilter.challengeRating.max.value<30){
-				active = true;
-			}
-			return active;
-		},
-		fillBackground: function(isBody,index){
-			var show = false;
-			var filter = $scope.creatureFilter.filters[index];
-			var prevFilter = undefined;
-			if(index>0)
-				prevFilter = $scope.creatureFilter.filters[index-1];
-			if(isBody && filter.operator=="and")
-				show = true;
-			else if(!isBody && prevFilter!=undefined && prevFilter.operator=="and" && filter.operator!="and")
-				show = true;
-			return show;
-		},
-		isCreatureShown: function(creature){
-			if(creature.stats.challengeRating >= $scope.creatureFilter.challengeRating.min.value
-				&& creature.stats.challengeRating <= $scope.creatureFilter.challengeRating.max.value){
-				if($scope.creatureFilter.filters.length>0){
-					var andFilterGroups = [];
-					var currentAndFilterGroup = undefined;
-					//follow order of operations - do ANDs, then ORs. We do this by calculating all groups
-					//of consecutive ANDs, then doing OR between those groups.
-					for(var i=0;i<$scope.creatureFilter.filters.length;i++){
-						var filter = $scope.creatureFilter.filters[i];
-						var passes = filter.doesCreaturePass(creature);
-						if(currentAndFilterGroup==undefined)
-							currentAndFilterGroup = passes;
-						else
-							currentAndFilterGroup = currentAndFilterGroup && passes;
-						if(filter.operator=="or" || (i+1)==($scope.creatureFilter.filters.length)){
-							andFilterGroups.push(currentAndFilterGroup);
-							currentAndFilterGroup = undefined;
-						}
-					}
-					var matches = false;
-					for(var i=0;i<andFilterGroups.length;i++){
-						matches = matches || andFilterGroups[i];
-					}
-					return(matches);
-				}
-				else{
-					return true;
-				}
-			}
-			else
-				return false;
-		}
-	};
+	$scope.creatureFilter = new CreatureFilter();
 
-	$scope.addCreature = function(){
-		$location.url("/bestiary/add/"+$scope.bestiary._id);
-	}
-
-	$scope.editCreature = function(creature){
-		$location.url("/creature/edit/"+creature._id);
-	}
-
-	$scope.saveImageOfCreature = function(creature){
-		$location.url("/creature/image/"+creature._id);
-	}	
-
-	$scope.exportCreatureToHTML = function(ev,creature){
-		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
-    $mdDialog.show({
-      controller: exportHtmlCtrl,
-      templateUrl: '/assets/partials/creature/export-html.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      locals: {
-      	'creature': creature
-      },
-      fullscreen: useFullScreen
-    });
-	}
-
-	$scope.exportCreatureToNaturalCrit = function(ev,creature){
-		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
-    $mdDialog.show({
-      controller: exportNaturalCritCtrl,
-      templateUrl: '/assets/partials/creature/export-natural-crit.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      locals: {
-      	'creature': creature
-      },
-      fullscreen: useFullScreen
-    });
-	}
-
-	$scope.copyCreatureInPlace = function(creature){
-		var newCreature = angular.copy(creature);
-		newCreature._id = undefined;
-		newCreature.name = newCreature.name + " Copy";
-		Creature.create(newCreature,function(data){
-			$scope.editCreature(data);
-		},function(err){
-			console.log("error: "+err);
-		});
-	}
-
-	$scope.copyCreature = function(creature){
-		CreatureClipboard.add(creature);
-	}
-
-	$scope.deleteCreature = function(ev,creature){
+	$scope.creatureApi = new CreatureAPI();
+	//Override delete feature so we can immediately splice creature rather than waiting for server
+	$scope.creatureApi.delete = function(ev,creature){
 		var confirm = $mdDialog.confirm()
 			.title("Confirm Deletion")
 			.textContent("This creature will be permanently deleted. Would you like to proceed?")
@@ -319,15 +134,6 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			Creature.create(newCreature,finishedCopy,finishedCopy);
 		}
 	}
-
-	$scope.creatureApi = {
-		edit: $scope.editCreature,
-		copy: $scope.copyCreature,
-		delete: $scope.deleteCreature,
-		exportImage: $scope.saveImageOfCreature,
-		exportHTML: $scope.exportCreatureToHTML,
-		exportNaturalCrit: $scope.exportCreatureToNaturalCrit
-	};
 };
 
 //don't load controller until we've gotten the data from the server

@@ -27,7 +27,7 @@
         <md-menu-content width="3" >
           <div hide show-gt-sm>
             <md-menu-item>
-              <md-button ng-click="exportToImage()">
+              <md-button ng-click="creatureApi.export.exportImage($event,creature)">
                 <div layout="row">
                   <p flex>Export to Image</p>
                 </div>
@@ -35,14 +35,14 @@
             </md-menu-item>
           </div>
           <md-menu-item>
-            <md-button ng-click="exportToHTML($event)">
+            <md-button ng-click="creatureApi.export.exportHTML($event,creature)">
                 <div layout="row">
                   <p flex>Export to HTML</p>
                 </div>
             </md-button>
           </md-menu-item>
           <md-menu-item>
-            <md-button ng-click="exportToNaturalCrit($event)">
+            <md-button ng-click="creatureApi.export.exportNaturalCrit($event,creature)">
                 <div layout="row">
                   <p flex>Export to Natural Crit</p>
                 </div>
