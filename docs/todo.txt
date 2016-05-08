@@ -1,6 +1,6 @@
 
 
-Imortant/Current:
+Important/Current:
 - Implement public bestiaries
 	+ A route to view a published bestiary (creator can delete or edit name & description)
 	+ Back end controller to serve popular/recent/etc published bestiaries
