@@ -1,5 +1,5 @@
 
-var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
+var exportImageCtrl = function($scope,creature,html2canvas,$location,$mdDialog) {
 	$scope.creature = creature;
 
 	$scope.image = {
@@ -49,18 +49,6 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 		return(style);
 	}
 
-	$scope.returnToBestiary = function(){
-		$location.url("/bestiary/view/"+$scope.creature.bestiaryId);
-	}
-
-	$scope.goToBestiaryList = function(){
-		$location.url("/bestiary/list");
-	}
-
-	$scope.editCreature = function(){
-		$location.url("/creature/edit/"+$scope.creature._id);
-	}
-
 	$scope.saveImage = function(){
 		var element = document.getElementById('stat-block');
 		html2canvas.render(element, {
@@ -74,6 +62,10 @@ var creatureImageCtrl = function($scope,creature,html2canvas,$location) {
 			link.click();
 		});
 	}
+
+	$scope.cancel = function() {
+    $mdDialog.cancel();
+  };
 }
 
-angular.module('myApp').controller('creatureImageCtrl',creatureImageCtrl);
+angular.module('myApp').controller('exportImageCtrl',exportImageCtrl);

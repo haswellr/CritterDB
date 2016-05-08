@@ -78,11 +78,6 @@ myApp.config(['$routeProvider',
 				controller: 'updateUserCtrl',
 				resolve: updateUserCtrl.resolve
 			}).
-			when('/creature/image/:creatureId',{
-				templateUrl: 'assets/partials/creature/image.html',
-				controller: 'creatureImageCtrl',
-				resolve: creatureCtrl.resolve
-			}).
 			otherwise({
 				redirectTo: '/bestiary/list'
 			});
