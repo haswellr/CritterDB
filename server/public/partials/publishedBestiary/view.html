@@ -47,18 +47,33 @@
 </md-toolbar>
 
 <div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
-	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
-		<md-content class="published-bestiary-details md-padding" style="width:50%;">
-			<h1>{{bestiary.name}}</h1>
-			<md-divider></md-divider>
-			<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
-			<p btf-markdown="bestiary.description" class="md-body-1"></p>
-		</md-content>
-		<md-content style="width:50%;">
-			<div class="fallingColumns">
-				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
-			</div>
-		</md-content>
+	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="column" layout-gt-sm="row" style="overflow:auto;">
+		<div hide-gt-sm>
+			<md-content class="published-bestiary-details md-padding">
+				<h1>{{bestiary.name}}</h1>
+				<md-divider></md-divider>
+				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
+				<p btf-markdown="bestiary.description" class="md-body-1"></p>
+			</md-content>
+			<md-content>
+				<div class="fallingColumns">
+					<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
+				</div>
+			</md-content>
+		</div>
+		<div hide show-gt-sm style="display:flex;">
+			<md-content class="published-bestiary-details md-padding" style="width:50%;">
+				<h1>{{bestiary.name}}</h1>
+				<md-divider></md-divider>
+				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
+				<p btf-markdown="bestiary.description" class="md-body-1"></p>
+			</md-content>
+			<md-content style="width:50%;">
+				<div class="fallingColumns">
+					<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
+				</div>
+			</md-content>
+		</div>
 
 		<!-- CLIPBOARD SIDENAV -->
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav" md-is-locked-open="isOpen('clipboardNav')" md-component-id="clipboardNav">
