@@ -196,17 +196,17 @@
 	      </div>
 		  </md-toolbar>
 	  	<md-list>
-	  		<md-list-item ng-click="toggle('editNav');close('filterNav');close('clipboardNav');close('menuNav');">
-	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
-	  			<p>Edit</p>
+	 			<md-list-item ng-click="publishBestiary($event,bestiary);close('menuNav');">
+	 				<md-icon style="margin-bottom:16px">publish</md-icon>
+	  			<p>Publish</p>
 	 			</md-list-item>
 	 			<md-list-item ng-click="toggle('filterNav');close('editNav');close('clipboardNav');close('menuNav');">
 	  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
 	  			<p>Filter</p>
 	 			</md-list-item>
-	 			<md-list-item ng-click="publishBestiary($event,bestiary);close('menuNav');">
-	 				<md-icon style="margin-bottom:16px">publish</md-icon>
-	  			<p>Publish</p>
+	  		<md-list-item ng-click="toggle('editNav');close('filterNav');close('clipboardNav');close('menuNav');">
+	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
+	  			<p>Edit</p>
 	 			</md-list-item>
 	  	</md-list>
 		</md-sidenav>

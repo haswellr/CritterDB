@@ -165,13 +165,17 @@
 	      </div>
 		  </md-toolbar>
 	  	<md-list>
-	  		<md-list-item ng-click="editPublishedBestiary($event);close('menuNav');" ng-if="isOwner()">
-	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
-	  			<p>Edit</p>
-	 			</md-list-item>
 	 			<md-list-item ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');">
 	  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
 	  			<p>Filter</p>
+	 			</md-list-item>
+	 			<md-list-item ng-click="editPublishedBestiary($event);close('menuNav');" ng-if="isOwner()">
+	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
+	  			<p>Edit</p>
+	 			</md-list-item>
+	 			<md-list-item ng-click="deletePublishedBestiary($event);close('menuNav');" ng-if="isOwner()">
+	  			<md-icon style="margin-bottom:16px">delete</md-icon>
+	  			<p>Delete</p>
 	 			</md-list-item>
 	  	</md-list>
 		</md-sidenav>
