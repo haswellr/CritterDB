@@ -37,6 +37,12 @@
 	        Edit Published Bestiary
 	      </md-tooltip>
 			</md-button>
+			<md-button hide show-gt-xs ng-click="deletePublishedBestiary($event)" ng-if="isOwner()" class="md-icon-button md-mini" aria-label="Delete">
+				<md-icon>delete</md-icon>
+				<md-tooltip md-direction="left">
+	        Delete Published Bestiary
+	      </md-tooltip>
+			</md-button>
 			<!-- MOBILE MENU BUTTON -->
 			<md-button hide-gt-xs ng-click="toggle('menuNav');close('clipboardNav');close('filterNav');" ng-class="{'selected':isOpen('menuNav')}" class="md-icon-button md-mini" aria-label="Menu">
 				<md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>

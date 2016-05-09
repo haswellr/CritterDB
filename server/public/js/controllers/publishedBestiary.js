@@ -1,5 +1,5 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth) {
+var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location) {
 	$scope.bestiary = bestiary;
 
 	$scope.creatureFilter = new CreatureFilter();
@@ -33,6 +33,21 @@ var publishedBestiaryCtrl = function ($scope,bestiary,CreatureFilter,CreatureAPI
     	$scope.bestiary.name = updatedBestiary.name;
     	$scope.bestiary.description = updatedBestiary.description;
     });
+	}
+
+	$scope.deletePublishedBestiary = function(ev){
+    var confirm = $mdDialog.confirm()
+			.title("Confirm Deletion")
+			.textContent("This published bestiary will be permanently deleted. Would you like to proceed?")
+			.ariaLabel("Confirm Delete")
+			.targetEvent(ev)
+			.ok("Delete")
+			.cancel("Cancel");
+		$mdDialog.show(confirm).then(function() {
+			PublishedBestiary.delete($scope.bestiary._id);
+			//Don't wait for delete to actually finish so that the UI feels more responsive.
+			$location.path("/bestiary/list");
+		});
 	}
 
 	$scope.isOwner = function(){
