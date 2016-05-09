@@ -1,5 +1,5 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,CreatureFilter,CreatureAPI,CreatureClipboard) {
+var publishedBestiaryCtrl = function ($scope,bestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth) {
 	$scope.bestiary = bestiary;
 
 	$scope.creatureFilter = new CreatureFilter();
@@ -16,6 +16,29 @@ var publishedBestiaryCtrl = function ($scope,bestiary,CreatureFilter,CreatureAPI
 		return("/#/bestiary/list");
 	}
 
+	$scope.editPublishedBestiary = function(ev){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+    $mdDialog.show({
+      controller: publishBestiaryCtrl,
+      templateUrl: '/assets/partials/publishedBestiary/edit.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true,
+      locals: {
+      	'baseBestiary': undefined,
+      	'publishedBestiary': $scope.bestiary
+      },
+      fullscreen: useFullScreen
+    }).then(function(updatedBestiary){
+    	$scope.bestiary.name = updatedBestiary.name;
+    	$scope.bestiary.description = updatedBestiary.description;
+    });
+	}
+
+	$scope.isOwner = function(){
+		return(Auth.user._id == $scope.bestiary.owner._id);
+	}
+
 };
 
 //don't load controller until we've gotten the data from the server
@@ -24,17 +47,11 @@ publishedBestiaryCtrl.resolve = {
 			if($route.current.params.bestiaryId){
 				var deferred = $q.defer();
 				Auth.executeOnLogin(function(){
-					if(!Auth.isLoggedIn()){
-						$location.path('/login');
+					PublishedBestiary.get($route.current.params.bestiaryId,function(data) {
+						deferred.resolve(data);
+					}, function(errorData) {
 						deferred.reject();
-					}
-					else{
-						PublishedBestiary.get($route.current.params.bestiaryId,function(data) {
-							deferred.resolve(data);
-						}, function(errorData) {
-							deferred.reject();
-						});
-					}
+					});
 				});
 				return deferred.promise;
 			}

@@ -3,11 +3,14 @@
 Important/Current:
 - Implement public bestiaries
 	+ A route to view a published bestiary (creator can delete or edit name & description)
+		- Delete button (only visible to owner of published bestiary)
+		- Copy button: copies the entire bestiary into your bestiary list
+		- Add flex stuff so it works on mobile (put critter list below name and description)
+		- Use menu button on mobile just like in Bestiary view
 	+ Back end controller to serve popular/recent/etc published bestiaries
 	+ Front end route to view lists of popular/recent/etc published bestiaries
 	+ A way to 'like', 'comment', and 'favorite' bestiaries.
 	+ Security determining when you can edit a bestiary and when you can view it
-	+ Back end routes for recent & popular bestiaries
 	+ SRD bestiary
 
 -Upgrade to more robust database service

@@ -15,7 +15,7 @@
 			<b>{{bestiary.name}}</b>
 		</h2>
 		<div class="right-side-controls">
-			<md-button ng-click="toggle('clipboardNav');close('filterNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
+			<md-button ng-click="toggle('clipboardNav');close('filterNav');close('menuNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
 				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
 				<md-tooltip md-direction="left">
 	        Clipboard
@@ -24,12 +24,24 @@
 	      	{{CreatureClipboard.getAll().length}}
 	      </div>
 			</md-button>
-			<md-button ng-click="toggle('filterNav');close('clipboardNav');" class="md-icon-button md-mini" aria-label="Filters">
+			<!-- NON-MOBILE BUTTONS -->
+			<md-button hide show-gt-xs ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');" class="md-icon-button md-mini" aria-label="Filters">
 				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
 	        Filter Creatures
 	      </md-tooltip>
 			</md-button>
+			<md-button hide show-gt-xs ng-click="editPublishedBestiary($event)" ng-if="isOwner()" class="md-icon-button md-mini" aria-label="Edit">
+				<md-icon>mode_edit</md-icon>
+				<md-tooltip md-direction="left">
+	        Edit Published Bestiary
+	      </md-tooltip>
+			</md-button>
+			<!-- MOBILE MENU BUTTON -->
+			<md-button hide-gt-xs ng-click="toggle('menuNav');close('clipboardNav');close('filterNav');" ng-class="{'selected':isOpen('menuNav')}" class="md-icon-button md-mini" aria-label="Menu">
+				<md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
+			</md-button>
+			<!-- - -->
 		</div>
 	</div>
 </md-toolbar>
@@ -38,6 +50,7 @@
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
 		<md-content class="published-bestiary-details md-padding" style="width:50%;">
 			<h1>{{bestiary.name}}</h1>
+			<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
 			<md-divider></md-divider>
 			<p btf-markdown="bestiary.description" class="md-body-1"></p>
 		</md-content>
@@ -118,6 +131,28 @@
 	      	<md-button ng-click="creatureFilter.addFilter()" class="md-raised md-primary" aria-label="Add Filter">Add Filter</md-button>
 	      </section>
 		  </md-content>
+		</md-sidenav>
+		<!-- MENU SIDENAV -->
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="menuNav">
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Published Bestiary Actions</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('menuNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+	  	<md-list>
+	  		<md-list-item ng-click="editPublishedBestiary($event);close('menuNav');" ng-if="isOwner()">
+	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
+	  			<p>Edit</p>
+	 			</md-list-item>
+	 			<md-list-item ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');">
+	  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
+	  			<p>Filter</p>
+	 			</md-list-item>
+	  	</md-list>
 		</md-sidenav>
 	</section>
 </div>
