@@ -610,3 +610,10 @@ md-dialog.export-modal md-input-container {
 md-dialog.export-modal textarea {
   max-height: 400px;
 }
+
+div.body-area md-content.published-bestiary-details h1 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+  margin: 1em 0 1em 0;
+}
