@@ -3,7 +3,6 @@
 Important/Current:
 - Implement public bestiaries
 	+ A route to view a published bestiary (creator can delete or edit name & description)
-		- Fix 'Filters' and 'Clipboard' sidenav in published bestiary view
 		- Set max height on bestiary descriptions in bestiary list view
 
 	+ Back end controller to serve popular/recent/etc published bestiaries
