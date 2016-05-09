@@ -76,7 +76,8 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
       targetEvent: ev,
       clickOutsideToClose:true,
       locals: {
-      	'baseBestiary': bestiary
+      	'baseBestiary': bestiary,
+      	'publishedBestiary': undefined
       },
       fullscreen: useFullScreen
     });

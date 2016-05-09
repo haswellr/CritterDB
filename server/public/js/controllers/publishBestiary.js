@@ -1,11 +1,12 @@
-var publishBestiaryCtrl = function ($scope,$mdDialog,baseBestiary,Auth,PublishedBestiary,$location,Creature) {
+var publishBestiaryCtrl = function ($scope,$mdDialog,baseBestiary,publishedBestiary,Auth,PublishedBestiary,$location,Creature) {
 
-	$scope.publishedBestiary = {
-		'name': baseBestiary.name,
-		'description': baseBestiary.description,
-		'owner': Auth.user,
-		'creatures': []				//define later upon creation
-	};
+	$scope.publishedBestiary = (publishedBestiary ? angular.copy(publishedBestiary) : 
+		{
+			'name': baseBestiary.name,
+			'description': baseBestiary.description,
+			'owner': Auth.user,
+			'creatures': []				//define later upon creation
+		});
 
 	function goToPublishedBestiary(id){
 		$location.url("/publishedbestiary/view/"+id);
@@ -21,6 +22,15 @@ var publishBestiaryCtrl = function ($scope,$mdDialog,baseBestiary,Auth,Published
 					console.log("error: "+err);
 				});
 		});
+	}
+
+	//updates, closes dialog, and gives the data to the resolved promise
+	$scope.update = function(){
+		PublishedBestiary.update($scope.publishedBestiary._id,$scope.publishedBestiary,function(data){
+				$mdDialog.hide(data);
+			},function(err){
+				console.log("error: "+err);
+			});
 	}
 
 	$scope.cancel = function() {

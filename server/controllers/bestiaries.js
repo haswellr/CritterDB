@@ -94,12 +94,14 @@ exports.updateById = function(req, res) {
                 if(err)
                     res.status(400).send(err);
                 else{
-                    Bestiary.findOneAndUpdate(query, creature, options, function(err, doc){
-                        if(err)
-                            res.status(400).send(err.errmsg);
-                        else
-                            res.send(doc);
-                    });
+                    Bestiary.findOneAndUpdate(query, creature, options)
+                        .populate('owner')
+                        .exec(function(err, doc){
+                            if(err)
+                                res.status(400).send(err.errmsg);
+                            else
+                                res.send(doc);
+                        });
                 }
             });
         }

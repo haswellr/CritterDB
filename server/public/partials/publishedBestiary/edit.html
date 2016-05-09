@@ -1,0 +1,35 @@
+
+<md-dialog aria-label="Edit Published Bestiary" ng-cloak style="width:600px;">
+  <form name="publishForm" ng-submit="update()">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Published Bestiary</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input ng-model="publishedBestiary.name" name="name" required md-minlength="1" md-maxlength="60">
+          <div ng-messages="publishForm.name.$error">
+            <div ng-message="required">This is required.</div>
+            <div ng-message="md-maxlength">The name must be less than 60 characters long.</div>
+            <div ng-message="minlength">The name must be at least 1 character long.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Description (Markdown supported)</label>
+          <textarea ng-model="publishedBestiary.description" md-detect-hidden></textarea>
+        </md-input-container>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="cancel()" class="md-raised md-button">Cancel</md-button>
+      <md-button type="submit" class="md-raised md-button md-primary">Save</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
