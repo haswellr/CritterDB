@@ -70,7 +70,12 @@ exports.create = function(req, res) {
                     res.status(400).send(err.errmsg);
                 }
                 else {
-                    res.send(doc);
+                    doc.populate('owner', function(err) {
+                        if(err)
+                            res.status(400).send(err.errmsg);
+                        else      
+                            res.send(doc);
+                    });
                 }
             });
         }
@@ -95,12 +100,14 @@ exports.updateById = function(req, res) {
                 if(err)
                     res.status(400).send(err);
                 else{
-                    PublishedBestiary.findOneAndUpdate(query, publishedBestiary, options, function(err, doc){
-                        if(err)
-                            res.status(400).send(err.errmsg);
-                        else
-                            res.send(doc);
-                    });
+                    PublishedBestiary.findOneAndUpdate(query, publishedBestiary, options)
+                        .populate('owner')
+                        .exec(function (err, doc) {
+                            if(err)
+                                res.status(400).send(err.errmsg);
+                            else
+                                res.send(doc);
+                            });
                 }
             });
         }
