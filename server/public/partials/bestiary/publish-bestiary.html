@@ -17,12 +17,12 @@
           <input ng-model="publishedBestiary.name" name="name" required md-minlength="1" md-maxlength="60">
           <div ng-messages="publishForm.name.$error">
             <div ng-message="required">This is required.</div>
-            <div ng-message="md-maxlength">The name must be less than 30 characters long.</div>
+            <div ng-message="md-maxlength">The name must be less than 60 characters long.</div>
             <div ng-message="minlength">The name must be at least 1 character long.</div>
           </div>
         </md-input-container>
         <md-input-container class="md-block">
-          <label>Description</label>
+          <label>Description (Markdown supported)</label>
           <textarea ng-model="publishedBestiary.description" md-detect-hidden></textarea>
         </md-input-container>
       </div>

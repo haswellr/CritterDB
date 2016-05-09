@@ -36,7 +36,12 @@
 
 <div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
-		<md-content style="width:100%;">
+		<md-content class="published-bestiary-details md-padding" style="width:50%;">
+			<h1>{{bestiary.name}}</h1>
+			<md-divider></md-divider>
+			<p btf-markdown="bestiary.description" class="md-body-1"></p>
+		</md-content>
+		<md-content style="width:50%;">
 			<div class="fallingColumns">
 				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
 			</div>
