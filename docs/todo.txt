@@ -3,8 +3,9 @@
 Important/Current:
 - Implement public bestiaries
 	+ A route to view a published bestiary (creator can delete or edit name & description)
-		- Copy button: copies the entire bestiary into your bestiary list
-		- Fix 'Filters' sidenav
+		- Fix 'Filters' and 'Clipboard' sidenav in published bestiary view
+		- Set max height on bestiary descriptions in bestiary list view
+
 	+ Back end controller to serve popular/recent/etc published bestiaries
 	+ Front end route to view lists of popular/recent/etc published bestiaries
 	+ A way to 'like', 'comment', and 'favorite' bestiaries.
