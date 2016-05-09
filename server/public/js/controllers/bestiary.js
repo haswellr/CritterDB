@@ -41,6 +41,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		});
 	}
 
+	$scope.goToBestiary = function(id){
+		$location.url("/bestiary/view/"+id);
+	}
+
 	$scope.createBestiary = function(){
 		var newBestiary = Bestiary.generateNewBestiary(Auth.user._id);
 		Bestiary.create(newBestiary,function(data){

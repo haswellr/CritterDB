@@ -25,6 +25,12 @@
 	      </div>
 			</md-button>
 			<!-- NON-MOBILE BUTTONS -->
+			<md-button hide show-gt-xs ng-click="copyBestiary()" class="md-icon-button md-mini" aria-label="Copy Bestiary">
+				<md-icon>content_copy</md-icon>
+				<md-tooltip md-direction="left">
+	        Copy Bestiary
+	      </md-tooltip>
+			</md-button>
 			<md-button hide show-gt-xs ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');" class="md-icon-button md-mini" aria-label="Filters">
 				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
@@ -165,6 +171,10 @@
 	      </div>
 		  </md-toolbar>
 	  	<md-list>
+	  		<md-list-item ng-click="copyBestiary()">
+	  			<md-icon style="margin-bottom:16px">content_copy</md-icon>
+	  			<p>Copy</p>
+	 			</md-list-item>
 	 			<md-list-item ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');">
 	  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
 	  			<p>Filter</p>

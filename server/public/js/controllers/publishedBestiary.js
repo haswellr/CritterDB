@@ -1,5 +1,5 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location) {
+var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
 	$scope.bestiary = bestiary;
 
 	$scope.creatureFilter = new CreatureFilter();
@@ -46,7 +46,35 @@ var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,Creature
 		$mdDialog.show(confirm).then(function() {
 			PublishedBestiary.delete($scope.bestiary._id);
 			//Don't wait for delete to actually finish so that the UI feels more responsive.
-			$location.path("/bestiary/list");
+			$location.url("/bestiary/list");
+		});
+	}
+
+	var copyCreaturesToBestiary = function(createdBestiary){
+		var copiedCount = 0;
+		var totalToCopy = $scope.bestiary.creatures.length;
+		var finishedCreatingCreature = function(){
+			copiedCount = copiedCount + 1;
+			if(copiedCount==totalToCopy){
+				$location.url("/bestiary/view/"+createdBestiary._id);
+			}
+		}
+		for(var i=0;i<$scope.bestiary.creatures.length;i++){
+			var newCreature = angular.copy($scope.bestiary.creatures[i]);
+			newCreature._id = undefined;
+			newCreature.bestiaryId = createdBestiary._id;
+			Creature.create(newCreature,finishedCreatingCreature,finishedCreatingCreature);
+		}
+	}
+
+	$scope.copyBestiary = function(){
+		var newBestiary = Bestiary.generateNewBestiary(Auth.user._id);
+		newBestiary.name = $scope.bestiary.name;
+		newBestiary.description = $scope.bestiary.description;
+		Bestiary.create(newBestiary,function(data){
+			copyCreaturesToBestiary(data);
+		},function(err){
+			console.log("error: "+err);
 		});
 	}
 
