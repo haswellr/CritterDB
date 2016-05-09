@@ -309,6 +309,12 @@ div.body-area md-card {
   display: inline-block;
 }
 
+div.body-area md-card span.md-body-1 {
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 div.body-area md-sidenav.bestiary-sidenav.md-locked-open {
   width: 100%;
   height: 100%;
@@ -621,5 +627,5 @@ div.body-area .published-bestiary-details h1 {
 div.body-area .published-bestiary-details span.caption {
   font-size: 12px;
   margin-left: 8px;
-  color: darkgrey;
+  color: #727272;
 }
