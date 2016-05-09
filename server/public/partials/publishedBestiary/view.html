@@ -7,7 +7,7 @@
         Back
       </md-tooltip>
 		</md-button>
-		<h2>
+		<h2 style="max-width: calc(100% - 275px);">
 			<span hide show-gt-sm>
 				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
 				<span> > </span>
@@ -88,7 +88,7 @@
 		</div>
 
 		<!-- CLIPBOARD SIDENAV -->
-		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav" md-is-locked-open="isOpen('clipboardNav')" md-component-id="clipboardNav">
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="clipboardNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Clipboard</h1>
@@ -113,7 +113,7 @@
     	</div>
 		</md-sidenav>
 		<!-- FILTER SIDENAV -->
-		<md-sidenav class="md-sidenav-right md-whiteframe-z2 bestiary-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="filterNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
 			    <h1 class="md-toolbar-tools">Filters</h1>
@@ -163,7 +163,7 @@
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="menuNav">
 		  <md-toolbar class="md-accent">
 		  	<div class="md-toolbar-tools">
-			    <h1 class="md-toolbar-tools">Published Bestiary Actions</h1>
+			    <h1 class="md-toolbar-tools">Menu</h1>
 			    <span flex></span>
 	        <md-button ng-click="close('menuNav')" class="md-icon-button" aria-label="Close">
 	          <md-icon>close</md-icon>
