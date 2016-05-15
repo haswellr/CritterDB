@@ -68,12 +68,16 @@ var authenticateUser = function(req, user, callback){
 }
 
 var getPublicInfo = function(user){
-    var publicInfo = {
-        username: user.username,
-        _id: user._id
-    };
+    var publicInfo = {};
+    if(user){
+        if(user._id)
+            publicInfo._id = user._id;
+        if(user.username)
+            publicInfo.username = user.username;
+    }
     return(publicInfo);
 }
+exports.getPublicInfo = getPublicInfo;
 
 exports.findById = function(req, res) {
     var id = req.params.id;
@@ -124,9 +128,7 @@ exports.create = function(req, res) {
 exports.updateById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
-    var options = {
-        new: true           //retrieves new object from database and returns that as doc
-    }
+
     User.findOne(query, function (err, doc) {
         if(err) {
             res.status(400).send(err.errmsg);
@@ -146,7 +148,7 @@ exports.updateById = function(req, res) {
                         res.status(400).send(err);
                     }
                     else if(doc){
-                        res.send(doc);
+                        res.send(getPublicInfo(doc));
                     }
                 });
               }
@@ -178,7 +180,7 @@ exports.deleteById = function(req, res) {
                         if(err)
                             res.status(400).send(err.errmsg);
                         else
-                            res.send(doc);
+                            res.send(getPublicInfo(doc));
                     });
                 }
             });
