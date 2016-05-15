@@ -63,6 +63,8 @@
 		<div hide-gt-sm>
 			<md-content class="published-bestiary-details md-padding">
 				<h1>{{bestiary.name}}</h1>
+				<button ng-click="toggleLike()">LIKED?: {{isLiked()}}</button>
+				<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>
 				<md-divider></md-divider>
 				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
@@ -76,6 +78,8 @@
 		<div hide show-gt-sm style="display:flex;">
 			<md-content class="published-bestiary-details md-padding" style="width:50%;">
 				<h1>{{bestiary.name}}</h1>
+				<button ng-click="toggleLike()">LIKED?: {{isLiked()}}</button>
+				<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>
 				<md-divider></md-divider>
 				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
