@@ -7,7 +7,16 @@
         Back
       </md-tooltip>
 		</md-button>
-		<h2 style="max-width: calc(100% - 275px);">
+		<!-- NON-MOBILE TITLE -->
+		<h2 hide show-gt-xs style="max-width: calc(100% - 275px);">
+			<span hide show-gt-sm>
+				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
+				<span> > </span>
+			</span>
+			<b>{{bestiary.name}}</b>
+		</h2>
+		<!-- MOBILE TITLE -->
+		<h2 hide-gt-xs>
 			<span hide show-gt-sm>
 				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
 				<span> > </span>
@@ -60,11 +69,21 @@
 
 <div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="column" layout-gt-sm="row" style="overflow:auto;">
+		<!-- SMALL SCREENS (Mobile) -->
 		<div hide-gt-sm>
 			<md-content class="published-bestiary-details md-padding">
 				<h1>{{bestiary.name}}</h1>
-				<button ng-click="toggleLike()">LIKED?: {{isLiked()}}</button>
-				<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>
+				<div ng-if="canInteract()" class="action-bar">
+					<md-button ng-click="toggleLike()" class="md-icon-button like">
+						<md-icon ng-if="!isLiked()">favorite_border</md-icon>
+						<md-icon ng-if="isLiked()" class="liked">favorite</md-icon>
+					</md-button>
+					<md-button ng-click="toggleFavorite()" class="md-icon-button">
+						<md-icon ng-if="!isFavorite()">star_border</md-icon>
+						<md-icon ng-if="isFavorite()" class="favorite">star</md-icon>
+					</md-button>
+				</div>
+				<!--<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>-->
 				<md-divider></md-divider>
 				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
@@ -75,11 +94,20 @@
 				</div>
 			</md-content>
 		</div>
+		<!-- WIDE SCREENS (Computer) -->
 		<div hide show-gt-sm style="display:flex;">
 			<md-content class="published-bestiary-details md-padding" style="width:50%;">
 				<h1>{{bestiary.name}}</h1>
-				<button ng-click="toggleLike()">LIKED?: {{isLiked()}}</button>
-				<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>
+				<div ng-if="canInteract()" class="action-bar">
+					<md-button ng-click="toggleLike()" class="md-icon-button like">
+						<md-icon ng-if="!isLiked()">favorite_border</md-icon>
+						<md-icon ng-if="isLiked()" class="liked">favorite</md-icon>
+					</md-button>
+					<md-button ng-click="toggleFavorite()" class="md-icon-button">
+						<md-icon ng-if="!isFavorite()">star_border</md-icon>
+						<md-icon ng-if="isFavorite()" class="favorite">star</md-icon>
+					</md-button>
+				</div>
 				<md-divider></md-divider>
 				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>

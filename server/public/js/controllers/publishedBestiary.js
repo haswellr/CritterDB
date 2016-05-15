@@ -82,6 +82,10 @@ var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,Creature
 		return(Auth.user._id == $scope.bestiary.owner._id);
 	}
 
+	$scope.canInteract = function(){
+		return(Auth.user!=null);
+	}
+
 	$scope.isLiked = function(){
 		if($scope.bestiary.likes){
 			for(var i=0;i<$scope.bestiary.likes.length;i++){
