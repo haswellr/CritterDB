@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var autopopulate = require('mongoose-autopopulate');
 var Creature = require('./creature');
+var Like = require('./like');
+var Favorite = require('./favorite');
+var Comment = require('./comment');
 
 var PublishedBestiarySchema = new mongoose.Schema(
 	{
@@ -17,7 +20,10 @@ var PublishedBestiarySchema = new mongoose.Schema(
       required: true,
       autopopulate: true
     },
-    creatures: [Creature.schema]
+    creatures: [Creature.schema],
+    likes: [Like.schema],
+    favorites: [Favorite.schema],
+    comments: [Comment.schema]
   });
 PublishedBestiarySchema.plugin(autopopulate);
 

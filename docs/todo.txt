@@ -2,12 +2,17 @@
 
 Important/Current:
 - Implement public bestiaries
+	+ Add ability to create/delete/update 'Likes', 'Favorites', and 'Comments' to back end
+	+ A way to 'like' and 'favorite' bestiaries on front end.
 	+ Back end controller to serve popular/recent/etc published bestiaries
 	+ Front end route to view lists of popular/recent/etc published bestiaries
-	+ A way to 'like', 'comment', and 'favorite' bestiaries.
+	+ Add comments to front end for published bestiaries
 	+ Security determining when you can edit a bestiary and when you can view it
 	+ SRD bestiary
 
+-Add option to include/exclude description when saving critter as image.
+-Print bestiary functionality
+-Notifications when someone has commented, liked, etc your bestiaries, or tagged you in a comment.
 -Upgrade to more robust database service
 -About page
 -UI is not working correctly on Chrome or Safari on iOS.

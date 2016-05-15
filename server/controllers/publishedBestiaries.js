@@ -3,6 +3,7 @@
 var PublishedBestiary = require('../models/publishedBestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
+var users =require("../controllers/users");
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -34,8 +35,8 @@ exports.findById = function(req, res) {
         }
         else if(doc){
             //Do not authenticate by owner because this is public
-            //Hide owner's password
-            doc.password = undefined;
+            //Hide sensitive data for owner (this really should probably be done somewhere else)
+            doc.owner = users.getPublicInfo(doc.owner);
             res.send(doc);
         }
         else{
@@ -73,8 +74,11 @@ exports.create = function(req, res) {
                     doc.populate('owner', function(err) {
                         if(err)
                             res.status(400).send(err.errmsg);
-                        else      
+                        else{
+                            //Hide sensitive data for owner (this really should probably be done somewhere else)
+                            doc.owner = users.getPublicInfo(doc.owner);
                             res.send(doc);
+                        }
                     });
                 }
             });
@@ -82,32 +86,37 @@ exports.create = function(req, res) {
     });
 }
 
+//POST accepting:
+//name
+//description
+// - The other fields are not mutable and cannot be changed by updating this data object.
 exports.updateById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
-    var publishedBestiary = new PublishedBestiary(req.body);
-    var options = {
-        upsert: true,       //creates if not found
-        new: true           //retrieves new object from database and returns that as doc
-    }
 
-    PublishedBestiary.findOne(query, function (err, doc) {
+    PublishedBestiary.findOne(query, function (err, existingDoc) {
         if(err) {
             res.status(400).send(err.errmsg);
         }
-        else if(doc){
-            authenticateBestiaryByOwner(req, doc, function(err){
+        else if(existingDoc){
+            authenticateBestiaryByOwner(req, existingDoc, function(err){
                 if(err)
                     res.status(400).send(err);
                 else{
-                    PublishedBestiary.findOneAndUpdate(query, publishedBestiary, options)
-                        .populate('owner')
-                        .exec(function (err, doc) {
-                            if(err)
-                                res.status(400).send(err.errmsg);
-                            else
-                                res.send(doc);
-                            });
+                    //Set fields that are mutable
+                    if(req.body.name)
+                        existingDoc.name = req.body.name;
+                    if(req.body.description)
+                        existingDoc.description = req.body.description;
+                    existingDoc.save(function(err, doc) {
+                        if(err)
+                            res.status(400).send(err.errmsg);
+                        else{
+                            //Hide sensitive data for owner (this really should probably be done somewhere else)
+                            existingDoc.owner = users.getPublicInfo(existingDoc.owner);
+                            res.send(existingDoc);
+                        }
+                    });
                 }
             });
         }
@@ -133,8 +142,11 @@ exports.deleteById = function(req, res) {
                     PublishedBestiary.findByIdAndRemove(query, function(err, doc, result){
                         if(err)
                             res.status(400).send(err.errmsg);
-                        else
+                        else{
+                            //Hide sensitive data for owner (this really should probably be done somewhere else)
+                            doc.owner = users.getPublicInfo(doc.owner);
                             res.send(doc);
+                        }
                     });
                 }
             });
