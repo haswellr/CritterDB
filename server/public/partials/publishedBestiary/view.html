@@ -74,13 +74,19 @@
 			<md-content class="published-bestiary-details md-padding">
 				<h1>{{bestiary.name}}</h1>
 				<div ng-if="canInteract()" class="action-bar">
-					<md-button ng-click="toggleLike()" class="md-icon-button like">
+					<md-button ng-click="toggleLike()" class="md-icon-button like" aria-label="Like">
 						<md-icon ng-if="!isLiked()">favorite_border</md-icon>
 						<md-icon ng-if="isLiked()" class="liked">favorite</md-icon>
+	          <md-tooltip>
+		        	Like
+		      	</md-tooltip>
 					</md-button>
-					<md-button ng-click="toggleFavorite()" class="md-icon-button">
+					<md-button ng-click="toggleFavorite()" class="md-icon-button" aria-label="Favorite">
 						<md-icon ng-if="!isFavorite()">star_border</md-icon>
 						<md-icon ng-if="isFavorite()" class="favorite">star</md-icon>
+	          <md-tooltip>
+		        	Favorite
+		      	</md-tooltip>
 					</md-button>
 				</div>
 				<!--<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>-->
@@ -99,13 +105,19 @@
 			<md-content class="published-bestiary-details md-padding" style="width:50%;">
 				<h1>{{bestiary.name}}</h1>
 				<div ng-if="canInteract()" class="action-bar">
-					<md-button ng-click="toggleLike()" class="md-icon-button like">
+					<md-button ng-click="toggleLike()" class="md-icon-button like" aria-label="Like">
 						<md-icon ng-if="!isLiked()">favorite_border</md-icon>
 						<md-icon ng-if="isLiked()" class="liked">favorite</md-icon>
+	          <md-tooltip>
+		        	Like
+		      	</md-tooltip>
 					</md-button>
-					<md-button ng-click="toggleFavorite()" class="md-icon-button">
+					<md-button ng-click="toggleFavorite()" class="md-icon-button" aria-label="Favorite">
 						<md-icon ng-if="!isFavorite()">star_border</md-icon>
 						<md-icon ng-if="isFavorite()" class="favorite">star</md-icon>
+	          <md-tooltip>
+		        	Favorite
+		      	</md-tooltip>
 					</md-button>
 				</div>
 				<md-divider></md-divider>

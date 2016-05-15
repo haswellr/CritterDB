@@ -4,6 +4,7 @@ var PublishedBestiary = require('../models/publishedBestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 var users = require("../controllers/users");
+var mongodb = require("mongodb");
 var PAGE_SIZE = 20;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
@@ -341,6 +342,46 @@ exports.findRecent = function(req, res) {
             }
             else{
                 res.send(docs);
+            }
+        });
+}
+
+exports.findPopular = function(req, res) {
+    var page = req.params.page || 1;
+    var aggregation = [
+        {
+            $project: {
+                document: "$$ROOT",
+                popularity: {
+                    $size: {
+                        $ifNull: ["$likes", [] ]
+                    }
+                }
+            }
+        },
+        {
+            $sort: {
+                popularity: -1
+            }
+        },
+        {
+            $skip: (PAGE_SIZE * (page-1))
+        },
+        {
+            $limit: PAGE_SIZE
+        }
+    ];
+    PublishedBestiary.aggregate(aggregation).
+        exec(function (err, docs) {
+            if(err){
+                res.status(400).send(err.errmsg);
+            }
+            else{
+                var extractedDocs = [];
+                for(var i=0;i<docs.length;i++){
+                    extractedDocs = docs[i].document;
+                }
+                res.send(extractedDocs);
             }
         });
 }
