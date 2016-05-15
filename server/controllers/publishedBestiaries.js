@@ -328,7 +328,7 @@ exports.deleteFavorite = function(req, res) {
 }
 
 exports.findRecent = function(req, res) {
-    var page = req.params.page || 1;
+    var page = Math.min(req.params.page || 1, 10);
     var sort = {
         _id: -1
     };
@@ -347,7 +347,7 @@ exports.findRecent = function(req, res) {
 }
 
 exports.findPopular = function(req, res) {
-    var page = req.params.page || 1;
+    var page = Math.min(req.params.page || 1, 10);
     var aggregation = [
         {
             $project: {
@@ -384,4 +384,36 @@ exports.findPopular = function(req, res) {
                 res.send(extractedDocs);
             }
         });
+}
+
+exports.findFavorites = function(req, res) {
+    var page = req.params.page || 1;
+    var sort = {
+        _id: -1
+    };
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var query = {
+                favorites: {
+                    $elemMatch: {
+                        userId: currentUserId
+                    }
+                }
+            };
+            PublishedBestiary.find(query).
+                sort(sort).
+                skip(PAGE_SIZE * (page-1)).
+                limit(PAGE_SIZE).
+                exec(function (err, docs) {
+                    if(err){
+                        res.status(400).send(err.errmsg);
+                    }
+                    else{
+                        res.send(docs);
+                    }
+                });
+        }
+    });
 }
