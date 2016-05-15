@@ -51,7 +51,7 @@ app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 	app.delete('/api/publishedbestiaries/:id/favorites', publishedBestiaries.deleteFavorite);
 	//Filtered Lists
 	app.get('/api/publishedbestiaries/recent/:page', publishedBestiaries.findRecent);
-	//app.get('/api/publishedbestiaries/popular/:page', publishedBestiaries.findPopular);
+	app.get('/api/publishedbestiaries/popular/:page', publishedBestiaries.findPopular);
 	//app.get('/api/publishedbestiaries/favorites/:page', publishedBestiaries.findFavorites);
 	//app.get('/api/publishedbestiaries/owned/:page', publishedBestiaries.findOwned);
 //Users

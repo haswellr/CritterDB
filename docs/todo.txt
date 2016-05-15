@@ -2,7 +2,7 @@
 
 Important/Current:
 - Implement public bestiaries
-	+ Back end controller to serve popular/recent/favorited/owned published bestiaries
+	+ Back end controller to serve favorited/owned published bestiaries
 	+ Front end route to view lists of popular/recent/etc published bestiaries
 	+ Add ability to create/delete/update 'Comments' to back end
 	+ Add comments to front end for published bestiaries
@@ -11,6 +11,7 @@ Important/Current:
 
 -Add option to include/exclude description when saving critter as image.
 -Print bestiary functionality
+-Smarter selection of popular bestiaries - have it based on age in some way. At the simplest level you could just exclude bestiaries older than a month. More complex would be to base it on some combination of factors (age, # of likes).
 -Notifications when someone has commented, liked, etc your bestiaries, or tagged you in a comment.
 -Upgrade to more robust database service
 -About page
