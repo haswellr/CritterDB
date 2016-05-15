@@ -2,9 +2,8 @@
 
 Important/Current:
 - Implement public bestiaries
-	+ Back end controller to serve filtered bestiary lists
-		- owned by current user
 	+ Front end route to view lists of popular/recent/etc published bestiaries
+	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
 	+ Add ability to create/delete/update 'Comments' to back end
 	+ Add comments to front end for published bestiaries
 	+ Security determining when you can edit a bestiary and when you can view it

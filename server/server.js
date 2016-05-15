@@ -53,7 +53,7 @@ app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 	app.get('/api/publishedbestiaries/recent/:page', publishedBestiaries.findRecent);
 	app.get('/api/publishedbestiaries/popular/:page', publishedBestiaries.findPopular);
 	app.get('/api/publishedbestiaries/favorites/:page', publishedBestiaries.findFavorites);
-	//app.get('/api/publishedbestiaries/owned/:page', publishedBestiaries.findOwned);
+	app.get('/api/publishedbestiaries/owned/:page', publishedBestiaries.findOwned);
 //Users
 app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);
 app.get('/api/users/:id/public', users.findPublicInfoById);

@@ -379,7 +379,7 @@ exports.findPopular = function(req, res) {
             else{
                 var extractedDocs = [];
                 for(var i=0;i<docs.length;i++){
-                    extractedDocs = docs[i].document;
+                    extractedDocs.push(docs[i].document);
                 }
                 res.send(extractedDocs);
             }
@@ -401,6 +401,34 @@ exports.findFavorites = function(req, res) {
                         userId: currentUserId
                     }
                 }
+            };
+            PublishedBestiary.find(query).
+                sort(sort).
+                skip(PAGE_SIZE * (page-1)).
+                limit(PAGE_SIZE).
+                exec(function (err, docs) {
+                    if(err){
+                        res.status(400).send(err.errmsg);
+                    }
+                    else{
+                        res.send(docs);
+                    }
+                });
+        }
+    });
+}
+
+exports.findOwned = function(req, res) {
+    var page = req.params.page || 1;
+    var sort = {
+        _id: -1
+    };
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var query = {
+                owner: currentUserId
             };
             PublishedBestiary.find(query).
                 sort(sort).
