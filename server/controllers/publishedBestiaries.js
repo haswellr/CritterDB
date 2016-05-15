@@ -4,6 +4,7 @@ var PublishedBestiary = require('../models/publishedBestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 var users = require("../controllers/users");
+var PAGE_SIZE = 20;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -323,4 +324,23 @@ exports.deleteFavorite = function(req, res) {
                 });
         }
     });
+}
+
+exports.findRecent = function(req, res) {
+    var page = req.params.page || 1;
+    var sort = {
+        _id: -1
+    };
+    PublishedBestiary.find().
+        sort(sort).
+        skip(PAGE_SIZE * (page-1)).
+        limit(PAGE_SIZE).
+        exec(function (err, docs) {
+            if(err){
+                res.status(400).send(err.errmsg);
+            }
+            else{
+                res.send(docs);
+            }
+        });
 }
