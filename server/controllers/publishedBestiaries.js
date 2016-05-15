@@ -3,7 +3,7 @@
 var PublishedBestiary = require('../models/publishedBestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
-var users =require("../controllers/users");
+var users = require("../controllers/users");
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -25,6 +25,22 @@ var authenticateBestiaryByOwner = function(req, bestiary, callback){
     }
 }
 
+var getCurrentUserId = function(req, callback){
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if(token){
+        jwt.verify(token,config.secret,function(err,decoded){
+            if(err)
+                callback("Failed to authenticate token.");
+            else{
+                callback(null,decoded._doc._id);
+            }
+        });
+    }
+    else{
+        callback("No token provided.");
+    }
+}
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
@@ -35,8 +51,6 @@ exports.findById = function(req, res) {
         }
         else if(doc){
             //Do not authenticate by owner because this is public
-            //Hide sensitive data for owner (this really should probably be done somewhere else)
-            doc.owner = users.getPublicInfo(doc.owner);
             res.send(doc);
         }
         else{
@@ -57,6 +71,10 @@ exports.findAll = function(req, res) {
 };
 
 exports.create = function(req, res) {
+    var populateOptions = {
+        path: 'owner',
+        select: '_id username'
+    };
     //Handle the case where user sends an owner object instead of an owner id, since the field name
     //'owner' can be confusing.
     if(req.body && req.body.owner && req.body.owner._id)
@@ -71,12 +89,10 @@ exports.create = function(req, res) {
                     res.status(400).send(err.errmsg);
                 }
                 else {
-                    doc.populate('owner', function(err) {
+                    doc.populate(populateOptions, function(err) {
                         if(err)
                             res.status(400).send(err.errmsg);
                         else{
-                            //Hide sensitive data for owner (this really should probably be done somewhere else)
-                            doc.owner = users.getPublicInfo(doc.owner);
                             res.send(doc);
                         }
                     });
@@ -112,8 +128,6 @@ exports.updateById = function(req, res) {
                         if(err)
                             res.status(400).send(err.errmsg);
                         else{
-                            //Hide sensitive data for owner (this really should probably be done somewhere else)
-                            existingDoc.owner = users.getPublicInfo(existingDoc.owner);
                             res.send(existingDoc);
                         }
                     });
@@ -143,8 +157,6 @@ exports.deleteById = function(req, res) {
                         if(err)
                             res.status(400).send(err.errmsg);
                         else{
-                            //Hide sensitive data for owner (this really should probably be done somewhere else)
-                            doc.owner = users.getPublicInfo(doc.owner);
                             res.send(doc);
                         }
                     });
@@ -153,6 +165,162 @@ exports.deleteById = function(req, res) {
         }
         else{
             res.status(400).send("Bestiary not found.");
+        }
+    });
+}
+
+var generateLikeForUserId = function(userId){
+    var like = {
+        'userId': userId
+    };
+    return(like);
+}
+
+//Creates a like for the current user, if one does not already exist in the list of likes
+exports.createLike = function(req, res) {
+    var bestiaryId = req.params.id;
+    var query = {'_id':bestiaryId};
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+    var populateOptions = {
+        path: 'owner',
+        select: '_id username'
+    };
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var like = generateLikeForUserId(currentUserId);
+            var update = {
+                $addToSet: { 
+                    likes: like
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        res.send(doc);
+                    }
+                });
+        }
+    });
+}
+
+//Deletes a like for the current user, if one exists
+exports.deleteLike = function(req, res) {
+    var bestiaryId = req.params.id;
+    var query = {'_id':bestiaryId};
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+    var populateOptions = {
+        path: 'owner',
+        select: '_id username'
+    };
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var update = {
+                $pull: {
+                    likes: {
+                        userId: currentUserId
+                    }
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        res.send(doc);
+                    }
+                });
+        }
+    });
+}
+
+var generateFavoriteForUserId = function(userId){
+    var favorite = {
+        'userId': userId
+    };
+    return(favorite);
+}
+
+//Creates a favorite for the current user, if one does not already exist in the list of favorites
+exports.createFavorite = function(req, res) {
+    var bestiaryId = req.params.id;
+    var query = {'_id':bestiaryId};
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+    var populateOptions = {
+        path: 'owner',
+        select: '_id username'
+    };
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var favorite = generateFavoriteForUserId(currentUserId);
+            var update = {
+                $addToSet: { 
+                    favorites: favorite
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        res.send(doc);
+                    }
+                });
+        }
+    });
+}
+
+//Deletes a favorite for the current user, if one exists
+exports.deleteFavorite = function(req, res) {
+    var bestiaryId = req.params.id;
+    var query = {'_id':bestiaryId};
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+    var populateOptions = {
+        path: 'owner',
+        select: '_id username'
+    };
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var update = {
+                $pull: {
+                    favorites: {
+                        userId: currentUserId
+                    }
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        res.send(doc);
+                    }
+                });
         }
     });
 }

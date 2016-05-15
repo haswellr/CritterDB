@@ -18,7 +18,9 @@ var PublishedBestiarySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-      autopopulate: true
+      autopopulate: {
+        select: '_id username'  //only get public fields
+      }
     },
     creatures: [Creature.schema],
     likes: [Like.schema],

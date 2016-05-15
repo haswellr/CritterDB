@@ -1,4 +1,4 @@
-angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,Creature) {
+angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,Creature,$resource) {
 
   var PublishedBestiaryAPI = new CachedResourceAPI("/api/publishedbestiaries/:id");
 
@@ -29,6 +29,38 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 			if(success)
 				success(data);
 		}, error);
+	}
+
+	PublishedBestiaryAPI.like = function(id, success, error){
+		$resource("/api/publishedbestiaries/:id/likes").save({'id':id},"",(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
+	}
+
+	PublishedBestiaryAPI.unlike = function(id, success, error){
+		$resource("/api/publishedbestiaries/:id/likes").delete({'id':id},(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
+	}
+
+	PublishedBestiaryAPI.favorite = function(id, success, error){
+		$resource("/api/publishedbestiaries/:id/favorites").save({'id':id},"",(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
+	}
+
+	PublishedBestiaryAPI.unfavorite = function(id, success, error){
+		$resource("/api/publishedbestiaries/:id/favorites").delete({'id':id},(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
 	}
 
   return PublishedBestiaryAPI;

@@ -82,6 +82,48 @@ var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,Creature
 		return(Auth.user._id == $scope.bestiary.owner._id);
 	}
 
+	$scope.isLiked = function(){
+		if($scope.bestiary.likes){
+			for(var i=0;i<$scope.bestiary.likes.length;i++){
+				if($scope.bestiary.likes[i].userId == Auth.user._id)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	$scope.toggleLike = function(){
+		if($scope.isLiked())
+			PublishedBestiary.unlike($scope.bestiary._id,function(data){
+				$scope.bestiary.likes = data.likes;
+			});
+		else
+			PublishedBestiary.like($scope.bestiary._id,function(data){
+				$scope.bestiary.likes = data.likes;
+			});
+	}
+
+	$scope.isFavorite = function(){
+		if($scope.bestiary.favorites){
+			for(var i=0;i<$scope.bestiary.favorites.length;i++){
+				if($scope.bestiary.favorites[i].userId == Auth.user._id)
+					return true;
+			}
+		}
+		return false;
+	}
+
+	$scope.toggleFavorite = function(){
+		if($scope.isFavorite())
+			PublishedBestiary.unfavorite($scope.bestiary._id,function(data){
+				$scope.bestiary.favorites = data.favorites;
+			});
+		else
+			PublishedBestiary.favorite($scope.bestiary._id,function(data){
+				$scope.bestiary.favorites = data.favorites;
+			});
+	}
+
 };
 
 //don't load controller until we've gotten the data from the server
