@@ -349,6 +349,11 @@ exports.findRecent = function(req, res) {
 
 exports.findPopular = function(req, res) {
     var page = Math.min(req.params.page || 1, MAX_PAGE);
+    var populateOptions = {
+        path: 'owner',
+        select: '_id username'
+    };
+    console.log("----FIND POPULAR, PAGE ("+page+") -------");
     var aggregation = [
         {
             $project: {
@@ -380,9 +385,19 @@ exports.findPopular = function(req, res) {
             else{
                 var extractedDocs = [];
                 for(var i=0;i<docs.length;i++){
-                    extractedDocs.push(docs[i].document);
+                    var doc = docs[i].document;
+                    console.log("EXTRACTED: "+doc.name + " ["+doc._id+"]");
+                    extractedDocs.push(doc);
                 }
-                res.send(extractedDocs);
+                PublishedBestiary.populate(extractedDocs,populateOptions,function (err, docs) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        for(var i=0;i<docs.length;i++)
+                            console.log("POPPED: "+docs[i].name + " ["+docs[i]._id+"]");
+                        res.send(docs);
+                    }
+                });
             }
         });
 }
