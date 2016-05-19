@@ -63,5 +63,14 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
     }).bind(this),error);
 	}
 
+	PublishedBestiaryAPI.getRecent = function(page,success, error){
+    $resource("/api/publishedbestiaries/recent/:page").query({ 'page': page}, (function(data){
+      for(var i=0;i<data.length;i++)
+        this.cache.add(data[i]._id,data[i]);
+      if(success)
+        success(data);
+    }).bind(this),error);
+  }
+
   return PublishedBestiaryAPI;
 });

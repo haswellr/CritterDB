@@ -5,7 +5,7 @@ var jwt = require("jsonwebtoken");
 var config = require("../config");
 var users = require("../controllers/users");
 var mongodb = require("mongodb");
-var PAGE_SIZE = 20;
+var PAGE_SIZE = 10;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];

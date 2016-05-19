@@ -648,10 +648,17 @@ div.body-area .published-bestiary-details .action-bar button.like md-icon {
   width: 23px;
 }
 
-div.body-area .published-bestiary-details .action-bar md-icon.liked {
+.action-bar md-icon.liked {
   color: #ed4956;
 }
 
-div.body-area .published-bestiary-details .action-bar md-icon.favorite {
+.action-bar md-icon.favorite {
   color: #FFD700;
+}
+
+div.body-area .bestiary-card .action-bar md-icon {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  line-height: 20px;
 }
