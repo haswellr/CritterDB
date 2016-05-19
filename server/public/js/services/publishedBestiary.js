@@ -73,21 +73,29 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
   }
 
   PublishedBestiaryAPI.listConstants = {
-		recent: {
-			retrievalFunction: PublishedBestiaryAPI.getRecent,
-			name: 'Recent'
-		},
 		popular: {
+			type: "popular",
 			retrievalFunction: PublishedBestiaryAPI.getPopular,
-			name: 'Popular'
+			name: 'Popular',
+			path: "/#/publishedbestiary/list/popular"
+		},
+		recent: {
+			type: "recent",
+			retrievalFunction: PublishedBestiaryAPI.getRecent,
+			name: 'Recent',
+			path: "/#/publishedbestiary/list/recent"
 		},
 		favorites: {
+			type: "favorites",
 			retrievalFunction: PublishedBestiaryAPI.getFavorites,
-			name: 'My Favorites'
+			name: 'My Favorites',
+			path: "/#/publishedbestiary/list/favorites"
 		},
 		owned: {
+			type: "owned",
 			retrievalFunction: PublishedBestiaryAPI.getOwned,
-			name: 'My Bestiaries'
+			name: 'My Bestiaries',
+			path: "/#/publishedbestiary/list/owned"
 		}
 	};
 
