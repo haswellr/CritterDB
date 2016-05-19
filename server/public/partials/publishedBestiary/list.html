@@ -89,11 +89,11 @@
 				<div class="action-bar">
 					<span class="md-subhead">
 						<md-icon class="liked">favorite</md-icon>
-						{{bestiary.likes.length}}
+						{{bestiary.likes.length || 0}}
 					</span>
 					<span class="md-subhead">
 						<md-icon class="favorite">star</md-icon>
-						{{bestiary.favorites.length}}
+						{{bestiary.favorites.length || 0}}
 					</span>
 				</div>
 			</md-card-header>
