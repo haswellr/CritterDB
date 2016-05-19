@@ -1,8 +1,18 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
-		<h2 style="margin-left:0px;">
-			<span><b>My Bestiaries</b></span>
+		<md-button hide-gt-sm ng-href="{{getPublishedBestiaryListPath()}}" class="md-icon-button md-mini" aria-label="Back">
+			<md-icon>keyboard_backspace</md-icon>
+			<md-tooltip>
+        Back
+      </md-tooltip>
+		</md-button>
+		<h2>
+			<span hide show-gt-sm>
+				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
+				<span> > </span>
+			</span>
+			<b>{{bestiaryType}}</b>
 		</h2>
 		<div class="right-side-controls">
 			<md-button ng-click="toggle('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
@@ -13,12 +23,6 @@
 	      <div class="counter">
 	      	{{CreatureClipboard.getAll().length}}
 	      </div>
-			</md-button>
-			<md-button ng-click="createBestiary()" class="md-fab md-mini md-accent" aria-label="Bestiary Creature">
-				<md-icon>add</md-icon>
-				<md-tooltip md-direction="left">
-	        Create Bestiary
-	      </md-tooltip>
 			</md-button>
 		</div>
 	</div>
@@ -52,16 +56,26 @@
 	</md-sidenav>
 	<!-- BESTIARY LIST -->
 	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content">
-		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-lastActive'">
+		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-_id'" class="bestiary-card">
 			<md-card-header>
 				<md-card-header-text>
 					<span class="md-title">{{bestiary.name}}</span>
-		      <span class="md-body-1 text-color-secondary" style="margin-top: 6px;">{{bestiary.description}}</span>
+					<span class="md-subhead">by {{bestiary.owner.username}}</span>
+		      <span btf-markdown="bestiary.description" class="md-body-1 text-color-secondary" style="margin-top:6px;"></span>
 				</md-card-header-text>
+				<div class="action-bar">
+					<span class="md-subhead">
+						<md-icon class="liked">favorite</md-icon>
+						{{bestiary.likes.length}}
+					</span>
+					<span class="md-subhead">
+						<md-icon class="favorite">star</md-icon>
+						{{bestiary.favorites.length}}
+					</span>
+				</div>
 			</md-card-header>
 		  <md-card-actions layout="row" layout-align="end center">
-		  	<md-button ng-click="deleteBestiary($event,bestiary)">Delete</md-button>
-		    <md-button ng-href="{{getBestiaryPath(bestiary)}}">Open</md-button>
+		    <md-button ng-href="{{getBestiaryPath(bestiary)}}">View</md-button>
 		  </md-card-actions>
 		</md-card>
 	</md-content>

@@ -1,6 +1,8 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,bestiaryType,PublishedBestiary,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
 	$scope.bestiary = bestiary;
+	$scope.bestiaries = bestiaries;
+	$scope.bestiaryType = bestiaryType;
 
 	$scope.creatureFilter = new CreatureFilter();
 
@@ -13,7 +15,11 @@ var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,Creature
 	$scope.CreatureClipboard = CreatureClipboard;
 
 	$scope.getPublishedBestiaryListPath = function(){
-		return("/#/bestiary/list");
+		return("/#/publishedbestiary/list/recent/1");
+	}
+
+	$scope.getBestiaryPath = function(bestiary){
+		return("/#/publishedbestiary/view/"+bestiary._id);
 	}
 
 	$scope.editPublishedBestiary = function(ev){
@@ -130,6 +136,25 @@ var publishedBestiaryCtrl = function ($scope,bestiary,PublishedBestiary,Creature
 
 };
 
+var bestiaryLists = {
+	recent: {
+		retrievalFunction: 'getRecent',
+		name: 'Recent'
+	},
+	popular: {
+		retrievalFunction: 'getPopular',
+		name: 'Popular'
+	},
+	favorites: {
+		retrievalFunction: 'getFavorites',
+		name: 'My Favorites'
+	},
+	owned: {
+		retrievalFunction: 'getOwned',
+		name: 'My Bestiaries'
+	}
+};
+
 //don't load controller until we've gotten the data from the server
 publishedBestiaryCtrl.resolve = {
 	bestiary: ['PublishedBestiary','$q','$route','Auth','$location',function(PublishedBestiary, $q, $route, Auth, $location){
@@ -147,6 +172,32 @@ publishedBestiaryCtrl.resolve = {
 			else
 				return {};
 		}],
+	bestiaries: ['PublishedBestiary','$q','$route','Auth','$location',function(PublishedBestiary, $q, $route, Auth, $location){
+			if($route.current.params.bestiaryType){
+				var deferred = $q.defer();
+				Auth.executeOnLogin(function(){
+					var type = $route.current.params.bestiaryType;
+					if(bestiaryLists[type]){
+						var retrievalFunction = bestiaryLists[type].retrievalFunction;
+						var page = $route.current.params.page || 1;
+						PublishedBestiary[retrievalFunction](page,function(data) {
+							deferred.resolve(data);
+						}, function(errorData) {
+							deferred.reject();
+						});
+					}
+					else
+						deferred.reject();
+				});
+				return deferred.promise;
+			}
+			else
+				return [];
+		}],
+	bestiaryType: ["$route",function($route){
+			if($route.current.params.bestiaryType)
+				return(bestiaryLists[$route.current.params.bestiaryType].name);
+		}]
 }
 
 angular.module('myApp').controller('publishedBestiaryCtrl',publishedBestiaryCtrl);
