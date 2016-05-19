@@ -12,15 +12,22 @@
 				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
 				<span> > </span>
 			</span>
-			<md-menu>
-        <md-button aria-label="Bestiary list selection" ng-click="$mdOpenMenu($event)">
+			<md-menu class="bestiary-list">
+        <md-button aria-label="Bestiary list selection" ng-click="$mdOpenMenu($event)" class="open-menu">
           <b>
             {{bestiaryType}}
           </b>
-          <md-icon>arrow_drop_down</md-icon>
+          <md-icon class="drop-down">arrow_drop_down</md-icon>
         </md-button>
         <md-menu-content width="3" >
-          <md-menu-item ng-repeat="bestiaryListType in bestiaryListTypes">
+        	<md-menu-item>
+            <md-button ng-href="{{getCurrentBestiaryListType().path}}" md-menu-align-target>
+                <div layout="row">
+                  <p>{{getCurrentBestiaryListType().name}}</p>
+                </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item ng-repeat="bestiaryListType in bestiaryListTypes" ng-if="bestiaryListType.type!=getCurrentBestiaryListType().type">
             <md-button ng-href="{{bestiaryListType.path}}">
                 <div layout="row">
                   <p>{{bestiaryListType.name}}</p>

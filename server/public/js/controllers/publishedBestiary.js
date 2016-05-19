@@ -8,24 +8,19 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 		$scope.bestiaryType = PublishedBestiary.listConstants[$routeParams.bestiaryType].name;
 
 	$scope.creatureFilter = new CreatureFilter();
-	$scope.bestiaryListTypes = [
-		{
-			name: "Popular",
-			path: "/#/publishedbestiary/list/popular"
-		},
-		{
-			name: "Recent",
-			path: "/#/publishedbestiary/list/recent"
-		},
-		{
-			name: "My Favorites",
-			path: "/#/publishedbestiary/list/favorites"
-		},
-		{
-			name: "My Bestiaries",
-			path: "/#/publishedbestiary/list/owned"
+	$scope.bestiaryListTypes = function(){
+		var bestiaryListTypes = [];
+		for(var key in PublishedBestiary.listConstants){
+			if (PublishedBestiary.listConstants.hasOwnProperty(key)){
+				var listType = angular.copy(PublishedBestiary.listConstants[key]);
+				bestiaryListTypes.push(listType);
+			}
 		}
-	];
+		return(bestiaryListTypes);
+	}();
+	$scope.getCurrentBestiaryListType = function(){
+		return(PublishedBestiary.listConstants[$routeParams.bestiaryType]);
+	}
 
 	var creatureApiOptions = {
 		copy: true,

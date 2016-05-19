@@ -662,3 +662,16 @@ div.body-area .bestiary-card .action-bar md-icon {
   font-size: 20px;
   line-height: 20px;
 }
+
+md-menu.bestiary-list button.open-menu {
+  text-transform: none;
+  font-size: 20px;
+  margin-left: 0;
+  padding: 0 2px;
+}
+
+md-menu.bestiary-list button.open-menu md-icon.drop-down {
+  line-height: 22px;
+  width: 20px;
+  margin-left: -4px;
+}
