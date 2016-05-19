@@ -3,7 +3,8 @@
 Important/Current:
 - Implement public bestiaries
 	+ Front end route to view lists of popular/recent/etc published bestiaries
-	+ Back & front end routes to show a specific user's published bestiaries
+	+ Back & front end routes to show a specific user's published bestiaries, along with links to that user in published bestiary view and list pages.
+	+ Should go Published Bestiaries > TYPE > Bestiary Name if possible
 	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
 	+ Add ability to create/delete/update 'Comments' to back end
 	+ Add comments to front end for published bestiaries

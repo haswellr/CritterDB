@@ -12,7 +12,23 @@
 				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
 				<span> > </span>
 			</span>
-			<b>{{bestiaryType}}</b>
+			<md-menu>
+        <md-button aria-label="Bestiary list selection" ng-click="$mdOpenMenu($event)">
+          <b>
+            {{bestiaryType}}
+          </b>
+          <md-icon>arrow_drop_down</md-icon>
+        </md-button>
+        <md-menu-content width="3" >
+          <md-menu-item ng-repeat="bestiaryListType in bestiaryListTypes">
+            <md-button ng-href="{{bestiaryListType.path}}">
+                <div layout="row">
+                  <p>{{bestiaryListType.name}}</p>
+                </div>
+            </md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
 		</h2>
 		<div class="right-side-controls">
 			<md-button ng-click="toggle('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">

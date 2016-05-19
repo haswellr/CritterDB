@@ -2,12 +2,30 @@
 var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,PublishedBestiary,PublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
-	if(bestiaries)
+	if(bestiaries && bestiaries.length>0)
 		$scope.bestiaryPager = new PublishedBestiaryPager($routeParams.bestiaryType,bestiaries,2);
 	if($routeParams.bestiaryType && PublishedBestiary.listConstants[$routeParams.bestiaryType])
 		$scope.bestiaryType = PublishedBestiary.listConstants[$routeParams.bestiaryType].name;
 
 	$scope.creatureFilter = new CreatureFilter();
+	$scope.bestiaryListTypes = [
+		{
+			name: "Popular",
+			path: "/#/publishedbestiary/list/popular"
+		},
+		{
+			name: "Recent",
+			path: "/#/publishedbestiary/list/recent"
+		},
+		{
+			name: "My Favorites",
+			path: "/#/publishedbestiary/list/favorites"
+		},
+		{
+			name: "My Bestiaries",
+			path: "/#/publishedbestiary/list/owned"
+		}
+	];
 
 	var creatureApiOptions = {
 		copy: true,
@@ -179,7 +197,7 @@ publishedBestiaryCtrl.resolve = {
 				return deferred.promise;
 			}
 			else
-				return [];
+				return undefined;
 		}]
 }
 
