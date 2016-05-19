@@ -6,6 +6,7 @@ var config = require("../config");
 var users = require("../controllers/users");
 var mongodb = require("mongodb");
 var PAGE_SIZE = 10;
+var MAX_PAGE = 20;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -328,7 +329,7 @@ exports.deleteFavorite = function(req, res) {
 }
 
 exports.findRecent = function(req, res) {
-    var page = Math.min(req.params.page || 1, 10);
+    var page = Math.min(req.params.page || 1, MAX_PAGE);
     var sort = {
         _id: -1
     };
@@ -347,7 +348,7 @@ exports.findRecent = function(req, res) {
 }
 
 exports.findPopular = function(req, res) {
-    var page = Math.min(req.params.page || 1, 10);
+    var page = Math.min(req.params.page || 1, MAX_PAGE);
     var aggregation = [
         {
             $project: {

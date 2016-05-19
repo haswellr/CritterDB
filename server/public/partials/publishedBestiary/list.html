@@ -55,7 +55,7 @@
   	</div>
 	</md-sidenav>
 	<!-- BESTIARY LIST -->
-	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content">
+	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content" infinite-scroll="bestiaryPager.loadNextPage()" threshold="250" can-load="!bestiaryPager.busy">
 		<md-card ng-repeat="bestiary in bestiaries | orderBy:'-_id'" class="bestiary-card">
 			<md-card-header>
 				<md-card-header-text>

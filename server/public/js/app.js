@@ -3,7 +3,7 @@
 /* App Module */
 
 //App Module
-var myApp = angular.module('myApp', ['ngRoute','ngResource','ngMaterial','ngMessages','ngCookies','ngAnimate','ngclipboard','ngSanitize','btford.markdown']);
+var myApp = angular.module('myApp', ['ngRoute','ngResource','ngMaterial','ngMessages','ngCookies','ngAnimate','ngclipboard','ngSanitize','btford.markdown','infiniteScroll']);
 
 myApp.config(function ($mdThemingProvider) {
 
@@ -58,7 +58,7 @@ myApp.config(['$routeProvider',
 				controller: 'publishedBestiaryCtrl',
 				resolve: publishedBestiaryCtrl.resolve
 			}).
-			when('/publishedbestiary/list/:bestiaryType/:page',{
+			when('/publishedbestiary/list/:bestiaryType',{
 				templateUrl: 'assets/partials/publishedBestiary/list.html',
 				controller: 'publishedBestiaryCtrl',
 				resolve: publishedBestiaryCtrl.resolve
