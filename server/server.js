@@ -56,6 +56,7 @@ app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 	app.get('/api/publishedbestiaries/owned/:page', publishedBestiaries.findOwned);
 //Users
 app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);
+app.get('/api/users/:id/publishedbestiaries/:page', publishedBestiaries.findByOwner);
 app.get('/api/users/:id/public', users.findPublicInfoById);
 app.get('/api/users/search', users.findPublicInfo);
 app.post('/api/users', users.create);

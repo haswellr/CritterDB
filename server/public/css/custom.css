@@ -663,6 +663,14 @@ div.body-area .bestiary-card .action-bar md-icon {
   line-height: 20px;
 }
 
+a.username {
+  text-decoration: none;
+}
+
+a.username:hover {
+  text-decoration: underline;
+}
+
 md-menu.bestiary-list button.open-menu {
   text-transform: none;
   font-size: 20px;

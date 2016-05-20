@@ -91,7 +91,7 @@
 				</div>
 				<!--<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>-->
 				<md-divider></md-divider>
-				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
+				<span class="caption">published by <a class="username text-color-secondary" ng-href="{{getUserBestiaryListPath(bestiary.owner)}}">{{bestiary.owner.username}}</a></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
 			</md-content>
 			<md-content>
@@ -121,7 +121,7 @@
 					</md-button>
 				</div>
 				<md-divider></md-divider>
-				<span class="caption">published by <b>{{bestiary.owner.username}}</b></span>
+				<span class="caption">published by <a class="username text-color-secondary" ng-href="{{getUserBestiaryListPath(bestiary.owner)}}">{{bestiary.owner.username}}</a></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
 			</md-content>
 			<md-content style="width:50%;">
