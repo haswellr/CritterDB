@@ -431,3 +431,25 @@ exports.findOwned = function(req, res) {
         }
     });
 }
+
+exports.findByOwner = function(req, res) {
+    var page = req.params.page || 1;
+    var sort = {
+        _id: -1
+    };
+    var query = {
+        owner: req.params.id
+    };
+    PublishedBestiary.find(query).
+        sort(sort).
+        skip(PAGE_SIZE * (page-1)).
+        limit(PAGE_SIZE).
+        exec(function (err, docs) {
+            if(err){
+                res.status(400).send(err.errmsg);
+            }
+            else{
+                res.send(docs);
+            }
+        });
+}

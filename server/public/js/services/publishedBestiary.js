@@ -99,6 +99,15 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
     },error);
   }
 
+  PublishedBestiaryAPI.getByUser = function(userId,page,success, error){
+    $resource("/api/users/:userId/publishedbestiaries/:page").query({ 'userId': userId, 'page': page}, function(data){
+      for(var i=0;i<data.length;i++)
+        PublishedBestiaryAPI.cache.add(data[i]._id,data[i]);
+      if(success)
+        success(data);
+    },error);
+  }
+
   PublishedBestiaryAPI.listConstants = {
 		popular: {
 			type: "popular",

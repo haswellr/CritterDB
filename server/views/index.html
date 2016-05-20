@@ -59,7 +59,7 @@
             <md-menu-content width="3" >
               <div hide-gt-sm>
                 <md-menu-item>
-                  <md-button>
+                  <md-button aria-label="Current user">
                     <div layout="row">
                       <p flex>{{getCurrentUser().username}}</p>
                     </div>
@@ -68,14 +68,14 @@
                 <md-divider></md-divider>
               </div>
               <md-menu-item>
-                <md-button ng-click="goToChangePassword()">
+                <md-button ng-click="goToChangePassword()" aria-label="Change Password">
                     <div layout="row">
                       <p flex>Change Password</p>
                     </div>
                 </md-button>
               </md-menu-item>
               <md-menu-item>
-                <md-button ng-click="logout()">
+                <md-button ng-click="logout()" aria-label="Logout">
                     <div layout="row">
                       <p flex>Logout</p>
                     </div>

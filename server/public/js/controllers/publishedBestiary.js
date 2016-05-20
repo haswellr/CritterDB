@@ -1,9 +1,13 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,PublishedBestiary,PublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
-	if(bestiaries && bestiaries.length>0)
-		$scope.bestiaryPager = new PublishedBestiaryPager($routeParams.bestiaryType,bestiaries,2);
+	if(bestiaries && bestiaries.length>0){
+		if($routeParams.userId)
+			$scope.bestiaryPager = new UserPublishedBestiaryPager(bestiaries,2);
+		else
+			$scope.bestiaryPager = new PublishedBestiaryPager($routeParams.bestiaryType,bestiaries,2);
+	}
 	if($routeParams.bestiaryType && PublishedBestiary.listConstants[$routeParams.bestiaryType])
 		$scope.bestiaryType = PublishedBestiary.listConstants[$routeParams.bestiaryType].name;
 
@@ -37,6 +41,13 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 	$scope.getBestiaryPath = function(bestiary){
 		if(bestiary)
 			return("/#/publishedbestiary/view/"+bestiary._id);
+		else
+			return("");
+	}
+
+	$scope.getUserBestiaryListPath = function(user){
+		if(user)
+			return("/#/user/"+user._id+"/publishedbestiaries");
 		else
 			return("");
 	}
@@ -195,6 +206,16 @@ publishedBestiaryCtrl.resolve = {
 					}
 					else
 						deferred.reject();
+				});
+				return deferred.promise;
+			}
+			else if($route.current.params.userId){
+				var deferred = $q.defer();
+				var page = $route.current.params.page || 1;
+				PublishedBestiary.getByUser($route.current.params.userId,page,function(data) {
+					deferred.resolve(data);
+				}, function(errorData) {
+					deferred.reject();
 				});
 				return deferred.promise;
 			}
