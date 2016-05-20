@@ -25,7 +25,11 @@ var PublishedBestiarySchema = new mongoose.Schema(
     creatures: [Creature.schema],
     likes: [Like.schema],
     favorites: [Favorite.schema],
-    comments: [Comment.schema]
+    comments: [Comment.schema],
+    popularity: {
+      type: Number,
+      default: 0
+    }
   });
 PublishedBestiarySchema.plugin(autopopulate);
 

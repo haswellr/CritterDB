@@ -41,6 +41,13 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 			return("");
 	}
 
+	$scope.bestiarySortFunction = function(bestiary) {
+		if($routeParams.bestiaryType=="popular")
+			return(-1*bestiary.popularity);
+		else
+			return(-1*bestiary._id);
+	}
+
 	$scope.editPublishedBestiary = function(ev){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
     $mdDialog.show({
