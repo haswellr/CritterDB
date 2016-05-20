@@ -45,7 +45,7 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 		if($routeParams.bestiaryType=="popular")
 			return(-1*bestiary.popularity);
 		else
-			return(-1*bestiary._id);
+			return(-1*parseInt("0x"+bestiary._id));
 	}
 
 	$scope.editPublishedBestiary = function(ev){

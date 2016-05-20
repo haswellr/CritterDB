@@ -310,7 +310,7 @@ div.body-area md-card {
 }
 
 div.body-area md-card span.md-body-1 {
-  max-height: 100px;
+  max-height: 95px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
