@@ -9,6 +9,7 @@ Important/Current:
 
 -Bug: Challenge Rating step amount is always set to 1/8 at first, even if the value isn't starting at 1/8.
 -Add option to include/exclude description when saving critter as image.
+-Add option to set overall font size when saving critter as image
 -Print bestiary functionality
 -Smarter selection of popular bestiaries - have it based on age in some way. At the simplest level you could just exclude bestiaries older than a month. More complex would be to base it on some combination of factors (age, # of likes).
 -Notifications when someone has commented, liked, etc your bestiaries, or tagged you in a comment.
