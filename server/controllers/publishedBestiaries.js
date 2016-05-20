@@ -199,6 +199,9 @@ exports.createLike = function(req, res) {
             var update = {
                 $addToSet: { 
                     likes: like
+                },
+                $inc: {
+                    popularity: 1
                 }
             };
             PublishedBestiary.findOneAndUpdate(query, update, options)
@@ -235,6 +238,9 @@ exports.deleteLike = function(req, res) {
                     likes: {
                         userId: currentUserId
                     }
+                },
+                $inc: {
+                    popularity: -1
                 }
             };
             PublishedBestiary.findOneAndUpdate(query, update, options)
@@ -349,55 +355,19 @@ exports.findRecent = function(req, res) {
 
 exports.findPopular = function(req, res) {
     var page = Math.min(req.params.page || 1, MAX_PAGE);
-    var populateOptions = {
-        path: 'owner',
-        select: '_id username'
+    var sort = {
+        popularity: -1
     };
-    console.log("----FIND POPULAR, PAGE ("+page+") -------");
-    var aggregation = [
-        {
-            $project: {
-                document: "$$ROOT",
-                popularity: {
-                    $size: {
-                        $ifNull: ["$likes", [] ]
-                    }
-                }
-            }
-        },
-        {
-            $sort: {
-                popularity: -1
-            }
-        },
-        {
-            $skip: (PAGE_SIZE * (page-1))
-        },
-        {
-            $limit: PAGE_SIZE
-        }
-    ];
-    PublishedBestiary.aggregate(aggregation).
+    PublishedBestiary.find().
+        sort(sort).
+        skip(PAGE_SIZE * (page-1)).
+        limit(PAGE_SIZE).
         exec(function (err, docs) {
             if(err){
                 res.status(400).send(err.errmsg);
             }
             else{
-                var extractedDocs = [];
-                for(var i=0;i<docs.length;i++){
-                    var doc = docs[i].document;
-                    console.log("EXTRACTED: "+doc.name + " ["+doc._id+"]");
-                    extractedDocs.push(doc);
-                }
-                PublishedBestiary.populate(extractedDocs,populateOptions,function (err, docs) {
-                    if(err)
-                        res.status(400).send(err.errmsg);
-                    else{
-                        for(var i=0;i<docs.length;i++)
-                            console.log("POPPED: "+docs[i].name + " ["+docs[i]._id+"]");
-                        res.send(docs);
-                    }
-                });
+                res.send(docs);
             }
         });
 }
