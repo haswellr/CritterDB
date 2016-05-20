@@ -125,13 +125,15 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 			type: "favorites",
 			retrievalFunction: PublishedBestiaryAPI.getFavorites,
 			name: 'My Favorites',
-			path: "/#/publishedbestiary/list/favorites"
+			path: "/#/publishedbestiary/list/favorites",
+			loginRequired: true
 		},
 		owned: {
 			type: "owned",
 			retrievalFunction: PublishedBestiaryAPI.getOwned,
 			name: 'My Bestiaries',
-			path: "/#/publishedbestiary/list/owned"
+			path: "/#/publishedbestiary/list/owned",
+			loginRequired: true
 		}
 	};
 

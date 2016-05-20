@@ -1,15 +1,9 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
-		<md-button hide-gt-sm ng-href="{{getPublishedBestiaryListPath()}}" class="md-icon-button md-mini" aria-label="Back">
-			<md-icon>keyboard_backspace</md-icon>
-			<md-tooltip>
-        Back
-      </md-tooltip>
-		</md-button>
-		<h2>
-			<span hide show-gt-sm>
-				<a ng-href="{{getPublishedBestiaryListPath()}}" style="cursor:pointer;">Published Bestiaries</a>
+		<h2 ng-if="!owner" style="margin-left:0px;">
+			<span hide show-gt-xs>
+				<a>Published Bestiaries</a>
 				<span> > </span>
 			</span>
 			<md-menu class="bestiary-list">
@@ -36,6 +30,9 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
+		</h2>
+		<h2 ng-if="owner" style="margin-left:0px;">
+			<span><b>{{owner.username}}'s Published Bestiaries</b></span>
 		</h2>
 		<div class="right-side-controls">
 			<md-button ng-click="toggleExclusive('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
