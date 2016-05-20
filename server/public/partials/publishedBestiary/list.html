@@ -38,7 +38,7 @@
       </md-menu>
 		</h2>
 		<div class="right-side-controls">
-			<md-button ng-click="toggle('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
+			<md-button ng-click="toggleExclusive('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
 				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
 				<md-tooltip md-direction="left">
 	        Clipboard

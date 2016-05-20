@@ -24,7 +24,7 @@
 			<b>{{bestiary.name}}</b>
 		</h2>
 		<div class="right-side-controls">
-			<md-button ng-click="toggle('clipboardNav');close('filterNav');close('menuNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
+			<md-button ng-click="toggleExclusive('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
 				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
 				<md-tooltip md-direction="left">
 	        Clipboard
@@ -40,7 +40,7 @@
 	        Copy Bestiary
 	      </md-tooltip>
 			</md-button>
-			<md-button hide show-gt-xs ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');" class="md-icon-button md-mini" aria-label="Filters">
+			<md-button hide show-gt-xs ng-click="toggleExclusive('filterNav');" class="md-icon-button md-mini" aria-label="Filters">
 				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
 	        Filter Creatures
@@ -59,7 +59,7 @@
 	      </md-tooltip>
 			</md-button>
 			<!-- MOBILE MENU BUTTON -->
-			<md-button hide-gt-xs ng-click="toggle('menuNav');close('clipboardNav');close('filterNav');" ng-class="{'selected':isOpen('menuNav')}" class="md-icon-button md-mini" aria-label="Menu">
+			<md-button hide-gt-xs ng-click="toggleExclusive('menuNav');" ng-class="{'selected':isOpen('menuNav')}" class="md-icon-button md-mini" aria-label="Menu">
 				<md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
 			</md-button>
 			<!-- - -->
@@ -215,19 +215,19 @@
 	      </div>
 		  </md-toolbar>
 	  	<md-list>
-	  		<md-list-item ng-click="copyBestiary()">
+	  		<md-list-item ng-click="copyBestiary()" ng-if="canInteract()">
 	  			<md-icon style="margin-bottom:16px">content_copy</md-icon>
 	  			<p>Copy</p>
 	 			</md-list-item>
-	 			<md-list-item ng-click="toggle('filterNav');close('clipboardNav');close('menuNav');">
+	 			<md-list-item ng-click="toggleExclusive('filterNav');">
 	  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
 	  			<p>Filter</p>
 	 			</md-list-item>
-	 			<md-list-item ng-click="editPublishedBestiary($event);close('menuNav');" ng-if="isOwner()">
+	 			<md-list-item ng-click="close('menuNav');editPublishedBestiary($event);" ng-if="isOwner()">
 	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
 	  			<p>Edit</p>
 	 			</md-list-item>
-	 			<md-list-item ng-click="deletePublishedBestiary($event);close('menuNav');" ng-if="isOwner()">
+	 			<md-list-item ng-click="close('menuNav');deletePublishedBestiary($event);" ng-if="isOwner()">
 	  			<md-icon style="margin-bottom:16px">delete</md-icon>
 	  			<p>Delete</p>
 	 			</md-list-item>
