@@ -1,7 +1,8 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
+	$scope.owner = owner;
 	if(bestiaries && bestiaries.length>0){
 		if($routeParams.userId)
 			$scope.bestiaryPager = new UserPublishedBestiaryPager(bestiaries,2);
@@ -11,13 +12,19 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 	if($routeParams.bestiaryType && PublishedBestiary.listConstants[$routeParams.bestiaryType])
 		$scope.bestiaryType = PublishedBestiary.listConstants[$routeParams.bestiaryType].name;
 
+	$scope.canInteract = function(){
+		return(Auth.user!=null);
+	}
+
 	$scope.creatureFilter = new CreatureFilter();
 	$scope.bestiaryListTypes = function(){
 		var bestiaryListTypes = [];
 		for(var key in PublishedBestiary.listConstants){
 			if (PublishedBestiary.listConstants.hasOwnProperty(key)){
-				var listType = angular.copy(PublishedBestiary.listConstants[key]);
-				bestiaryListTypes.push(listType);
+				if(!PublishedBestiary.listConstants[key].loginRequired || $scope.canInteract()){
+					var listType = angular.copy(PublishedBestiary.listConstants[key]);
+					bestiaryListTypes.push(listType);
+				}
 			}
 		}
 		return(bestiaryListTypes);
@@ -57,6 +64,10 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 			return(-1*bestiary.popularity);
 		else
 			return(-1*parseInt("0x"+bestiary._id));
+	}
+
+	$scope.goBack = function(){
+		$window.history.back();
 	}
 
 	$scope.editPublishedBestiary = function(ev){
@@ -125,10 +136,6 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 		return(Auth.user._id == $scope.bestiary.owner._id);
 	}
 
-	$scope.canInteract = function(){
-		return(Auth.user!=null);
-	}
-
 	$scope.isLiked = function(){
 		if($scope.bestiary.likes){
 			for(var i=0;i<$scope.bestiary.likes.length;i++){
@@ -175,7 +182,7 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,$routeParams,Pu
 
 //don't load controller until we've gotten the data from the server
 publishedBestiaryCtrl.resolve = {
-	bestiary: ['PublishedBestiary','$q','$route','Auth','$location',function(PublishedBestiary, $q, $route, Auth, $location){
+	bestiary: ['PublishedBestiary','$q','$route','Auth',function(PublishedBestiary, $q, $route, Auth){
 			if($route.current.params.bestiaryId){
 				var deferred = $q.defer();
 				Auth.executeOnLogin(function(){
@@ -190,7 +197,7 @@ publishedBestiaryCtrl.resolve = {
 			else
 				return {};
 		}],
-	bestiaries: ['PublishedBestiary','$q','$route','Auth','$location',function(PublishedBestiary, $q, $route, Auth, $location){
+	bestiaries: ['PublishedBestiary','$q','$route','Auth',function(PublishedBestiary, $q, $route, Auth){
 			if($route.current.params.bestiaryType){
 				var deferred = $q.defer();
 				Auth.executeOnLogin(function(){
@@ -216,6 +223,22 @@ publishedBestiaryCtrl.resolve = {
 					deferred.resolve(data);
 				}, function(errorData) {
 					deferred.reject();
+				});
+				return deferred.promise;
+			}
+			else
+				return undefined;
+		}],
+	owner: ['User','$q','$route','Auth',function(User, $q, $route, Auth){
+			if($route.current.params.userId){
+				var deferred = $q.defer();
+				Auth.executeOnLogin(function(){
+					var userId = $route.current.params.userId;
+					User.getPublic(userId,function(data) {
+						deferred.resolve(data);
+					}, function(errorData) {
+						deferred.reject();
+					});
 				});
 				return deferred.promise;
 			}
