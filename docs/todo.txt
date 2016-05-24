@@ -2,9 +2,10 @@
 
 Important/Current:
 - Implement public bestiaries
-	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
 	+ Add ability to create/delete/update 'Comments' to back end
 	+ Add comments to front end for published bestiaries
+	+ Front and back end to search bestiaries
+	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
 	+ Create SRD bestiary and other 'starting' public bestiaries? Delete all testing ones.
 
 -Bug: Challenge Rating step amount is always set to 1/8 at first, even if the value isn't starting at 1/8.
