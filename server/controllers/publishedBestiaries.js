@@ -1,6 +1,7 @@
 
 //Get mongoose model
 var PublishedBestiary = require('../models/publishedBestiary');
+var Comment = require('../models/comment');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 var users = require("../controllers/users");
@@ -44,6 +45,20 @@ var getCurrentUserId = function(req, callback){
     }
 }
 
+var populateOptions = [
+    {
+        path: 'owner',
+        select: '_id username'
+    },
+    {
+        path: 'comments',
+        populate: {
+            path: 'author',
+            select: '_id username'
+        }
+    }
+];
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
@@ -74,10 +89,6 @@ exports.findAll = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    var populateOptions = {
-        path: 'owner',
-        select: '_id username'
-    };
     //Handle the case where user sends an owner object instead of an owner id, since the field name
     //'owner' can be confusing.
     if(req.body && req.body.owner && req.body.owner._id)
@@ -186,10 +197,6 @@ exports.createLike = function(req, res) {
     var options = {
         new: true           //retrieves new object from database and returns that as doc
     }
-    var populateOptions = {
-        path: 'owner',
-        select: '_id username'
-    };
 
     getCurrentUserId(req, function(err,currentUserId){
         if(err)
@@ -224,10 +231,6 @@ exports.deleteLike = function(req, res) {
     var options = {
         new: true           //retrieves new object from database and returns that as doc
     }
-    var populateOptions = {
-        path: 'owner',
-        select: '_id username'
-    };
 
     getCurrentUserId(req, function(err,currentUserId){
         if(err)
@@ -270,10 +273,6 @@ exports.createFavorite = function(req, res) {
     var options = {
         new: true           //retrieves new object from database and returns that as doc
     }
-    var populateOptions = {
-        path: 'owner',
-        select: '_id username'
-    };
 
     getCurrentUserId(req, function(err,currentUserId){
         if(err)
@@ -305,10 +304,6 @@ exports.deleteFavorite = function(req, res) {
     var options = {
         new: true           //retrieves new object from database and returns that as doc
     }
-    var populateOptions = {
-        path: 'owner',
-        select: '_id username'
-    };
 
     getCurrentUserId(req, function(err,currentUserId){
         if(err)
@@ -452,4 +447,110 @@ exports.findByOwner = function(req, res) {
                 res.send(docs);
             }
         });
+}
+
+exports.createComment = function(req, res) {
+    var bestiaryId = req.params.id;
+    var query = {'_id':bestiaryId};
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+    var comment = new Comment(req.body);
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else if(currentUserId != comment.author)
+            res.status(400).send("Not authorized for that action.");
+        else{
+            var update = {
+                $addToSet: { 
+                    comments: comment
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        res.send(doc);
+                    }
+                });
+        }
+    });
+}
+
+exports.updateCommentById = function(req, res) {
+    var bestiaryId = req.params.id;
+    var commentId = req.params.commentId;
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var query = {
+                _id: bestiaryId,
+                comments: {
+                    $elemMatch: {
+                        author: currentUserId,      //make sure the author is editing it, not someone else
+                        _id: commentId
+                    }
+                }
+            };
+            var update = {
+                $set: {
+                    'comments.$.text': req.body.text    //update only mutable fields
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else if(doc){
+                        res.send(doc);
+                    }
+                    else {
+                        res.status(400).send("Document not found");
+                    }
+                });
+        }
+    });
+}
+
+exports.deleteCommentById = function(req, res) {
+    var bestiaryId = req.params.id;
+    var commentId = req.params.commentId;
+    var query = {'_id':bestiaryId};
+    var options = {
+        new: true           //retrieves new object from database and returns that as doc
+    }
+
+    getCurrentUserId(req, function(err,currentUserId){
+        if(err)
+            res.status(400).send(err);
+        else{
+            var update = {
+                $pull: {
+                    comments: {
+                        author: currentUserId,      //make sure the author is deleting it, not someone else
+                        _id: commentId
+                    }
+                }
+            };
+            PublishedBestiary.findOneAndUpdate(query, update, options)
+                .populate(populateOptions)
+                .exec(function (err, doc) {
+                    if(err)
+                        res.status(400).send(err.errmsg);
+                    else{
+                        res.send(doc);
+                    }
+                });
+        }
+    });
 }
