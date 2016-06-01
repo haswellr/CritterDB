@@ -630,6 +630,14 @@ div.body-area .published-bestiary-details span.caption {
   color: #727272;
 }
 
+div.body-area .published-bestiary-details md-icon.comments-icon {
+  margin-right: 8px;
+}
+
+div.body-area .published-bestiary-details span.comments-header {
+  font-size: 18px;
+}
+
 div.body-area .published-bestiary-details .action-bar {
   float: right;
   margin-top: -6px;
@@ -646,6 +654,10 @@ div.body-area .published-bestiary-details .action-bar button.like md-icon {
   font-size: 23px;
   height: 23px;
   width: 23px;
+}
+
+.action-bar md-icon.commented {
+  color: darkcyan;
 }
 
 .action-bar md-icon.liked {
@@ -683,3 +695,4 @@ md-menu.bestiary-list button.open-menu md-icon.drop-down {
   width: 20px;
   margin-left: -4px;
 }
+
