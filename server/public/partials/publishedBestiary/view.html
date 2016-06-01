@@ -123,6 +123,9 @@
 				<md-divider></md-divider>
 				<span class="caption">published by <a class="username text-color-secondary" ng-href="{{getUserBestiaryListPath(bestiary.owner)}}">{{bestiary.owner.username}}</a></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
+				<!-- Comments -->
+				<span class="md-title comments-header"><md-icon class="comments-icon">comment</md-icon>{{bestiary.comments.length}} comments</span>
+				<md-divider></md-divider>
 			</md-content>
 			<md-content style="width:50%;">
 				<div class="fallingColumns">
