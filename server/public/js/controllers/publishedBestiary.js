@@ -1,5 +1,5 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
 	$scope.owner = owner;
@@ -197,6 +197,19 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 			$scope.bestiary.comments = data.comments;
 		});
 	}
+
+	$scope.getCommentsHeader = function(){
+		if($scope.bestiary && $scope.bestiary.comments){
+			var header = $scope.bestiary.comments.length + " comment";
+			if($scope.bestiary.comments.length != 1)
+				header = header + "s";
+			return(header);
+		}
+		else
+			return "0 comments";
+	}
+
+	$scope.getCreationDate = Mongo.getTimestamp;
 
 };
 

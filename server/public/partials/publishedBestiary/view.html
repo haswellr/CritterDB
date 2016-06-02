@@ -124,11 +124,20 @@
 				<span class="caption">published by <a class="username text-color-secondary" ng-href="{{getUserBestiaryListPath(bestiary.owner)}}">{{bestiary.owner.username}}</a></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
 				<!-- Comments -->
-				<span class="md-title comments-header"><md-icon class="comments-icon">comment</md-icon>{{bestiary.comments.length}} comments</span>
+				<span class="md-title comments-header"><md-icon class="comments-icon">comment</md-icon>{{getCommentsHeader()}}</span>
 				<md-divider></md-divider>
+				<md-list>
+					<md-list-item class="md-2-line comment" ng-repeat="comment in bestiary.comments | orderBy:'_id'">
+						<div class="md-list-item-text" layout="column">
+							<span class="caption published-date">{{getCreationDate(comment._id) | date:'d MMM yyyy'}}</span>
+							<h3>{{comment.author.username}}</h3>
+							<p>{{comment.text}}</p>
+						</div>
+					</md-list-item>
+				</md-list>
 				<md-input-container class="md-block">
           <label>New Comment</label>
-          <textarea ng-model="newComment.text" md-detect-hidden></textarea>
+          <textarea ng-model="newComment.text" rows="5"></textarea>
         </md-input-container>
         <md-button ng-click="postComment()">POST COMMENT</md-button>
 			</md-content>
