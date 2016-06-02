@@ -108,6 +108,38 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
     },error);
   }
 
+	PublishedBestiaryAPI.addComment = function(bestiaryId, comment, success, error){
+		$resource("/api/publishedbestiaries/:id/comments").save({'id':bestiaryId},comment,(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
+	}
+
+	PublishedBestiaryAPI.updateComment = function(bestiaryId, commentId, comment, success, error){
+		var queryParams = {
+			id: bestiaryId,
+			commentId: commentId
+		};
+		$resource("/api/publishedbestiaries/:id/comments/:commentId").update(queryParams,comment,(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
+	}
+
+	PublishedBestiaryAPI.deleteComment = function(bestiaryId, commentId, success, error){
+		var queryParams = {
+			id: bestiaryId,
+			commentId: commentId
+		};
+		$resource("/api/publishedbestiaries/:id/comments/:commentId").delete(queryParams,(function(data){
+      this.cache.add(data._id,data);
+      if(success)
+        success(data);
+    }).bind(this),error);
+	}
+
   PublishedBestiaryAPI.listConstants = {
 		popular: {
 			type: "popular",

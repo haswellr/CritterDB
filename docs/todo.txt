@@ -3,6 +3,11 @@
 Important/Current:
 - Implement public bestiaries
 	+ Add comments to front end for published bestiaries
+		- Post comment
+		- View comments
+			+ Show '1 comment' rather than '1 comments' when there is only 1
+		- Delete comments
+		- Edit comments
 	+ Limit the data sent in filtered bestiary routes (only send number of likes, favorites, comments, and creatures instead of the whole array)
 	+ Front and back end to search bestiaries
 	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
