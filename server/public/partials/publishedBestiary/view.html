@@ -126,6 +126,11 @@
 				<!-- Comments -->
 				<span class="md-title comments-header"><md-icon class="comments-icon">comment</md-icon>{{bestiary.comments.length}} comments</span>
 				<md-divider></md-divider>
+				<md-input-container class="md-block">
+          <label>New Comment</label>
+          <textarea ng-model="newComment.text" md-detect-hidden></textarea>
+        </md-input-container>
+        <md-button ng-click="postComment()">POST COMMENT</md-button>
 			</md-content>
 			<md-content style="width:50%;">
 				<div class="fallingColumns">

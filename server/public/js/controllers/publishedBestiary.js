@@ -133,7 +133,7 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 	}
 
 	$scope.isOwner = function(){
-		return(Auth.user._id == $scope.bestiary.owner._id);
+		return(Auth.user && Auth.user._id == $scope.bestiary.owner._id);
 	}
 
 	$scope.isLiked = function(){
@@ -176,6 +176,26 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 			PublishedBestiary.favorite($scope.bestiary._id,function(data){
 				$scope.bestiary.favorites = data.favorites;
 			});
+	}
+
+	function resetNewComment(){
+		$scope.newComment = {
+			text: ""
+		}
+	}
+	resetNewComment();
+	$scope.postComment = function(){
+		$scope.newComment.author = Auth.user._id;
+		PublishedBestiary.addComment($scope.bestiary._id,$scope.newComment,function(data){
+			resetNewComment();
+			$scope.bestiary.comments = data.comments;
+		});
+	}
+
+	$scope.deleteComment = function(id){
+		PublishedBestiary.deleteComment($scope.bestiary._id,id,function(data){
+			$scope.bestiary.comments = data.comments;
+		});
 	}
 
 };
