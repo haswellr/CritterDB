@@ -630,6 +630,11 @@ div.body-area .published-bestiary-details span.caption {
   color: #727272;
 }
 
+md-list-item.comment div.md-list-item-text span.published-date {
+  position: absolute;
+  right: 0px;
+}
+
 div.body-area .published-bestiary-details md-icon.comments-icon {
   margin-right: 8px;
 }
