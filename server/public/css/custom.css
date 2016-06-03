@@ -632,7 +632,11 @@ div.body-area .published-bestiary-details span.caption {
 
 md-list-item.comment div.md-list-item-text span.published-date {
   position: absolute;
-  right: 0px;
+  right: 16px;
+}
+
+md-list-item.comment div.md-list-item-text h4 {
+  white-space: pre-wrap;
 }
 
 div.body-area .published-bestiary-details md-icon.comments-icon {
@@ -701,3 +705,14 @@ md-menu.bestiary-list button.open-menu md-icon.drop-down {
   margin-left: -4px;
 }
 
+md-content.post-comment textarea {
+  min-height: 52px;
+}
+
+md-content.post-comment md-input-container {
+  margin-bottom: 0;
+}
+
+md-content.post-comment button {
+  float: right;
+}
