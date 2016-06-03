@@ -185,11 +185,17 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 	}
 	resetNewComment();
 	$scope.postComment = function(){
-		$scope.newComment.author = Auth.user._id;
-		PublishedBestiary.addComment($scope.bestiary._id,$scope.newComment,function(data){
-			resetNewComment();
-			$scope.bestiary.comments = data.comments;
-		});
+		if($scope.newComment.text.length>0){
+			$scope.newComment.author = Auth.user._id;
+			$scope.postingComment = true;
+			PublishedBestiary.addComment($scope.bestiary._id,$scope.newComment,function(data){
+				resetNewComment();
+				$scope.bestiary.comments = data.comments;
+				$scope.postingComment = false;
+			},function(err){
+				$scope.postingComment = false;
+			});
+		}
 	}
 
 	$scope.deleteComment = function(id){

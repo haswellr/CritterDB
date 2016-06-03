@@ -130,16 +130,18 @@
 					<md-list-item class="md-2-line comment" ng-repeat="comment in bestiary.comments | orderBy:'_id'">
 						<div class="md-list-item-text" layout="column">
 							<span class="caption published-date">{{getCreationDate(comment._id) | date:'d MMM yyyy'}}</span>
-							<h3>{{comment.author.username}}</h3>
-							<p>{{comment.text}}</p>
+							<p><a class="username" style="color:inherit;" ng-href="{{getUserBestiaryListPath(comment.author)}}">{{comment.author.username}}</a></p>
+							<h4>{{comment.text}}</h4>
 						</div>
 					</md-list-item>
 				</md-list>
-				<md-input-container class="md-block">
-          <label>New Comment</label>
-          <textarea ng-model="newComment.text" rows="5"></textarea>
-        </md-input-container>
-        <md-button ng-click="postComment()">POST COMMENT</md-button>
+				<md-content class="post-comment">
+					<md-input-container class="md-block">
+	          <label>Comment</label>
+	          <textarea ng-model="newComment.text"></textarea>
+	        </md-input-container>
+	        <md-button class="md-raised md-primary" ng-disabled="postingComment" ng-click="postComment()">Post</md-button>
+	      </md-content>
 			</md-content>
 			<md-content style="width:50%;">
 				<div class="fallingColumns">
