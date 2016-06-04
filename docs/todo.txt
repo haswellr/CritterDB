@@ -3,7 +3,6 @@
 Important/Current:
 - Implement public bestiaries
 	+ Add comments to front end for published bestiaries
-		- Edit comments
 		- Make all this work for mobile as well
 		- Click on 'comments' icon next to like/favorites to jump to post new comment? (may be very useful on mobile)
 	+ Limit the data sent in filtered bestiary routes (only send number of likes, favorites, comments, and creatures instead of the whole array)

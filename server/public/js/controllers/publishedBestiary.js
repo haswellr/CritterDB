@@ -3,6 +3,7 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
 	$scope.owner = owner;
+	$scope.commentEdits = {};
 	if(bestiaries && bestiaries.length>0){
 		if($routeParams.userId)
 			$scope.bestiaryPager = new UserPublishedBestiaryPager(bestiaries,2);
@@ -196,6 +197,30 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 				$scope.postingComment = false;
 			});
 		}
+	}
+
+	function resetCommentEdits(comment){
+		if($scope.commentEdits[comment._id])
+			delete $scope.commentEdits[comment._id];
+	}
+
+	$scope.editComment = function(comment){
+		$scope.commentEdits[comment._id] = {
+			text: comment.text
+		}
+	}
+
+	$scope.cancelCommentEdits = function(comment){
+		resetCommentEdits(comment);
+	}
+
+	$scope.saveCommentEdits = function(comment){
+		//Take effect immediately before we actually talk to the server
+		comment.text = $scope.commentEdits[comment._id].text;
+		resetCommentEdits(comment);
+		PublishedBestiary.updateComment($scope.bestiary._id,comment._id,comment,function(data){
+			$scope.bestiary.comments = data.comments;
+		});
 	}
 
 	$scope.deleteComment = function(ev,id){

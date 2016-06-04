@@ -121,7 +121,10 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 			id: bestiaryId,
 			commentId: commentId
 		};
-		$resource("/api/publishedbestiaries/:id/comments/:commentId").update(queryParams,comment,(function(data){
+		var resourceOptions = {
+      'update': { method:'PUT' }
+		};
+		$resource("/api/publishedbestiaries/:id/comments/:commentId",{},resourceOptions).update(queryParams,comment,(function(data){
       this.cache.add(data._id,data);
       if(success)
         success(data);

@@ -635,6 +635,11 @@ md-list-item.comment div.md-list-item-text span.published-date {
   margin-right: 2px;
 }
 
+md-list-item.comment div.md-list-item-text {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
 md-list-item.comment div.md-list-item-text h4 {
   white-space: pre-wrap;
 }
@@ -727,5 +732,14 @@ md-content.post-comment md-input-container {
 }
 
 md-content.post-comment button {
+  float: right;
+}
+
+md-content.edit-comment md-input-container {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+md-content.edit-comment button {
   float: right;
 }

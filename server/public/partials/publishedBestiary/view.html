@@ -89,7 +89,6 @@
 		      	</md-tooltip>
 					</md-button>
 				</div>
-				<!--<button ng-click="toggleFavorite()">FAVORITE?: {{isFavorite()}}</button>-->
 				<md-divider></md-divider>
 				<span class="caption">published by <a class="username text-color-secondary" ng-href="{{getUserBestiaryListPath(bestiary.owner)}}">{{bestiary.owner.username}}</a></span>
 				<p btf-markdown="bestiary.description" class="md-body-1"></p>
@@ -132,7 +131,7 @@
 							<p>
 								<a class="username" style="color:inherit;" ng-href="{{getUserBestiaryListPath(comment.author)}}">{{comment.author.username}}</a>
 								<span ng-if="isOwner()" class="controls">
-									<md-button ng-click="editComment(comment._id)" class="md-icon-button">
+									<md-button ng-click="editComment(comment)" class="md-icon-button">
 										<md-icon ng-if="isOwner()">mode_edit</md-icon>
 					          <md-tooltip>Edit</md-tooltip>
 									</md-button>
@@ -143,7 +142,14 @@
 								</span>
 								<span class="caption published-date">{{getCreationDate(comment._id) | date:'d MMM yyyy'}}</span>
 							</p>
-							<h4>{{comment.text}}</h4>
+							<h4 ng-if="!commentEdits[comment._id]">{{comment.text}}</h4>
+							<md-content ng-if="commentEdits[comment._id]" class="edit-comment">
+								<md-input-container class="md-block">
+				          <textarea ng-model="commentEdits[comment._id].text" aria-label="Comment"></textarea>
+				        </md-input-container>
+				        <md-button class="md-raised md-primary" ng-click="saveCommentEdits(comment)">Save</md-button>
+				        <md-button class="md-raised" ng-click="cancelCommentEdits(comment)">Cancel</md-button>
+				      </md-content>
 						</div>
 					</md-list-item>
 				</md-list>
