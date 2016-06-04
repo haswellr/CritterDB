@@ -581,3 +581,31 @@ exports.deleteCommentById = function(req, res) {
         }
     });
 }
+
+exports.search = function(req, res) {
+    var page = req.params.page || 1;
+    var sort = {
+        _id: -1
+    };
+    var query = {
+    };
+    if(req.body.name){
+        query.name = "/"+req.body.name+"/";
+    }
+    if(req.body.author){
+        query.author = req.body.author;
+    }
+    PublishedBestiary.find(query).
+        sort(sort).
+        skip(PAGE_SIZE * (page-1)).
+        limit(PAGE_SIZE).
+        exec(function (err, docs) {
+            if(err){
+                res.status(400).send(err.errmsg);
+            }
+            else{
+                var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                res.send(trimmedBestiaries);
+            }
+        });
+}
