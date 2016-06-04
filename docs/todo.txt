@@ -2,7 +2,6 @@
 
 Important/Current:
 - Implement public bestiaries
-	+ Limit the data sent in filtered bestiary routes (only send number of likes, favorites, comments, and creatures instead of the whole array)
 	+ Front and back end to search bestiaries
 	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
 	+ Create SRD bestiary and other 'starting' public bestiaries? Delete all testing ones.

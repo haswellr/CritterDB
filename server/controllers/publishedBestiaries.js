@@ -59,6 +59,28 @@ var populateOptions = [
     }
 ];
 
+//Trims a bestiary so that the returned document only includes key details
+function getTrimmedBestiary(bestiary){
+    var trimmed = {
+        _id: bestiary._id,
+        name: bestiary.name,
+        description: bestiary.description,
+        owner: bestiary.owner,
+        numCreatures: bestiary.creatures.length,
+        numLikes: bestiary.likes.length,
+        numFavorites: bestiary.favorites.length,
+        numComments: bestiary.comments.length
+    };
+    return(trimmed);
+}
+
+function getTrimmedBestiaryList(bestiaryList){
+    var trimmedList = [];
+    for(var i=0;i<bestiaryList.length;i++)
+        trimmedList.push(getTrimmedBestiary(bestiaryList[i]));
+    return(trimmedList);
+}
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
@@ -343,7 +365,8 @@ exports.findRecent = function(req, res) {
                 res.status(400).send(err.errmsg);
             }
             else{
-                res.send(docs);
+                var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                res.send(trimmedBestiaries);
             }
         });
 }
@@ -362,7 +385,8 @@ exports.findPopular = function(req, res) {
                 res.status(400).send(err.errmsg);
             }
             else{
-                res.send(docs);
+                var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                res.send(trimmedBestiaries);
             }
         });
 }
@@ -392,7 +416,8 @@ exports.findFavorites = function(req, res) {
                         res.status(400).send(err.errmsg);
                     }
                     else{
-                        res.send(docs);
+                        var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                        res.send(trimmedBestiaries);
                     }
                 });
         }
@@ -420,7 +445,8 @@ exports.findOwned = function(req, res) {
                         res.status(400).send(err.errmsg);
                     }
                     else{
-                        res.send(docs);
+                        var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                        res.send(trimmedBestiaries);
                     }
                 });
         }
@@ -444,7 +470,8 @@ exports.findByOwner = function(req, res) {
                 res.status(400).send(err.errmsg);
             }
             else{
-                res.send(docs);
+                var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                res.send(trimmedBestiaries);
             }
         });
 }

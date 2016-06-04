@@ -65,8 +65,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
   PublishedBestiaryAPI.getPopular = function(page,success, error){
     $resource("/api/publishedbestiaries/popular/:page").query({ 'page': page}, function(data){
-      for(var i=0;i<data.length;i++)
-        PublishedBestiaryAPI.cache.add(data[i]._id,data[i]);
+    	//don't cache as we are not getting all data fields from this request
       if(success)
         success(data);
     },error);
@@ -74,8 +73,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.getRecent = function(page,success, error){
     $resource("/api/publishedbestiaries/recent/:page").query({ 'page': page}, function(data){
-      for(var i=0;i<data.length;i++)
-        PublishedBestiaryAPI.cache.add(data[i]._id,data[i]);
+    	//don't cache as we are not getting all data fields from this request
       if(success)
         success(data);
     },error);
@@ -83,8 +81,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.getFavorites = function(page,success, error){
     $resource("/api/publishedbestiaries/favorites/:page").query({ 'page': page}, function(data){
-      for(var i=0;i<data.length;i++)
-        PublishedBestiaryAPI.cache.add(data[i]._id,data[i]);
+    	//don't cache as we are not getting all data fields from this request
       if(success)
         success(data);
     },error);
@@ -92,8 +89,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.getOwned = function(page,success, error){
     $resource("/api/publishedbestiaries/owned/:page").query({ 'page': page}, function(data){
-      for(var i=0;i<data.length;i++)
-        PublishedBestiaryAPI.cache.add(data[i]._id,data[i]);
+      //don't cache as we are not getting all data fields from this request
       if(success)
         success(data);
     },error);
@@ -101,8 +97,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
   PublishedBestiaryAPI.getByUser = function(userId,page,success, error){
     $resource("/api/users/:userId/publishedbestiaries/:page").query({ 'userId': userId, 'page': page}, function(data){
-      for(var i=0;i<data.length;i++)
-        PublishedBestiaryAPI.cache.add(data[i]._id,data[i]);
+      //don't cache as we are not getting all data fields from this request
       if(success)
         success(data);
     },error);
