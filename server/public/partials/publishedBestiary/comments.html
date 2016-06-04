@@ -1,0 +1,38 @@
+<!-- Comments -->
+				<span class="md-title comments-header"><md-icon class="comments-icon">comment</md-icon>{{getCommentsHeader()}}</span>
+				<md-divider></md-divider>
+				<md-list>
+					<md-list-item class="md-2-line comment" ng-repeat="comment in bestiary.comments | orderBy:'_id'">
+						<div class="md-list-item-text" layout="column">
+							<p>
+								<a class="username" style="color:inherit;" ng-href="{{getUserBestiaryListPath(comment.author)}}">{{comment.author.username}}</a>
+								<span ng-if="isOwner()" class="controls">
+									<md-button ng-click="editComment(comment)" class="md-icon-button">
+										<md-icon ng-if="isOwner()">mode_edit</md-icon>
+					          <md-tooltip>Edit</md-tooltip>
+									</md-button>
+									<md-button ng-click="deleteComment($event,comment._id)" class="md-icon-button">
+										<md-icon ng-if="isOwner()">delete</md-icon>
+					          <md-tooltip>Delete</md-tooltip>
+									</md-button>
+								</span>
+								<span class="caption published-date">{{getCreationDate(comment._id) | date:'d MMM yyyy'}}</span>
+							</p>
+							<h4 ng-if="!commentEdits[comment._id]">{{comment.text}}</h4>
+							<md-content ng-if="commentEdits[comment._id]" class="edit-comment">
+								<md-input-container class="md-block">
+				          <textarea ng-model="commentEdits[comment._id].text" aria-label="Comment"></textarea>
+				        </md-input-container>
+				        <md-button class="md-raised md-primary" ng-click="saveCommentEdits(comment)">Save</md-button>
+				        <md-button class="md-raised" ng-click="cancelCommentEdits(comment)">Cancel</md-button>
+				      </md-content>
+						</div>
+					</md-list-item>
+				</md-list>
+				<md-content ng-if="canInteract()" class="post-comment">
+					<md-input-container class="md-block">
+	          <label>Comment</label>
+	          <textarea ng-model="newComment.text"></textarea>
+	        </md-input-container>
+	        <md-button class="md-raised md-primary" ng-disabled="postingComment" ng-click="postComment()">Post</md-button>
+	      </md-content>
