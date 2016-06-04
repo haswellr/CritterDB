@@ -76,27 +76,29 @@
 	</md-sidenav>
 	<!-- BESTIARY LIST -->
 	<md-content layout="column" layout-align="top center" class="background bg-color-primary-light text-color-content" infinite-scroll="bestiaryPager.loadNextPage()" threshold="250" can-load="!bestiaryPager.busy">
-		<md-card ng-repeat="bestiary in bestiaries | orderBy:bestiarySortFunction" class="bestiary-card">
+		<md-card ng-repeat="bestiary in bestiaries | orderBy:bestiarySortFunction" class="published-bestiary-card">
 			<md-card-header>
 				<md-card-header-text>
-					<span class="md-title">{{bestiary.name}}</span>
+					<span>
+						<span class="md-title bestiary-name">{{bestiary.name}}</span>
+						<span class="action-bar">
+							<span class="md-subhead" style="margin-right:4px;">
+								<md-icon class="commented">comment</md-icon>
+								{{bestiary.comments.length || 0}}
+							</span>
+							<span class="md-subhead">
+								<md-icon class="liked">favorite</md-icon>
+								{{bestiary.likes.length || 0}}
+							</span>
+							<span class="md-subhead">
+								<md-icon class="favorite">star</md-icon>
+								{{bestiary.favorites.length || 0}}
+							</span>
+						</span>
+					</span>
 					<span class="md-subhead">by <a class="username text-color-secondary" ng-href="{{getUserBestiaryListPath(bestiary.owner)}}">{{bestiary.owner.username}}</a></span>
 		      <span btf-markdown="bestiary.description" class="md-body-1 text-color-secondary" style="margin-top:6px;"></span>
 				</md-card-header-text>
-				<div class="action-bar">
-					<span class="md-subhead" style="margin-right:4px;">
-						<md-icon class="commented">comment</md-icon>
-						{{bestiary.comments.length || 0}}
-					</span>
-					<span class="md-subhead">
-						<md-icon class="liked">favorite</md-icon>
-						{{bestiary.likes.length || 0}}
-					</span>
-					<span class="md-subhead">
-						<md-icon class="favorite">star</md-icon>
-						{{bestiary.favorites.length || 0}}
-					</span>
-				</div>
 			</md-card-header>
 		  <md-card-actions layout="row" layout-align="end center">
 		    <md-button ng-href="{{getBestiaryPath(bestiary)}}">View</md-button>
