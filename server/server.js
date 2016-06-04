@@ -43,6 +43,8 @@ app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
 app.post('/api/publishedbestiaries', publishedBestiaries.create);
 app.put('/api/publishedbestiaries/:id', publishedBestiaries.updateById);
 app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
+	//Search
+	app.post('/api/publishedbestiaries/search/:page', publishedBestiaries.search);
 	//Likes
 	app.post('/api/publishedbestiaries/:id/likes', publishedBestiaries.createLike);
 	app.delete('/api/publishedbestiaries/:id/likes', publishedBestiaries.deleteLike);
