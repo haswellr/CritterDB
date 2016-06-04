@@ -129,8 +129,20 @@
 				<md-list>
 					<md-list-item class="md-2-line comment" ng-repeat="comment in bestiary.comments | orderBy:'_id'">
 						<div class="md-list-item-text" layout="column">
-							<span class="caption published-date">{{getCreationDate(comment._id) | date:'d MMM yyyy'}}</span>
-							<p><a class="username" style="color:inherit;" ng-href="{{getUserBestiaryListPath(comment.author)}}">{{comment.author.username}}</a></p>
+							<p>
+								<a class="username" style="color:inherit;" ng-href="{{getUserBestiaryListPath(comment.author)}}">{{comment.author.username}}</a>
+								<span ng-if="isOwner()" class="controls">
+									<md-button ng-click="editComment(comment._id)" class="md-icon-button">
+										<md-icon ng-if="isOwner()">mode_edit</md-icon>
+					          <md-tooltip>Edit</md-tooltip>
+									</md-button>
+									<md-button ng-click="deleteComment($event,comment._id)" class="md-icon-button">
+										<md-icon ng-if="isOwner()">delete</md-icon>
+					          <md-tooltip>Delete</md-tooltip>
+									</md-button>
+								</span>
+								<span class="caption published-date">{{getCreationDate(comment._id) | date:'d MMM yyyy'}}</span>
+							</p>
 							<h4>{{comment.text}}</h4>
 						</div>
 					</md-list-item>

@@ -198,9 +198,18 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		}
 	}
 
-	$scope.deleteComment = function(id){
-		PublishedBestiary.deleteComment($scope.bestiary._id,id,function(data){
-			$scope.bestiary.comments = data.comments;
+	$scope.deleteComment = function(ev,id){
+		var confirm = $mdDialog.confirm()
+			.title("Confirm Deletion")
+			.textContent("This comment will be permanently deleted. Would you like to proceed?")
+			.ariaLabel("Confirm Delete")
+			.targetEvent(ev)
+			.ok("Delete")
+			.cancel("Cancel");
+		$mdDialog.show(confirm).then(function() {
+			PublishedBestiary.deleteComment($scope.bestiary._id,id,function(data){
+				$scope.bestiary.comments = data.comments;
+			});
 		});
 	}
 
