@@ -33,7 +33,6 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.like = function(id, success, error){
 		$resource("/api/publishedbestiaries/:id/likes").save({'id':id},"",(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
@@ -41,7 +40,6 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.unlike = function(id, success, error){
 		$resource("/api/publishedbestiaries/:id/likes").delete({'id':id},(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
@@ -49,7 +47,6 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.favorite = function(id, success, error){
 		$resource("/api/publishedbestiaries/:id/favorites").save({'id':id},"",(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
@@ -57,7 +54,6 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.unfavorite = function(id, success, error){
 		$resource("/api/publishedbestiaries/:id/favorites").delete({'id':id},(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
@@ -119,7 +115,6 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
 	PublishedBestiaryAPI.addComment = function(bestiaryId, comment, success, error){
 		$resource("/api/publishedbestiaries/:id/comments").save({'id':bestiaryId},comment,(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
@@ -134,7 +129,6 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
       'update': { method:'PUT' }
 		};
 		$resource("/api/publishedbestiaries/:id/comments/:commentId",{},resourceOptions).update(queryParams,comment,(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
@@ -146,11 +140,25 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 			commentId: commentId
 		};
 		$resource("/api/publishedbestiaries/:id/comments/:commentId").delete(queryParams,(function(data){
-      this.cache.add(data._id,data);
       if(success)
         success(data);
     }).bind(this),error);
 	}
+
+	PublishedBestiaryAPI.getMostPopular = function(success, error){
+		var resourceOptions = {
+      'query': {
+      	method:'GET',
+      	isArray: false
+      }
+		};
+    $resource("/api/publishedbestiaries/mostpopular",{},resourceOptions).query({}, function(data){
+    	for(var i=0;i<data.creatures.length;i++)
+				Creature.calculateCreatureDetails(data.creatures[i]);
+      if(success)
+        success(data);
+    },error);
+  }
 
   PublishedBestiaryAPI.listConstants = {
 		popular: {
