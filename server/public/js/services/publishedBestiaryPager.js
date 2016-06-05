@@ -23,6 +23,5 @@ angular.module('myApp').factory("PublishedBestiaryPager", function(PublishedBest
   	}
   }
 
-
   return PublishedBestiaryPager;
 });

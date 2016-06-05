@@ -1,12 +1,14 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,SearchPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
 	$scope.owner = owner;
 	$scope.commentEdits = {};
 	if(bestiaries && bestiaries.length>0){
 		if($routeParams.userId)
-			$scope.bestiaryPager = new UserPublishedBestiaryPager(bestiaries,2);
+			$scope.bestiaryPager = new UserPublishedBestiaryPager($routeParams.userId,bestiaries,2);
+		else if(!$routeParams.bestiaryType)
+			$scope.bestiaryPager = new SearchPublishedBestiaryPager(bestiaries,1);
 		else
 			$scope.bestiaryPager = new PublishedBestiaryPager($routeParams.bestiaryType,bestiaries,2);
 	}
@@ -58,6 +60,10 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 			return("/#/user/"+user._id+"/publishedbestiaries");
 		else
 			return("");
+	}
+
+	$scope.goToSearchPage = function(){
+		$location.path("/publishedbestiary/search");
 	}
 
 	$scope.bestiarySortFunction = function(bestiary) {
@@ -247,6 +253,21 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		}
 		else
 			return "0 comments";
+	}
+
+	$scope.search = {
+		name: ""
+	}
+	$scope.searching = false;
+
+	$scope.runSearch = function(){
+		var searchCopy = angular.copy($scope.search);
+		$scope.searching = true;
+		PublishedBestiary.search(searchCopy,1,function(data){
+			$scope.searching = false;
+			$scope.bestiaries = data;
+			$scope.bestiaryPager = new SearchPublishedBestiaryPager(searchCopy,$scope.bestiaries,2);
+		});
 	}
 
 	$scope.getCreationDate = Mongo.getTimestamp;

@@ -752,3 +752,11 @@ md-content.edit-comment md-input-container {
 md-content.edit-comment button {
   float: right;
 }
+
+.search-bestiaries form.search-input {
+  min-height: 124px;
+}
+
+.search-bestiaries form.search-input md-input-container {
+  margin-top: 48px;
+}

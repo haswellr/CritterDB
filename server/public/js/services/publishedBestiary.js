@@ -95,6 +95,20 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
     },error);
   }
 
+  PublishedBestiaryAPI.search = function(search,page,success, error){
+  	var resourceOptions = {
+      'save': {
+      	method:'POST',
+      	isArray: true
+      }
+		};
+    $resource("/api/publishedbestiaries/search/:page",{},resourceOptions).save({ 'page': page},search, function(data){
+      //don't cache as we are not getting all data fields from this request
+      if(success)
+        success(data);
+    },error);
+  }
+
   PublishedBestiaryAPI.getByUser = function(userId,page,success, error){
     $resource("/api/users/:userId/publishedbestiaries/:page").query({ 'userId': userId, 'page': page}, function(data){
       //don't cache as we are not getting all data fields from this request
