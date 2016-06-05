@@ -29,8 +29,8 @@ myApp.config(['$routeProvider',
 		$routeProvider.
 			when('/index',{
 				templateUrl: 'assets/partials/index.html',
-				controller: 'publishedBestiaryCtrl',
-				resolve: publishedBestiaryCtrl.resolveHomePage
+				controller: 'homePageCtrl',
+				resolve: homePageCtrl.resolve
 			}).
 			when('/login',{
 				templateUrl: 'assets/partials/account/login.html',
