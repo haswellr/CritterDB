@@ -1,38 +1,15 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
-		<h2 ng-if="!owner" style="margin-left:0px;">
-			<span hide show-gt-xs>
-				<a>Published Bestiaries</a>
-				<span> > </span>
-			</span>
-			<md-menu class="bestiary-list">
-        <md-button aria-label="Bestiary list selection" ng-click="$mdOpenMenu($event)" class="open-menu">
-          <b>
-            {{bestiaryType}}
-          </b>
-          <md-icon class="drop-down">arrow_drop_down</md-icon>
-        </md-button>
-        <md-menu-content width="3" >
-        	<md-menu-item>
-            <md-button ng-href="{{getCurrentBestiaryListType().path}}" md-menu-align-target aria-label="Switch bestiary list type">
-                <div layout="row">
-                  <p>{{getCurrentBestiaryListType().name}}</p>
-                </div>
-            </md-button>
-          </md-menu-item>
-          <md-menu-item ng-repeat="bestiaryListType in bestiaryListTypes" ng-if="bestiaryListType.type!=getCurrentBestiaryListType().type">
-            <md-button ng-href="{{bestiaryListType.path}}" aria-label="Switch bestiary list type">
-                <div layout="row">
-                  <p>{{bestiaryListType.name}}</p>
-                </div>
-            </md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
-		</h2>
-		<h2 ng-if="owner" style="margin-left:0px;">
-			<span><b>{{owner.username}}'s Published Bestiaries</b></span>
+		<md-button hide-gt-xs ng-click="goBack()" class="md-icon-button md-mini" aria-label="Back">
+			<md-icon>keyboard_backspace</md-icon>
+			<md-tooltip>
+        Back
+      </md-tooltip>
+		</md-button>
+		<h2 style="margin-left:0px;">
+			<span hide show-gt-xs><a ng-href="{{getPublishedBestiaryListPath()}}">Published Bestiaries</a> > </span>
+			<span><b>Search Bestiaries</b></span>
 		</h2>
 		<div class="right-side-controls">
 			<md-button ng-click="toggleExclusive('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
@@ -43,12 +20,6 @@
 	      <div class="counter">
 	      	{{CreatureClipboard.getAll().length}}
 	      </div>
-			</md-button>
-			<md-button ng-click="goToSearchPage()" class="md-icon-button md-mini" aria-label="Search">
-				<md-icon>search</md-icon>
-				<md-tooltip md-direction="left">
-	        Search
-	      </md-tooltip>
 			</md-button>
 		</div>
 	</div>
@@ -80,6 +51,18 @@
       <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
   	</div>
 	</md-sidenav>
-	<!-- BESTIARY LIST -->
-	<div ng-include="'assets/partials/publishedBestiary/bestiaryList.html'" style="height:100%;"></div>
+	<!-- SEARCH -->
+	<md-content layout="column" infinite-scroll="bestiaryPager.loadNextPage()" threshold="250" can-load="!bestiaryPager.busy" class="search-bestiaries">
+		<form ng-submit="runSearch()" layout="row" layout-align="center center" class="search-input">
+			<md-input-container>
+				<label>Search by Name</label>
+		    <input ng-model="search.name" />
+		  </md-input-container>
+		  <md-button class="md-raised md-primary" ng-disabled="searching" type="submit">Search</md-button>
+		</form>
+		<section layout="row">
+			<!-- BESTIARY LIST -->
+			<div ng-include="'assets/partials/publishedBestiary/bestiaryList.html'"></div>
+		</section>
+	</md-content>
 </div>

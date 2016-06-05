@@ -590,11 +590,14 @@ exports.search = function(req, res) {
     var query = {
     };
     if(req.body.name){
-        query.name = "/"+req.body.name+"/";
+        query.name = {
+            $regex: new RegExp(req.body.name,"i")
+        };
     }
     if(req.body.author){
         query.author = req.body.author;
     }
+    console.log("query: "+JSON.stringify(query));
     PublishedBestiary.find(query).
         sort(sort).
         skip(PAGE_SIZE * (page-1)).
