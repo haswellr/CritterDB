@@ -2,7 +2,6 @@
 
 Important/Current:
 - Implement public bestiaries
-	+ Implement Published Bestiaries > Recent > Bestiary Name (just use alternate paths)
 	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
 	+ Create SRD bestiary and other 'starting' public bestiaries? Delete all testing ones.
 
