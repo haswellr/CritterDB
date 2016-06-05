@@ -488,6 +488,13 @@ button.continue-button {
   font-size: 20px;
 }
 
+.header .menu-button {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 div.no-creatures-area {
   position: absolute;
   width: 100%;

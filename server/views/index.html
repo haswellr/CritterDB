@@ -42,15 +42,18 @@
     <md-toolbar ng-controller="headerCtrl" class="header">
       <div class="md-toolbar-tools">
         <div ng-controller="userCtrl" layout="row" flex>
+          <md-button ng-controller="sideNavCtrl" hide-gt-xs ng-click="toggleExclusive('menuNav');" ng-class="{'selected':isOpen('menuNav')}" class="menu-button md-icon-button md-mini" aria-label="Menu">
+            <md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
+          </md-button>
           <span class="logo-button" layout="row" layout-align="left center">
-            <a class="bestiaries-button logo md-toolbar-item md-breadcrumb md-headline" ng-href="/#/publishedbestiary/list/recent">
+            <a hide show-gt-xs class="bestiaries-button logo md-toolbar-item md-breadcrumb md-headline" ng-href="/#/publishedbestiary/list/recent">
               bestiaries
             </a>
             <a class="logo md-toolbar-item md-breadcrumb md-headline" ng-href="/">
               <md-icon class="logo-icon" ng-style="logoStyle" md-svg-icon="{{logoIconPath}}"></md-icon>
               CritterDB
             </a>
-            <a class="critters-button logo md-toolbar-item md-breadcrumb md-headline" ng-href="/#/bestiary/list">
+            <a hide show-gt-xs class="critters-button logo md-toolbar-item md-breadcrumb md-headline" ng-href="/#/bestiary/list">
               my critters
             </a>
           </span>
@@ -96,7 +99,33 @@
         </div>
       </div>
     </md-toolbar>
-
+    <div ng-controller="sideNavCtrl">
+      <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="menuNav">
+        <md-toolbar class="md-primary">
+          <div class="md-toolbar-tools">
+            <h1 class="md-toolbar-tools">Menu</h1>
+            <span flex></span>
+            <md-button ng-click="close('menuNav')" class="md-icon-button" aria-label="Close">
+              <md-icon>close</md-icon>
+            </md-button>
+          </div>
+        </md-toolbar>
+        <md-list>
+          <md-list-item ng-click="close('menuNav');" href="/">
+            <md-icon style="margin-bottom:16px">home</md-icon>
+            <p>Home</p>
+          </md-list-item>
+          <md-list-item ng-click="close('menuNav');" href="/#/publishedbestiary/list/recent">
+            <md-icon style="margin-bottom:16px">public</md-icon>
+            <p>Published Bestiaries</p>
+          </md-list-item>
+          <md-list-item ng-click="close('menuNav');" href="/#/bestiary/list">
+            <md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="margin-bottom:16px;opacity:0.54;"></md-icon>
+            <p>My Critters</p>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
+    </div>
     <div ng-view></div>
   </body>
 
