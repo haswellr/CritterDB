@@ -27,7 +27,7 @@ angular.module('myApp').factory("Bestiary", function($resource,$sce,CachedResour
   }
 
   BestiaryAPI.newBestiaryModel = {
-    name: 'New Bestiary',
+    name: 'New Critter Collection',
     description: ''
   };
   BestiaryAPI.generateNewBestiary = function(userId){

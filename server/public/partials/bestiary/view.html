@@ -9,7 +9,7 @@
 		</md-button>
 		<h2>
 			<span hide show-gt-sm>
-				<a ng-href="{{getBestiaryListPath()}}" style="cursor:pointer;">My Bestiaries</a>
+				<a ng-href="{{getBestiaryListPath()}}" style="cursor:pointer;">My Critters</a>
 				<span> > </span>
 			</span>
 			<b>{{bestiary.name}}</b>
@@ -40,7 +40,7 @@
 			<md-button hide show-gt-xs ng-click="toggleExclusive('editNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
 				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
 				<md-tooltip md-direction="left">
-	        Edit Bestiary Details
+	        Edit Collection Details
 	      </md-tooltip>
 			</md-button>
 			<md-button hide show-gt-xs ng-click="addCreature()" class="md-fab md-mini md-accent" aria-label="Create Creature">
@@ -71,7 +71,7 @@
 					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
 				</span>
 				<h2 class="md-headline">
-					This bestiary needs some creatures!
+					This collection needs some creatures!
 				</h2>
 				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
 			</div>
