@@ -612,3 +612,35 @@ exports.search = function(req, res) {
             }
         });
 }
+
+exports.findMostPopular = function(req, res) {
+    var age = req.query.age || 604800000;   //max age in milliseconds. default is 1 week.
+    var page = Math.min(req.params.page || 1, MAX_PAGE);
+    var sort = {
+        popularity: -1
+    };
+    //Build mongo ObjectID to represent minimum object ID allowed, as ObjectId's beginning bytes are a timestamp
+    var oldestDate = new Date(new Date().getTime() - age);
+    var timestamp = Math.floor(oldestDate.getTime() / 1000);
+    var hex = timestamp.toString(16) + "0000000000000000";
+    var objIdMin = new mongodb.ObjectId(hex);
+    var query = {
+        _id: {
+            $gt: objIdMin
+        }
+    };
+    PublishedBestiary.find(query).
+        sort(sort).
+        limit(1).
+        exec(function (err, docs) {
+            if(err){
+                res.status(400).send(err.errmsg);
+            }
+            else{
+                if(docs.length>0)
+                    res.send(docs[0]);
+                else
+                    res.send("");
+            }
+        });
+}
