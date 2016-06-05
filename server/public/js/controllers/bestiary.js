@@ -41,6 +41,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		});
 	}
 
+	$scope.addCreature = function(){
+		$location.url("/bestiary/add/"+$scope.bestiary._id);
+	}
+
 	$scope.goToBestiary = function(id){
 		$location.url("/bestiary/view/"+id);
 	}
@@ -57,7 +61,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 	$scope.deleteBestiary = function(ev,bestiary){
 		var confirm = $mdDialog.confirm()
 			.title("Confirm Deletion")
-			.textContent("This bestiary will be permanently deleted. Would you like to proceed?")
+			.textContent("This collection will be permanently deleted. Would you like to proceed?")
 			.ariaLabel("Confirm Delete")
 			.targetEvent(ev)
 			.ok("Delete")
