@@ -10,7 +10,7 @@ var headerCtrl = function ($scope,$timeout) {
 	$scope.logoIconPath = logoIconPaths[Math.floor(Math.random()*logoIconPaths.length)];
 
 	$scope.logoStyle = {
-		'margin-top': '-55px'
+		'margin-top': '-100px'
 	};
 	$timeout(function(){
 		$scope.logoStyle = {};
