@@ -1,22 +1,14 @@
 
 <md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
-		<md-button hide-gt-sm ng-click="goBack()" class="md-icon-button md-mini" aria-label="Back">
+		<md-button ng-click="goBack()" class="md-icon-button md-mini" aria-label="Back">
 			<md-icon>keyboard_backspace</md-icon>
 			<md-tooltip>
         Back
       </md-tooltip>
 		</md-button>
-		<!-- NON-MOBILE TITLE -->
-		<h2 hide show-gt-xs style="margin-left:0px;max-width: calc(100% - 275px);">
-			<span hide show-gt-sm>
-				<a ng-href="{{getUserBestiaryListPath(bestiary.owner)}}" style="cursor:pointer;">{{bestiary.owner.username}}'s Published Bestiaries</a>
-				<span> > </span>
-			</span>
-			<b>{{bestiary.name}}</b>
-		</h2>
 		<!-- MOBILE TITLE -->
-		<h2 hide-gt-xs style="margin-left:0px;">
+		<h2 style="margin-left:0px;">
 			<span hide show-gt-sm>
 				<a ng-href="{{getUserBestiaryListPath(bestiary.owner)}}" style="cursor:pointer;">{{bestiary.owner.username}}'s Published Bestiaries</a>
 				<span> > </span>
