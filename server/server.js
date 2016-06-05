@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.set('debug',true);
 var config = require('./config');
 mongoose.connect(config.databaseUrl);
 
@@ -40,10 +39,6 @@ app.post('/api/bestiaries', bestiaries.create);
 app.put('/api/bestiaries/:id', bestiaries.updateById);
 app.delete('/api/bestiaries/:id', bestiaries.deleteById);
 //Published Bestiaries
-app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
-app.post('/api/publishedbestiaries', publishedBestiaries.create);
-app.put('/api/publishedbestiaries/:id', publishedBestiaries.updateById);
-app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 	//Search
 	app.post('/api/publishedbestiaries/search/:page', publishedBestiaries.search);
 	//Likes
@@ -52,6 +47,8 @@ app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 	//Favorites
 	app.post('/api/publishedbestiaries/:id/favorites', publishedBestiaries.createFavorite);
 	app.delete('/api/publishedbestiaries/:id/favorites', publishedBestiaries.deleteFavorite);
+	//Filtered Selection
+	app.get('/api/publishedbestiaries/mostpopular', publishedBestiaries.findMostPopular);
 	//Filtered Lists
 	app.get('/api/publishedbestiaries/recent/:page', publishedBestiaries.findRecent);
 	app.get('/api/publishedbestiaries/popular/:page', publishedBestiaries.findPopular);
@@ -61,6 +58,11 @@ app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 	app.post('/api/publishedbestiaries/:id/comments', publishedBestiaries.createComment);
 	app.put('/api/publishedbestiaries/:id/comments/:commentId', publishedBestiaries.updateCommentById);
 	app.delete('/api/publishedbestiaries/:id/comments/:commentId', publishedBestiaries.deleteCommentById);
+//Standard CRUD
+app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
+app.post('/api/publishedbestiaries', publishedBestiaries.create);
+app.put('/api/publishedbestiaries/:id', publishedBestiaries.updateById);
+app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 //Users
 app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);
 app.get('/api/users/:id/publishedbestiaries/:page', publishedBestiaries.findByOwner);

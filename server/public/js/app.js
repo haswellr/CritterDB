@@ -28,7 +28,9 @@ myApp.config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
 			when('/index',{
-				templateUrl: 'assets/partials/index.html'
+				templateUrl: 'assets/partials/index.html',
+				controller: 'publishedBestiaryCtrl',
+				resolve: publishedBestiaryCtrl.resolveHomePage
 			}).
 			when('/login',{
 				templateUrl: 'assets/partials/account/login.html',
@@ -37,6 +39,11 @@ myApp.config(['$routeProvider',
 			when('/signup',{
 				templateUrl: 'assets/partials/account/signup.html',
 				controller: 'userCtrl'
+			}).
+			when('/home',{
+				templateUrl: 'assets/partials/bestiary/list.html',
+				controller: 'bestiaryCtrl',
+				resolve: bestiaryCtrl.resolve
 			}).
 			when('/bestiary/view/:bestiaryId',{
 				templateUrl: 'assets/partials/bestiary/view.html',
@@ -94,6 +101,6 @@ myApp.config(['$routeProvider',
 				resolve: updateUserCtrl.resolve
 			}).
 			otherwise({
-				redirectTo: '/bestiary/list'
+				redirectTo: '/index'
 			});
 	}]);
