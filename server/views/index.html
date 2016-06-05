@@ -42,12 +42,18 @@
     <md-toolbar ng-controller="headerCtrl" class="header">
       <div class="md-toolbar-tools">
         <div ng-controller="userCtrl" layout="row" flex>
-          <a class="logo-button" layout="row" layout-align="left center" ng-href="/">
-            <md-icon class="logo-icon" ng-style="logoStyle" md-svg-icon="{{logoIconPath}}"></md-icon>
-            <span class="logo md-toolbar-item md-breadcrumb md-headline">
+          <span class="logo-button" layout="row" layout-align="left center">
+            <a class="bestiaries-button logo md-toolbar-item md-breadcrumb md-headline" ng-href="/#/publishedbestiary/list/recent">
+              bestiaries
+            </a>
+            <a class="logo md-toolbar-item md-breadcrumb md-headline" ng-href="/">
+              <md-icon class="logo-icon" ng-style="logoStyle" md-svg-icon="{{logoIconPath}}"></md-icon>
               CritterDB
-            </span>
-          </a>
+            </a>
+            <a class="critters-button logo md-toolbar-item md-breadcrumb md-headline" ng-href="/#/bestiary/list">
+              my critters
+            </a>
+          </span>
           <md-menu ng-show="getCurrentUser()">
             <md-button class="user-dropdown" aria-label="User menu" ng-click="$mdOpenMenu($event)">
               <span hide show-gt-sm>

@@ -455,26 +455,37 @@ button.continue-button {
   margin-top: -3px;
 }
 
-.header a.logo-button {
+.header .logo-button {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.header span.logo {
+.header .logo {
   margin-left: 6px;
   margin-right: 6px;
   font-family: Norwester, Sans-Serif;
   color: #fff;
 }
 
-.header md-icon.logo-icon {
+.header .logo-icon {
   color: #fff;
   width: 36px;
   height: 36px;
   margin-top: -4px;
   margin-left: 0px;
   transition: margin-top .75s ease-out;
+}
+
+.header .bestiaries-button {
+  margin-right: 40px;
+  font-size: 20px;
+  padding-left: 14px; /*to balance vs right side*/
+}
+
+.header .critters-button {
+  margin-left: 40px;
+  font-size: 20px;
 }
 
 div.no-creatures-area {
