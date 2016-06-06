@@ -125,8 +125,15 @@ exports.deleteById = function(req, res) {
                     Bestiary.findByIdAndRemove(query, function(err, doc, result){
                         if(err)
                             res.status(400).send(err.errmsg);
-                        else
+                        else{
+                            //Delete all creatures as well
+                            var deleteQuery = {
+                                bestiaryId: id
+                            };
+                            Creature.remove(deleteQuery).exec();
+                            //Don't wait on creature deletion to return
                             res.send(doc);
+                        }
                     });
                 }
             });

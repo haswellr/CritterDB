@@ -1,9 +1,9 @@
 
 
 Important/Current:
-- Implement public bestiaries
-	+ Create SRD bestiary and other 'starting' public bestiaries? Delete all testing ones.
 
+
+-Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them.
 -Bug: Challenge Rating step amount is always set to 1/8 at first, even if the value isn't starting at 1/8.
 -Add option to include/exclude description when saving critter as image.
 -Add option to set overall font size when saving critter as image
@@ -21,7 +21,6 @@ Important/Current:
 
 -Fill in CreatureData.senses (Darkvision 60ft., Darkvision 30ft., Tremorsense 60ft. etc);
 -Public Bestiaries (at least add public domain creature stat blocks somehow so that people can jump right in and use it)
--Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them.
 
 -Cross-browser - columns don't work on firefox, IE is totally untested.
 
