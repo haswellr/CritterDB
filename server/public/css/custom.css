@@ -809,6 +809,11 @@ div.body-area .home-page-left .published-bestiary-details h1 .md-button {
   top: 14px;
   margin-top: 0px;
 }
+@media (min-width:960px) {
+  div.body-area .home-page-left .published-bestiary-details h1 .md-button {
+    top: 24px;
+  }
+}
 
 div.body-area .home-page-left .published-bestiary-creatures {
   width: 100%;
