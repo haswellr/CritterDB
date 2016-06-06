@@ -27,10 +27,6 @@ app.use("/assets",express.static(path.join(__dirname,"dist")));
 app.get('/',function(req,res){
 	res.sendfile(path.join(__dirname+'/views/index.html'));
 });
-//TEMPORARY SCRIPTS. REMOVE THIS SHIT
-app.post('/api/createabunchofcreatures', creatures.createABunchOfCreatures);
-app.post('/api/parsesrdjson/:bestiaryId', creatures.parseSRDJson);
-//-----------------
 //Creatures
 app.get('/api/creatures/:id', creatures.findById);
 app.post('/api/creatures', creatures.create);
