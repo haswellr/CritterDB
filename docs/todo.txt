@@ -2,8 +2,6 @@
 
 Important/Current:
 - Implement public bestiaries
-	+ Home page front end showing bestiary of the week, recent published bestiaries, etc
-		- Fix location of 'View' button on Bestiary of the Week when in widescreen mode
 	+ Create SRD bestiary and other 'starting' public bestiaries? Delete all testing ones.
 
 -Bug: Challenge Rating step amount is always set to 1/8 at first, even if the value isn't starting at 1/8.
