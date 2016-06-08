@@ -618,7 +618,7 @@ exports.search = function(req, res) {
 }
 
 exports.findMostPopular = function(req, res) {
-    var age = req.query.age || 604800000;   //max age in milliseconds. default is 1 week.
+    var age = req.query.age || 2628000000;   //max age in milliseconds. default is 1 week.
     var page = Math.min(req.params.page || 1, MAX_PAGE);
     var sort = {
         popularity: -1
