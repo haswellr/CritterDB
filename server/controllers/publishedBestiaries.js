@@ -66,11 +66,12 @@ function getTrimmedBestiary(bestiary){
         name: bestiary.name,
         description: bestiary.description,
         owner: bestiary.owner,
-        numCreatures: bestiary.creatures.length,
         numLikes: bestiary.likes.length,
         numFavorites: bestiary.favorites.length,
         numComments: bestiary.comments.length
     };
+    if(bestiary.creatures)
+        trimmed.numCreatures = bestiary.creatures.length;
     return(trimmed);
 }
 
@@ -356,7 +357,10 @@ exports.findRecent = function(req, res) {
     var sort = {
         _id: -1
     };
-    PublishedBestiary.find().
+    var projection = {
+        'creatures': false  //we don't need creatures, don't get them
+    };
+    PublishedBestiary.find({},{'creatures':false}).
         sort(sort).
         skip(PAGE_SIZE * (page-1)).
         limit(PAGE_SIZE).
