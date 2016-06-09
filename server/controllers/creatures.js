@@ -2,6 +2,7 @@
 //Get mongoose Creature model
 var Creature = require('../models/creature');
 var Bestiary = require('../models/bestiary');
+var PublishedBestiary = require('../models/publishedBestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 
@@ -24,16 +25,55 @@ var authenticateBestiaryByOwner = function(req, bestiary, callback){
     }
 }
 
+var authenticatePublishedBestiaryByOwner = function(req, publishedBestiary, callback){
+    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    if(token){
+        jwt.verify(token,config.secret,function(err,decoded){
+            if(err)
+                callback("Failed to authenticate token.");
+            else{
+                var ownerId = publishedBestiary.owner._id || publishedBestiary.owner;
+                if(decoded._doc._id != ownerId)
+                    callback("Not authorized for access.");
+                else
+                    callback(null);
+            }
+        });
+    }
+    else{
+        callback("No token provided.");
+    }
+}
+
 var authenticateCreatureByBestiary = function(req, creature, callback){
-    var query = {'_id':creature.bestiaryId};
-    Bestiary.findOne(query, function(err, doc){
-        if(err)
-            callback(err.errmsg);
-        else if(doc)
-            authenticateBestiaryByOwner(req, doc, callback);
-        else
-            callback("Bestiary not found.");
-    });
+    if(creature.bestiaryId && creature.publishedBestiaryId){
+        setTimeout(callback("Creature cannot be in multiple bestiaries."));
+    }
+    else if(creature.bestiaryId){
+        var query = {'_id':creature.bestiaryId};
+        Bestiary.findOne(query, function(err, doc){
+            if(err)
+                callback(err.errmsg);
+            else if(doc)
+                authenticateBestiaryByOwner(req, doc, callback);
+            else
+                callback("Bestiary not found.");
+        });
+    }
+    else if(creature.publishedBestiaryId){
+        var query = {'_id':creature.publishedBestiaryId};
+        PublishedBestiary.findOne(query, function(err, doc){
+            if(err)
+                callback(err.errmsg);
+            else if(doc)
+                authenticatePublishedBestiaryByOwner(req, doc, callback);
+            else
+                callback("Published Bestiary not found.");
+        });
+    }
+    else{
+        setTimeout(callback(err.errmsg));
+    }
 }
 
 exports.findById = function(req, res) {

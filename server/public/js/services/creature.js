@@ -213,5 +213,31 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 	  }
   }
 
+  CreatureAPI.getAllForPublishedBestiary = function(publishedBestiaryId, success, error){
+  	if(currentBestiaryId==undefined || currentBestiaryId != publishedBestiaryId){	//if bestiary has changed, pull new data from server
+  		currentBestiaryId = publishedBestiaryId;	//update current bestiary
+  		this.cache.clear();							//and clear cache
+	    $resource("/api/publishedbestiaries/:id/creatures").query({ 'id': publishedBestiaryId}, (function(data){
+	    	for(var i=0;i<data.length;i++){
+	    		this.cache.add(data[i]._id,data[i]);
+	    		CreatureAPI.calculateCreatureDetails(data[i]);
+	    	}
+	    	if(success)
+	    		success(data);
+	    }).bind(this),error);
+	  }
+	  else {		//if bestiary hasn't changed, get data from cache
+	  	var allCreatures = this.cache.getAll();
+	  	var bestiaryCreatures = [];
+	  	for(var i=0;i<allCreatures.length;i++){
+	  		if(allCreatures[i].publishedBestiaryId == publishedBestiaryId)
+	  			bestiaryCreatures.push(allCreatures[i]);
+	  	}
+	  	setTimeout(function(){
+	  		success(bestiaryCreatures);
+	  	});
+	  }
+  }
+
   return CreatureAPI;
 });

@@ -186,8 +186,14 @@ var CreatureSchema = new mongoose.Schema(
             required: true
         },
         bestiaryId: {
-          type: mongoose.Schema.Types.ObjectId,  //this can refer to a publishedBestiary or just bestiary
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Bestiary',
           index: true
+        },
+        publishedBestiaryId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'PublishedBestiary',
+            index: true
         },
         flavor: {
             type: CreatureFlavor,

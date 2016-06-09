@@ -139,6 +139,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		for(var i=0;i<creatures.length;i++){
 			var newCreature = angular.copy(creatures[i]);
 			newCreature._id = undefined;
+			newCreature.publishedBestiaryId = undefined;
 			newCreature.bestiaryId = $scope.bestiary._id;
 			Creature.create(newCreature,finishedCopy,finishedCopy);
 		}

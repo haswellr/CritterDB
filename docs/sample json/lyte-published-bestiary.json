@@ -1,0 +1,970 @@
+{
+    "_id": {
+        "$oid": "5755c9b2e525063f52c56d10"
+    },
+    "name": "Skeleton Collection",
+    "description": "This is collection of common monsters turned skeleton.\n\nSkeletons are undead.\n\nSkeletons have a vulnerability to bludgeoning and a resistance to poison. They are immune to the exhausted and poisoned condition.\n\nSkeletons retain their strength and dexterity. Their constitution, intelligence, wisdom and charisma is uniform with other animated skeletons.\n\nArmor class is reduced by 2 and equipped armor is reduced to armor scraps.",
+    "owner": {
+        "$oid": "56e2e2b598906acd073da4c3"
+    },
+    "popularity": 1,
+    "comments": [],
+    "favorites": [
+        {
+            "userId": {
+                "$oid": "56e2e2b598906acd073da4c3"
+            },
+            "_id": {
+                "$oid": "5755caa5e525063f52c56d13"
+            }
+        }
+    ],
+    "likes": [
+        {
+            "userId": {
+                "$oid": "56e2e2b598906acd073da4c3"
+            },
+            "_id": {
+                "$oid": "5755caa1e525063f52c56d12"
+            }
+        }
+    ],
+    "creatures": [
+        {
+            "_id": {
+                "$oid": "5755b470e525063f52c56cf7"
+            },
+            "name": "Goblin Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 6,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Scimitar",
+                        "description": "<i>Melee Weapon Attack:<\/i> +4 to hit, reach 5 ft., one creature. <i>Hit:<\/i> 5 (1d6 + 2) slashing damage."
+                    },
+                    {
+                        "name": "Shortbow",
+                        "description": "<i>Ranged Weapon Attack:<\/i> +4 to hit, range 80/320 ft., one creature. <i>Hit:<\/i> 5 (1d6 + 2) piercing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Nimble Escape",
+                        "description": "The skeleton goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+                    }
+                ],
+                "experiencePoints": 50,
+                "challengeRating": 0.25,
+                "languages": [
+                    "Understands Common, Goblin, but cannot speak"
+                ],
+                "senses": [
+                    "darkvision 60ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 14,
+                    "strength": 8
+                },
+                "speed": "30 ft.",
+                "numHitDie": 2,
+                "armorClass": 13,
+                "armorType": "Armor Scraps, Shield",
+                "alignment": "Lawful Evil",
+                "race": "Undead",
+                "size": "Small"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755b60de525063f52c56cf9"
+            },
+            "name": "Goblin Boss Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 6,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [
+                    {
+                        "name": "Redirect Attack.",
+                        "description": "When a creature the goblin can see targets it with an attack, the goblin chooses another goblin within 5 feet of it. The two goblins swap places, and the chosen goblin becomes the target instead."
+                    }
+                ],
+                "actions": [
+                    {
+                        "name": "Multiattack",
+                        "description": "The goblin makes two attacks with its scimitar. The second attack has disadvantage."
+                    },
+                    {
+                        "name": "Scimitar",
+                        "description": "<i>Melee Weapon Attack:<\/i> +4 to hit, reach 5 ft., one creature. <i>Hit:<\/i> 5 (1d6 + 2) slashing damage."
+                    },
+                    {
+                        "name": "Shortbow",
+                        "description": "<i>Ranged Weapon Attack:<\/i> +4 to hit, range 80/320 ft., one creature. <i>Hit:<\/i> 5 (1d6 + 2) piercing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Nimble Escape",
+                        "description": "The skeleton goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+                    }
+                ],
+                "experiencePoints": 200,
+                "challengeRating": 1,
+                "languages": [
+                    "Understands Common, Goblin, but cannot speak"
+                ],
+                "senses": [
+                    "darkvision 60ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [
+                    {
+                        "name": "Stealth",
+                        "proficient": false,
+                        "value": 6
+                    }
+                ],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 14,
+                    "strength": 10
+                },
+                "speed": "30 ft.",
+                "numHitDie": 6,
+                "armorClass": 15,
+                "armorType": "Armor Scraps, Shield",
+                "alignment": "Lawful Evil",
+                "race": "Undead",
+                "size": "Small"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755b96ce525063f52c56cfd"
+            },
+            "name": "Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 8,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Shortsword",
+                        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+                    },
+                    {
+                        "name": "Shortbow",
+                        "description": "Ranged Weapon Attack: +4 to hit, range 80/320 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+                    }
+                ],
+                "additionalAbilities": [],
+                "experiencePoints": 50,
+                "challengeRating": 0.25,
+                "languages": [
+                    "understands all languages it spoke in life but can't speak"
+                ],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [],
+                "damageVulnerabilities": [
+                    "bludgeoning"
+                ],
+                "skills": [],
+                "savingThrows": [],
+                "proficiencyBonus": 0,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 14,
+                    "strength": 10
+                },
+                "speed": "30 ft.",
+                "numHitDie": 2,
+                "armorClass": 13,
+                "armorType": "",
+                "alignment": "lawful evil",
+                "race": "undead",
+                "size": "Medium"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755b96ce525063f52c56cfe"
+            },
+            "name": "Halfling Guard Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 6,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Spear",
+                        "description": "Melee or Ranged Weapon Attack: +3 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d6 + 1) piercing damage or 5 (1d8 + 1) piercing damage if used with two hands to make a melee attack."
+                    }
+                ],
+                "additionalAbilities": [],
+                "experiencePoints": 25,
+                "challengeRating": 0.125,
+                "languages": [
+                    "Understands Common, Halfling, but cannot speak"
+                ],
+                "senses": [],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [
+                    {
+                        "name": "Perception",
+                        "value": 2,
+                        "proficient": false
+                    }
+                ],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 12,
+                    "strength": 13
+                },
+                "speed": "25 ft.",
+                "numHitDie": 2,
+                "armorClass": 14,
+                "armorType": "Armor Scraps, Shield",
+                "alignment": "Lawful Evil",
+                "race": "Undead (Halfling)",
+                "size": "Small"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755b96ce525063f52c56cff"
+            },
+            "name": "Hobgoblin Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 8,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Longsword",
+                        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d8 + 1) slashing damage, or 6 (1d10 + 1) slashing damage if used with two hands."
+                    },
+                    {
+                        "name": "Longbow",
+                        "description": "Ranged Weapon Attack: +3 to hit, range 150/600 ft., one target. Hit: 5 (1d8 + 1) piercing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Martial Advantage",
+                        "description": "Once per turn, the hobgoblin skeleton can deal an extra 7 (2d6) damage to a creature it hits with a weapon attack if that creature is within 5 feet of an ally of the hobgoblin skeleton that isn\u2019t incapacitated."
+                    }
+                ],
+                "experiencePoints": 100,
+                "challengeRating": 0.5,
+                "languages": [
+                    "Common",
+                    "Goblin"
+                ],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 12,
+                    "strength": 13
+                },
+                "speed": "30 ft.",
+                "numHitDie": 2,
+                "armorClass": 16,
+                "armorType": "Armor Scraps, Shield",
+                "alignment": "Lawful Evil",
+                "race": "Undead (Goblinoid)",
+                "size": "Medium"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755b96ce525063f52c56d00"
+            },
+            "name": "Ogre Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 10,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Greatclub",
+                        "description": "Melee Weapon Attack: +6 to hit, reach 5 ft., one target. Hit: 13 (2d8 + 4) bludgeoning damage."
+                    },
+                    {
+                        "name": "Javelin",
+                        "description": "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 11 (2d6 + 4) piercing damage."
+                    }
+                ],
+                "additionalAbilities": [],
+                "experiencePoints": 450,
+                "challengeRating": 2,
+                "languages": [
+                    "Common",
+                    "Giant"
+                ],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 8,
+                    "strength": 19
+                },
+                "speed": "40 ft.",
+                "numHitDie": 7,
+                "armorClass": 9,
+                "armorType": "",
+                "alignment": "Lawful Evil",
+                "race": "Undead",
+                "size": "Large"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755c498e525063f52c56d0a"
+            },
+            "name": "Kobold Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 6,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Dagger",
+                        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 4 (1d4 + 2) piercing damage."
+                    },
+                    {
+                        "name": "Sling",
+                        "description": "Ranged Weapon Attack: +4 to hit, range 30/120 ft., one target. Hit: 4 (1d4 + 2) bludgeoning damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Sunlight Sensitivity",
+                        "description": "While in sunlight, the kobold skeleton has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+                    },
+                    {
+                        "name": "Pack Tactics",
+                        "description": "The kobold skeleton has advantage on an attack roll against a creature if at least one of the kobold skeleton's allies is within 5 feet of the creature and the ally isn't incapacitated ."
+                    }
+                ],
+                "experiencePoints": 25,
+                "challengeRating": 0.125,
+                "languages": [
+                    "Understands",
+                    "Common",
+                    "Draconic",
+                    "but cannot speak"
+                ],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 15,
+                    "strength": 7
+                },
+                "speed": "30 ft.",
+                "numHitDie": 2,
+                "armorClass": 10,
+                "armorType": "",
+                "alignment": "Lawful Evil",
+                "race": "Undead (Kobold)",
+                "size": "Small"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755c498e525063f52c56d0c"
+            },
+            "name": "Bugbear Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 8,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Morningstar",
+                        "description": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 11 (2d8 + 2) piercing damage."
+                    },
+                    {
+                        "name": "Javelin",
+                        "description": "Melee or Ranged Weapon Attack: +4 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 9 (2d6 + 2) piercing damage in melee or 5 (1d6 + 2) piercing damage at range."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Brute",
+                        "description": "A melee weapon deals one extra die of its damage when the bugbear skeleton hits with it."
+                    },
+                    {
+                        "name": "Suprise Attack",
+                        "description": "If the bugbear skeleton surprises a creature and hits it with an attack during the first round of combat, the target takes an extra 7 (2d6) damage from the attack."
+                    }
+                ],
+                "experiencePoints": 200,
+                "challengeRating": 1,
+                "languages": [
+                    "Understands",
+                    "Common",
+                    "Goblin",
+                    "but cannot speak"
+                ],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [
+                    {
+                        "name": "Stealth",
+                        "value": 6,
+                        "proficient": false
+                    },
+                    {
+                        "name": "Survival",
+                        "value": 2,
+                        "proficient": false
+                    }
+                ],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 14,
+                    "strength": 15
+                },
+                "speed": "30 ft.",
+                "numHitDie": 5,
+                "armorClass": 14,
+                "armorType": "Armor Scraps, Shield",
+                "alignment": "Lawful Evil",
+                "race": "Undead (goblinoid)",
+                "size": "Medium"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755c498e525063f52c56d0e"
+            },
+            "name": "Owlbear Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 10,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Multiattack",
+                        "description": "The owlbear makes two attacks: one with its beak and one with its claws."
+                    },
+                    {
+                        "name": "Beak",
+                        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one creature. Hit: 10 (1d10 + 5) piercing damage."
+                    },
+                    {
+                        "name": "Claws",
+                        "description": "Melee Weapon Attack: +7 to hit, reach 5 ft., one target. Hit: 14 (2d8 + 5) slashing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Keen Sight and Smell",
+                        "description": "The owlbear skeleton has advantage on Wisdom (Perception) checks that rely on sight or smell."
+                    }
+                ],
+                "experiencePoints": 700,
+                "challengeRating": 3,
+                "languages": [],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [
+                    {
+                        "name": "Perception",
+                        "value": 3,
+                        "proficient": false
+                    }
+                ],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 12,
+                    "strength": 20
+                },
+                "speed": "40 ft.",
+                "numHitDie": 7,
+                "armorClass": 11,
+                "armorType": "Natural Armor",
+                "alignment": "Lawful Evil",
+                "race": "Undead",
+                "size": "Large"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755c498e525063f52c56d0f"
+            },
+            "name": "Brown Bear Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 10,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Multiattack",
+                        "description": "The bear makes two attacks: one with its bite and one with its claws."
+                    },
+                    {
+                        "name": "Bite",
+                        "description": "Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 8 (1d8 + 4) piercing damage."
+                    },
+                    {
+                        "name": "Claws",
+                        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 11 (2d6 + 4) slashing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Keen Smell",
+                        "description": "The brown bear skeleton has advantage on Wisdom (perception) checks that rely on smell."
+                    }
+                ],
+                "experiencePoints": 200,
+                "challengeRating": 1,
+                "languages": [],
+                "senses": [],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [
+                    {
+                        "name": "Perception",
+                        "value": 3,
+                        "proficient": false
+                    }
+                ],
+                "savingThrows": [],
+                "proficiencyBonus": 1,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 10,
+                    "strength": 19
+                },
+                "speed": "40 ft., climb 30 ft.",
+                "numHitDie": 4,
+                "armorClass": 9,
+                "armorType": "Natural Armor",
+                "alignment": "Lawful Evil",
+                "race": "Undead",
+                "size": "Large"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755c498e525063f52c56d0d"
+            },
+            "name": "Black Bear Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 8,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Multiattack",
+                        "description": "The bear makes two attacks: one with its bite and one with its claws."
+                    },
+                    {
+                        "name": "Bite",
+                        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) piercing damage."
+                    },
+                    {
+                        "name": "Claws",
+                        "description": "Melee Weapon Attack: +3 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) slashing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Keen Smell",
+                        "description": "The black bear has advantage on Wisdom (perception) checks that rely on smell."
+                    }
+                ],
+                "experiencePoints": 100,
+                "challengeRating": 0.5,
+                "languages": [],
+                "senses": [],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 10,
+                    "strength": 15
+                },
+                "speed": "40 ft., climb 30 ft.",
+                "numHitDie": 3,
+                "armorClass": 9,
+                "armorType": "Natural Armor",
+                "alignment": "Lawful Evil",
+                "race": "Undead",
+                "size": "Medium"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        },
+        {
+            "_id": {
+                "$oid": "5755c498e525063f52c56d0b"
+            },
+            "name": "Orc Skeleton",
+            "bestiaryId": {
+                "$oid": "5755b454e525063f52c56cf6"
+            },
+            "__v": 0,
+            "stats": {
+                "hitDieSize": 8,
+                "legendaryActions": [],
+                "legendaryActionsPerRound": 3,
+                "reactions": [],
+                "actions": [
+                    {
+                        "name": "Greataxe",
+                        "description": "Melee Weapon Attack: +5 to hit, reach 5 ft., one target. Hit: 9 (1d12 + 3) slashing damage."
+                    },
+                    {
+                        "name": "Javelin",
+                        "description": "Melee or Ranged Weapon Attack: +5 to hit, reach 5 ft. or range 30/120 ft., one target. Hit: 6 (1d6 + 3) piercing damage."
+                    }
+                ],
+                "additionalAbilities": [
+                    {
+                        "name": "Aggressive",
+                        "description": "As a bonus action, the orc can move up to its speed toward a hostile creature that it can see."
+                    }
+                ],
+                "experiencePoints": 100,
+                "challengeRating": 0.5,
+                "languages": [
+                    "Understands",
+                    "Common",
+                    "Orc",
+                    "but cannot speak"
+                ],
+                "senses": [
+                    "darkvision 60 ft."
+                ],
+                "conditionImmunities": [
+                    "Exhaustion",
+                    "Poisoned"
+                ],
+                "damageImmunities": [],
+                "damageResistances": [
+                    "Poison"
+                ],
+                "damageVulnerabilities": [
+                    "Bludgeoning"
+                ],
+                "skills": [
+                    {
+                        "name": "Intimidation",
+                        "value": 2,
+                        "proficient": false
+                    }
+                ],
+                "savingThrows": [],
+                "proficiencyBonus": 2,
+                "abilityScores": {
+                    "charisma": 5,
+                    "wisdom": 8,
+                    "intelligence": 6,
+                    "constitution": 15,
+                    "dexterity": 12,
+                    "strength": 16
+                },
+                "speed": "30 ft.",
+                "numHitDie": 2,
+                "armorClass": 11,
+                "armorType": "Armor Scraps",
+                "alignment": "Lawful Evil",
+                "race": "Undead (orc)",
+                "size": "Medium"
+            },
+            "flavor": {
+                "description": "",
+                "environment": "",
+                "faction": ""
+            }
+        }
+    ],
+    "__v": 0
+}
