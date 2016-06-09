@@ -15,6 +15,19 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 	if($routeParams.bestiaryType && PublishedBestiary.listConstants[$routeParams.bestiaryType])
 		$scope.bestiaryType = PublishedBestiary.listConstants[$routeParams.bestiaryType].name;
 
+	$scope.bestiary.creaturesLoading = true;
+	var loadCreatures = function(){
+		if($scope.bestiary._id){
+			Creature.getAllForPublishedBestiary($scope.bestiary._id,function(data){
+				$scope.bestiary.creaturesLoading = false;
+				$scope.bestiary.creatures = data;
+				if(!$scope.$$phase)
+					$scope.$digest();
+			});
+		}
+	}
+	loadCreatures();
+
 	$scope.canInteract = function(){
 		return(Auth.user!=null);
 	}
@@ -124,6 +137,7 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 			var newCreature = angular.copy($scope.bestiary.creatures[i]);
 			newCreature._id = undefined;
 			newCreature.bestiaryId = createdBestiary._id;
+			newCreature.publishedBestiaryId = undefined;
 			Creature.create(newCreature,finishedCreatingCreature,finishedCreatingCreature);
 		}
 	}

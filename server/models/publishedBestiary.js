@@ -22,7 +22,6 @@ var PublishedBestiarySchema = new mongoose.Schema(
         select: '_id username'  //only get public fields
       }
     },
-    creatures: [Creature.schema],
     likes: [Like.schema],
     favorites: [Favorite.schema],
     comments: [Comment.schema],
