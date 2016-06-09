@@ -7,6 +7,7 @@ Important/Current:
 -Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them. Maybe we have them all in mini-form in 'grid view', and then you can hover/click on them to see them in a separate preview pane on the right (so we have grid + larger preview). This could be really cool. You could even toggle between views, but it would be locked in mini-mode if > 25 critters or something.
 -Issues with SRD database (see email from Alex)
 
+-Automate database backups somehow (at least make a batch file)
 -Bug: Critter icon in title starts down, goes up, then goes back down
 -Bug: Challenge Rating step amount is always set to 1/8 at first, even if the value isn't starting at 1/8.
 -Add option to include/exclude description when saving critter as image.
