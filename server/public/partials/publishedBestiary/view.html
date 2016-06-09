@@ -60,7 +60,7 @@
 </md-toolbar>
 
 <div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
-	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="column" layout-gt-sm="row" style="overflow:auto;" infinite-scroll="bestiaryCreaturePager.loadNextPage()" threshold="800" can-load="!bestiaryCreaturePager.busy">
+	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="column" layout-gt-sm="row" style="overflow:auto;"
 		<!-- SMALL SCREENS (Mobile) -->
 		<div hide-gt-sm>
 			<md-content class="published-bestiary-details md-padding">
@@ -123,7 +123,7 @@
 				<div ng-include="'assets/partials/publishedBestiary/comments.html'"></div>
 				<!-- - -->
 			</md-content>
-			<md-content style="width:50%;" infinite-scroll="bestiaryCreaturePager.loadNextPage()" threshold="800" can-load="!bestiaryCreaturePager.busy">
+			<md-content style="width:50%;">
 				<div class="fallingColumns">
 					<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
 				</div>
