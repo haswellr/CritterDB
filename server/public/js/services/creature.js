@@ -187,11 +187,23 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 	}
 
 	var currentBestiaryId = undefined;	//track the current bestiary - clear cache if it changes, otherwise cache things. This way we have one Bestiary's worth of creatures cached but no more - don't want to use too much memory.
+  var pagesAdded = {};
+  function updateCurrentBestiary(id,cache){
+  	currentBestiaryId = id;
+  	pagesAdded = {};
+  	cache.clear();
+  }
+  function isDataInCache(bestiaryId,page){
+  	return(currentBestiaryId != undefined &&
+  					bestiaryId == currentBestiaryId &&
+  					pagesAdded[page]);
+  }
+
   CreatureAPI.getAllForBestiary = function(bestiaryId, success, error){
-  	if(currentBestiaryId==undefined || currentBestiaryId != bestiaryId){	//if bestiary has changed, pull new data from server
-  		currentBestiaryId = bestiaryId;	//update current bestiary
-  		this.cache.clear();							//and clear cache
+  	if(!isDataInCache(bestiaryId,1)){	//if bestiary has changed, pull new data from server
+  		updateCurrentBestiary(bestiaryId,this.cache);	//update current bestiary
 	    $resource("/api/bestiaries/:id/creatures").query({ 'id': bestiaryId}, (function(data){
+	    	pagesAdded[1] = true;
 	    	for(var i=0;i<data.length;i++){
 	    		this.cache.add(data[i]._id,data[i]);
 	    		CreatureAPI.calculateCreatureDetails(data[i]);
@@ -213,11 +225,15 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 	  }
   }
 
-  CreatureAPI.getAllForPublishedBestiary = function(publishedBestiaryId, success, error){
-  	if(currentBestiaryId==undefined || currentBestiaryId != publishedBestiaryId){	//if bestiary has changed, pull new data from server
-  		currentBestiaryId = publishedBestiaryId;	//update current bestiary
-  		this.cache.clear();							//and clear cache
-	    $resource("/api/publishedbestiaries/:id/creatures").query({ 'id': publishedBestiaryId}, (function(data){
+  CreatureAPI.getAllForPublishedBestiary = function(publishedBestiaryId, page, success, error){
+  	if(!isDataInCache(publishedBestiaryId,page)){	//if bestiary has changed, pull new data from server
+  		updateCurrentBestiary(publishedBestiaryId,this.cache);	//update current bestiary
+  		var query = {
+  			'id': publishedBestiaryId,
+  			'page': page
+  		};
+	    $resource("/api/publishedbestiaries/:id/creatures/:page").query(query, (function(data){
+	    	pagesAdded[page] = true;
 	    	for(var i=0;i<data.length;i++){
 	    		this.cache.add(data[i]._id,data[i]);
 	    		CreatureAPI.calculateCreatureDetails(data[i]);
