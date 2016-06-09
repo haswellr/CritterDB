@@ -2,6 +2,7 @@
 //Get mongoose model
 var PublishedBestiary = require('../models/publishedBestiary');
 var Comment = require('../models/comment');
+var Creature = require('../models/creature');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 var users = require("../controllers/users");
@@ -194,6 +195,12 @@ exports.deleteById = function(req, res) {
                         if(err)
                             res.status(400).send(err.errmsg);
                         else{
+                            //Delete all creatures as well
+                            var deleteQuery = {
+                                publishedBestiaryId: id
+                            };
+                            Creature.remove(deleteQuery).exec();
+                            //Don't wait on creature deletion to return
                             res.send(doc);
                         }
                     });
@@ -648,3 +655,16 @@ exports.findMostPopular = function(req, res) {
             }
         });
 }
+
+exports.findCreaturesByBestiary = function(req, res) {
+    var id = req.params.id;
+    var query = {
+        'publishedBestiaryId':id
+    };
+    Creature.find(query, function(err, docs){
+        if(err)
+            res.status(400).send(err.errmsg);
+        else
+            res.send(docs);
+    });
+};

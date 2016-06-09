@@ -2,34 +2,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
 
   var PublishedBestiaryAPI = new CachedResourceAPI("/api/publishedbestiaries/:id");
 
-  PublishedBestiaryAPI.get = function(id, success, error){
-		CachedResourceAPI.prototype.get.call(this, id, function(data){
-			for(var i=0;i<data.creatures.length;i++)
-				Creature.calculateCreatureDetails(data.creatures[i]);
-			if(success)
-				success(data);
-		}, error);
-	}
-
 	delete [PublishedBestiaryAPI.getAll];
-
-	PublishedBestiaryAPI.create = function(data, success, error){
-		CachedResourceAPI.prototype.create.call(this, data, function(data){
-			for(var i=0;i<data.creatures.length;i++)
-				Creature.calculateCreatureDetails(data.creatures[i]);
-			if(success)
-				success(data);
-		}, error);
-	}
-
-	PublishedBestiaryAPI.update = function(id, data, success, error){
-		CachedResourceAPI.prototype.update.call(this, id, data, function(data){
-			for(var i=0;i<data.creatures.length;i++)
-				Creature.calculateCreatureDetails(data.creatures[i]);
-			if(success)
-				success(data);
-		}, error);
-	}
 
 	PublishedBestiaryAPI.like = function(id, success, error){
 		$resource("/api/publishedbestiaries/:id/likes").save({'id':id},"",(function(data){
@@ -152,12 +125,7 @@ angular.module('myApp').factory("PublishedBestiary", function(CachedResourceAPI,
       	isArray: false
       }
 		};
-    $resource("/api/publishedbestiaries/mostpopular",{},resourceOptions).query({}, function(data){
-    	for(var i=0;i<data.creatures.length;i++)
-				Creature.calculateCreatureDetails(data.creatures[i]);
-      if(success)
-        success(data);
-    },error);
+    $resource("/api/publishedbestiaries/mostpopular",{},resourceOptions).query({}, success,error);
   }
 
   PublishedBestiaryAPI.listConstants = {
