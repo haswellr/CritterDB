@@ -6,7 +6,7 @@ var homePageCtrl = function ($scope,selectedBestiary,bestiaryList,PublishedBesti
 	$scope.selectedBestiary.creaturesLoading = true;
 	var loadCreatures = function(){
 		if($scope.selectedBestiary._id){
-			Creature.getAllForPublishedBestiary($scope.selectedBestiary._id,function(data){
+			Creature.getAllForPublishedBestiary($scope.selectedBestiary._id,1,function(data){
 				$scope.selectedBestiary.creaturesLoading = false;
 				$scope.selectedBestiary.creatures = data;
 				if(!$scope.$$phase)

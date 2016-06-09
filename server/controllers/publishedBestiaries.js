@@ -9,6 +9,7 @@ var users = require("../controllers/users");
 var mongodb = require("mongodb");
 var PAGE_SIZE = 10;
 var MAX_PAGE = 20;
+var CREATURE_PAGE_SIZE = 25;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -364,10 +365,7 @@ exports.findRecent = function(req, res) {
     var sort = {
         _id: -1
     };
-    var projection = {
-        'creatures': false  //we don't need creatures, don't get them
-    };
-    PublishedBestiary.find({},{'creatures':false}).
+    PublishedBestiary.find().
         sort(sort).
         skip(PAGE_SIZE * (page-1)).
         limit(PAGE_SIZE).
@@ -656,15 +654,30 @@ exports.findMostPopular = function(req, res) {
         });
 }
 
+//User query parameters to filter (right now only by name)
 exports.findCreaturesByBestiary = function(req, res) {
+    var page = req.params.page;
     var id = req.params.id;
+    var sort = {
+        name: 1
+    };
     var query = {
         'publishedBestiaryId':id
     };
-    Creature.find(query, function(err, docs){
-        if(err)
-            res.status(400).send(err.errmsg);
-        else
-            res.send(docs);
-    });
+    if(req.query.name)
+        query.name = req.query.name;
+    var startTime = new Date().getTime();
+    Creature.find(query).
+        sort(sort).
+        skip(CREATURE_PAGE_SIZE * (page-1)).
+        limit(CREATURE_PAGE_SIZE).
+        exec(function(err, docs){
+            if(err)
+                res.status(400).send(err.errmsg);
+            else{
+                var elapsedTime = (new Date().getTime()) - startTime;
+                console.log("findCreatures elapsed time: "+elapsedTime);
+                res.send(docs);
+            }
+        });
 };

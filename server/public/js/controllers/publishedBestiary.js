@@ -1,5 +1,5 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryPager,UserPublishedBestiaryPager,SearchPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryCreaturePager,PublishedBestiaryPager,UserPublishedBestiaryPager,SearchPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
 	$scope.owner = owner;
@@ -16,11 +16,19 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		$scope.bestiaryType = PublishedBestiary.listConstants[$routeParams.bestiaryType].name;
 
 	$scope.bestiary.creaturesLoading = true;
+
+	//Recursively loads all creatures
+	function loadNextPage(){
+		$scope.bestiaryCreaturePager.loadNextPage(loadNextPage);
+	}
+
 	var loadCreatures = function(){
 		if($scope.bestiary._id){
-			Creature.getAllForPublishedBestiary($scope.bestiary._id,function(data){
+			Creature.getAllForPublishedBestiary($scope.bestiary._id,1,function(data){
 				$scope.bestiary.creaturesLoading = false;
 				$scope.bestiary.creatures = data;
+				$scope.bestiaryCreaturePager = new PublishedBestiaryCreaturePager($scope.bestiary._id,$scope.bestiary.creatures,2);
+				loadNextPage();
 				if(!$scope.$$phase)
 					$scope.$digest();
 			});

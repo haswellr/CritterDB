@@ -67,7 +67,7 @@
 					</md-content>
 					<md-content class="published-bestiary-creatures">
 						<div class="fallingColumns">
-							<ng-stat-block ng-repeat="creature in selectedBestiary.creatures | limitTo:8" creature="creature" class="fallingColumnsItem"></ng-stat-block>
+							<ng-stat-block ng-repeat="creature in selectedBestiary.creatures | orderBy:'name' | limitTo:8" creature="creature" class="fallingColumnsItem"></ng-stat-block>
 						</div>
 					</md-content>
 					<div hide-gt-sm style="width:100%;">
