@@ -1,7 +1,20 @@
 
-var homePageCtrl = function ($scope,selectedBestiary,bestiaryList,PublishedBestiary,CreatureClipboard,$location) {
+var homePageCtrl = function ($scope,selectedBestiary,bestiaryList,PublishedBestiary,CreatureClipboard,$location,Creature) {
 	$scope.selectedBestiary = selectedBestiary;
 	$scope.bestiaryList = bestiaryList;
+
+	$scope.selectedBestiary.creaturesLoading = true;
+	var loadCreatures = function(){
+		if($scope.selectedBestiary._id){
+			Creature.getAllForPublishedBestiary($scope.selectedBestiary._id,function(data){
+				$scope.selectedBestiary.creaturesLoading = false;
+				$scope.selectedBestiary.creatures = data;
+				if(!$scope.$$phase)
+					$scope.$digest();
+			});
+		}
+	}
+	loadCreatures();
 
 	$scope.CreatureClipboard = CreatureClipboard;
 
