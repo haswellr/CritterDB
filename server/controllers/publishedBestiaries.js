@@ -654,7 +654,6 @@ exports.findMostPopular = function(req, res) {
         });
 }
 
-//User query parameters to filter (right now only by name)
 exports.findCreaturesByBestiary = function(req, res) {
     var page = req.params.page;
     var id = req.params.id;
@@ -664,9 +663,6 @@ exports.findCreaturesByBestiary = function(req, res) {
     var query = {
         'publishedBestiaryId':id
     };
-    if(req.query.name)
-        query.name = req.query.name;
-    var startTime = new Date().getTime();
     Creature.find(query).
         sort(sort).
         skip(CREATURE_PAGE_SIZE * (page-1)).
@@ -675,8 +671,6 @@ exports.findCreaturesByBestiary = function(req, res) {
             if(err)
                 res.status(400).send(err.errmsg);
             else{
-                var elapsedTime = (new Date().getTime()) - startTime;
-                console.log("findCreatures elapsed time: "+elapsedTime);
                 res.send(docs);
             }
         });
