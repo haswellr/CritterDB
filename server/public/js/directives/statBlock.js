@@ -3,7 +3,7 @@ angular.module('myApp').directive('ngStatBlock', [ function () {
 		restrict: 'E',
 		scope: {
 			creature: '=creature',
-			size: '=size',
+			size: '@size',
 			creatureApi: '=creatureApi',
 			statBlockStyle: '&statBlockStyle',
 			hideCrTag: '=hideCrTag'
@@ -22,6 +22,20 @@ angular.module('myApp').directive('ngStatBlock', [ function () {
 			attrs.$observe("size",function(size){
 				setContentUrl();
 			});
+
+			scope.expand = function(){
+				if(attrs.size=="mini" || attrs.size=="preview"){
+					attrs.size = "";
+					setContentUrl();
+				}
+			}
+
+			scope.shrink = function(){
+				if(attrs.size!="mini"){
+					attrs.size = "mini";
+					setContentUrl();
+				}
+			}
 		},
 		template: '<div ng-include="contentUrl"></div>',
 	}

@@ -87,7 +87,7 @@
 			</md-content>
 			<md-content>
 				<div class="fallingColumns">
-					<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
+					<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="{{getStatBlockSize($index)}}"></ng-stat-block>
 				</div>
 			</md-content>
 			<!-- Comments -->
@@ -125,7 +125,7 @@
 			</md-content>
 			<md-content style="width:50%;">
 				<div class="fallingColumns">
-					<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="mini"></ng-stat-block>
+					<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="{{getStatBlockSize($index)}}"></ng-stat-block>
 				</div>
 			</md-content>
 		</div>

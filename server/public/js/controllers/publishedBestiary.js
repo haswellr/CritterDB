@@ -40,6 +40,14 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		return(Auth.user!=null);
 	}
 
+	$scope.getStatBlockSize = function(index){
+		if($scope.bestiary.creatures && $scope.bestiary.creatures.length>24){
+			return("mini");
+		}
+		else
+			return("");
+	}
+
 	$scope.creatureFilter = new CreatureFilter();
 	$scope.bestiaryListTypes = function(){
 		var bestiaryListTypes = [];
