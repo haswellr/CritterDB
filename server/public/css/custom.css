@@ -239,6 +239,17 @@ md-content.creature-clipboard .remove-mini-statblock {
   margin-left: 4px;
 }
 
+.stat-block-overlay section.side-menu button.expand {
+  height: 100%;
+  padding: 0px;
+}
+
+.stat-block-overlay section.side-menu button.expand md-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
 md-toolbar.inner-header {
   background-color: #fafafa;
 }
