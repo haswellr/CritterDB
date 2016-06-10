@@ -20,6 +20,29 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		description: bestiary.description+""
 	};
 
+	$scope.view = {
+		modes: [
+			{
+				id: "fallingColumns",
+				tooltip: "Falling Columns Mode",
+				icon: "view_column"
+			},
+			{
+				id: "previewList",
+				tooltip: "List & Preview Mode",
+				icon: "view_list"
+			}
+		],
+		current: "previewList",
+		changeTo: function(id){
+			$scope.view.current = id;
+		}
+	}
+
+	$scope.preview = {
+		creature: undefined
+	}
+
 	$scope.creatureFilter = new CreatureFilter();
 
 	$scope.creatureApi = new CreatureAPI();

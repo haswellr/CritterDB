@@ -3,7 +3,7 @@
   <div ng-if="creatureApi" class="stat-block-overlay" layout="column" layout-align="center center" ng-click="secondaryControls={}">
     <!-- Main Control Menu - bar on the right side -->
     <section layout="column" class="side-menu">
-      <md-button ng-click="shrink()" class="md-mini" aria-label="Shrink">
+      <md-button ng-click="shrink()" ng-if="!noResize" class="md-mini" aria-label="Shrink">
         <md-icon>expand_less</md-icon>
         <md-tooltip md-direction="left">
           Minimize
