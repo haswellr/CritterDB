@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI, $cookies) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -20,6 +20,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		description: bestiary.description+""
 	};
 
+	var VIEW_MODE_COOKIE = "bestiary-view-mode";
 	$scope.view = {
 		modes: [
 			{
@@ -33,9 +34,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 				icon: "view_list"
 			}
 		],
-		current: "previewList",
+		current: ($cookies.get(VIEW_MODE_COOKIE) || "previewList"),
 		changeTo: function(id){
 			$scope.view.current = id;
+			$cookies.put(VIEW_MODE_COOKIE,id);
 		}
 	}
 
