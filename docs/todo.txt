@@ -4,7 +4,6 @@ Important/Current:
 -Fix the slowdown when there are many creatures. This is caused because there are so many things being added to the DOM. One possible fix is to use the 'mini' stat block size and give users a smart way to expand them. Maybe we have them all in mini-form in 'grid view', and then you can hover/click on them to see them in a separate preview pane on the right (so we have grid + larger preview). This could be really cool. You could even toggle between views, but it would be locked in mini-mode if > 25 critters or something.
 	+ Save view mode to cookies and load it on start
 	+ Option on mobile to switch between 'full view' and 'mini view'
--BUG: Main menu sidenav overrides bestiary menu sidenav when on mobile (try opening bestiary menu sidenav while viewing bestiary on mobile)
 -Issues with SRD database (see email from Alex)
 
 -Automate database backups somehow (at least make a batch file)
