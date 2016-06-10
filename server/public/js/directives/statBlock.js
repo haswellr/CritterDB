@@ -6,7 +6,8 @@ angular.module('myApp').directive('ngStatBlock', [ function () {
 			size: '@size',
 			creatureApi: '=creatureApi',
 			statBlockStyle: '&statBlockStyle',
-			hideCrTag: '=hideCrTag'
+			hideCrTag: '=hideCrTag',
+			noResize: '=noResize'
 		},
 		link: function(scope, element, attrs) {
 			var setContentUrl = function(){

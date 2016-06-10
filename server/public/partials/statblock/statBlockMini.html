@@ -1,7 +1,7 @@
-<div class="stat-block">
+<div class="stat-block" ng-style="statBlockStyle()">
 	 <div class="stat-block-overlay" layout="column" layout-align="center center">
     <!-- Main Control Menu - bar on the right side -->
-    <section layout="column" class="side-menu">
+    <section ng-if="!noResize" layout="column" class="side-menu">
       <md-button ng-click="expand()" class="md-mini expand" aria-label="Expand">
         <md-icon>expand_more</md-icon>
         <md-tooltip md-direction="left">

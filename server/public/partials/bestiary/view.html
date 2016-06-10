@@ -63,7 +63,7 @@
 
 <div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
-		<md-content style="width:100%;">
+		<md-content style="width:100%;" layout="column" >
 			<div ng-if="(!bestiary.creatures || bestiary.creatures.length==0) && !bestiary.creaturesLoading" class="no-creatures-area">
 				<span>
 					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
@@ -75,8 +75,24 @@
 				</h2>
 				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
 			</div>
-			<div class="fallingColumns">
-				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem"></ng-stat-block>
+			<div hide show-gt-xs ng-if="bestiary.creatures && bestiary.creatures.length>0" class="toggle-bestiary-view-area">
+				<md-button ng-repeat="viewMode in view.modes" ng-click="view.changeTo(viewMode.id)" ng-class="{'md-accent': (viewMode.id==view.current)}" class="md-icon-button md-mini">
+					<md-icon>{{viewMode.icon}}</md-icon>
+					<md-tooltip md-direction="left">
+		        {{viewMode.tooltip}}
+		      </md-tooltip>
+				</md-button>
+			</div>
+			<div class="fallingColumns" ng-if="view.current=='fallingColumns'">
+				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true"></ng-stat-block>
+			</div>
+			<div class="previewList" ng-if="view.current=='previewList'" layout="row" class="layout-row">
+				<md-content layout="column" class="creatures">
+					<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" ng-mouseover="preview.creature=creature" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="mini"></ng-stat-block>
+				</md-content>
+				<div hide show-gt-xs class="preview">
+					<ng-stat-block ng-show="preview.creature" creature="preview.creature" creature-api="creatureApi" no-resize="true"></ng-stat-block>
+				</div>
 			</div>
 		</md-content>
 
