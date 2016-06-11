@@ -30,19 +30,22 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		return(returnedVals);
 	}
 
+	function calculateCRStep(cr){
+		if(cr>1)
+			return 1;
+		else if(cr>0.5)
+			return 0.5;
+		else if(cr>0.25)
+			return 0.25;
+		else
+			return 0.125;
+	}
 	$scope.challengeRating = {
-		step: 0.125,
+		step: calculateCRStep($scope.creature.stats.challengeRating),
 		changed: function(){
 			if($scope.creature.stats && $scope.creature.stats.challengeRating){
 				//set new step
-				if($scope.creature.stats.challengeRating>1)
-					$scope.challengeRating.step = 1;
-				else if($scope.creature.stats.challengeRating>0.5)
-					$scope.challengeRating.step = 0.5;
-				else if($scope.creature.stats.challengeRating>0.25)
-					$scope.challengeRating.step = 0.25;
-				else
-					$scope.challengeRating.step = 0.125;
+				$scope.challengeRating.step = calculateCRStep($scope.creature.stats.challengeRating);
 				//fix up issues caused by dynamic step value
 				if($scope.creature.stats.challengeRating==1.5)
 					$scope.creature.stats.challengeRating = 2;
