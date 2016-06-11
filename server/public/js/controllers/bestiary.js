@@ -63,6 +63,8 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			var index = $scope.bestiary.creatures.indexOf(creature);
 			if(index!=-1)
 				$scope.bestiary.creatures.splice(index,1);
+			if($scope.preview.creature && $scope.preview.creature._id == creature._id)
+				$scope.preview.creature = undefined;
 		});
 	}
 

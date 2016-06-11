@@ -1,7 +1,6 @@
 
 
 Important/Current:
--BUG: Deleting the currently previewed creature in preview & list mode does not remove the currently previewed creature
 -BUG: If you create a new creature then click back on the bestiary name in the toolbar, the new creature doesn't show in the bestiary list
 
 -Automate database backups somehow (at least make a batch file)
