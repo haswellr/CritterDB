@@ -1,8 +1,8 @@
 
 
 Important/Current:
--BUG: If you create a new creature then click back on the bestiary name in the toolbar, the new creature doesn't show in the bestiary list
 
+-BUG: If you create a new creature then click back on the bestiary name in the toolbar, the new creature doesn't show in the bestiary list. UPDATE: This happens because the creature hasn't actually saved before going back to the previous page.
 -Automate database backups somehow (at least make a batch file)
 -Bug: Critter icon in title starts down, goes up, then goes back down
 -Add option to include/exclude description when saving critter as image.
@@ -14,7 +14,7 @@ Important/Current:
 -Upgrade to more robust database service
 -About page
 -UI is not working correctly on Chrome or Safari on iOS.
--Bug: Sometimes when in the create/edit creature page the current bestiary is not shown on the inner header so it is difficult/confusing to go back to it
+-Bug: Sometimes when in the create/edit creature page the current bestiary is not shown on the inner header so it is difficult/confusing to go back to it. UPDATE: This happens when using 'Save & Continue', probably because it overrides current creature who no longer has 'creature.bestiary.name' field.
 
 -Autofill special abilities for races as well
 -Maybe alignment should be an autofill not a select?
