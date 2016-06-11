@@ -1,14 +1,11 @@
 
 
 Important/Current:
--Issues with SRD database (see email from Alex)
-	+ Alignment field is formatted incorrectly (probably case issue - check enum in model)
-	+ Passive perception is listed as a sense so it is duplicated in the final view
-	+ ALL abilities are missing!
+-BUG: Deleting the currently previewed creature in preview & list mode does not remove the currently previewed creature
+-BUG: If you create a new creature then click back on the bestiary name in the toolbar, the new creature doesn't show in the bestiary list
 
 -Automate database backups somehow (at least make a batch file)
 -Bug: Critter icon in title starts down, goes up, then goes back down
--Bug: Challenge Rating step amount is always set to 1/8 at first, even if the value isn't starting at 1/8.
 -Add option to include/exclude description when saving critter as image.
 -Add option to set overall font size when saving critter as image
 -Print bestiary functionality

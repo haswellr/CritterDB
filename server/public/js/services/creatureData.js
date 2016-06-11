@@ -10,7 +10,7 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 		"Tiefling","Abberation","Beast","Celestial","Construct","Dragon",
 		"Elemental","Fey","Fiend","Giant","Humanoid","Monstrosity","Ooze","Plant",
 		"Undead"];
-	CreatureData.alignments = ["Unaligned","Lawful Good","Lawful Neutral",
+	CreatureData.alignments = ["Unaligned","Any Alignment","Lawful Good","Lawful Neutral",
 		"Lawful Evil","Neutral Good","Neutral","Neutral Evil","Chaotic Good",
 		"Chaotic Neutral","Chaotic Evil"];
 	CreatureData.armorTypes = ["Natural Armor","Padded","Leather",
