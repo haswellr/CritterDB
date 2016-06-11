@@ -675,3 +675,28 @@ exports.findCreaturesByBestiary = function(req, res) {
             }
         });
 };
+
+
+//=================================================================
+//DEV TOOLS
+
+exports.deleteCreaturesInBestiary = function(req, res) {
+    var page = req.params.page;
+    var id = req.params.id;
+    var sort = {
+        name: 1
+    };
+    var query = {
+        'publishedBestiaryId':id
+    };
+    Creature.remove(query).
+        exec(function(err, docs){
+            if(err)
+                res.status(400).send(err.errmsg);
+            else{
+                res.send(docs);
+            }
+        });
+};
+
+//===================================================================

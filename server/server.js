@@ -27,6 +27,12 @@ app.use("/assets",express.static(path.join(__dirname,"dist")));
 app.get('/',function(req,res){
 	res.sendfile(path.join(__dirname+'/views/index.html'));
 });
+//DEV TOOLS. DO NOT GO LIVE WITH THESE IN.
+app.post('/api/createmanycreatures', creatures.createABunchOfCreatures);
+app.post('/api/parsesrdjson/:bestiaryId', creatures.parseSRDJson);
+app.post('/api/parsesrdjsonpublic/:publicBestiaryId', creatures.parseSRDJsonPublic);
+app.post('/api/deletepublicbestiarycreatures/:id', publishedBestiaries.deleteCreaturesInBestiary);
+//-----------------
 //Creatures
 app.get('/api/creatures/:id', creatures.findById);
 app.post('/api/creatures', creatures.create);
