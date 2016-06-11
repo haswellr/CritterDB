@@ -2,6 +2,9 @@
 
 Important/Current:
 -Issues with SRD database (see email from Alex)
+	+ Alignment field is formatted incorrectly (probably case issue - check enum in model)
+	+ Passive perception is listed as a sense so it is duplicated in the final view
+	+ ALL abilities are missing!
 
 -Automate database backups somehow (at least make a batch file)
 -Bug: Critter icon in title starts down, goes up, then goes back down
