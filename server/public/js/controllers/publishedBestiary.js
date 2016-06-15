@@ -97,7 +97,7 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 
 	$scope.bestiarySortFunction = function(bestiary) {
 		if($routeParams.bestiaryType=="popular")
-			return(-1*bestiary.popularity);
+			return(bestiary.popularity);
 		else
 			return(-1*parseInt("0x"+bestiary._id));
 	}
