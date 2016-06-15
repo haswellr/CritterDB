@@ -12,6 +12,14 @@
     </md-toolbar>
     <md-dialog-content>
       <div class="md-dialog-content">
+        <md-input-container class="md-block" style="margin-bottom:38px;">
+          <label>Bestiary</label>
+          <md-select ng-model="selectedBestiary" ng-model-options="{ trackBy: '$value._id' }">
+            <md-option ng-repeat="bestiary in ownedPublishedBestiaries" ng-value="bestiary">
+              {{bestiary.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
         <md-input-container class="md-block">
           <label>Name</label>
           <input ng-model="publishedBestiary.name" name="name" required md-minlength="1" md-maxlength="50">

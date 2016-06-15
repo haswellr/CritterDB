@@ -58,8 +58,9 @@ app.delete('/api/bestiaries/:id', bestiaries.deleteById);
 	app.post('/api/publishedbestiaries/:id/comments', publishedBestiaries.createComment);
 	app.put('/api/publishedbestiaries/:id/comments/:commentId', publishedBestiaries.updateCommentById);
 	app.delete('/api/publishedbestiaries/:id/comments/:commentId', publishedBestiaries.deleteCommentById);
-	//References
+	//Creatures
 	app.get('/api/publishedbestiaries/:id/creatures/:page', publishedBestiaries.findCreaturesByBestiary);
+	app.delete('/api/publishedbestiaries/:id/creatures', publishedBestiaries.deleteCreaturesByBestiary);
 //Standard CRUD
 app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
 app.post('/api/publishedbestiaries', publishedBestiaries.create);

@@ -255,5 +255,17 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 	  }
   }
 
+  CreatureAPI.deleteAllForPublishedBestiary = function(publishedBestiaryId, success, error){
+		var query = {
+			'id': publishedBestiaryId
+		};
+    $resource("/api/publishedbestiaries/:id/creatures").delete(query, (function(data){
+    	if(publishedBestiaryId==currentBestiaryId)
+    		pagesAdded = {};
+    	if(success)
+    		success(data);
+    }).bind(this),error);
+  }
+
   return CreatureAPI;
 });
