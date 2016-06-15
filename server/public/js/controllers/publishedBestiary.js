@@ -173,6 +173,11 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		return(Auth.user && Auth.user._id == $scope.bestiary.owner._id);
 	}
 
+	$scope.isOwnerOfComment = function(comment){
+		console.log("comment author id: "+comment.author._id+", current user id: "+Auth.user._id);
+		return(Auth.user && Auth.user._id == comment.author._id);
+	}
+
 	$scope.isLiked = function(){
 		if($scope.bestiary.likes){
 			for(var i=0;i<$scope.bestiary.likes.length;i++){

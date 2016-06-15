@@ -5,13 +5,13 @@
 		<div class="md-list-item-text" layout="column">
 			<p>
 				<a class="username" style="color:inherit;" ng-href="{{getUserBestiaryListPath(comment.author)}}">{{comment.author.username}}</a>
-				<span ng-if="isOwner()" class="controls">
+				<span ng-if="isOwnerOfComment(comment)" class="controls">
 					<md-button ng-click="editComment(comment)" class="md-icon-button">
-						<md-icon ng-if="isOwner()">mode_edit</md-icon>
+						<md-icon >mode_edit</md-icon>
 	          <md-tooltip>Edit</md-tooltip>
 					</md-button>
 					<md-button ng-click="deleteComment($event,comment._id)" class="md-icon-button">
-						<md-icon ng-if="isOwner()">delete</md-icon>
+						<md-icon>delete</md-icon>
 	          <md-tooltip>Delete</md-tooltip>
 					</md-button>
 				</span>
