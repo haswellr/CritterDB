@@ -8,26 +8,44 @@ var publishBestiaryCtrl = function ($scope,$mdDialog,baseBestiary,publishedBesti
 			'creatures': []				//define later upon creation
 		});
 
+	$scope.newBestiary = {
+		"_id": "NEW_BESTIARY",
+		"name": "PUBLISH NEW BESTIARY"
+	};
+	$scope.ownedPublishedBestiaries = [$scope.newBestiary];
+	$scope.selectedBestiary = publishedBestiary || $scope.newBestiary;
+
+	//Recursively gets all pages of owned bestiaries
+	function getOwnedPublishedBestiaries(page){
+		if(Auth.user && !publishedBestiary){
+			PublishedBestiary.getByUser(Auth.user._id,page,function(data){
+				if(data && data.length > 0){
+					for(var i=0;i<data.length;i++){
+						$scope.ownedPublishedBestiaries.push(data[i]);
+					}
+					getOwnedPublishedBestiaries(page + 1);
+				}
+			});
+		}
+	}
+	getOwnedPublishedBestiaries(1);
+
+	$scope.$watch("selectedBestiary",function(newValue,oldValue){
+		if(oldValue!=newValue){
+			if(newValue==$scope.newBestiary){
+				$scope.publishedBestiary.name = baseBestiary.name;
+				$scope.publishedBestiary.description = baseBestiary.description;
+				$scope.publishedBestiary._id = undefined;
+			}
+			else{
+				$scope.publishedBestiary = $scope.selectedBestiary;
+			}
+		}
+	},true);
+
 	function goToPublishedBestiary(id){
 		$location.url("/publishedbestiary/view/"+id);
 	}
-
-	/*
-	var copiedCount = 0;
-		var totalToCopy = $scope.bestiary.creatures.length;
-		var finishedCreatingCreature = function(){
-			copiedCount = copiedCount + 1;
-			if(copiedCount==totalToCopy){
-				$location.url("/bestiary/view/"+createdBestiary._id);
-			}
-		}
-		for(var i=0;i<$scope.bestiary.creatures.length;i++){
-			var newCreature = angular.copy($scope.bestiary.creatures[i]);
-			newCreature._id = undefined;
-			newCreature.bestiaryId = createdBestiary._id;
-			Creature.create(newCreature,finishedCreatingCreature,finishedCreatingCreature);
-		}
-		*/
 
 	function createCreaturesForBestiary(baseBestiary,publishedBestiary,success,failure){
 		Creature.getAllForBestiary(baseBestiary._id,function(data){
@@ -57,16 +75,34 @@ var publishBestiaryCtrl = function ($scope,$mdDialog,baseBestiary,publishedBesti
 	}
 
 	function publishBestiary(baseBestiary,publicBestiary,success,failure){
-		PublishedBestiary.create(publicBestiary,function(data){
-			var publishedBestiary = data;
-			createCreaturesForBestiary(baseBestiary,publishedBestiary,function(data){
-				success(publishedBestiary);
+		if(publicBestiary._id){	//just update existing bestiary
+			PublishedBestiary.update(publicBestiary._id,publicBestiary,function(data){
+				var publishedBestiary = data;
+				Creature.deleteAllForPublishedBestiary(publishedBestiary._id,function(data){
+					createCreaturesForBestiary(baseBestiary,publishedBestiary,function(data){
+						success(publishedBestiary);
+					},function(err){
+						failure(err);
+					});
+				},function(err){
+					failure(err);
+				});
 			},function(err){
 				failure(err);
 			});
-		},function(err){
-			failure(err);
-		});
+		}
+		else{	//make new bestiary
+			PublishedBestiary.create(publicBestiary,function(data){
+				var publishedBestiary = data;
+				createCreaturesForBestiary(baseBestiary,publishedBestiary,function(data){
+					success(publishedBestiary);
+				},function(err){
+					failure(err);
+				});
+			},function(err){
+				failure(err);
+			});
+		}
 	}
 
 	$scope.publish = function(ev){

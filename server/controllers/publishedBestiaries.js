@@ -675,3 +675,35 @@ exports.findCreaturesByBestiary = function(req, res) {
             }
         });
 };
+
+exports.deleteCreaturesByBestiary = function(req, res) {
+    var id = req.params.id;
+    var query = {'_id':id};
+
+    PublishedBestiary.findOne(query, function (err, doc) {
+        if(err) {
+            res.status(400).send(err.errmsg);
+        }
+        else if(doc){
+            authenticateBestiaryByOwner(req, doc, function(err){
+                if(err)
+                    res.status(400).send(err);
+                else{
+                    var deleteQuery = {
+                        publishedBestiaryId: id
+                    };
+                    Creature.remove(deleteQuery).exec(function(err, docs){
+                        if(err)
+                            res.status(400).send(err.errmsg);
+                        else{
+                            res.send(docs);
+                        }
+                    });
+                }
+            });
+        }
+        else{
+            res.status(400).send("Bestiary not found.");
+        }
+    });
+};
