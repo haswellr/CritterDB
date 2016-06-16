@@ -174,7 +174,6 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 	}
 
 	$scope.isOwnerOfComment = function(comment){
-		console.log("comment author id: "+comment.author._id+", current user id: "+Auth.user._id);
 		return(Auth.user && Auth.user._id == comment.author._id);
 	}
 
