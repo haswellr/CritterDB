@@ -5,7 +5,6 @@ var Comment = require('../models/comment');
 var Creature = require('../models/creature');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
-var users = require("../controllers/users");
 var mongodb = require("mongodb");
 var PAGE_SIZE = 10;
 var MAX_PAGE = 20;
