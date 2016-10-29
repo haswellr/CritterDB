@@ -22,20 +22,25 @@ If do you want to help out with CritterDB, getting started is easy. The site run
 3. Run a [MongoDB](https://www.mongodb.com/) server on your machine or set up a server in the cloud. This setup is up to you. Personally I use [mLab](https://mlab.com/) to host my MongoDB servers as they have a free sandbox tier and the site is very easy to use.
 
 #### Get the code
+
 Clone the code from Github.
 
 #### Install Dependencies
+
 CritterDB uses [npm](https://www.npmjs.com/) to manage its back-end dependencies. Navigate to the CritterDB/server/ folder on the command line, then execute the following command:
+
 1. npm install
 
 Settings and configuration for npm can be found in 'package.json'.
 
 #### Configure
+
 CritterDB has a config file which manages several values that must be set before you can run CritterDB. This file is not stored in git as it varies based on dev or deployment environment. Navigate to the 'server' folder within the CritterDB project. Copy 'sampleconfig.js' and name the new file 'config.js'.
 
 ![Copy sampleconfig.js](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/dev-instructions/config1.png)
 
 Now, open config.js and edit the fields to something that is appropriate for your development environment.
+
 * *secret*: This is just an identifier used when storing and identifying user session tokens. It can be any random string of characters.
 * *databaseUrl*: This is the full url including user, password, and database, to the MongoDB server that you will be using. The image shows a sample of what an mlab URL may look like, but you need to change this to point to your server.
 * *tokens*
@@ -45,14 +50,16 @@ Now, open config.js and edit the fields to something that is appropriate for you
   * *name*: The name the emails should be from.
   * *password*: The password to access that gmail account.
 
-And that's it! The big one is just making sure the databaseUrl points to your database. Sample image shown below:
+And that's it! The most important thing is making sure that the databaseUrl points to your database. Sample image shown below:
 
 ![Edit config.js](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/dev-instructions/config2.png)
 
 #### Compile
+
 CritterDB uses [Grunt](http://gruntjs.com/) to perform code minification, obfuscation, and any other tasks that must be performed for the code to be ready for production. Grunt should also be used when developing code to simulate the production environment as closely as possible. Grunt scripts are stored in 'gruntfile.js'.
 
 When first setting up the CritterDB code, you should run Grunt once. Navigate to the 'server' folder on the command line and run the following command to use Grunt to compile the code:
+
 1. grunt
 
 Grunt needs to be run every time the code changes. When you are developing the server you should run 'grunt watch' from the 'server' folder in a command line. This will constantly watch the directory for changes and recompile as needed so that you don't have to re-run grunt every time you want to test anything.
@@ -60,6 +67,7 @@ Grunt needs to be run every time the code changes. When you are developing the s
 #### Running the Code
 
 Now you're ready to run the server! Navigate to the 'server' folder on the command line and run the following command:
+
 1. node server.js
 
 The server should start up and tell you it's running on port 3000. Now you can navigate to 'localhost:3000' in your browser and you should see CritterDB. You will need to restart the server anytime you change back-end code by stopping and re-running 'node server.js'.
