@@ -4,11 +4,15 @@ A [web application](http://www.critterdb.com) to help you find and create custom
 
 ![CritterDB Demo](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/srd-bestiary.png)
 
+## Submitting Feedback & Bugs
+
+The best way to bring an issue to light is by submitting an issue right here on Github. If you wish to, however, you can also contact me directly at haswellrd@gmail.com.
+
 ## Working on CritterDB
 
 Any help on the project is much appreciated. The goal is for CritterDB to be reliable, easy to use, and feature-rich, and that will be best achieved with the help of all the strong developers in the role playing community.
 
-If you want to help out with CritterDB, getting started is easy. The site runs on NodeJS with Angular 1 on the front end and a Mongo database. CritterDB uses npm to manage back-end packages, and grunt to handle pre-deployment tasks such as code minification and compilation. Use the following instructions to set up a local development environment for CritterDB:
+If do you want to help out with CritterDB, getting started is easy. The site runs on NodeJS with Angular 1 on the front end and a Mongo database. CritterDB uses npm to manage back-end packages, and grunt to handle pre-deployment tasks such as code minification and compilation. Use the following instructions to set up a local development environment for CritterDB:
 
 ##### Install Prerequisites
 
@@ -31,19 +35,35 @@ CritterDB has a config file which manages several values that must be set before
 
 ![Copy sampleconfig.js](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/dev-instructions/config1.png)
 
-Now,
+Now, open config.js and edit the fields to something that is appropriate for your development environment.
+* *secret*: This is just an identifier used when storing and identifying user session tokens. It can be any random string of characters.
+* *databaseUrl*: This is the full url including user, password, and database, to the MongoDB server that you will be using. The image shows a sample of what an mlab URL may look like, but you need to change this to point to your server.
+* *tokens*
+  * *duration*: This specifies how long persistent sessions will last. No need to change.
+* *email*: These values set up what email address CritterDB will send from. Currently the only emails CritterDB sends out are welcome emails. You will need to configure this to use a gmail address (yes it must be gmail). If you don't care about emails you could probably just not set this and things would still work.
+  * *address*: A gmail address.
+  * *name*: The name the emails should be from.
+  * *password*: The password to access that gmail account.
+
+And that's it! The big one is just making sure the databaseUrl points to your database. Sample image shown below:
+
+![Edit config.js](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/dev-instructions/config2.png)
 
 ##### Compile
-We use [Grunt](http://gruntjs.com/) to perform code minification, obfuscation, and any other tasks that must be performed for the code to be ready for production. Grunt should also be used when developing code to simulate the production environment as closely as possible. After first retrieving the Beam code, you should run Grunt once. Run the following command to use Grunt to compile the code:
+CritterDB uses [Grunt](http://gruntjs.com/) to perform code minification, obfuscation, and any other tasks that must be performed for the code to be ready for production. Grunt should also be used when developing code to simulate the production environment as closely as possible. Grunt scripts are stored in 'gruntfile.js'.
+
+When first setting up the CritterDB code, you should run Grunt once. Navigate to the 'server' folder on the command line and run the following command to use Grunt to compile the code:
 1. grunt
 
-You are now ready to run the Beam server. If you are making changes to the code, run 'grunt watch' in a command line somewhere. This will watch the directory for changes and recompile as needed.
+Grunt needs to be run every time the code changes. When you are developing the server you should run 'grunt watch' from the 'server' folder in a command line. This will constantly watch the directory for changes and recompile as needed so that you don't have to re-run grunt every time you want to test anything.
 
-## Running the Code
+##### Running the Code
 
-The Beam server lives in the "Nodejs Server" folder. Navigate there on the command line and run the following command:
-1. node app.js
+Now you're ready to run the server! Navigate to the 'server' folder on the command line and run the following command:
+1. node server.js
 
-### Submitting Feedback & Bugs
+The server should start up and tell you it's running on port 3000. Now you can navigate to 'localhost:3000' in your browser and you should see CritterDB. You will need to restart the server anytime you change back-end code by stopping and re-running 'node server.js'.
 
-The best way to bring an issue to light is by submitting an issue right here on Github. If you wish to, however, you can also contact me directly at haswellrd@gmail.com.
+## Contact
+
+You can get in touch with me at haswellrd@gmail.com.
