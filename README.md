@@ -1,6 +1,6 @@
 # CritterDB
 
-A web application to help you find and create custom creatures and NPCs for the 5th edition of the world's greatest role playing game. It lives at [www.critterdb.com](http://www.critterdb.com).
+A [web application](http://www.critterdb.com) to help you find and create custom creatures and NPCs for the 5th edition of the world's greatest role playing game.
 
 ![CritterDB Demo](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/srd-bestiary.png)
 
@@ -12,7 +12,7 @@ The best way to bring an issue to light is by submitting an issue right here on 
 
 Any help on the project is much appreciated. The goal is for CritterDB to be reliable, easy to use, and feature-rich, and that will be best achieved with the help of all the strong developers in the role playing community.
 
-If do you want to help out with CritterDB, getting started is easy. The site runs on NodeJS with Angular 1 on the front end and a Mongo database. CritterDB uses npm to manage back-end packages, and grunt to handle pre-deployment tasks such as code minification and compilation. Use the following instructions to set up a local development environment for CritterDB:
+If do you want to help out with CritterDB, getting started is easy. The site runs on NodeJS with Angular 1 on the front end and a Mongo database. [Angular Material](https://github.com/angular/material) is used as a UI framework for the front end. CritterDB uses npm to manage back-end packages, and grunt to handle pre-deployment tasks such as code minification and compilation. Use the following instructions to set up a local development environment for CritterDB:
 
 #### Install Prerequisites
 
@@ -71,6 +71,31 @@ Now you're ready to run the server! Navigate to the 'server' folder on the comma
 1. node server.js
 
 The server should start up and tell you it's running on port 3000. Now you can navigate to 'localhost:3000' in your browser and you should see CritterDB. You will need to restart the server anytime you change back-end code by stopping and re-running 'node server.js'.
+
+## Server File Structure
+
+* *controllers*: These files determine what happens when a client interacts with a server endpoint, like creating a new critter or deleting a bestiary.
+* *dist*: Not stored in git. Compiled files will be located here after running grunt.
+* *models*: Javascript representations of database models. We use [Mongoose](https://www.npmjs.com/package/mongoose) to manage the database interactions.
+* *public*: This holds the front end code, which uses the Angular v1 framework.
+  * *css*: CSS files.
+  * *data*: Holds SRD data or other static information that CritterDB uses.
+  * *fonts*: Fonts.
+  * *img*: Images.
+  * *js*: Javascript files.
+    * *controllers*: Angular controllers.
+    * *directives*: Angular directives.
+    * *services*: Angular services.
+    * *vendor*: Any code from external sources is stored here.
+    * *app.js*: The main angular application javascript file.
+  * *partials*: Partial HTML files which are inserted into pages.
+* *views*: Entire HTML pages. In this project the main HTML page is pretty simple and then partial HTML pages are loaded in using Angular's routing system.
+* *config.js*: Contains configuration data specific to your machine. This is not stored in git. See 'Configure' section above for instructions on creating this file.
+* *gruntfile.js*: The configuration file for [Grunt](http://gruntjs.com/). Grunt is a javascript task runner that we use for many tasks, mainly compiling, minifying, and obfuscating the front end code.
+* *grunt-readme.txt*: A brief readme file as a reminder for how to use grunt with the project. It has no information that is not already covered by this readme.
+* *package.json*: The configuration file for [NodeJS Package Manager (npm)](https://www.npmjs.com/). Here you can set what npm packages this project requires.
+* *sampleconfig.js*: Included as a helper to define the fields that *config.js* expects. See 'Configure' section above for instructions on creating your config file.
+* *server.js*: The main NodeJS application script.
 
 ## Contact
 
