@@ -1,6 +1,6 @@
 # CritterDB
 
-A [web application](http://www.critterdb.com) to help you find and create custom creatures and NPCs for the 5th edition of the world's greatest role playing game.
+A web application to help you find and create custom creatures and NPCs for the 5th edition of the world's greatest role playing game. It lives at (www.critterdb.com)[http://www.critterdb.com].
 
 ![CritterDB Demo](https://raw.githubusercontent.com/haswellr/BestiaryManager/master/images/srd-bestiary.png)
 
