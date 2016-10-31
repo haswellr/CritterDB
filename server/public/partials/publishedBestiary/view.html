@@ -1,5 +1,5 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
+<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar no-print" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
 		<md-button ng-click="goBack()" class="md-icon-button md-mini" aria-label="Back">
 			<md-icon>keyboard_backspace</md-icon>
@@ -26,6 +26,12 @@
 	      </div>
 			</md-button>
 			<!-- NON-MOBILE BUTTONS -->
+			<md-button hide show-gt-xs ng-click="printBestiary()" class="md-icon-button md-mini" aria-label="Print Bestiary">
+				<md-icon>print</md-icon>
+				<md-tooltip md-direction="left">
+	        Print Bestiary
+	      </md-tooltip>
+			</md-button>
 			<md-button hide show-gt-xs ng-click="copyBestiary()" class="md-icon-button md-mini" aria-label="Copy Bestiary">
 				<md-icon>content_copy</md-icon>
 				<md-tooltip md-direction="left">
@@ -59,7 +65,7 @@
 	</div>
 </md-toolbar>
 
-<div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
+<div layout="column" class="body-area bg-color-primary-light no-print" ng-controller="sideNavCtrl" layout-align="top center">
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="column" layout-gt-sm="row" style="overflow:auto;"
 		<!-- SMALL SCREENS (Mobile) -->
 		<div hide-gt-sm>
@@ -230,7 +236,21 @@
 	  			<md-icon style="margin-bottom:16px">delete</md-icon>
 	  			<p>Delete</p>
 	 			</md-list-item>
+	 			<md-list-item ng-click="close('menuNav');printBestiary();">
+	  			<md-icon style="margin-bottom:16px">print</md-icon>
+	  			<p>Print</p>
+	 			</md-list-item>
 	  	</md-list>
 		</md-sidenav>
 	</section>
+</div>
+
+<!-- print -->
+<div class="no-screen">
+	<h1>
+		{{bestiary.name}}
+	</h1>
+	<div class="fallingColumns">
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true"></ng-stat-block>
+	</div>
 </div>

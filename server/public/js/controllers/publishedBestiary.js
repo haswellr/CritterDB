@@ -169,6 +169,10 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		});
 	}
 
+	$scope.printBestiary = function(){
+		$window.print();
+	}
+
 	$scope.isOwner = function(){
 		return(Auth.user && Auth.user._id == $scope.bestiary.owner._id);
 	}

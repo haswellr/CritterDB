@@ -40,7 +40,7 @@
   </head>
 
   <body>
-    <md-toolbar ng-controller="headerCtrl" class="header">
+    <md-toolbar ng-controller="headerCtrl" class="header no-print">
       <div class="md-toolbar-tools">
         <div ng-controller="userCtrl" layout="row" flex>
           <md-button ng-controller="sideNavCtrl" hide-gt-sm ng-click="toggleExclusive('mainMenuNav');" ng-class="{'selected':isOpen('mainMenuNav')}" class="menu-button md-icon-button md-mini" aria-label="Menu">
@@ -106,7 +106,7 @@
         </div>
       </div>
     </md-toolbar>
-    <div ng-controller="sideNavCtrl">
+    <div ng-controller="sideNavCtrl" class="no-print">
       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="mainMenuNav">
         <md-toolbar class="md-primary">
           <div class="md-toolbar-tools">

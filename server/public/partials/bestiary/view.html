@@ -1,5 +1,5 @@
 
-<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar" layout-align="center center">
+<md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar no-print" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
 		<md-button hide-gt-sm ng-href="{{getBestiaryListPath()}}" class="md-icon-button md-mini" aria-label="Back">
 			<md-icon>keyboard_backspace</md-icon>
@@ -25,6 +25,12 @@
 	      </div>
 			</md-button>
 			<!-- NON-MOBILE BUTTONS -->
+			<md-button hide show-gt-xs ng-click="printBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Print">
+				<md-icon>print</md-icon>
+				<md-tooltip md-direction="left">
+	        Print Bestiary
+	      </md-tooltip>
+			</md-button>
 			<md-button hide show-gt-xs ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Publish">
 				<md-icon>publish</md-icon>
 				<md-tooltip md-direction="left">
@@ -61,7 +67,7 @@
 	</div>
 </md-toolbar>
 
-<div layout="column" class="body-area bg-color-primary-light" ng-controller="sideNavCtrl" layout-align="top center">
+<div layout="column" class="body-area bg-color-primary-light no-print" ng-controller="sideNavCtrl" layout-align="top center">
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
 		<md-content style="width:100%;" layout="column" >
 			<div ng-if="(!bestiary.creatures || bestiary.creatures.length==0) && !bestiary.creaturesLoading" class="no-creatures-area">
@@ -224,7 +230,21 @@
 	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
 	  			<p>Edit</p>
 	 			</md-list-item>
+	  		<md-list-item ng-click="printBestiary($event,bestiary);close('menuNav');">
+	  			<md-icon style="margin-bottom:16px">print</md-icon>
+	  			<p>Print</p>
+	 			</md-list-item>
 	  	</md-list>
 		</md-sidenav>
 	</section>
+</div>
+
+<!-- print -->
+<div class="no-screen">
+	<h1>
+		{{bestiary.name}}
+	</h1>
+	<div class="fallingColumns">
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true"></ng-stat-block>
+	</div>
 </div>

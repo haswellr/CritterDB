@@ -1,5 +1,5 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI, $cookies) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI, $cookies, $window) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
 
@@ -100,6 +100,10 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			if(index!=-1)
 				$scope.bestiaries.splice(index,1);
 		});
+	}
+
+	$scope.printBestiary = function(ev,bestiary){
+		$window.print();
 	}
 
 	$scope.publishBestiary = function(ev,bestiary){
