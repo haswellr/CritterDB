@@ -46,5 +46,9 @@
 	'Plate': {
 		ac: 18,
 		maxDex: 0
+	},
+	'Mage Armor': {
+		ac: 13,
+		maxDex: -1
 	}
 }

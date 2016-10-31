@@ -13,9 +13,6 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 	CreatureData.alignments = ["Unaligned","Any Alignment","Lawful Good","Lawful Neutral",
 		"Lawful Evil","Neutral Good","Neutral","Neutral Evil","Chaotic Good",
 		"Chaotic Neutral","Chaotic Evil"];
-	CreatureData.armorTypes = ["Natural Armor","Padded","Leather",
-		"Studded leather","Hide","Chain shirt","Scale mail","Breastplate",
-		"Half plate","Ring mail","Chain mail","Splint","Plate"];
 	CreatureData.abilities = ["strength","dexterity","constitution",
 		"intelligence","wisdom","charisma"];
 	CreatureData.skills = ["Acrobatics","Animal Handling","Arcana","Athletics",
@@ -40,12 +37,6 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 		'14': 11500,'15': 13000,'16': 15000,'17': 18000,'18': 20000,'19': 22000,
 		'20': 25000,'21': 33000,'22': 41000,'23': 50000,'24': 62000,'25': 75000,
 		'26': 90000,'27': 105000,'28': 120000,'29': 135000,'30': 155000};
-	CreatureData.weaponTypes = ["Club","Dagger","Greatclub","Handaxe","Javelin",
-		"Light hammer","Mace","Quarterstaff","Sickle","Spear","Crossbow, light",
-		"Dart","Shortbow","Sling","Battleaxe","Flail","Glaive","Greataxe",
-		"Greatsword","Halberd","Lance","Longsword","Maul","Morningstar","Pike",
-		"Rapier","Scimitar","Shortsword","Trident","War pick","Warhammer","Whip",
-		"Blowgun","Crossbow, hand","Crossbow, heavy","Longbow","Net"];
 	CreatureData.hitDieSizeBySize = {
 		"Fine": 4,
 		"Diminutive": 4,
@@ -71,6 +62,21 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 		@import "../../data/spells.json";
 	CreatureData.creatureAbilities = //import must be on its own line
 		@import "../../data/creatureAbilities.json";
+
+	//populate armor types list based on data
+	CreatureData.armorTypes = [];
+	for (var armorType in CreatureData.armorTypeDefaults){
+		if(CreatureData.armorTypeDefaults.hasOwnProperty(armorType)){
+			CreatureData.armorTypes.push(armorType);
+		}
+	}
+	//populate weapon types list based on data
+	CreatureData.weaponTypes = [];
+	for (var weaponType in CreatureData.weaponTypeDefaults){
+		if(CreatureData.weaponTypeDefaults.hasOwnProperty(weaponType)){
+			CreatureData.weaponTypes.push(weaponType);
+		}
+	}
 
 //melee
 //ranged
