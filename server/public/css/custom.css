@@ -873,3 +873,13 @@ div.toggle-bestiary-view-area button md-icon {
   float: right;
   width: 50%;
 }
+
+.about-page img {
+  width: 80%;
+  transform: translateX(-50%);
+  margin: 20px 0px 20px 50%;
+
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+}
