@@ -14,6 +14,10 @@ var CreatureFlavor = new mongoose.Schema(
         description: {
             type: String,
             default: ""
+        },
+        nameIsProper: {
+            type: Boolean,
+            default: false
         }
     },
     {

@@ -1,5 +1,5 @@
 <form name="flavorForm">
-  <section layout="row" flex>
+  <section layout="row" layout-align="start center" flex>
     <md-input-container flex>
       <label>Name</label>
       <input ng-model="creature.name" name="name" type="text" required/>
@@ -7,6 +7,12 @@
         <div ng-message="required">This is required.</div>
       </div>
     </md-input-container>
+    <md-checkbox ng-model="creature.flavor.nameIsProper" aria-label="Name is pronoun" style="margin-left:10px;margin-right:10px;">
+      Proper Noun?
+      <md-tooltip md-direction="down">
+        Is this name a proper noun such as 'Jane' or 'The Goblin King'?
+      </md-tooltip>
+    </md-checkbox>
   </section>
   <section layout="row" flex>
     <md-input-container flex>

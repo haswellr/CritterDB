@@ -693,7 +693,7 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 				}
 			}
 			else{
-				text = "It requires ";
+				text = getNameAsIt(true) + " requires ";
 				if(notRequiredComponents.length==1){
 					text = text + "no " +
 						notRequiredComponents[0] +
@@ -772,24 +772,47 @@ var generateSpellcastingCtrl = function ($scope,creature,CreatureData,$mdDialog)
 		return(text);
 	}
 
+	var getNameAsProperNoun = function(){
+		if(creature.flavor.nameIsProper)
+			return(creature.name);
+		else
+			return("The " + creature.name.toLowerCase());
+	}
+
+	//not sure what to call this function, but it determines when to call
+	//	a creature "it" or by its full name like "King George".
+	var getNameAsIt = function(capitalize){
+		if(creature.flavor.nameIsProper)
+			return(creature.name);
+		else if(capitalize)
+			return("It");
+		else
+			return("it");
+	}
+
+	var getPossessive = function(name){
+		if(name.toLowerCase() == "it")
+			return (name + "s");
+		else
+			return (name + "'s");		//just keeping things simple
+	}
+
 	var generateInnateDescription = function(){
-		var name = creature.name.toLowerCase();
 		var abilityStr = $scope.spellcasting.ability.charAt(0).toUpperCase() +  $scope.spellcasting.ability.slice(1).toLowerCase();
-		var text = "The " + name + "'s innate spellcasting ability is " +
-			abilityStr + " " + generateStatsText() + ". It can innately cast the " +
-			"following spells" + generateComponentText() + ":\n\n" +
-			generateSpellBlock();
+		var text = getPossessive(getNameAsProperNoun()) + " innate spellcasting ability is " +
+			abilityStr + " " + generateStatsText() + ". " + getNameAsIt(true) + " can " +
+			"innately cast the following spells" + generateComponentText() +
+			":\n\n" + generateSpellBlock();
 		return(text);
 	}
 
 	var generateClassDescription = function(){
-		var name = creature.name.toLowerCase();
 		var abilityStr = $scope.spellcasting.ability.charAt(0).toUpperCase() +  $scope.spellcasting.ability.slice(1).toLowerCase();
 		var levelStr = getOrdinal($scope.spellcasting.level)+"-level";
 		var classStr = $scope.spellcasting.type.toLowerCase();
-		var text = "The " + name + " is a " + levelStr + " spellcaster. Its " +
-			"spellcasting ability is " + abilityStr + " " + generateStatsText() +
-			". " + generateComponentText() + "The " + name + " has the following " +
+		var text = getNameAsProperNoun() + " is a " + levelStr + " spellcaster. " + getPossessive(getNameAsIt(true)) +
+			" spellcasting ability is " + abilityStr + " " + generateStatsText() +
+			". " + generateComponentText() + getNameAsProperNoun() + " has the following " +
 			classStr + " spells prepared:\n\n" + generateSpellBlock();
 		return(text);
 	}
