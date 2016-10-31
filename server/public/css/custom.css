@@ -473,8 +473,8 @@ button.continue-button {
 }
 
 .header .logo {
-  margin-left: 6px;
-  margin-right: 6px;
+  margin-left: 20px;
+  margin-right: 20px;
   font-family: Norwester, Sans-Serif;
   color: #fff;
 }
@@ -488,14 +488,9 @@ button.continue-button {
   transition: margin-top .75s ease-out;
 }
 
-.header .bestiaries-button {
-  margin-right: 40px;
-  font-size: 20px;
-  padding-left: 14px; /*to balance vs right side*/
-}
-
-.header .critters-button {
-  margin-left: 40px;
+.header .header-button {
+  margin-left: 25px;
+  margin-right: 25px;
   font-size: 20px;
 }
 
