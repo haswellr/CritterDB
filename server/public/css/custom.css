@@ -894,13 +894,39 @@ div.toggle-bestiary-view-area button md-icon {
 
 @media print
 {
+  /* not sure why we have to do this but it seems to be mostly working?
+    I suspect some stat blocks may still cut between pages. Adjusting the
+    zoom level further may help if so. Chrome's css for printing is janky.
+  */
+  body
+  {
+    width: 100% !important;
+    zoom: 70% !important;
+  }
+
+  .fallingColumns {
+    -webkit-column-width: auto !important;
+    -moz-column-width: auto !important;
+    column-width: auto !important;
+    
+    -webkit-column-count: 3 !important;
+    -moz-column-count: 3 !important;
+    column-count: 3 !important;
+  }
+
   .no-print, .no-print *
   {
     display: none !important;
+  }
+
+  .no-page-break
+  {
+    page-break-inside: avoid;
   }
 
   md-tooltip
   {
     opacity: 0;
   }
+
 }

@@ -28,7 +28,7 @@
 			<md-button hide show-gt-xs ng-click="printBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Print">
 				<md-icon>print</md-icon>
 				<md-tooltip md-direction="left">
-	        Print Bestiary
+	        Print Bestiary (try CTRL-P for larger text)
 	      </md-tooltip>
 			</md-button>
 			<md-button hide show-gt-xs ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Publish">
@@ -245,6 +245,6 @@
 		{{bestiary.name}}
 	</h1>
 	<div class="fallingColumns">
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true"></ng-stat-block>
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem no-page-break" no-resize="true"></ng-stat-block>
 	</div>
 </div>
