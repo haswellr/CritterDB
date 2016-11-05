@@ -4,6 +4,7 @@
 
 * The print view now respects the creature filter applied to the bestiary.
 * You can now filter by creature race in addition to the previous fields (environment, faction, name).
+* Most creature actions (such as edit, copy, etc) are now accessible when hovering over a mini-stat block rather than just in an expanded stat block.
 
 #### 11/1/2016
 

@@ -250,6 +250,16 @@ md-content.creature-clipboard .remove-mini-statblock {
   height: 28px;
 }
 
+.stat-block-overlay section.side-menu.mini-menu {
+  width: auto;
+
+}
+
+.stat-block-overlay section.side-menu.mini-menu button {
+  min-width: 0% !important;
+  width: 56px;
+}
+
 md-toolbar.inner-header {
   background-color: #fafafa;
 }

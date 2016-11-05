@@ -1,10 +1,28 @@
 <div class="stat-block" ng-style="statBlockStyle()">
 	 <div class="stat-block-overlay" layout="column" layout-align="center center">
     <!-- Main Control Menu - bar on the right side -->
-    <section ng-if="!noResize" layout="column" class="side-menu">
+    <section ng-if="!noResize" layout="row" class="side-menu mini-menu" layout-align="end center">
+      <md-button ng-click="creatureApi.delete($event,creature)" ng-if="creatureApi.delete" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Delete">
+        <md-icon ng-class="{'disabled':secondaryControls.export}">delete</md-icon>
+        <md-tooltip md-direction="down">
+          Delete
+        </md-tooltip>
+      </md-button>
+      <md-button ng-click="creatureApi.copy(creature)" ng-if="creatureApi.copy" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Copy">
+        <md-icon ng-class="{'disabled':secondaryControls.export}">content_copy</md-icon>
+        <md-tooltip md-direction="down">
+          Copy
+        </md-tooltip>
+      </md-button>
+      <md-button ng-click="creatureApi.edit(creature)" ng-if="creatureApi.edit" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Edit">
+        <md-icon ng-class="{'disabled':secondaryControls.export}">mode_edit</md-icon>
+        <md-tooltip md-direction="down">
+          Edit
+        </md-tooltip>
+      </md-button>
       <md-button ng-click="expand()" class="md-mini expand" aria-label="Expand">
         <md-icon>expand_more</md-icon>
-        <md-tooltip md-direction="left">
+        <md-tooltip md-direction="down">
           Expand
         </md-tooltip>
       </md-button>
