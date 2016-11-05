@@ -245,6 +245,6 @@
 		{{bestiary.name}}
 	</h1>
 	<div class="fallingColumns">
-		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem no-page-break" no-resize="true"></ng-stat-block>
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem no-page-break" no-resize="true"></ng-stat-block>
 	</div>
 </div>
