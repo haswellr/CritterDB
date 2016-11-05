@@ -252,12 +252,12 @@ md-content.creature-clipboard .remove-mini-statblock {
 
 .stat-block-overlay section.side-menu.mini-menu {
   width: auto;
-
 }
 
 .stat-block-overlay section.side-menu.mini-menu button {
   min-width: 0% !important;
   width: 56px;
+  height: 100%;
 }
 
 md-toolbar.inner-header {
