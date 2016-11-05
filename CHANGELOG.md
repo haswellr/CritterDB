@@ -3,6 +3,7 @@
 #### 11/4/2016
 
 * The print view now respects the creature filter applied to the bestiary.
+* You can now filter by creature race in addition to the previous fields (environment, faction, name).
 
 #### 11/1/2016
 

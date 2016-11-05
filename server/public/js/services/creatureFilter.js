@@ -15,7 +15,8 @@ angular.module('myApp').factory("CreatureFilter", function() {
           var matchesName = creature.name.toLowerCase().indexOf(lowerText)!=-1;
           var matchesFaction = creature.flavor.faction.toLowerCase().indexOf(lowerText)!=-1;
           var matchesEnvironment = creature.flavor.environment.toLowerCase().indexOf(lowerText)!=-1;
-          return(matchesName || matchesEnvironment || matchesFaction);
+          var matchesType = creature.stats.race.toLowerCase().indexOf(lowerText)!=-1;
+          return(matchesName || matchesEnvironment || matchesFaction || matchesType);
         }
         else
           return true;

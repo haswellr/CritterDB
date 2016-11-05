@@ -189,7 +189,7 @@
 				<section ng-repeat="filter in creatureFilter.filters track by $index" layout="column" layout-align="center top" ng-class="{'and-filter':creatureFilter.fillBackground(true,$index)}" style="padding: 0px;">
 					<div layout="row" ng-class="{'and-filter':creatureFilter.fillBackground(false,$index)}">
 				    <md-input-container style="width:calc(100% - 16px);margin-left:6px;">
-			        <label>Filter by name, faction, or environment</label>
+			        <label>Filter by environment, faction, name, or race</label>
 			        <input ng-model="filter.text">
 			      </md-input-container>
 			      <button ng-click="creatureFilter.removeFilter($index)" class="md-primary remove-saving-throw" style="margin-top:25px;margin-left:4px;margin-right:6px;">
