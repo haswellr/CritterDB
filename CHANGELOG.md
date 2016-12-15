@@ -1,5 +1,9 @@
 # Changelog
 
+#### 12/14/2016
+
+* Modified the insertion for new abilities, attacks, legendary actions, saving throw, and skills to now add to the end of the list instead of the beginning. This is more natural.
+
 #### 11/4/2016
 
 * The print view now respects the creature filter applied to the bestiary.
