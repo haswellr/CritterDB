@@ -92,7 +92,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 						ability: $scope.creatureData.abilities[i],
 						proficient: true
 					};
-					$scope.creature.stats.savingThrows.splice(0,0,newSavingThrow);
+					$scope.creature.stats.savingThrows.push(newSavingThrow);
 					break;
 				}
 			}
@@ -136,7 +136,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 						name: $scope.creatureData.skills[i],
 						proficient: true
 					};
-					$scope.creature.stats.skills.splice(0,0,newSkill);
+					$scope.creature.stats.skills.push(newSkill);
 					break;
 				}
 			}
@@ -154,7 +154,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 				name: "",
 				description: ""
 			};
-			list.splice(0,0,newAbility);
+			list.push(newAbility);
 		},
 		removeFromList: function(ability,list){
 			var index = list.indexOf(ability);
@@ -302,7 +302,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
     })
     .then(function(result){
     	if(result){
-    		$scope.creature.stats.actions.splice(0,0,result);
+    		$scope.creature.stats.actions.push(result);
     	}
     });
 	}
@@ -322,7 +322,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
     })
     .then(function(result){
     	if(result){
-    		$scope.creature.stats.additionalAbilities.splice(0,0,result);
+    		$scope.creature.stats.additionalAbilities.push(result);
     	}
     });;
 	}
