@@ -97,6 +97,12 @@ The server should start up and tell you it's running on port 3000. Now you can n
 * *sampleconfig.js*: Included as a helper to define the fields that *config.js* expects. See 'Configure' section above for instructions on creating your config file.
 * *server.js*: The main NodeJS application script.
 
+## Health Monitor Server
+
+CritterDB also has a simple health monitor server which periodically pings the CritterDB server and will set off alarms if the production server is unhealthy for several health checks in a row. It can be configured to take automated corrective action (such as trying to restart the CritterDB server repeatedly for a certain number of attempts), and can also send out alerts that the server is down.
+
+This project is contained in the healthMonitorServer folder. To run it you will need to create a 'config.js' file by copying the 'sampleconfig.js' file and editing the values as needed. The program itself is small and should be pretty self explanatory.
+
 ## Contact
 
 You can get in touch with me at haswellrd@gmail.com.

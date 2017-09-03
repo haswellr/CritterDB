@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var config = require('./config');
-mongoose.connect(config.databaseUrl);
+mongoose.connect(config.db.url, config.db.options);
 
 var express = require('express');
 var path = require('path');
@@ -13,6 +13,7 @@ var bestiaries = require('./controllers/bestiaries');
 var publishedBestiaries = require('./controllers/publishedBestiaries');
 var users = require('./controllers/users');
 var authentication = require('./controllers/authentication');
+var health = require('./controllers/health');
 
 var app = express();
 
@@ -27,6 +28,8 @@ app.use("/assets",express.static(path.join(__dirname,"dist")));
 app.get('/',function(req,res){
 	res.sendfile(path.join(__dirname+'/views/index.html'));
 });
+//Health check
+app.get('/api/health', health.healthCheck);
 //Creatures
 app.get('/api/creatures/:id', creatures.findById);
 app.post('/api/creatures', creatures.create);

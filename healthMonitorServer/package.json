@@ -1,0 +1,12 @@
+{
+    "name": "critterdb-health-monitor",
+    "description": "CritterDB Health Monitor Service",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "4.15.4",
+        "body-parser": "1.17.2",
+        "nodemailer": "4.1.0",
+        "request": "2.81.0"
+    }
+}

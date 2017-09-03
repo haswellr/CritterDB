@@ -29,7 +29,7 @@ angular.module('myApp').factory("Auth", ['$cookies','$http','$location','authHtt
       },function(err){
         if(errorCallback)
           errorCallback(err);
-        token = undefined;
+        serv.user = undefined;
       });
     }
     else{
