@@ -64,14 +64,15 @@ app.delete('/api/bestiaries/:id', bestiaries.deleteById);
 	//Creatures
 	app.get('/api/publishedbestiaries/:id/creatures/:page', publishedBestiaries.findCreaturesByBestiary);
 	app.delete('/api/publishedbestiaries/:id/creatures', publishedBestiaries.deleteCreaturesByBestiary);
-//Standard CRUD
-app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
-app.post('/api/publishedbestiaries', publishedBestiaries.create);
-app.put('/api/publishedbestiaries/:id', publishedBestiaries.updateById);
-app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
+	//Standard CRUD
+	app.get('/api/publishedbestiaries/:id', publishedBestiaries.findById);
+	app.post('/api/publishedbestiaries', publishedBestiaries.create);
+	app.put('/api/publishedbestiaries/:id', publishedBestiaries.updateById);
+	app.delete('/api/publishedbestiaries/:id', publishedBestiaries.deleteById);
 //Users
 app.get('/api/users/:id/bestiaries', users.findBestiariesByOwner);
 app.get('/api/users/:id/publishedbestiaries/:page', publishedBestiaries.findByOwner);
+app.get('/api/users/:id/creatures/:page', users.searchCreatures);
 app.get('/api/users/:id/public', users.findPublicInfoById);
 app.get('/api/users/search', users.findPublicInfo);
 app.post('/api/users', users.create);

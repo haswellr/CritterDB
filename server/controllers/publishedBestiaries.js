@@ -6,10 +6,10 @@ var Creature = require('../models/creature');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 var users = require("../controllers/users");
+var creatures = require("../controllers/creatures");
 var mongodb = require("mongodb");
 var PAGE_SIZE = 10;
 var MAX_PAGE = 20;
-var CREATURE_PAGE_SIZE = 25;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -660,13 +660,17 @@ exports.findCreaturesByBestiary = function(req, res) {
     var sort = {
         name: 1
     };
-    var query = {
-        'publishedBestiaryId':id
-    };
+    const query = Object.assign({},req.query);
+    if(query.name) {
+        query.name = {
+            $regex: new RegExp(query.name, "i")
+        };
+    }
+    query.publishedBestiaryId = id;
     Creature.find(query).
         sort(sort).
-        skip(CREATURE_PAGE_SIZE * (page-1)).
-        limit(CREATURE_PAGE_SIZE).
+        skip(creatures.PAGE_SIZE * (page-1)).
+        limit(creatures.PAGE_SIZE).
         exec(function(err, docs){
             if(err)
                 res.status(400).send(err.errmsg);

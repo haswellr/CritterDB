@@ -5,6 +5,7 @@ var Bestiary = require('../models/bestiary');
 var PublishedBestiary = require('../models/publishedBestiary');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
+exports.PAGE_SIZE = 25;
 
 var authenticateBestiaryByOwner = function(req, bestiary, callback){
     var token = req.body.token || req.query.token || req.headers['x-access-token'];

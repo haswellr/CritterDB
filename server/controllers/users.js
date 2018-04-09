@@ -2,10 +2,12 @@
 //Get mongoose model
 var User = require('../models/user');
 var Bestiary = require('../models/bestiary');
+var Creature = require('../models/creature');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
 var nodemailer = require('nodemailer');
 var url = require('url');
+var creatures = require("../controllers/creatures");
 
 var transporter = nodemailer.createTransport('smtps://' +
     config.email.address +
@@ -211,6 +213,79 @@ exports.findBestiariesByOwner = function(req, res) {
                             res.status(400).send(err);
                         else
                             res.send(docs);
+                    });
+                }
+            });
+        }
+        else{
+            res.status(400).send("User not found");
+        }
+    });
+};
+
+exports.searchCreatures = function(req, res) {
+    var id = req.params.id;
+    var page = req.params.page;
+    var query = {'_id':id};
+    var sort = {
+        _id: -1
+    };
+    User.findOne(query, function (err, doc) {
+        if(err) {
+            res.status(400).send(err.errmsg);
+        }
+        else if(doc){
+            authenticateUser(req, doc, function(err){
+                if(err)
+                    res.status(400).send(err);
+                else{
+                    Bestiary.find({
+                        ownerId: doc._id
+                    }, function(err, bestiaries){
+                        if(err)
+                            res.status(400).send(err);
+                        else {
+                            const userBestiaryIds = bestiaries.map(function(bestiary) { return bestiary._id; });
+                            const creaturesQuery = Object.assign({},req.query);
+                            if(creaturesQuery.name) {
+                                creaturesQuery.name = {
+                                    $regex: new RegExp(creaturesQuery.name, "i")
+                                };
+                            }
+                            // Creature must match the provided query AND either be in a public bestiary or
+                            // be in one of this user's bestiaries.
+                            const searchQuery = {
+                                $and: [
+                                    creaturesQuery,
+                                    {
+                                        $or: [
+                                            {
+                                                publishedBestiaryId: {
+                                                    $exists: true,
+                                                    $ne: null
+                                                }
+                                            },
+                                            {
+                                                bestiaryId: {
+                                                    $in: userBestiaryIds
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                            Creature.find(searchQuery)
+                                .sort(sort)
+                                .skip(creatures.PAGE_SIZE * (page-1))
+                                .limit(creatures.PAGE_SIZE)
+                                .exec(function(err, creatures){
+                                    if(err)
+                                        res.status(400).send(err.errmsg);
+                                    else{
+                                        res.send(creatures);
+                                    }
+                                });
+                        }
                     });
                 }
             });

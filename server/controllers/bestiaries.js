@@ -157,14 +157,21 @@ exports.findCreaturesByBestiary = function(req, res) {
                 if(err)
                     res.status(400).send(err);
                 else{
-                    Creature.find({
-                        bestiaryId: doc._id
-                    }, function(err, docs){
-                        if(err)
-                            res.status(400).send(err.errmsg);
-                        else
-                            res.send(docs);
-                    });
+                    const creaturesQuery = Object.assign({},req.query);
+                    if(creaturesQuery.name) {
+                        creaturesQuery.name = {
+                            $regex: new RegExp(creaturesQuery.name, "i")
+                        };
+                    }
+                    creaturesQuery.bestiaryId = doc._id;
+                    Creature.find(creaturesQuery,
+                        function(err, docs){
+                            if(err)
+                                res.status(400).send(err.errmsg);
+                            else
+                                res.send(docs);
+                        }
+                    );
                 }
             });
         }
