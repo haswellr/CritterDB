@@ -18,6 +18,10 @@ var CreatureFlavor = new mongoose.Schema(
         nameIsProper: {
             type: Boolean,
             default: false
+        },
+        imageUrl: {
+            type: String,
+            default: ""
         }
     },
     {
@@ -184,7 +188,6 @@ var StatBlock = new mongoose.Schema(
 
 var CreatureSchema = new mongoose.Schema(
 	{
-        //Flavor
         name: {
             type: String,
             required: true
@@ -203,7 +206,6 @@ var CreatureSchema = new mongoose.Schema(
             type: CreatureFlavor,
             default: {}
         },
-        //Stats
         stats: {
             type: StatBlock,
             default: {}

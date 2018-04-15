@@ -112,6 +112,12 @@ div.stat-block div.creature-heading > h2 {
   margin: 0;
 }
 
+div.stat-block img.creature-image {
+  margin-top: 5px;
+  max-height: 250px;
+  max-width: 100%;
+}
+
 div.stat-block div.property-line {
   line-height: 1.2;
   display: block;
