@@ -1,0 +1,478 @@
+{
+	"0": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 1,
+			"max": 6
+		},
+		"attackBonus": 3,
+		"damage": {
+			"min": 0,
+			"max": 1
+		},
+		"saveDC": 13
+	},
+	"0.125": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 7,
+			"max": 35
+		},
+		"attackBonus": 3,
+		"damage": {
+			"min": 2,
+			"max": 3
+		},
+		"saveDC": 13
+	},
+	"0.25": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 36,
+			"max": 49
+		},
+		"attackBonus": 3,
+		"damage": {
+			"min": 4,
+			"max": 5
+		},
+		"saveDC": 13
+	},
+	"0.5": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 50,
+			"max": 70
+		},
+		"attackBonus": 3,
+		"damage": {
+			"min": 6,
+			"max": 8
+		},
+		"saveDC": 13
+	},
+	"1": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 71,
+			"max": 85
+		},
+		"attackBonus": 3,
+		"damage": {
+			"min": 9,
+			"max": 14
+		},
+		"saveDC": 13
+	},
+	"2": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 86,
+			"max": 100
+		},
+		"attackBonus": 3,
+		"damage": {
+			"min": 15,
+			"max": 20
+		},
+		"saveDC": 13
+	},
+	"3": {
+		"proficiencyBonus": 2,
+		"armorClass": 13,
+		"hitPoints": {
+			"min": 101,
+			"max": 115
+		},
+		"attackBonus": 4,
+		"damage": {
+			"min": 21,
+			"max": 26
+		},
+		"saveDC": 13
+	},
+	"4": {
+		"proficiencyBonus": 2,
+		"armorClass": 14,
+		"hitPoints": {
+			"min": 116,
+			"max": 130
+		},
+		"attackBonus": 5,
+		"damage": {
+			"min": 27,
+			"max": 32
+		},
+		"saveDC": 14
+	},
+	"5": {
+		"proficiencyBonus": 3,
+		"armorClass": 15,
+		"hitPoints": {
+			"min": 131,
+			"max": 145
+		},
+		"attackBonus": 6,
+		"damage": {
+			"min": 33,
+			"max": 38
+		},
+		"saveDC": 15
+	},
+	"6": {
+		"proficiencyBonus": 3,
+		"armorClass": 15,
+		"hitPoints": {
+			"min": 141,
+			"max": 160
+		},
+		"attackBonus": 6,
+		"damage": {
+			"min": 39,
+			"max": 44
+		},
+		"saveDC": 15
+	},
+	"7": {
+		"proficiencyBonus": 3,
+		"armorClass": 15,
+		"hitPoints": {
+			"min": 161,
+			"max": 175
+		},
+		"attackBonus": 6,
+		"damage": {
+			"min": 45,
+			"max": 50
+		},
+		"saveDC": 15
+	},
+	"8": {
+		"proficiencyBonus": 3,
+		"armorClass": 16,
+		"hitPoints": {
+			"min": 176,
+			"max": 190
+		},
+		"attackBonus": 7,
+		"damage": {
+			"min": 51,
+			"max": 56
+		},
+		"saveDC": 16
+	},
+	"9": {
+		"proficiencyBonus": 4,
+		"armorClass": 16,
+		"hitPoints": {
+			"min": 191,
+			"max": 205
+		},
+		"attackBonus": 7,
+		"damage": {
+			"min": 57,
+			"max": 62
+		},
+		"saveDC": 16
+	},
+	"10": {
+		"proficiencyBonus": 4,
+		"armorClass": 17,
+		"hitPoints": {
+			"min": 206,
+			"max": 220
+		},
+		"attackBonus": 7,
+		"damage": {
+			"min": 63,
+			"max": 68
+		},
+		"saveDC": 16
+	},
+	"11": {
+		"proficiencyBonus": 4,
+		"armorClass": 17,
+		"hitPoints": {
+			"min": 221,
+			"max": 235
+		},
+		"attackBonus": 8,
+		"damage": {
+			"min": 69,
+			"max": 74
+		},
+		"saveDC": 17
+	},
+	"12": {
+		"proficiencyBonus": 4,
+		"armorClass": 17,
+		"hitPoints": {
+			"min": 236,
+			"max": 250
+		},
+		"attackBonus": 8,
+		"damage": {
+			"min": 75,
+			"max": 80
+		},
+		"saveDC": 17
+	},
+	"13": {
+		"proficiencyBonus": 5,
+		"armorClass": 18,
+		"hitPoints": {
+			"min": 251,
+			"max": 265
+		},
+		"attackBonus": 8,
+		"damage": {
+			"min": 81,
+			"max": 86
+		},
+		"saveDC": 18
+	},
+	"14": {
+		"proficiencyBonus": 5,
+		"armorClass": 18,
+		"hitPoints": {
+			"min": 266,
+			"max": 280
+		},
+		"attackBonus": 8,
+		"damage": {
+			"min": 87,
+			"max": 92
+		},
+		"saveDC": 18
+	},
+	"15": {
+		"proficiencyBonus": 5,
+		"armorClass": 18,
+		"hitPoints": {
+			"min": 281,
+			"max": 295
+		},
+		"attackBonus": 8,
+		"damage": {
+			"min": 93,
+			"max": 98
+		},
+		"saveDC": 18
+	},
+	"16": {
+		"proficiencyBonus": 5,
+		"armorClass": 18,
+		"hitPoints": {
+			"min": 296,
+			"max": 310
+		},
+		"attackBonus": 9,
+		"damage": {
+			"min": 99,
+			"max": 104
+		},
+		"saveDC": 18
+	},
+	"17": {
+		"proficiencyBonus": 6,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 311,
+			"max": 325
+		},
+		"attackBonus": 10,
+		"damage": {
+			"min": 105,
+			"max": 110
+		},
+		"saveDC": 19
+	},
+	"18": {
+		"proficiencyBonus": 6,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 326,
+			"max": 340
+		},
+		"attackBonus": 10,
+		"damage": {
+			"min": 111,
+			"max": 116
+		},
+		"saveDC": 19
+	},
+	"19": {
+		"proficiencyBonus": 6,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 341,
+			"max": 355
+		},
+		"attackBonus": 10,
+		"damage": {
+			"min": 117,
+			"max": 122
+		},
+		"saveDC": 19
+	},
+	"20": {
+		"proficiencyBonus": 6,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 356,
+			"max": 400
+		},
+		"attackBonus": 10,
+		"damage": {
+			"min": 123,
+			"max": 140
+		},
+		"saveDC": 19
+	},
+	"21": {
+		"proficiencyBonus": 7,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 401,
+			"max": 445
+		},
+		"attackBonus": 11,
+		"damage": {
+			"min": 141,
+			"max": 158
+		},
+		"saveDC": 20
+	},
+	"22": {
+		"proficiencyBonus": 7,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 446,
+			"max": 490
+		},
+		"attackBonus": 11,
+		"damage": {
+			"min": 159,
+			"max": 176
+		},
+		"saveDC": 20
+	},
+	"23": {
+		"proficiencyBonus": 7,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 491,
+			"max": 535
+		},
+		"attackBonus": 11,
+		"damage": {
+			"min": 177,
+			"max": 194
+		},
+		"saveDC": 20
+	},
+	"24": {
+		"proficiencyBonus": 7,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 536,
+			"max": 580
+		},
+		"attackBonus": 12,
+		"damage": {
+			"min": 195,
+			"max": 212
+		},
+		"saveDC": 21
+	},
+	"25": {
+		"proficiencyBonus": 8,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 581,
+			"max": 625
+		},
+		"attackBonus": 12,
+		"damage": {
+			"min": 213,
+			"max": 230
+		},
+		"saveDC": 21
+	},
+	"26": {
+		"proficiencyBonus": 8,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 626,
+			"max": 670
+		},
+		"attackBonus": 12,
+		"damage": {
+			"min": 231,
+			"max": 248
+		},
+		"saveDC": 21
+	},
+	"27": {
+		"proficiencyBonus": 8,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 671,
+			"max": 715
+		},
+		"attackBonus": 13,
+		"damage": {
+			"min": 249,
+			"max": 266
+		},
+		"saveDC": 22
+	},
+	"28": {
+		"proficiencyBonus": 8,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 716,
+			"max": 760
+		},
+		"attackBonus": 13,
+		"damage": {
+			"min": 267,
+			"max": 284
+		},
+		"saveDC": 22
+	},
+	"29": {
+		"proficiencyBonus": 9,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 761,
+			"max": 805
+		},
+		"attackBonus": 13,
+		"damage": {
+			"min": 285,
+			"max": 302
+		},
+		"saveDC": 22
+	},
+	"30": {
+		"proficiencyBonus": 9,
+		"armorClass": 19,
+		"hitPoints": {
+			"min": 806,
+			"max": 850
+		},
+		"attackBonus": 14,
+		"damage": {
+			"min": 303,
+			"max": 320
+		},
+		"saveDC": 23
+	}
+}

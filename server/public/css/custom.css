@@ -456,6 +456,15 @@ button.create-continue {
   font-size: 20px;
 }
 
+div.calculate-challenge-rating-row {
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+div.challenge-rating-row {
+  width: 100%;
+}
+
 button.continue-button {
   float: right;
 }

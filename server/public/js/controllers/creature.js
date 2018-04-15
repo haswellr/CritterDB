@@ -1,5 +1,5 @@
 
-var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog,CreatureAPI) {
+var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog,CreatureAPI,ChallengeRatingCalculator) {
 	$scope.creature = creature;
 
 	$scope.creatureData = CreatureData;
@@ -325,6 +325,15 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
     		$scope.creature.stats.additionalAbilities.push(result);
     	}
     });;
+	}
+
+	$scope.calculateChallengeRating = function(ev){
+		ChallengeRatingCalculator.openDialog(ev, $scope.creature, function(result) {
+			if(result){
+    		$scope.creature.stats.challengeRating = result;
+    		$scope.challengeRating.changed();
+    	}
+		});
 	}
 
 	$scope.$watch("creature",function(newValue,oldValue){

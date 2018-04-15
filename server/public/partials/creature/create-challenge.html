@@ -1,13 +1,20 @@
 <form name="challengeForm">
-	<section layout="row" flex>
-	  <md-input-container flex>
-	    <label>Challenge Rating</label>
-	    <input ng-model="creature.stats.challengeRating" ng-change="challengeRating.changed()" step="{{challengeRating.step}}" type="number" min="0"/>
-	  </md-input-container>
+	<section class="subsection" layout="row" layout-align="center center" layout-wrap>
+		<div layout="row" class="calculate-challenge-rating-row" class="controls">
+      <md-button ng-click="calculateChallengeRating($event)" class="md-raised" style="height:38px;">
+          Calculate Challenge Rating
+      </md-button>
+    </div>
+    <div layout="row" class="challenge-rating-row">
+		  <md-input-container flex>
+		    <label>Challenge Rating</label>
+		    <input ng-model="creature.stats.challengeRating" ng-change="challengeRating.changed()" step="{{challengeRating.step}}" type="number" min="0"/>
+		  </md-input-container>
 
-	  <md-input-container flex>
-	    <label>Experience Points</label>
-	    <input ng-model="creature.stats.experiencePoints" type="number" min="0"/>
-	  </md-input-container>
+		  <md-input-container flex>
+		    <label>Experience Points</label>
+		    <input ng-model="creature.stats.experiencePoints" type="number" min="0"/>
+		  </md-input-container>
+		</div>
 	</section>
 </form>
