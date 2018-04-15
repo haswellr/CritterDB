@@ -65,6 +65,14 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 	CreatureData.challengeRating = //import must be on its own line
 		@import "../../data/challengeRating.json";
 
+	//populate challengeRating list based on data
+	CreatureData.challengeRatingArray = [];
+	for (var challengeRating in CreatureData.challengeRating){
+		if(CreatureData.challengeRating.hasOwnProperty(challengeRating)){
+			CreatureData.challengeRatingArray.push(CreatureData.challengeRating[challengeRating]);
+		}
+	}
+
 	//populate armor types list based on data
 	CreatureData.armorTypes = [];
 	for (var armorType in CreatureData.armorTypeDefaults){

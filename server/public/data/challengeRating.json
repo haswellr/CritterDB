@@ -1,5 +1,6 @@
 {
 	"0": {
+		"cr": 0,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -14,6 +15,7 @@
 		"saveDC": 13
 	},
 	"0.125": {
+		"cr": 0.125,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -28,6 +30,7 @@
 		"saveDC": 13
 	},
 	"0.25": {
+		"cr": 0.25,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -42,6 +45,7 @@
 		"saveDC": 13
 	},
 	"0.5": {
+		"cr": 0.5,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -56,6 +60,7 @@
 		"saveDC": 13
 	},
 	"1": {
+		"cr": 1,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -70,6 +75,7 @@
 		"saveDC": 13
 	},
 	"2": {
+		"cr": 2,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -84,6 +90,7 @@
 		"saveDC": 13
 	},
 	"3": {
+		"cr": 3,
 		"proficiencyBonus": 2,
 		"armorClass": 13,
 		"hitPoints": {
@@ -98,6 +105,7 @@
 		"saveDC": 13
 	},
 	"4": {
+		"cr": 4,
 		"proficiencyBonus": 2,
 		"armorClass": 14,
 		"hitPoints": {
@@ -112,6 +120,7 @@
 		"saveDC": 14
 	},
 	"5": {
+		"cr": 5,
 		"proficiencyBonus": 3,
 		"armorClass": 15,
 		"hitPoints": {
@@ -126,6 +135,7 @@
 		"saveDC": 15
 	},
 	"6": {
+		"cr": 6,
 		"proficiencyBonus": 3,
 		"armorClass": 15,
 		"hitPoints": {
@@ -140,6 +150,7 @@
 		"saveDC": 15
 	},
 	"7": {
+		"cr": 7,
 		"proficiencyBonus": 3,
 		"armorClass": 15,
 		"hitPoints": {
@@ -154,6 +165,7 @@
 		"saveDC": 15
 	},
 	"8": {
+		"cr": 8,
 		"proficiencyBonus": 3,
 		"armorClass": 16,
 		"hitPoints": {
@@ -168,6 +180,7 @@
 		"saveDC": 16
 	},
 	"9": {
+		"cr": 9,
 		"proficiencyBonus": 4,
 		"armorClass": 16,
 		"hitPoints": {
@@ -182,6 +195,7 @@
 		"saveDC": 16
 	},
 	"10": {
+		"cr": 10,
 		"proficiencyBonus": 4,
 		"armorClass": 17,
 		"hitPoints": {
@@ -196,6 +210,7 @@
 		"saveDC": 16
 	},
 	"11": {
+		"cr": 11,
 		"proficiencyBonus": 4,
 		"armorClass": 17,
 		"hitPoints": {
@@ -210,6 +225,7 @@
 		"saveDC": 17
 	},
 	"12": {
+		"cr": 12,
 		"proficiencyBonus": 4,
 		"armorClass": 17,
 		"hitPoints": {
@@ -224,6 +240,7 @@
 		"saveDC": 17
 	},
 	"13": {
+		"cr": 13,
 		"proficiencyBonus": 5,
 		"armorClass": 18,
 		"hitPoints": {
@@ -238,6 +255,7 @@
 		"saveDC": 18
 	},
 	"14": {
+		"cr": 14,
 		"proficiencyBonus": 5,
 		"armorClass": 18,
 		"hitPoints": {
@@ -252,6 +270,7 @@
 		"saveDC": 18
 	},
 	"15": {
+		"cr": 15,
 		"proficiencyBonus": 5,
 		"armorClass": 18,
 		"hitPoints": {
@@ -266,6 +285,7 @@
 		"saveDC": 18
 	},
 	"16": {
+		"cr": 16,
 		"proficiencyBonus": 5,
 		"armorClass": 18,
 		"hitPoints": {
@@ -280,6 +300,7 @@
 		"saveDC": 18
 	},
 	"17": {
+		"cr": 17,
 		"proficiencyBonus": 6,
 		"armorClass": 19,
 		"hitPoints": {
@@ -294,6 +315,7 @@
 		"saveDC": 19
 	},
 	"18": {
+		"cr": 18,
 		"proficiencyBonus": 6,
 		"armorClass": 19,
 		"hitPoints": {
@@ -308,6 +330,7 @@
 		"saveDC": 19
 	},
 	"19": {
+		"cr": 19,
 		"proficiencyBonus": 6,
 		"armorClass": 19,
 		"hitPoints": {
@@ -322,6 +345,7 @@
 		"saveDC": 19
 	},
 	"20": {
+		"cr": 20,
 		"proficiencyBonus": 6,
 		"armorClass": 19,
 		"hitPoints": {
@@ -336,6 +360,7 @@
 		"saveDC": 19
 	},
 	"21": {
+		"cr": 21,
 		"proficiencyBonus": 7,
 		"armorClass": 19,
 		"hitPoints": {
@@ -350,6 +375,7 @@
 		"saveDC": 20
 	},
 	"22": {
+		"cr": 22,
 		"proficiencyBonus": 7,
 		"armorClass": 19,
 		"hitPoints": {
@@ -364,6 +390,7 @@
 		"saveDC": 20
 	},
 	"23": {
+		"cr": 23,
 		"proficiencyBonus": 7,
 		"armorClass": 19,
 		"hitPoints": {
@@ -378,6 +405,7 @@
 		"saveDC": 20
 	},
 	"24": {
+		"cr": 24,
 		"proficiencyBonus": 7,
 		"armorClass": 19,
 		"hitPoints": {
@@ -392,6 +420,7 @@
 		"saveDC": 21
 	},
 	"25": {
+		"cr": 25,
 		"proficiencyBonus": 8,
 		"armorClass": 19,
 		"hitPoints": {
@@ -406,6 +435,7 @@
 		"saveDC": 21
 	},
 	"26": {
+		"cr": 26,
 		"proficiencyBonus": 8,
 		"armorClass": 19,
 		"hitPoints": {
@@ -420,6 +450,7 @@
 		"saveDC": 21
 	},
 	"27": {
+		"cr": 27,
 		"proficiencyBonus": 8,
 		"armorClass": 19,
 		"hitPoints": {
@@ -434,6 +465,7 @@
 		"saveDC": 22
 	},
 	"28": {
+		"cr": 28,
 		"proficiencyBonus": 8,
 		"armorClass": 19,
 		"hitPoints": {
@@ -448,6 +480,7 @@
 		"saveDC": 22
 	},
 	"29": {
+		"cr": 29,
 		"proficiencyBonus": 9,
 		"armorClass": 19,
 		"hitPoints": {
@@ -462,6 +495,7 @@
 		"saveDC": 22
 	},
 	"30": {
+		"cr": 30,
 		"proficiencyBonus": 9,
 		"armorClass": 19,
 		"hitPoints": {

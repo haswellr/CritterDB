@@ -112,8 +112,8 @@ angular.module('myApp').factory("ChallengeRatingCalculator", function($mdMedia,$
 		// creature: the creature whose CR is being calculated
 		// callback: A callback function. function(integer challengeRating).
 		openDialog: function(ev, creature, callback) {
-			let useFullScreen;
-			let parent;
+			var useFullScreen;
+			var parent;
 			if($mdMedia('sm') || $mdMedia('xs')) {
 				useFullScreen = true;
 				parent = angular.element(document.body);

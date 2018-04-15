@@ -876,6 +876,32 @@ div.toggle-bestiary-view-area button md-icon {
   height: 20px;
 }
 
+.challenge-rating-table table.md-table tbody.md-body>tr.md-row {
+  height: 26px;
+}
+.challenge-rating-table table.md-table tbody.md-body>tr.md-row:nth-child(odd) {
+  background-color: #C5CBCF;
+}
+.challenge-rating-table table.md-table th.md-column {
+  text-align: center;
+}
+.challenge-rating-table table.md-table td.md-cell {
+  text-align: center;
+}
+.challenge-rating-table table.md-table:not(.md-row-select) th.md-column:first-child {
+  padding: 0 24px;
+}
+.challenge-rating-table table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+  padding: 0 20px 0 0;
+}
+
+.challenge-rating-table table.md-table:not(.md-row-select) td.md-cell:first-child {
+  padding: 0 24px;
+}
+.challenge-rating-table table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2) {
+  padding: 0 20px 0 0;
+}
+
 .previewList .creatures {
   float: left;
   width: 100%;

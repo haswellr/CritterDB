@@ -3,7 +3,7 @@
 /* App Module */
 
 //App Module
-var myApp = angular.module('myApp', ['ngRoute','ngResource','ngMaterial','ngMessages','ngCookies','ngAnimate','ngclipboard','ngSanitize','btford.markdown','infiniteScroll']);
+var myApp = angular.module('myApp', ['ngRoute','ngResource','ngMaterial','ngMessages','ngCookies','ngAnimate','ngclipboard','ngSanitize','btford.markdown','infiniteScroll','md.data.table']);
 
 myApp.config(function ($mdThemingProvider) {
 
