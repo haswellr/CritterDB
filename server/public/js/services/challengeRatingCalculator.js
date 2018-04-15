@@ -120,7 +120,7 @@ angular.module('myApp').factory("ChallengeRatingCalculator", function($mdMedia,$
 			}
 			else {
 				useFullScreen = false;
-				parent = angular.element(document.querySelector('#create-creature-area'));
+				parent = angular.element(document.querySelector('#create-creature-dialog-container'));
 			}
 			$mdDialog.show({
 				controller: calculateChallengeRatingCtrl,
@@ -131,7 +131,7 @@ angular.module('myApp').factory("ChallengeRatingCalculator", function($mdMedia,$
 				locals: {
 					'creature': creature
 				},
-				fullscreen: useFullScreen
+				fullscreen: useFullScreen,
 			})
 			.then(callback);
 		}

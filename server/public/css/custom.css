@@ -876,6 +876,15 @@ div.toggle-bestiary-view-area button md-icon {
   height: 20px;
 }
 
+.create-creature-dialog-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+.challenge-rating-table {
+  margin-bottom: 15px;
+}
 .challenge-rating-table table.md-table tbody.md-body>tr.md-row {
   height: 26px;
 }
