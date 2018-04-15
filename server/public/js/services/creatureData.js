@@ -62,6 +62,8 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 		@import "../../data/spells.json";
 	CreatureData.creatureAbilities = //import must be on its own line
 		@import "../../data/creatureAbilities.json";
+	CreatureData.challengeRating = //import must be on its own line
+		@import "../../data/challengeRating.json";
 
 	//populate armor types list based on data
 	CreatureData.armorTypes = [];

@@ -456,6 +456,15 @@ button.create-continue {
   font-size: 20px;
 }
 
+div.calculate-challenge-rating-row {
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+div.challenge-rating-row {
+  width: 100%;
+}
+
 button.continue-button {
   float: right;
 }
@@ -892,6 +901,10 @@ div.toggle-bestiary-view-area button md-icon {
   -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+}
+
+.read-only input {
+  background-color: #d3d3d3;
 }
 
 @media screen

@@ -1,0 +1,140 @@
+
+<md-dialog class="generate-attack-dialog" aria-label="Calculate Challenge Rating" ng-cloak>
+	<form name="attackForm" ng-submit="finish()">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Calculate Challenge Rating</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-dialog-content style="padding:40px 10px 0px 10px;">
+			<section layout="row" style="width:100%;">
+				<div layout="row">
+					<md-input-container class="read-only" flex>
+						<label>Proficiency Bonus</label>
+						<input ng-model="creature.stats.proficiencyBonus" type="number" readonly/>
+						<md-tooltip md-direction="right">
+							Proficiency bonus.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container flex>
+						<label>Armor Class</label>
+						<input ng-model="creature.stats.armorClass" type="number"/>
+						<md-tooltip>
+							Armor class, including modifications from special traits.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container flex>
+						<label>Hit Points</label>
+						<input ng-model="creature.stats.hitPoints" type="number"/>
+						<md-tooltip md-direction="left">
+							Hit points, including modifications from special traits.
+						</md-tooltip>
+					</md-input-container>
+				</div>
+			</section>
+			<section>
+				<div layout="row">
+					<md-input-container flex>
+						<label>Attack Bonus</label>
+						<input ng-model="challengeParameters.attackBonus" type="number"/>
+						<md-tooltip md-direction="right">
+							Attack bonus on the attack it will most frequently use.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container flex>
+						<label>Damage per Round</label>
+						<input ng-model="challengeParameters.damagePerRound" type="number"/>
+						<md-tooltip>
+							Average damage per round over the first 3 rounds of combat.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container flex>
+						<label>Save DC</label>
+						<input ng-model="challengeParameters.saveDC" type="number"/>
+						<md-tooltip md-direction="left">
+							Save DC on its offensive spells/attacks (if applicable).
+						</md-tooltip>
+					</md-input-container>
+				</div>
+			</section>
+			<section style="padding-bottom: 50px; ">
+				<div layout="row">
+					<md-input-container>
+						<md-checkbox ng-model="challengeParameters.resistances.resistances" aria-label="Significant Resistances">
+							Significant Resistances
+						</md-checkbox>
+						<md-tooltip md-direction="right">
+							Does this monster have many resistances?
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container>
+						<md-checkbox ng-model="challengeParameters.resistances.immunities" aria-label="Significant Immunities">
+							Significant Immunities
+						</md-checkbox>
+						<md-tooltip>
+							Does this monster have many immunities?
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container>
+						<md-checkbox ng-model="challengeParameters.resistances.vulnerabilities" aria-label="Significant Vulnerabilities">
+							Significant Vulnerabilities
+						</md-checkbox>
+						<md-tooltip md-direction="left">
+							Does this monster have many vulnerabilities?
+						</md-tooltip>
+					</md-input-container>
+				</div>
+			</section>
+			<section>
+				<div layout="row">
+					<md-input-container flex>
+						<label>Offensive CR Additional Bonus</label>
+						<input ng-model="challengeParameters.specialBonuses.offense" type="number"/>
+						<md-tooltip>
+							Offensive CR tweaks due to special traits.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container flex>
+						<label>Defensive CR Additional Bonus</label>
+						<input ng-model="challengeParameters.specialBonuses.defense" type="number"/>
+						<md-tooltip>
+							Defensive CR tweaks due to special traits.
+						</md-tooltip>
+					</md-input-container>
+				</div>
+			</section>
+				<div layout="row">
+					<md-input-container class="read-only" flex>
+						<label>Offensive CR</label>
+						<input ng-model="challengeRating.offense" type="number" readonly/>
+						<md-tooltip md-direction="right">
+							Calculated offensive CR.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container class="read-only" flex>
+						<label>Defensive CR</label>
+						<input ng-model="challengeRating.defense" type="number" readonly/>
+						<md-tooltip>
+							Calculated defensive CR.
+						</md-tooltip>
+					</md-input-container>
+					<md-input-container class="read-only" flex>
+						<label>Combined CR</label>
+						<input ng-model="challengeRating.combined" type="number" readonly/>
+						<md-tooltip md-direction="left">
+							Rounded average of offensive and defensive CR.
+						</md-tooltip>
+					</md-input-container>
+				</div>
+			</section>
+		</md-dialog-content>
+		<md-dialog-actions layout="row">
+			<md-button ng-click="cancel()" class="md-raised md-button md-secondary">Cancel</md-button>
+			<md-button type="submit" class="md-raised md-button md-primary">Done</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
