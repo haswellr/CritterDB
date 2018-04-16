@@ -926,6 +926,7 @@ div.toggle-bestiary-view-area button md-icon {
 }
 
 .previewList .preview {
+  position: relative;
   float: right;
   width: 50%;
 }

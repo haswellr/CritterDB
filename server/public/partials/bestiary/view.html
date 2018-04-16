@@ -89,15 +89,23 @@
 		      </md-tooltip>
 				</md-button>
 			</div>
-			<div class="fallingColumns" ng-if="view.current=='fallingColumns'">
+			<div class="fallingColumns" ng-if="view.current=='fallingColumns' && bestiary.creatures && bestiary.creatures.length>0">
 				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true"></ng-stat-block>
 			</div>
-			<div class="previewList" ng-if="view.current=='previewList'" layout="row" class="layout-row">
+			<div class="previewList" ng-if="view.current=='previewList' && bestiary.creatures && bestiary.creatures.length>0" layout="row" class="layout-row">
 				<md-content layout="column" class="creatures">
-					<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" ng-mouseover="preview.creature=creature" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="mini"></ng-stat-block>
+					<ng-stat-block ng-click="preview.selectedCreature=creature" ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" ng-mouseover="preview.creature=creature" ng-mouseleave="preview.creature=null" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="mini"></ng-stat-block>
 				</md-content>
 				<div hide show-gt-xs class="preview">
-					<ng-stat-block ng-show="preview.creature" creature="preview.creature" creature-api="creatureApi" no-resize="true"></ng-stat-block>
+					<ng-stat-block ng-show="preview.selectedCreature || preview.creature" creature="preview.creature ? preview.creature : preview.selectedCreature" creature-api="creatureApi" no-resize="true"></ng-stat-block>
+					<div ng-if="!preview.selectedCreature && !preview.creature" class="no-creatures-area">
+						<span>
+							<md-icon md-svg-icon="/assets/img/icons/magnifying-glass-black.svg" style="width:36px;height:36px;"></md-icon>
+						</span>
+						<h4 class="md-subhead">
+							Click on a creature to lock it to this preview area.
+						</h4>
+					</div>
 				</div>
 			</div>
 		</md-content>
