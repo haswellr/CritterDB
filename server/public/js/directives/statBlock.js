@@ -1,4 +1,4 @@
-angular.module('myApp').directive('ngStatBlock', [ function () {
+angular.module('myApp').directive('ngStatBlock', ["$mdMedia", function ($mdMedia) {
 	return {
 		restrict: 'E',
 		scope: {
@@ -36,6 +36,10 @@ angular.module('myApp').directive('ngStatBlock', [ function () {
 					attrs.size = "mini";
 					setContentUrl();
 				}
+			}
+
+			scope.isMobile = function(){
+				return($mdMedia('xs'));
 			}
 		},
 		template: '<div ng-include="contentUrl"></div>',

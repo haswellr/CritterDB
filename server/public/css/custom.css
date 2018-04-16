@@ -162,13 +162,15 @@ md-content.creature-clipboard .remove-mini-statblock {
   transition: background-color 0.25s ease-out;
 }
 
+.stat-block-overlay-mobile,
 .stat-block-overlay:hover {
   opacity: 1;
   background-color: rgba(0,0,0,0.25);
 }
 
+.stat-block-overlay-mobile section.side-menu,
 .stat-block-overlay:hover section.side-menu {
-  background-color: rgba(0,0,0,0.70);
+  background-color: rgba(0,0,0,0.70) !important;
 }
 
 .stat-block-overlay section.side-menu {

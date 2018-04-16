@@ -1,6 +1,6 @@
 
 <div id="{{'stat-block-'+creature._id}}" class="stat-block" ng-style="statBlockStyle()">
-  <div ng-if="creatureApi" class="stat-block-overlay" layout="column" layout-align="center center" ng-click="secondaryControls={}">
+  <div ng-if="creatureApi" ng-click="isMobile() ? shrink() : null;secondaryControls={};" class="stat-block-overlay" layout="column" layout-align="center center" ng-class="{'stat-block-overlay-mobile':isMobile()}" >
     <!-- Main Control Menu - bar on the right side -->
     <section layout="column" class="side-menu">
       <md-button ng-click="shrink()" ng-if="!noResize" class="md-mini" aria-label="Shrink">
@@ -9,7 +9,7 @@
           Minimize
         </md-tooltip>
       </md-button>
-      <md-button ng-click="creatureApi.edit(creature)" ng-if="creatureApi.edit" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Edit">
+      <md-button ng-click="creatureApi.edit(creature);$event.stopPropagation();" ng-if="creatureApi.edit" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Edit">
         <md-icon ng-class="{'disabled':secondaryControls.export}">mode_edit</md-icon>
         <md-tooltip md-direction="left">
           Edit
@@ -21,13 +21,13 @@
           Export
         </md-tooltip>
       </md-button>
-      <md-button ng-click="creatureApi.copy(creature)" ng-if="creatureApi.copy" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Copy">
+      <md-button ng-click="creatureApi.copy(creature);$event.stopPropagation();" ng-if="creatureApi.copy" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Copy">
         <md-icon ng-class="{'disabled':secondaryControls.export}">content_copy</md-icon>
         <md-tooltip md-direction="left">
           Copy
         </md-tooltip>
       </md-button>
-      <md-button ng-click="creatureApi.delete($event,creature)" ng-if="creatureApi.delete" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Delete">
+      <md-button ng-click="creatureApi.delete($event,creature);$event.stopPropagation();" ng-if="creatureApi.delete" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Delete">
         <md-icon ng-class="{'disabled':secondaryControls.export}">delete</md-icon>
         <md-tooltip md-direction="left">
           Delete
@@ -37,13 +37,13 @@
     <!-- Export Secondary Control Menu -->
     <section ng-if="secondaryControls.export" layout="column" ng-class="{'secondary-menu-visible':secondaryControls.export}" class="secondary-menu">
       <md-button ng-if="creatureApi.edit" style="opacity:0;">HIDDEN</md-button>
-      <md-button hide show-gt-sm ng-click="creatureApi.export.exportImage($event,creature)" ng-if="creatureApi.export.exportImage" aria-label="Export Image">
+      <md-button hide show-gt-sm ng-click="creatureApi.export.exportImage($event,creature);$event.stopPropagation();" ng-if="creatureApi.export.exportImage" aria-label="Export Image">
         Export to Image
       </md-button>
-      <md-button ng-click="creatureApi.export.exportHTML($event,creature)" ng-if="creatureApi.export.exportHTML" aria-label="Export HTML">
+      <md-button ng-click="creatureApi.export.exportHTML($event,creature);$event.stopPropagation();" ng-if="creatureApi.export.exportHTML" aria-label="Export HTML">
         Export to HTML
       </md-button>
-      <md-button ng-click="creatureApi.export.exportNaturalCrit($event,creature)" ng-if="creatureApi.export.exportNaturalCrit" aria-label="Copy">
+      <md-button ng-click="creatureApi.export.exportNaturalCrit($event,creature);$event.stopPropagation();" ng-if="creatureApi.export.exportNaturalCrit" aria-label="Copy">
         Export to Natural Crit
       </md-button>
     </section>
