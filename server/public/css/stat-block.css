@@ -64,6 +64,10 @@ div.stat-block {
           column-fill: auto;
 }
 
+div.stat-block-selected {
+  box-shadow: 0 0 0.25em 0.75px #1A1A1A !important;
+}
+
 :host([data-two-column]) #content-wrap {
   /* One column is 400px and the gap between them is 40px. */
   width: 840px;

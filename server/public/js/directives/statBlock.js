@@ -4,6 +4,7 @@ angular.module('myApp').directive('ngStatBlock', ["$mdMedia", function ($mdMedia
 		scope: {
 			creature: '=creature',
 			size: '@size',
+			_isSelected: '@isSelected',
 			creatureApi: '=creatureApi',
 			statBlockStyle: '&statBlockStyle',
 			hideCrTag: '=hideCrTag',
@@ -40,6 +41,10 @@ angular.module('myApp').directive('ngStatBlock', ["$mdMedia", function ($mdMedia
 
 			scope.isMobile = function(){
 				return($mdMedia('xs'));
+			}
+
+			scope.isSelected = function() {
+				return scope._isSelected === 'true';
 			}
 		},
 		template: '<div ng-include="contentUrl"></div>',

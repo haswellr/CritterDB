@@ -1,4 +1,4 @@
-<div class="stat-block" ng-style="statBlockStyle()">
+<div class="stat-block" ng-style="statBlockStyle()" ng-class="{'stat-block-selected': isSelected()}">
 	 <div ng-if="!isMobile()" class="stat-block-overlay" layout="column" layout-align="center center">
     <!-- Main Control Menu - bar on the right side -->
     <section ng-if="!noResize" layout="row" class="side-menu mini-menu" layout-align="end center">
