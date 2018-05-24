@@ -49,6 +49,20 @@ angular.module('myApp').factory("ChallengeRatingCalculator", function($mdMedia,$
 			return(offensiveCR);
 		}
 
+		var calculateOverallChallengeRating = function(offensiveCR, defensiveCR) {
+			var avg = (offensiveCR + defensiveCR)/2.0;
+			if(avg >= 0.75)
+				return Math.min(30, Math.round(avg));
+			else if(avg >= 0.375)
+				return 0.5;
+			else if(avg >= 0.1875)
+				return 0.25;
+			else if(avg >= 0.0625)
+				return 0.125;
+			else
+				return 0.0;
+		}
+
 		var populateChallengeRating = function(){
 			//defensive CR
 			//find 'true' hit point value based on hitPoints x/ resistances
@@ -83,7 +97,7 @@ angular.module('myApp').factory("ChallengeRatingCalculator", function($mdMedia,$
 			//set challenge rating
 			$scope.challengeRating.defense = defensiveCR;
 			$scope.challengeRating.offense = offensiveCR;
-			$scope.challengeRating.combined = Math.min(30,Math.round((offensiveCR + defensiveCR)/2.0));
+			$scope.challengeRating.combined = calculateOverallChallengeRating(offensiveCR, defensiveCR);
 		}
 
 		$scope.$watch("creature",function(newValue,oldValue){
