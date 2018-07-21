@@ -512,7 +512,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 			hitStr = hitStr + ", plus " + bonusDamageStr;
 
 		var description = "<i>" + type + "</i> +" + toHit + " to hit, " + rangeStr
-			+ ", one creature. <i>Hit:</i> " + hitStr + ".";
+			+ ", one target. <i>Hit:</i> " + hitStr + ".";
 		return(description);
 	}
 
