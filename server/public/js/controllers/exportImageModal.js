@@ -1,5 +1,8 @@
 
 var exportImageCtrl = function($scope,creature,html2canvas,$location,$mdDialog) {
+	const html2canvasOptions = {
+		useCORS: true
+	};
 	$scope.creature = creature;
 
 	$scope.image = {
@@ -51,9 +54,7 @@ var exportImageCtrl = function($scope,creature,html2canvas,$location,$mdDialog) 
 
 	$scope.saveImage = function(){
 		var element = document.getElementById('stat-block');
-		html2canvas.render(element, {
-
-		}).then(function(canvas){
+		html2canvas.render(element, html2canvasOptions).then(function(canvas){
 			var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 
 			var link = document.createElement('a');
