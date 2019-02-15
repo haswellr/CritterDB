@@ -440,6 +440,10 @@
     "description": "The {{name}} can perfectly recall any path it has traveled."
   },
   {
+    "name": "Legendary Resistance (3/Day)",
+    "description": "If the {{name}} fails a saving throw, it can choose to succeed instead."
+  },
+  {
     "name": "Light Sensitivity",
     "description": "While in bright light, the {{name}} has disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight."
   },
@@ -469,7 +473,7 @@
   },
   {
     "name": "Magic Weapons",
-    "description": "The {{name}} weapon attacks are magical."
+    "description": "The {{name}}'s weapon attacks are magical."
   },
   {
     "name": "Martial Advantage (Hobgoblin)",
