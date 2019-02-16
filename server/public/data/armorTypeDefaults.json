@@ -50,5 +50,9 @@
 	'Mage Armor': {
 		ac: 13,
 		maxDex: -1
+	},
+	'Natural Armor': {
+		ac: 13,
+		maxDex: -1
 	}
 }
