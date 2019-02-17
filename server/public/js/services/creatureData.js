@@ -22,7 +22,7 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 		@import "../../data/languages.json";
 	CreatureData.conditions = //import must be on its own line
 		@import "../../data/conditions.json";
-	CreatureData.negativeConditions = Object.keys(CreatureData.conditions).filter(conditionName => CreatureData.conditions[conditionName].negative);
+	CreatureData.negativeConditions = Object.keys(CreatureData.conditions).filter(function(conditionName) {return CreatureData.conditions[conditionName].negative});
 	CreatureData.attackTypes = //import must be on its own line
 		@import "../../data/attackTypes.json";
 	CreatureData.experienceByCR = //import must be on its own line
