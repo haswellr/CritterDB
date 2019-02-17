@@ -496,20 +496,28 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 			twoHandedDamageStr = createDamageStr(attack.twoHandedDamageType,attack.twoHandedDamageDiceSize,attack.twoHandedDamageDiceNum,damageMod);
 		if(attack.bonusDamage)
 			bonusDamageStr = createDamageStr(attack.bonusDamageType,attack.bonusDamageDiceSize,attack.bonusDamageDiceNum,0);
-		var hitStr;
+		var hitStr, needsCommaBeforeBonusDamage;
 		if(attack.melee){
 			hitStr = meleeDamageStr;
 			if(attack.ranged){
 				hitStr = hitStr + " in melee, or " + rangedDamageStr + " at range";
+				needsCommaBeforeBonusDamage = true;
 			}
 		}
 		else if(attack.ranged)
 			hitStr = rangedDamageStr;
-		if(attack.versatile)
+		if(attack.versatile) {
 			hitStr = hitStr + ", or " + twoHandedDamageStr + " if used with two "
 				+ "hands to make a melee attack";
-		if(attack.bonusDamage)
-			hitStr = hitStr + ", plus " + bonusDamageStr;
+			needsCommaBeforeBonusDamage = true;
+		}
+		if(attack.bonusDamage) {
+			if (needsCommaBeforeBonusDamage) {
+				hitStr = hitStr + ",";
+				needsCommaBeforeBonusDamage = false;
+			}
+			hitStr = hitStr + " plus " + bonusDamageStr;
+		}
 
 		var description = "<i>" + type + "</i> +" + toHit + " to hit, " + rangeStr
 			+ ", one target. <i>Hit:</i> " + hitStr + ".";
