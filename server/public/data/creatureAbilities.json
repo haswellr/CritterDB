@@ -1,6 +1,6 @@
 [
   {
-    "name": "Abberant Ground",
+    "name": "Aberrant Ground",
     "description": "The ground in a 10-foot radius around the {{name}} is doughlike difficult terrain. Each creature that starts its turn in that area must succeed on a DC 10 Strength saving throw or have its speed reduced to 0 until the start of its next turn."
   },
   {
@@ -157,7 +157,7 @@
   },
   {
     "name": "Devil's Sight",
-    "description": "Magical darkness doesn't impede The {{name}}'s darkvision."
+    "description": "Magical darkness doesn't impede the {{name}}'s darkvision."
   },
   {
     "name": "Dive Attack (Aarakocra)",
