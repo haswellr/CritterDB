@@ -12,7 +12,7 @@
     <md-input-container flex>
       <label>Size</label>
       <md-select ng-model="creature.stats.size">
-        <md-option ng-repeat="size in creatureData.sizes" value="{{size}}">
+        <md-option ng-repeat="size in creatureData.sizeNames" value="{{size}}">
           {{size}}
         </md-option>
       </md-select>

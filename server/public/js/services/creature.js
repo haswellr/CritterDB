@@ -11,27 +11,6 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 		"charisma": "Cha"
 	};
 
-	var skillAbilities = {
-		"Acrobatics": "dexterity",
-		"Animal Handling": "wisdom",
-		"Arcana": "intelligence",
-		"Athletics": "strength",
-		"Deception": "charisma",
-		"History": "intelligence",
-		"Insight": "wisdom",
-		"Intimidation": "charisma",
-		"Investigation": "intelligence",
-		"Medicine": "wisdom",
-		"Nature": "intelligence",
-		"Perception": "wisdom",
-		"Performance": "charisma",
-		"Persuasion": "charisma",
-		"Religion": "intelligence",
-		"Sleight of Hand": "dexterity",
-		"Stealth": "dexterity",
-		"Survival": "wisdom"
-	};
-
 	var getAbilityModifier = function(abilityScore){
 		return(Math.floor((abilityScore - 10.0)/2.0));
 	}
@@ -61,7 +40,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 		//hit points
 		if(creature.stats && creature.stats.size && creature.stats.abilityScoreModifiers && creature.stats.numHitDie){
 			if(!creature.stats.hitDieSize)
-				creature.stats.hitDieSize = CreatureData.hitDieSizeBySize[creature.stats.size];
+				creature.stats.hitDieSize = CreatureData.sizes[creature.stats.size].hitDieSize;
 			creature.stats.extraHealthFromConstitution = creature.stats.abilityScoreModifiers["constitution"] * creature.stats.numHitDie;
 			creature.stats.hitPoints = Math.floor(creature.stats.numHitDie * ((creature.stats.hitDieSize/2.0) + 0.5 + creature.stats.abilityScoreModifiers["constitution"]));
 			var sign = "+";
@@ -120,7 +99,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 		if(creature.stats && creature.stats.skills && creature.stats.abilityScoreModifiers && creature.stats.proficiencyBonus!=undefined){
 			for(var index in creature.stats.skills){
 				var skill = creature.stats.skills[index];
-				var ability = skillAbilities[skill.name];
+				var ability = CreatureData.skills[skill.name].ability;
 				var mod = creature.stats.abilityScoreModifiers[ability];
 				if(skill.value != undefined)
 					mod = skill.value;

@@ -115,12 +115,12 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		},
 		getUnused: function(selectedSkill){
 			if(!$scope.creature.stats || !$scope.creature.stats.skills)
-				return $scope.creatureData.skills;
+				return $scope.creatureData.skillNames;
 			var unusedSkills = [];
-			for(var i=0;i<$scope.creatureData.skills.length;i++){
-				var unused = !$scope.skills.isUsed($scope.creatureData.skills[i]);
-				if(unused || selectedSkill.name.toLowerCase()==$scope.creatureData.skills[i].toLowerCase())
-					unusedSkills.push($scope.creatureData.skills[i]);
+			for(var i=0;i<$scope.creatureData.skillNames.length;i++){
+				var unused = !$scope.skills.isUsed($scope.creatureData.skillNames[i]);
+				if(unused || selectedSkill.name.toLowerCase()==$scope.creatureData.skillNames[i].toLowerCase())
+					unusedSkills.push($scope.creatureData.skillNames[i]);
 			}
 			return(unusedSkills);
 		},
@@ -129,11 +129,11 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 				$scope.creature.stats = {};
 			if(!$scope.creature.stats.skills)
 				$scope.creature.stats.skills = [];
-			for(var i=0;i<$scope.creatureData.skills.length;i++){
-				var unused = !$scope.skills.isUsed($scope.creatureData.skills[i]);
+			for(var i=0;i<$scope.creatureData.skillNames.length;i++){
+				var unused = !$scope.skills.isUsed($scope.creatureData.skillNames[i]);
 				if(unused){
 					var newSkill = {
-						name: $scope.creatureData.skills[i],
+						name: $scope.creatureData.skillNames[i],
 						proficient: true
 					};
 					$scope.creature.stats.skills.push(newSkill);
@@ -214,7 +214,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 
 	$scope.size = {
 		changed: function(){
-			$scope.creature.stats.hitDieSize = CreatureData.hitDieSizeBySize[$scope.creature.stats.size];
+			$scope.creature.stats.hitDieSize = CreatureData.sizes[$scope.creature.stats.size].hitDieSize;
 		}
 	}
 	$scope.$watch("creature.stats.size",function(newValue,oldValue){

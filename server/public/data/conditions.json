@@ -1,0 +1,47 @@
+{
+	"Blinded": {
+		"negative": true
+	},
+	"Charmed": {
+		"negative": true
+	},
+	"Deafened": {
+		"negative": true
+	},
+	"Exhaustion": {
+		"negative": true
+	},
+	"Frightened": {
+		"negative": true
+	},
+	"Grappled": {
+		"negative": true
+	},
+	"Incapacitated": {
+		"negative": true
+	},
+	"Invisible": {
+		"negative": false
+	},
+	"Paralyzed": {
+		"negative": true
+	},
+	"Petrified": {
+		"negative": true
+	},
+	"Poisoned": {
+		"negative": true
+	},
+	"Prone": {
+		"negative": true
+	},
+	"Restrained": {
+		"negative": true
+	},
+	"Stunned": {
+		"negative": true
+	},
+	"Unconscious": {
+		"negative": true
+	}
+}

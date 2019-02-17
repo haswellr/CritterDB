@@ -1,0 +1,56 @@
+{
+  "Acrobatics": {
+    "ability": "dexterity"
+  },
+  "Animal Handling": {
+    "ability": "wisdom"
+  },
+  "Arcana": {
+    "ability": "intelligence"
+  },
+  "Athletics": {
+    "ability": "strength"
+  },
+  "Deception": {
+    "ability": "charisma"
+  },
+  "History": {
+    "ability": "intelligence"
+  },
+  "Insight": {
+    "ability": "wisdom"
+  },
+  "Indimidation": {
+    "ability": "charisma"
+  },
+  "Investigation": {
+    "ability": "intelligence"
+  },
+  "Medicine": {
+    "ability": "wisdom"
+  },
+  "Nature": {
+    "ability": "intelligence"
+  },
+  "Perception": {
+    "ability": "wisdom"
+  },
+  "Performance": {
+    "ability": "charisma"
+  },
+  "Persuasion": {
+    "ability": "charisma"
+  },
+  "Religion": {
+    "ability": "intelligence"
+  },
+  "Sleight of Hand": {
+    "ability": "dexterity"
+  },
+  "Stealth": {
+    "ability": "dexterity"
+  },
+  "Survival": {
+    "ability": "wisdom"
+  }
+}

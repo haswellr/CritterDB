@@ -1,0 +1,32 @@
+{
+  "Fine": {
+    "hitDieSize": 4
+  },
+  "Diminutive": {
+    "hitDieSize": 4
+  },
+  "Tiny": {
+    "hitDieSize": 4
+  },
+  "Small": {
+    "hitDieSize": 6
+  },
+  "Medium": {
+    "hitDieSize": 8
+  },
+  "Large": {
+    "hitDieSize": 10
+  },
+  "Huge": {
+    "hitDieSize": 12
+  },
+  "Gargantuan": {
+    "hitDieSize": 20
+  },
+  "Colossal": {
+    "hitDieSize": 20
+  },
+  "Colossal+": {
+    "hitDieSize": 20
+  }
+}
