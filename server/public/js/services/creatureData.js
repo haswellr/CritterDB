@@ -7,7 +7,7 @@ angular.module('myApp').factory("CreatureData", function($resource) {
 		"Huge","Gargantuan","Colossal","Colossal+"];
 	CreatureData.races = ["Dwarf","Hill Dwarf","Elf","High Elf","Halfling",
 		"Lightfoot Halfling","Human","Dragonborn","Gnome","Half-Elf","Half-Orc",
-		"Tiefling","Abberation","Beast","Celestial","Construct","Dragon",
+		"Tiefling","Aberration","Beast","Celestial","Construct","Dragon",
 		"Elemental","Fey","Fiend","Giant","Humanoid","Monstrosity","Ooze","Plant",
 		"Undead"];
 	CreatureData.alignments = ["Unaligned","Any Alignment","Lawful Good","Lawful Neutral",
