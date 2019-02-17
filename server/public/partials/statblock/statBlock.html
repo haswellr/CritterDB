@@ -140,7 +140,7 @@
         <h4>Languages</h4>
         <p ng-if="creature.stats.languages.length==0">—</p>
         <p ng-if="creature.stats.languages.length>0">
-          <span ng-repeat="language in creature.stats.languages"><span ng-if="$index>0">, </span>{{language.charAt(0).toUpperCase() + language.slice(1).toLowerCase()}}</span>
+          <span ng-repeat="language in creature.stats.languages"><span ng-if="$index>0">, </span>{{language}}</span>
         </p>
       </div>
       <div class="property-line">
