@@ -924,6 +924,15 @@ div.toggle-bestiary-view-area button md-icon {
   overflow-x:hidden;
 }
 
+.hanging-indent {
+  padding-left: 22px;
+  text-indent: -22px;
+}
+.hanging-indent-half {
+  padding-left: 11px;
+  text-indent: -11px;
+}
+
 @media (min-width:600px) {
   .previewList .creatures {
     width: 50%;

@@ -142,13 +142,23 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 		return html;
 	}
 
-	var generateAbility = function(ability){
-		var html = '***' + ability.name + '.' + '*** ' + convertWhitespaceAndHtml(ability.description) + newline +
+	/*
+		styling: {
+			hangingIndent: boolean
+		}
+	*/
+	var generateAbility = function(ability, styling){
+		var html = '';
+		if (styling && styling.hangingIndent) {
+			html = html + '- ';
+		}
+		html = html + '***' + ability.name + '.' + '*** ' + convertWhitespaceAndHtml(ability.description) + newline +
 			newline;
 		return html;
 	}
 
-	var generateProperties = function(title,abilities,subtext){
+	
+	var generateProperties = function(title,abilities,subtext,abilityStyling){
 		var html = '';
 		if(abilities && abilities.length>0){
 			if(title)
@@ -157,7 +167,7 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 				html = html + subtext + newline +
 					newline;
 			for(var i=0;i<abilities.length;i++){
-				html = html + generateAbility(abilities[i]);
+				html = html + generateAbility(abilities[i],abilityStyling);
 			}
 		}
 		return html;
@@ -165,7 +175,10 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 	var generateLegendaryActions = function(creature){
 		var subtext = 'The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.';
-		return generateProperties('Legendary Actions',creature.stats.legendaryActions,subtext);
+		var abilityStyling = {
+			hangingIndent: true
+		};
+		return generateProperties('Legendary Actions',creature.stats.legendaryActions,subtext,abilityStyling);
 	}
 
 	var generateDescription = function(creature){
