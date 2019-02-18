@@ -33,7 +33,7 @@
   },
   {
     "name": "Antimagic Susceptibility",
-    "description": "The {{name}} is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the {{name}} must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
+    "description": "The {{name}} is incapacitated while in the area of an <i>antimagic field</i>. If targeted by <i>dispel magic</i>, the {{name}} must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute."
   },
   {
     "name": "Ambusher",
@@ -573,7 +573,7 @@
   },
   {
     "name": "Reactive",
-    "description": "The {{name}} can take one reaction on every turn in a combat."
+    "description": "The {{name}} can take one reaction on every turn in combat."
   },
   {
     "name": "Reactive Heads (Hydra)",
@@ -585,7 +585,7 @@
   },
   {
     "name": "Reflective Carapace (Tarrasque)",
-    "description": "Any time the {{name}} is targeted by a <i>magic missile</i> spell, a line spell, or a spell that requires a ranged attack roll, roll a d6. On a 1 to 5, the tarrasque is unaffected. On a 6, the tarrasque is unaffected, and the effect is reflected back at the caster as though it originated from the tarrasque, turning the caster into the target."
+    "description": "Any time the {{name}} is targeted by a <i>magic missile</i> spell, a line spell, or a spell that requires a ranged attack roll, roll a d6. On a 1 to 5, the {{name}} is unaffected. On a 6, the {{name}} is unaffected, and the effect is reflected back at the caster as though it originated from the {{name}}, turning the caster into the target."
   },
   {
     "name": "Regeneration (Oni)",
@@ -788,7 +788,7 @@
     "description": "The {{name}} has advantage on Strength and Dexterity saving throws made against effects that would knock it prone."
   },
   {
-    "name": "Swamp Camouflage (Bullywug)",
+    "name": "Swamp Camouflage",
     "description": "The {{name}} has advantage on Dexterity (Stealth) checks made to hide in swampy terrain."
   },
   {
@@ -880,7 +880,7 @@
     "description": "The {{name}} has advantage on Wisdom (Perception) checks and on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious."
   },
   {
-    "name": "Undead Fortitude (Zombie)",
+    "name": "Undead Fortitude",
     "description": "If damage reduces the {{name}} to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the {{name}} drops to 1 hit point instead."
   },
   {
