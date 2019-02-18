@@ -226,10 +226,9 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		if ($scope.creature.stats && $scope.creature.stats.legendaryActions.length > 0 && !$scope.creature.stats.legendaryActionsDescription) {
 			var nameWithPronoun = ($scope.creature.flavor && $scope.creature.flavor.nameIsProper) ? $scope.creature.name : "The " + $scope.creature.name;
 			$scope.creature.stats.legendaryActionsDescription =
-				nameWithPronoun
-				+ " can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. "
-				+ nameWithPronoun
-				+ " regains spent legendary actions at the start of its turn.";
+				nameWithPronoun + " can take " + $scope.creature.stats.legendaryActionsPerRound
+				+ " legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. "
+				+ nameWithPronoun + " regains spent legendary actions at the start of its turn.";
 		}
 	}
 	generateLegendaryActionsDescriptionIfNeeded();	//run once on page load
@@ -392,7 +391,8 @@ var defaultCreature = {
 			description: "<i>Melee Weapon Attack:</i> +0 to hit, reach 5 ft., one target. <i>Hit:</i> 3 (1d6 + 0) piercing damage."
 		}],
 		reactions: [],
-		legendaryActions: []
+		legendaryActions: [],
+		legendaryActionsPerRound: 3
 	}
 }
 
