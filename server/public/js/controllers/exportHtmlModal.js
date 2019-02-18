@@ -184,7 +184,12 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		return html;
 	}
 
-	var generateAbility = function(ability){
+	/*
+		styling: {
+			hangingIndent: boolean
+		}
+	*/
+	var generateAbility = function(ability,styling){
 		var html = tabs(3) + '<property-block>\n' +
 			tabs(4) + '<h4>' + ability.name + '.' + '</h4>\n' +
 			tabs(4) + '<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
@@ -192,13 +197,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		return(html);
 	}
 
-	var generateProperties = function(title,abilities){
+	var generateProperties = function(title,abilities,abilityStyling){
 		var html = '';
 		if(abilities && abilities.length>0){
 			if(title)
 				html = html + tabs(3) + '<h3>' + title + '</h3>\n';
 			for(var i=0;i<abilities.length;i++){
-				html = html + generateAbility(abilities[i]);
+				html = html + generateAbility(abilities[i], abilityStyling);
 			}
 		}
 		return html;
@@ -207,10 +212,13 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 	var generateLegendaryActions = function(creature){
 		var html = '';
 		if(creature.stats.legendaryActions && creature.stats.legendaryActions.length>0) {
+			var abilityStyling = {
+				hangingIndent: true
+			};
 			html = html + tabs(3) + '<h3>Legendary Actions</h3>\n' +
-				tabs(3) + '<p>The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.</p>\n' +
+				tabs(3) + '<p>' + creature.stats.legendaryActionsDescription + '</p>\n' +
 				'\n' +
-				generateProperties(null,creature.stats.legendaryActions);
+				generateProperties(null,creature.stats.legendaryActions,abilityStyling);
 		}
 		return html;
 	}

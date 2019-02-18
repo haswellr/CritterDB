@@ -180,6 +180,10 @@ var StatBlock = new mongoose.Schema(
             type: Number,
             default: 3
         },
+        legendaryActionsDescription: {
+            type: String,
+            default: ""
+        },
         legendaryActions: [Ability]
     },
     {

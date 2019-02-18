@@ -125,7 +125,13 @@
 
   <section class="subsection" layout="row" layout-align="center center" layout-wrap>
     <div layout="row" style="height:50px;" class="controls">
-      <md-button ng-click="abilities.addToList(creature.stats.legendaryActions)" class="md-raised">Add Action</md-button>
+      <md-button ng-click="addLegendaryAction()" class="md-raised">Add Action</md-button>
+    </div>
+    <div ng-if="creature.stats.legendaryActions.length>0" class="saving-throw-row" style="height:auto;">
+      <md-input-container flex style="width:100%">
+        <label>Description</label>
+        <textarea ng-model="creature.stats.legendaryActionsDescription" type="text"></textarea>
+      </md-input-container>
     </div>
     <div ng-repeat="ability in creature.stats.legendaryActions" class="saving-throw-row" style="height:auto;">
       <section layout="row" style="width:100%;">
@@ -155,10 +161,6 @@
       </section>
     </div>
     <div class="label">Legendary Actions</div>
-    <md-input-container ng-if="creature.stats.legendaryActions.length>0" class="sub-number" flex>
-      <label>Per Round</label>
-      <input ng-model="creature.stats.legendaryActionsPerRound" min="1" type="number"/>
-    </md-input-container>
   </section>
 
   <br />

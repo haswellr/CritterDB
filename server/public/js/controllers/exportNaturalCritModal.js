@@ -174,11 +174,10 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 	}
 
 	var generateLegendaryActions = function(creature){
-		var subtext = 'The ' + creature.name.toLowerCase() + ' can take ' + creature.stats.legendaryActionsPerRound + ' legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature\'s turn. The ' + creature.name.toLowerCase() + ' regains spent legendary actions at the start of its turn.';
 		var abilityStyling = {
 			hangingIndent: true
 		};
-		return generateProperties('Legendary Actions',creature.stats.legendaryActions,subtext,abilityStyling);
+		return generateProperties('Legendary Actions',creature.stats.legendaryActions,creature.stats.legendaryActionsDescription,abilityStyling);
 	}
 
 	var generateDescription = function(creature){
