@@ -103,7 +103,7 @@ angular.module('myApp').factory("Creature", function($resource,$sce,CachedResour
 		if(creature.stats && creature.stats.skills && creature.stats.abilityScoreModifiers && creature.stats.proficiencyBonus!=undefined){
 			for(var index in creature.stats.skills){
 				var skill = creature.stats.skills[index];
-				var ability = CreatureData.skills[skill.name].ability;
+				var ability = CreatureData.skills[skill.name] ? CreatureData.skills[skill.name].ability : "";
 				var mod = creature.stats.abilityScoreModifiers[ability];
 				if(skill.value != undefined)
 					mod = skill.value;
