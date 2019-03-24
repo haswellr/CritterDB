@@ -41,11 +41,13 @@ angular.module('myApp').factory("ChallengeRatingCalculator", function($mdMedia,$
 		var calculateOffensiveChallengeRating = function(damage, attackBonus, saveDC) {
 			var offensiveCR = 0.125;
 			for(var cr in CreatureData.challengeRating) {
-				if(parseFloat(cr) > offensiveCR && damage >= CreatureData.challengeRating[cr].damage.min || saveDC >= CreatureData.challengeRating[cr].saveDC) {
+				if(parseFloat(cr) > offensiveCR && damage >= CreatureData.challengeRating[cr].damage.min) {
 					offensiveCR = parseFloat(cr);
 				}
 			}
-			offensiveCR = offensiveCR + Math.floor((attackBonus - CreatureData.challengeRating[offensiveCR].attackBonus)/2.0);
+			var attackBonusDiff = attackBonus - CreatureData.challengeRating[offensiveCR].attackBonus;
+			var saveDiff = saveDC - CreatureData.challengeRating[offensiveCR].saveDC;
+			offensiveCR = offensiveCR + Math.floor(Math.max(attackBonusDiff, saveDiff) / 2.0);
 			return(offensiveCR);
 		}
 
