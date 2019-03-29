@@ -87,7 +87,7 @@ exports.findById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             res.send(doc);
@@ -101,7 +101,7 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     User.find({}, function(err, docs) {
         if(err){
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else{
             res.send(docs);
@@ -114,7 +114,7 @@ exports.create = function(req, res) {
 
     user.save(function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else {
             res.send(getPublicInfo(doc));
@@ -133,7 +133,7 @@ exports.updateById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             doc.comparePassword(req.body.currentPassword,function(err,isMatch){
@@ -171,7 +171,7 @@ exports.deleteById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateUser(req, doc, function(err){
@@ -180,7 +180,7 @@ exports.deleteById = function(req, res) {
                 else{
                     User.findByIdAndRemove(query, function(err, doc, result){
                         if(err)
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         else
                             res.send(getPublicInfo(doc));
                     });
@@ -199,7 +199,7 @@ exports.findBestiariesByOwner = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateUser(req, doc, function(err){
@@ -232,7 +232,7 @@ exports.searchCreatures = function(req, res) {
     };
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateUser(req, doc, function(err){
@@ -280,7 +280,7 @@ exports.searchCreatures = function(req, res) {
                                 .limit(creatures.PAGE_SIZE)
                                 .exec(function(err, creatures){
                                     if(err)
-                                        res.status(400).send(err.errmsg);
+                                        res.status(400).send(err.message);
                                     else{
                                         res.send(creatures);
                                     }
@@ -302,7 +302,7 @@ exports.findPublicInfoById = function(req, res) {
 
     User.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             res.send(getPublicInfo(doc));
@@ -327,7 +327,7 @@ exports.findPublicInfo = function(req, res) {
             query._id = id;
         User.findOne(query, function (err, doc) {
             if(err) {
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else if(doc){
                 res.send(getPublicInfo(doc));
@@ -353,7 +353,7 @@ exports.resetPassword = function(req, res) {
             query.email = email;
         User.findOne(query, function (err, doc) {
             if(err) {
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else if(doc){
                 var newPassword = getRandomPassword();

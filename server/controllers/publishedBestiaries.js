@@ -90,7 +90,7 @@ exports.findById = function(req, res) {
 
     PublishedBestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             //Do not authenticate by owner because this is public
@@ -105,7 +105,7 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     PublishedBestiary.find({}, function(err, docs) {
         if(err){
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else{
             res.send(docs);
@@ -125,12 +125,12 @@ exports.create = function(req, res) {
         else{
             publishedBestiary.save(function (err, doc) {
                 if(err) {
-                    res.status(400).send(err.errmsg);
+                    res.status(400).send(err.message);
                 }
                 else {
                     doc.populate(populateOptions, function(err) {
                         if(err)
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         else{
                             res.send(doc);
                         }
@@ -151,7 +151,7 @@ exports.updateById = function(req, res) {
 
     PublishedBestiary.findOne(query, function (err, existingDoc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(existingDoc){
             authenticateBestiaryByOwner(req, existingDoc, function(err){
@@ -165,7 +165,7 @@ exports.updateById = function(req, res) {
                         existingDoc.description = req.body.description;
                     existingDoc.save(function(err, doc) {
                         if(err)
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         else{
                             res.send(existingDoc);
                         }
@@ -185,7 +185,7 @@ exports.deleteById = function(req, res) {
 
     PublishedBestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateBestiaryByOwner(req, doc, function(err){
@@ -194,7 +194,7 @@ exports.deleteById = function(req, res) {
                 else{
                     PublishedBestiary.findByIdAndRemove(query, function(err, doc, result){
                         if(err)
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         else{
                             //Delete all creatures as well
                             var deleteQuery = {
@@ -246,7 +246,7 @@ exports.createLike = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else{
                         res.send(doc);
                     }
@@ -281,7 +281,7 @@ exports.deleteLike = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else{
                         res.send(doc);
                     }
@@ -319,7 +319,7 @@ exports.createFavorite = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else{
                         res.send(doc);
                     }
@@ -351,7 +351,7 @@ exports.deleteFavorite = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else{
                         res.send(doc);
                     }
@@ -371,7 +371,7 @@ exports.findRecent = function(req, res) {
         limit(PAGE_SIZE).
         exec(function (err, docs) {
             if(err){
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else{
                 var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
@@ -391,7 +391,7 @@ exports.findPopular = function(req, res) {
         limit(PAGE_SIZE).
         exec(function (err, docs) {
             if(err){
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else{
                 var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
@@ -422,7 +422,7 @@ exports.findFavorites = function(req, res) {
                 limit(PAGE_SIZE).
                 exec(function (err, docs) {
                     if(err){
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     }
                     else{
                         var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
@@ -451,7 +451,7 @@ exports.findOwned = function(req, res) {
                 limit(PAGE_SIZE).
                 exec(function (err, docs) {
                     if(err){
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     }
                     else{
                         var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
@@ -476,7 +476,7 @@ exports.findByOwner = function(req, res) {
         limit(PAGE_SIZE).
         exec(function (err, docs) {
             if(err){
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else{
                 var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
@@ -508,7 +508,7 @@ exports.createComment = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else{
                         res.send(doc);
                     }
@@ -546,7 +546,7 @@ exports.updateCommentById = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else if(doc){
                         res.send(doc);
                     }
@@ -582,7 +582,7 @@ exports.deleteCommentById = function(req, res) {
                 .populate(populateOptions)
                 .exec(function (err, doc) {
                     if(err)
-                        res.status(400).send(err.errmsg);
+                        res.status(400).send(err.message);
                     else{
                         res.send(doc);
                     }
@@ -613,7 +613,7 @@ exports.search = function(req, res) {
         limit(PAGE_SIZE).
         exec(function (err, docs) {
             if(err){
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else{
                 var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
@@ -643,7 +643,7 @@ exports.findMostPopular = function(req, res) {
         limit(1).
         exec(function (err, docs) {
             if(err){
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             }
             else{
                 if(docs.length>0)
@@ -673,7 +673,7 @@ exports.findCreaturesByBestiary = function(req, res) {
         limit(creatures.PAGE_SIZE).
         exec(function(err, docs){
             if(err)
-                res.status(400).send(err.errmsg);
+                res.status(400).send(err.message);
             else{
                 res.send(docs);
             }
@@ -686,7 +686,7 @@ exports.deleteCreaturesByBestiary = function(req, res) {
 
     PublishedBestiary.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateBestiaryByOwner(req, doc, function(err){
@@ -698,7 +698,7 @@ exports.deleteCreaturesByBestiary = function(req, res) {
                     };
                     Creature.remove(deleteQuery).exec(function(err, docs){
                         if(err)
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         else{
                             res.send(docs);
                         }

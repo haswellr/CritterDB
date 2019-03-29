@@ -54,7 +54,7 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
         var query = {'_id':creature.bestiaryId};
         Bestiary.findOne(query, function(err, doc){
             if(err)
-                callback(err.errmsg);
+                callback(err.message);
             else if(doc)
                 authenticateBestiaryByOwner(req, doc, callback);
             else
@@ -65,7 +65,7 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
         var query = {'_id':creature.publishedBestiaryId};
         PublishedBestiary.findOne(query, function(err, doc){
             if(err)
-                callback(err.errmsg);
+                callback(err.message);
             else if(doc)
                 authenticatePublishedBestiaryByOwner(req, doc, callback);
             else
@@ -73,7 +73,7 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
         });
     }
     else{
-        setTimeout(callback(err.errmsg));
+        setTimeout(callback(err.message));
     }
 }
 
@@ -83,7 +83,7 @@ exports.findById = function(req, res) {
 
     Creature.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateCreatureByBestiary(req, doc, function(err){
@@ -102,7 +102,7 @@ exports.findById = function(req, res) {
 exports.findAll = function(req, res) {
     Creature.find({}, function(err, docs) {
         if(err){
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else{
             res.send(docs);
@@ -114,12 +114,13 @@ exports.create = function(req, res) {
     var creature = new Creature(req.body);
 
     authenticateCreatureByBestiary(req, creature, function(err){
-        if(err)
+        if(err) {
             res.status(400).send(err);
+        }
         else{
             creature.save(function (err, doc) {
                 if(err) {
-                    res.status(400).send(err.errmsg);
+                    res.status(400).send(err.message);
                 }
                 else {
                     res.send(doc);
@@ -140,7 +141,7 @@ exports.updateById = function(req, res) {
 
     Creature.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateCreatureByBestiary(req, doc, function(err){
@@ -149,7 +150,7 @@ exports.updateById = function(req, res) {
                 else{
                     Creature.findOneAndUpdate(query, creature, options, function(err, doc){
                         if(err){
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         }
                         else if(doc){
                             res.send(doc);
@@ -170,7 +171,7 @@ exports.deleteById = function(req, res) {
 
     Creature.findOne(query, function (err, doc) {
         if(err) {
-            res.status(400).send(err.errmsg);
+            res.status(400).send(err.message);
         }
         else if(doc){
             authenticateCreatureByBestiary(req, doc, function(err){
@@ -179,7 +180,7 @@ exports.deleteById = function(req, res) {
                 else{
                     Creature.findByIdAndRemove(query, function(err, doc, result){
                         if(err){
-                            res.status(400).send(err.errmsg);
+                            res.status(400).send(err.message);
                         }
                         else{
                             res.send(doc);
