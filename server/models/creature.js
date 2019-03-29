@@ -102,12 +102,10 @@ var Skill = new mongoose.Schema(
 var Ability = new mongoose.Schema(
     {
         name: {
-            type: String,
-            required: true
+            type: String
         },
         description: {
-            type: String,
-            required: true
+            type: String
         }
     },
     {
