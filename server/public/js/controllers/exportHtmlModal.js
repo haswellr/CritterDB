@@ -1,4 +1,4 @@
-var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast) {
+var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast,TextUtils) {
 
 	var header = "";
 	Creature.calculateCreatureDetails(creature);
@@ -33,7 +33,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 	var generateHeading = function(creature){
 		var html = tabs(3) + '<creature-heading>\n' +
 			tabs(4) + '<h1>'+creature.name+'</h1>\n' +
-			tabs(4) + '<h2>'+ creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase() + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '</h2>\n' +
+			tabs(4) + '<h2>'+ TextUtils.capitalizeFirstLetter(creature.stats.size) + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '</h2>\n' +
 			tabs(3) + '</creature-heading>\n';
 		return html;
 	}
@@ -166,7 +166,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 				if(i>0)
 					html = html + ', ';
 				var language = creature.stats.languages[i];
-				html = html + language.charAt(0).toUpperCase() + language.slice(1).toLowerCase();
+				html = html + TextUtils.capitalizeFirstLetter(language);
 			}
 		}
 		html = html +
