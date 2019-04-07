@@ -188,7 +188,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 			var nameLower = ability.name.toLowerCase();
 			for(var i=0;i<matchingAbilities.length;i++){
 				if(matchingAbilities[i].name.toLowerCase()==nameLower){
-					var creatureName = $scope.creature.name.toLowerCase();
+					var creatureName = TextUtils.getCreatureNameAsProperNoun($scope.creature);
 					ability.description = matchingAbilities[i].description.replace(/{{name}}/g,creatureName);
 					break;	//just find the first matching one
 				}
