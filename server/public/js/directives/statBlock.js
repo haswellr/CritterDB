@@ -1,4 +1,4 @@
-angular.module('myApp').directive('ngStatBlock', ["$mdMedia", function ($mdMedia) {
+angular.module('myApp').directive('ngStatBlock', ["$mdMedia", "TextUtils", function ($mdMedia, TextUtils) {
 	return {
 		restrict: 'E',
 		scope: {
@@ -45,6 +45,15 @@ angular.module('myApp').directive('ngStatBlock', ["$mdMedia", function ($mdMedia
 
 			scope.isSelected = function() {
 				return scope._isSelected === 'true';
+			}
+			scope.getLegendaryActionsText = function() {
+				// Creatures with no legendary actions yet will have the description initialized with a default. It can then be customized.
+				const defaultText = TextUtils.capitalizeFirstLetter(TextUtils.getCreatureNameAsProperNoun(scope.creature)) + " can take " +
+					scope.creature.stats.legendaryActionsPerRound + " legendary actions, choosing from the options below. Only one legendary action " +
+					"can be used at a time and only at the end of another creature's turn. " +
+					TextUtils.capitalizeFirstLetter(TextUtils.getCreatureNameAsProperNoun(scope.creature)) + " regains spent legendary actions " +
+					"at the start of its turn.";
+				return scope.creature.stats.legendaryActionsDescription ? scope.creature.stats.legendaryActionsDescription : defaultText;
 			}
 		},
 		template: '<div ng-include="contentUrl"></div>',
