@@ -1,4 +1,4 @@
-var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast) {
+var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast,TextUtils) {
 
 	var header = "";
 	Creature.calculateCreatureDetails(creature);
@@ -24,7 +24,7 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 	var generateHeading = function(creature){
 		var html = '## ' + creature.name + newline +
-			'*' + creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase() + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '*' + newline +
+			'*' + TextUtils.capitalizeFirstLetter(creature.stats.size) + ' ' + creature.stats.race.toLowerCase() + ', ' + creature.stats.alignment.toLowerCase() + '*' + newline +
 			generateTaperedLine();
 		return html;
 	}
@@ -128,7 +128,7 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 				if(i>0)
 					languagesText = languagesText + ', ';
 				var language = creature.stats.languages[i];
-				languagesText = languagesText + language.charAt(0).toUpperCase() + language.slice(1).toLowerCase();
+				languagesText = languagesText + TextUtils.capitalizeFirstLetter(language);
 			}
 		}
 		html = html +
