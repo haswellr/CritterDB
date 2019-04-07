@@ -1,5 +1,5 @@
 
-var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog,CreatureAPI,ChallengeRatingCalculator) {
+var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog,CreatureAPI,ChallengeRatingCalculator,TextUtils) {
 	$scope.creature = creature;
 
 	$scope.creatureData = CreatureData;
@@ -224,11 +224,11 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 
 	function generateLegendaryActionsDescriptionIfNeeded() {
 		if ($scope.creature.stats && $scope.creature.stats.legendaryActions.length > 0 && !$scope.creature.stats.legendaryActionsDescription) {
-			var nameWithPronoun = ($scope.creature.flavor && $scope.creature.flavor.nameIsProper) ? $scope.creature.name : "The " + $scope.creature.name;
+			var nameWithPronoun = TextUtils.getCreatureNameAsProperNoun($scope.creature);
 			$scope.creature.stats.legendaryActionsDescription =
-				nameWithPronoun + " can take " + $scope.creature.stats.legendaryActionsPerRound
+				TextUtils.capitalizeFirstLetter(nameWithPronoun) + " can take " + $scope.creature.stats.legendaryActionsPerRound
 				+ " legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. "
-				+ nameWithPronoun + " regains spent legendary actions at the start of its turn.";
+				+ TextUtils.capitalizeFirstLetter(nameWithPronoun) + " regains spent legendary actions at the start of its turn.";
 		}
 	}
 	generateLegendaryActionsDescriptionIfNeeded();	//run once on page load
