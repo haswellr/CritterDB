@@ -33,7 +33,11 @@ module.exports = function (grunt) {
       staging: ['staging/'],
       partials: ['dist/partials/'],
       img: ['dist/img/'],
-      fonts: ['dist/fonts']
+      fonts: ['dist/fonts'],
+      views: ['dist/views'],
+      css: ['dist/css/'],
+      data: ['dist/data/'],
+      js: ['dist/js/']
     },
     copy: {
       data: {
@@ -59,6 +63,12 @@ module.exports = function (grunt) {
         cwd: 'public/fonts',
         src: '**',
         dest: 'dist/fonts/'
+      },
+      views: {
+        expand: true,
+        cwd: 'views',
+        src: '**',
+        dest: 'dist/views/'
       }
     },
     cssmin: {
@@ -92,6 +102,10 @@ module.exports = function (grunt) {
       partials: {
         files: 'public/partials/**',
         tasks: ['clean:partials','copy:partials']
+      },
+      views: {
+        files: 'public/views/**',
+        tasks: ['clean:views','copy:views']
       }
     },
     import: {
@@ -101,6 +115,19 @@ module.exports = function (grunt) {
           src: ['public/js/**/*.js','!public/js/vendor/**/*.js'],
           dest: 'staging/imported',
           extDot: 'last'
+        }]
+      }
+    },
+    replace: {
+      hash: {
+        src: ['dist/**/*.js','dist/**/*.html','dist/**/*.css'],
+        overwrite: true,
+        replacements: [{
+          from: '@@hash',
+          to: function (matchedWord) {
+            var hash = (new Date()).valueOf().toString() + Math.floor((Math.random()*1000000)+1).toString();
+            return "hash=" + hash;
+          }
         }]
       }
     }
@@ -115,8 +142,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-import');
+  grunt.loadNpmTasks('grunt-text-replace');
 
   // register at least this one task
-  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'uglify', 'clean:staging', 'copy', 'cssmin']);
+  // Note on replace: the replace assetsToDist is necessary so that cacheBust can find the URLs that
+  //    it is busting in index.html properly. After busting the cache, we then reset /dist to /assets.
+  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'uglify', 'clean:staging', 'copy', 'cssmin', 'replace:hash']);
 
 };

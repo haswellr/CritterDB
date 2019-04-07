@@ -26,7 +26,7 @@ app.use("/assets",express.static(path.join(__dirname,"dist")));
 
 //Serve front end
 app.get('/',function(req,res){
-	res.sendfile(path.join(__dirname+'/views/index.html'));
+	res.sendfile(path.join(__dirname+'/dist/views/index.html'));
 });
 //Health check
 app.get('/api/health', health.healthCheck);

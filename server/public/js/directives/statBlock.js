@@ -13,11 +13,11 @@ angular.module('myApp').directive('ngStatBlock', ["$mdMedia", function ($mdMedia
 		link: function(scope, element, attrs) {
 			var setContentUrl = function(){
 				if(attrs.size=='preview')
-					scope.contentUrl = 'assets/partials/statblock/statBlockPreview.html';
+					scope.contentUrl = 'assets/partials/statblock/statBlockPreview.html?@@hash';
 				else if(attrs.size=='mini')
-					scope.contentUrl = 'assets/partials/statblock/statBlockMini.html';
+					scope.contentUrl = 'assets/partials/statblock/statBlockMini.html?@@hash';
 				else
-					scope.contentUrl = 'assets/partials/statblock/statBlock.html';
+					scope.contentUrl = 'assets/partials/statblock/statBlock.html?@@hash';
 			}
 			setContentUrl();
 
