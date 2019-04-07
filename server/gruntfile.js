@@ -4,7 +4,7 @@ module.exports = function (grunt) {
     // define source files and their destinations
     uglify: {
         files: {
-            src: ['staging/annotated/**/*.js'],
+            src: ['dist/js/app.min.js'],
             dest: 'dist/js/app.min.js',
             flatten: true   // remove all unnecessary nesting
         }
@@ -24,8 +24,12 @@ module.exports = function (grunt) {
         src: ['public/js/vendor/angular/angular.min.js','public/js/vendor/**/*.min.js'],
         dest: 'dist/js/vendor.min.js'
       },
-      source: {
-        src: ['staging/**/*.js'],
+      annotated: {
+        src: ['staging/annotated/**/*.js'],
+        dest: 'dist/js/app.min.js'
+      },
+      imported: {
+        src: ['staging/imported/**/*.js'],
         dest: 'dist/js/app.min.js'
       }
     },
@@ -85,11 +89,11 @@ module.exports = function (grunt) {
       },
       js:  {
         files: 'public/js/**/*.js',
-        tasks: ['import','concat','clean:staging']
+        tasks: ['import','concat:imported', 'babel:dev','clean:staging']
       },
       data: {
         files: 'public/data/**',
-        tasks: ['import','concat','clean:staging','copy:data']
+        tasks: ['import','concat:imported', 'babel:dev','clean:staging','copy:data']
       },
       fonts: {
         files: 'public/fonts/**',
@@ -130,6 +134,36 @@ module.exports = function (grunt) {
           }
         }]
       }
+    },
+    babel: {
+      options: {
+        sourceMap: false,
+      },
+      prod: {
+        files: {
+          'dist/js/app.min.js': 'dist/js/app.min.js'
+        },
+        options: {
+          presets: [
+            '@babel/preset-env',
+            ['minify', {
+              'mangle': true
+            }]
+          ],
+          comments: false,
+          compact: true
+        }
+      },
+      dev: {
+        files: {
+          'dist/js/app.min.js': 'dist/js/app.min.js'
+        },
+        options: {
+          presets: ['@babel/preset-env'],
+          comments: true,
+          compact: false
+        }
+      }
     }
   });
 
@@ -143,10 +177,11 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-import');
   grunt.loadNpmTasks('grunt-text-replace');
+  grunt.loadNpmTasks('grunt-babel');
 
   // register at least this one task
   // Note on replace: the replace assetsToDist is necessary so that cacheBust can find the URLs that
   //    it is busting in index.html properly. After busting the cache, we then reset /dist to /assets.
-  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'uglify', 'clean:staging', 'copy', 'cssmin', 'replace:hash']);
+  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'concat:annotated', 'replace:hash', 'babel:prod', 'clean:staging', 'copy', 'cssmin']);
 
 };
