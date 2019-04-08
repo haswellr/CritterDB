@@ -950,6 +950,15 @@ div.toggle-bestiary-view-area button md-icon {
   background-color: #d3d3d3;
 }
 
+div.view-creature-container {
+  width: 100%;
+}
+
+div.view-creature-container > div {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
 @media screen
 {
   .no-screen, .no-screen *
