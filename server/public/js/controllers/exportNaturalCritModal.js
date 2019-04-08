@@ -128,7 +128,7 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 				if(i>0)
 					languagesText = languagesText + ', ';
 				var language = creature.stats.languages[i];
-				languagesText = languagesText + TextUtils.capitalizeFirstLetter(language);
+				languagesText = languagesText + language;
 			}
 		}
 		html = html +

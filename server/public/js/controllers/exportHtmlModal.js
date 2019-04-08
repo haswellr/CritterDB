@@ -166,7 +166,7 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 				if(i>0)
 					html = html + ', ';
 				var language = creature.stats.languages[i];
-				html = html + TextUtils.capitalizeFirstLetter(language);
+				html = html + language;
 			}
 		}
 		html = html +
