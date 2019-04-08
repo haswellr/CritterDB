@@ -144,7 +144,11 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 	/*
 		styling: {
-			hangingIndent: boolean
+			hangingIndent: boolean (default: false),
+			snugLines: boolean (default: false),
+			title: {
+				italicized: boolean (default: true)
+			}
 		}
 	*/
 	var generateAbility = function(ability, styling){
@@ -152,8 +156,11 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 		if (styling && styling.hangingIndent) {
 			html = html + '- ';
 		}
-		html = html + '***' + ability.name + '.' + '*** ' + convertWhitespaceAndHtml(ability.description) + newline +
-			newline;
+		var titleFontStyle = styling && styling.title && !styling.italicized ? '**' : '***';
+		html = html + titleFontStyle + ability.name + '.' + titleFontStyle + ' ' + convertWhitespaceAndHtml(ability.description) + newline;
+		if(!(styling && styling.snugLines)) {
+			html = html + newline;
+		}
 		return html;
 	}
 
@@ -175,7 +182,11 @@ var exportNaturalCritCtrl = function ($scope,creature,Creature,$http,$mdDialog,$
 
 	var generateLegendaryActions = function(creature){
 		var abilityStyling = {
-			hangingIndent: true
+			hangingIndent: true,
+			snugLines: true,
+			title: {
+				italicized: false
+			}
 		};
 		return generateProperties('Legendary Actions',creature.stats.legendaryActions,creature.stats.legendaryActionsDescription,abilityStyling);
 	}

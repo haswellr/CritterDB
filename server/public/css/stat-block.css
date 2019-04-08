@@ -152,11 +152,21 @@ div.stat-block div.property-block {
   display: block;
 }
 
+div.stat-block div.property-block.legendary-block {
+  margin-bottom: 0.3em;
+  padding-left: 11px;
+  text-indent: -11px;
+}
+
 div.stat-block div.property-block > h4 {
   margin: 0;
   display: inline;
   font-weight: bold;
   font-style: italic;
+}
+
+div.stat-block div.property-block.legendary-block > h4 {
+  font-style: normal;
 }
 
 div.stat-block div.property-block > p:first-of-type {

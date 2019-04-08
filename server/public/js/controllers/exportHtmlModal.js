@@ -186,12 +186,31 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 
 	/*
 		styling: {
-			hangingIndent: boolean
+			hangingIndent: boolean (default: false),
+			snugLines: boolean (default: false),
+			header: {
+				fontStyle: string
+			}
 		}
 	*/
 	var generateAbility = function(ability,styling){
-		var html = tabs(3) + '<property-block>\n' +
-			tabs(4) + '<h4>' + ability.name + '.' + '</h4>\n' +
+		var style = "";
+		var titleStyle = "";
+		if (styling) {
+			if (styling.hangingIndent) {
+				style = style + "padding-left: 11px; text-indent: -11px; ";
+			}
+			if (styling.snugLines) {
+				style = style + "margin-bottom: 0.3em; ";
+			}
+			if (styling.title) {
+				if (styling.title.fontStyle) {
+					titleStyle = titleStyle + "font-style: " + styling.title.fontStyle + "; ";
+				}
+			}
+		}
+		var html = tabs(3) + '<property-block style="' + style + '">\n' +
+			tabs(4) + '<h4 style="' + titleStyle + '">' + ability.name + '.' + '</h4>\n' +
 			tabs(4) + '<p>' + convertExtraWhitespace(ability.description) + '</p>\n' +
 			tabs(3) + '</property-block>\n';
 		return(html);
@@ -213,7 +232,11 @@ var exportHtmlCtrl = function ($scope,creature,Creature,$http,$mdDialog,$mdToast
 		var html = '';
 		if(creature.stats.legendaryActions && creature.stats.legendaryActions.length>0) {
 			var abilityStyling = {
-				hangingIndent: true
+				hangingIndent: true,
+				snugLines: true,
+				title: {
+					fontStyle: "normal"
+				}
 			};
 			html = html + tabs(3) + '<h3>Legendary Actions</h3>\n' +
 				tabs(3) + '<p>' + creature.stats.legendaryActionsDescription + '</p>\n' +
