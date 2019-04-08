@@ -22,6 +22,10 @@ angular.module('myApp').factory("CreatureAPI", function($location,CreatureClipbo
   function CreatureAPI(options) {
     var api = {};
 
+    api.shouldHighlightClipboard = function(creature) {
+      return CreatureClipboard.contains(creature);
+    }
+
     if(!options || options.edit){
       api.edit = function(creature){
         $location.url("/creature/edit/"+creature._id);

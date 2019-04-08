@@ -7,6 +7,10 @@ angular.module('myApp').factory("CreatureClipboard", function() {
       clipboard.push(creature);
     }
 
+    this.contains = function(creature) {
+      return clipboard.indexOf(creature) != -1;
+    }
+
     this.getAll = function() {
       return(clipboard);
     }

@@ -1,6 +1,8 @@
 
-var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog,CreatureAPI,ChallengeRatingCalculator,TextUtils) {
+var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$location,CreatureData,$mdMedia,$mdDialog,CreatureAPI,ChallengeRatingCalculator,TextUtils,Auth,CreatureClipboard) {
 	$scope.creature = creature;
+	$scope.Auth = Auth;
+	$scope.CreatureClipboard = CreatureClipboard;
 
 	$scope.creatureData = CreatureData;
 	$scope.searchArray = function(searchText,arrayToSearch,includeSearch){
@@ -300,7 +302,10 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 		return("/#/bestiary/list");
 	}
 
-	$scope.creatureApi = new CreatureAPI({export:true});
+	$scope.creatureApi = new CreatureAPI({
+		copy: Auth.isLoggedIn(),
+		export:true
+	});
 
 	$scope.generateAttack = function(ev){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));

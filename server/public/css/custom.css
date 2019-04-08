@@ -195,8 +195,11 @@ md-content.creature-clipboard .remove-mini-statblock {
 }
 
 .stat-block-overlay section.side-menu button md-icon {
-  color: #fff;
   transition: 0.10s ease-out all;
+}
+
+.stat-block-overlay section.side-menu button md-icon:not(.md-accent) {
+  color: #fff;
 }
 
 .stat-block-overlay section.side-menu button md-icon.disabled {
@@ -952,6 +955,7 @@ div.toggle-bestiary-view-area button md-icon {
 
 div.view-creature-container {
   width: 100%;
+  margin-top: 6px;
 }
 
 div.view-creature-container > div {
