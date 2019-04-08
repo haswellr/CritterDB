@@ -182,6 +182,6 @@ module.exports = function (grunt) {
   // register at least this one task
   // Note on replace: the replace assetsToDist is necessary so that cacheBust can find the URLs that
   //    it is busting in index.html properly. After busting the cache, we then reset /dist to /assets.
-  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'concat:annotated', 'replace:hash', 'babel:prod', 'clean:staging', 'copy', 'cssmin']);
+  grunt.registerTask('default', [ 'clean', 'import', 'ngAnnotate', 'concat:vendor', 'concat:annotated', 'clean:staging', 'copy', 'cssmin', 'replace:hash', 'babel:prod']);
 
 };
