@@ -406,40 +406,42 @@ creatureCtrl.resolve = {
 								'$location',
 								function(Creature, Bestiary, $q, $route, Auth, $location){
 				var deferred = $q.defer();
+				const rejectAndReroute = function() {
+					$location.path('/login');
+					deferred.reject();
+				};
 				Auth.executeOnLogin(function(){
-					if(!Auth.isLoggedIn()){
-						$location.path('/login');
-						deferred.reject();
-					}
-					else{
-						if($route.current.params.creatureId){
-							Creature.get($route.current.params.creatureId,function(creatureData) {
-								//get bestiary info for creature (this should be cached so will be quick)
-								Bestiary.get(creatureData.bestiaryId,function(bestiaryData) {
-									creatureData.bestiary = bestiaryData;
-									deferred.resolve(creatureData);
-								}, function(errorData) {
-									deferred.reject();
-								});
-							}, function(errorData) {
-								deferred.reject();
-							});
-						}
-						else if($route.current.params.bestiaryId){
-							//This means we must be creating a new creature and adding it to a bestiary,
-							// so just grab data for the current bestiary. This will be cached so it will
-							// be quick.
-							Bestiary.get($route.current.params.bestiaryId,function(bestiaryData) {
-								var creatureData = angular.copy(defaultCreature);
+					if($route.current.params.creatureId){
+						Creature.get($route.current.params.creatureId,function(creatureData) {
+							// Try to get bestiary info for creature (this should be cached so will be quick). It is OK if this
+							// fails, as this may just be a public view creature page.
+							Bestiary.get(creatureData.bestiaryId,function(bestiaryData) {
 								creatureData.bestiary = bestiaryData;
 								deferred.resolve(creatureData);
 							}, function(errorData) {
-								deferred.reject();
+								deferred.resolve(creatureData);
 							});
-						}
-						else{
-							deferred.resolve(angular.copy(defaultCreature));
-						}
+						}, function(errorData) {
+							rejectAndReroute();
+						});
+					}
+					else if($route.current.params.bestiaryId){
+						//This means we must be creating a new creature and adding it to a bestiary,
+						// so just grab data for the current bestiary. This will be cached so it will
+						// be quick.
+						Bestiary.get($route.current.params.bestiaryId,function(bestiaryData) {
+							var creatureData = angular.copy(defaultCreature);
+							creatureData.bestiary = bestiaryData;
+							deferred.resolve(creatureData);
+						}, function(errorData) {
+							rejectAndReroute();
+						});
+					}
+					else if($Auth.isLoggedIn()){
+						deferred.resolve(angular.copy(defaultCreature));
+					}
+					else {
+						rejectAndReroute();
 					}
 				});
 				return deferred.promise;

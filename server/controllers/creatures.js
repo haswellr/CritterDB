@@ -48,7 +48,9 @@ var authenticatePublishedBestiaryByOwner = function(req, publishedBestiary, call
 
 var authenticateCreatureByBestiary = function(req, creature, callback){
     if(creature.bestiaryId && creature.publishedBestiaryId){
-        setTimeout(callback("Creature cannot be in multiple bestiaries."));
+        setTimeout(function () {
+            callback("Creature cannot be in multiple bestiaries.")
+        });
     }
     else if(creature.bestiaryId){
         var query = {'_id':creature.bestiaryId};
@@ -73,7 +75,19 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
         });
     }
     else{
-        setTimeout(callback(err.message));
+        setTimeout(function() {
+            callback(err.message)
+        });
+    }
+}
+
+var authenticateViewCreatureAccess = function(req, creature, callback) {
+    if (creature.publishedBestiaryId || (creature.sharing && creature.sharing.linkSharingEnabled)) {
+        setTimeout(function() {
+            callback(null)
+        });
+    } else {
+        authenticateCreatureByBestiary(req, creature, callback);
     }
 }
 
@@ -86,7 +100,7 @@ exports.findById = function(req, res) {
             res.status(400).send(err.message);
         }
         else if(doc){
-            authenticateCreatureByBestiary(req, doc, function(err){
+            authenticateViewCreatureAccess(req, doc, function(err){
                 if(err)
                     res.status(400).send(err);
                 else

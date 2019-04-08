@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var SharingSchema = require('./sharingSchema');
 
 //Flavor
 var CreatureFlavor = new mongoose.Schema(
@@ -210,6 +211,10 @@ var CreatureSchema = new mongoose.Schema(
         },
         stats: {
             type: StatBlock,
+            default: {}
+        },
+        sharing: {
+            type: SharingSchema,
             default: {}
         }
     });
