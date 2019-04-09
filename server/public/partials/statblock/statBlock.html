@@ -21,6 +21,12 @@
           Export
         </md-tooltip>
       </md-button>
+      <md-button ng-click="creatureApi.share($event,creature);$event.stopPropagation();" ng-if="creatureApi.share" class="md-mini" aria-label="Export">
+        <md-icon md-menu-origin>share</md-icon>
+        <md-tooltip md-direction="left" md-autohide>
+          Share
+        </md-tooltip>
+      </md-button>
       <md-button ng-click="creatureApi.copy(creature);$event.stopPropagation();" ng-if="creatureApi.copy" ng-disabled="secondaryControls.export" class="md-mini" aria-label="Copy">
         <md-icon ng-class="{'disabled':secondaryControls.export, 'md-accent':creatureApi.shouldHighlightClipboard(creature)}">content_copy</md-icon>
         <md-tooltip md-direction="left">

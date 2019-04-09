@@ -82,7 +82,7 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
 }
 
 var authenticateViewCreatureAccess = function(req, creature, callback) {
-    if (creature.publishedBestiaryId || (creature.sharing && creature.sharing.linkSharingEnabled)) {
+    if (creature.sharing && creature.sharing.linkSharingEnabled) {
         setTimeout(function() {
             callback(null)
         });

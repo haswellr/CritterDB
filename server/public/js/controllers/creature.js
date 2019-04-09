@@ -304,6 +304,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 
 	$scope.creatureApi = new CreatureAPI({
 		copy: Auth.isLoggedIn(),
+		share: (creature.bestiary && Auth.user && creature.bestiary.ownerId == Auth.user._id),
 		export:true
 	});
 
@@ -363,6 +364,7 @@ var creatureCtrl = function($scope,creature,Creature,$routeParams,Bestiary,$loca
 
 var defaultCreature = {
 	name: "New Creature",
+	sharing: {},
 	flavor: {},
 	stats: {
 		size: "Medium",

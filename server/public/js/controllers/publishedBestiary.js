@@ -66,8 +66,9 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 	}
 
 	var creatureApiOptions = {
-		copy: true,
-		export: true
+		copy: Auth.isLoggedIn(),
+		share: ($scope.bestiary.owner && Auth.user && $scope.bestiary.owner._id == Auth.user._id),
+		export:true
 	}
 	$scope.creatureApi = new CreatureAPI(creatureApiOptions);
 

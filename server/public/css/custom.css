@@ -670,6 +670,35 @@ md-dialog.export-modal textarea {
   max-height: 400px;
 }
 
+md-dialog.share-modal {
+  width: 600px;
+}
+
+md-dialog.share-modal section.row {
+  width: 100%;
+}
+
+md-dialog.share-modal md-input-container {
+  width: 100%;
+}
+
+md-dialog.share-modal textarea {
+  max-height: 400px;
+}
+
+md-dialog.share-modal md-dialog-content {
+  padding: 40px 10px 28px 10px;
+}
+
+md-dialog.share-modal md-dialog-content {
+  padding: 40px 10px 28px 10px;
+}
+
+md-dialog.share-modal md-dialog-content div[layout="column"] {
+  position: relative;
+  margin: 0 auto;
+}
+
 div.body-area .published-bestiary-details h1 {
   font-size: 32px;
   font-weight: 600;

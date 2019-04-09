@@ -17,6 +17,12 @@
 			<b>{{creature.name}}</b>
 		</h2>
 		<div class="right-side-controls">
+      <md-button ng-click="creatureApi.share($event,creature)" ng-if="creatureApi.share" class="md-icon-button md-mini" aria-label="Export Creature">
+        <md-icon>share</md-icon>
+				<md-tooltip md-direction="left">
+					Share
+      	</md-tooltip>
+      </md-button>
       <md-menu md-position-mode="target-right target">
         <md-button class="md-icon-button md-mini" aria-label="Export Creature" ng-click="$mdOpenMenu($event)">
           <md-icon>save</md-icon>

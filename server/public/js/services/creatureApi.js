@@ -62,6 +62,22 @@ angular.module('myApp').factory("CreatureAPI", function($location,CreatureClipbo
         });
       }
     }
+    if(!options || options.share){
+      api.share = function(ev,creature){
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+        $mdDialog.show({
+          controller: creatureSharingCtrl,
+          templateUrl: '/assets/partials/creature/sharing.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          locals: {
+            'creature': creature
+          },
+          fullscreen: true
+        });
+      }
+    }
     if(!options || options.export){
       api.export = {};
       api.export.exportImage = function(ev,creature){
@@ -74,7 +90,7 @@ angular.module('myApp').factory("CreatureAPI", function($location,CreatureClipbo
           locals: {
             'creature': creature
           },
-          fullscreen: true
+          fullscreen: useFullScreen
         });
       }
       api.export.exportHTML = function(ev,creature){
