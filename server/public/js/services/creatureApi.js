@@ -81,6 +81,7 @@ angular.module('myApp').factory("CreatureAPI", function($location,CreatureClipbo
     if(!options || options.export){
       api.export = {};
       api.export.exportImage = function(ev,creature){
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
         $mdDialog.show({
           controller: exportImageCtrl,
           templateUrl: '/assets/partials/creature/export-image.html',
