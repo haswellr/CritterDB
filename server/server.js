@@ -12,6 +12,7 @@ var downloads = require('./controllers/downloads');
 var bestiaries = require('./controllers/bestiaries');
 var publishedBestiaries = require('./controllers/publishedBestiaries');
 var users = require('./controllers/users');
+var notifications = require('./controllers/notifications');
 var authentication = require('./controllers/authentication');
 var health = require('./controllers/health');
 
@@ -79,6 +80,11 @@ app.post('/api/users', users.create);
 app.put('/api/users/:id', users.updateById);
 app.delete('/api/users/:id', users.deleteById);
 app.post('/api/users/resetpassword', users.resetPassword);
+//Notifications
+app.get('/api/notifications', notifications.findAll);
+app.post('/api/notifications', notifications.create);
+app.delete('/api/notifications/:id', notifications.delete);
+app.delete('/api/notifications', notifications.deleteAll);
 //Authentication
 app.get('/api/authenticate/user', authentication.getCurrentUser);
 app.post('/api/authenticate', authentication.authenticate);

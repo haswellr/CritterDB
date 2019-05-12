@@ -88,6 +88,9 @@ var userCtrl = function ($scope,User,Bestiary,Auth,$location,$mdMedia,$mdDialog,
 
 angular.module('myApp').controller('userCtrl',userCtrl);
 
+var notifications = {
+	
+}
 
 var updateUserCtrl = function ($scope,User,Auth,$location,user) {
 

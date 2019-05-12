@@ -5,9 +5,9 @@ var Comment = require('../models/comment');
 var Creature = require('../models/creature');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
-var users = require("../controllers/users");
 var creatures = require("../controllers/creatures");
 var mongodb = require("mongodb");
+var userUtilities = require("./common/userUtilities")
 var PAGE_SIZE = 10;
 var MAX_PAGE = 20;
 
@@ -23,22 +23,6 @@ var authenticateBestiaryByOwner = function(req, bestiary, callback){
                     callback("Not authorized for access.");
                 else
                     callback(null);
-            }
-        });
-    }
-    else{
-        callback("No token provided.");
-    }
-}
-
-var getCurrentUserId = function(req, callback){
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
-    if(token){
-        jwt.verify(token,config.secret,function(err,decoded){
-            if(err)
-                callback("Failed to authenticate token.");
-            else{
-                callback(null,decoded._doc._id);
             }
         });
     }
@@ -229,7 +213,7 @@ exports.createLike = function(req, res) {
         new: true           //retrieves new object from database and returns that as doc
     }
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -263,7 +247,7 @@ exports.deleteLike = function(req, res) {
         new: true           //retrieves new object from database and returns that as doc
     }
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -305,7 +289,7 @@ exports.createFavorite = function(req, res) {
         new: true           //retrieves new object from database and returns that as doc
     }
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -336,7 +320,7 @@ exports.deleteFavorite = function(req, res) {
         new: true           //retrieves new object from database and returns that as doc
     }
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -405,7 +389,7 @@ exports.findFavorites = function(req, res) {
     var sort = {
         _id: -1
     };
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -438,7 +422,7 @@ exports.findOwned = function(req, res) {
     var sort = {
         _id: -1
     };
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -479,7 +463,7 @@ exports.findByOwner = function(req, res) {
                 res.status(400).send(err.message);
             }
             else{
-                var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of creatures, comments, etc to improve speeds
+                var trimmedBestiaries = getTrimmedBestiaryList(docs); //trim docs of `, comments, etc to improve speeds
                 res.send(trimmedBestiaries);
             }
         });
@@ -493,7 +477,7 @@ exports.createComment = function(req, res) {
     }
     var comment = new Comment(req.body);
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else if(currentUserId != comment.author)
@@ -524,7 +508,7 @@ exports.updateCommentById = function(req, res) {
         new: true           //retrieves new object from database and returns that as doc
     }
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
@@ -566,7 +550,7 @@ exports.deleteCommentById = function(req, res) {
         new: true           //retrieves new object from database and returns that as doc
     }
 
-    getCurrentUserId(req, function(err,currentUserId){
+    userUtilities.getCurrentUserId(req, function(err,currentUserId){
         if(err)
             res.status(400).send(err);
         else{
