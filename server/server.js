@@ -82,8 +82,7 @@ app.delete('/api/users/:id', users.deleteById);
 app.post('/api/users/resetpassword', users.resetPassword);
 //Notifications
 app.get('/api/notifications', notifications.findAll);
-app.post('/api/notifications', notifications.create);
-app.delete('/api/notifications/:id', notifications.delete);
+app.delete('/api/notifications/:id', notifications.deleteById);
 app.delete('/api/notifications', notifications.deleteAll);
 //Authentication
 app.get('/api/authenticate/user', authentication.getCurrentUser);

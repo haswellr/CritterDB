@@ -1,5 +1,5 @@
 
-var userCtrl = function ($scope,User,Bestiary,Auth,$location,$mdMedia,$mdDialog,$mdToast) {
+var userCtrl = function ($scope,User,Bestiary,Auth,$location,$mdMedia,$mdDialog,$mdToast,Notification) {
 
 	$scope.user = {
 		rememberme: true
@@ -54,23 +54,23 @@ var userCtrl = function ($scope,User,Bestiary,Auth,$location,$mdMedia,$mdDialog,
 
 	$scope.forgotPassword = function(ev){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
-    $mdDialog.show({
-      controller: forgotPasswordCtrl,
-      templateUrl: '/assets/partials/account/forgotpassword.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true,
-      fullscreen: useFullScreen
-    })
-    .then(function(result){
-    	if(result){
-    		$mdToast.show(
-    			$mdToast.simple()
-    				.textContent(result)
-    				.hideDelay(5000)
-    		);
-    	}
-    });;
+		$mdDialog.show({
+			controller: forgotPasswordCtrl,
+			templateUrl: '/assets/partials/account/forgotpassword.html',
+			parent: angular.element(document.body),
+			targetEvent: ev,
+			clickOutsideToClose:true,
+			fullscreen: useFullScreen
+		})
+		.then(function(result){
+			if(result){
+				$mdToast.show(
+					$mdToast.simple()
+					.textContent(result)
+					.hideDelay(5000)
+					);
+			}
+		});;
 	}
 
 	$scope.goToChangePassword = function(){
@@ -84,13 +84,44 @@ var userCtrl = function ($scope,User,Bestiary,Auth,$location,$mdMedia,$mdDialog,
 	$scope.goToLogin = function(){
 		$location.url('/login');
 	}
+
+	$scope.notificationActions = {
+		read: function(id) {
+			Notification.delete(id, null, function(err) {
+				console.error("Error deleting notification: " + err);
+			});
+		},
+		markAllAsRead: function() {
+			Notification.deleteAll(function(data) {
+				getAllNotifications();
+			}, function(err) {
+				console.error("Error deleting all notifications: " + err);
+			});
+		}
+	}
+
+	$scope.notifications = [];
+	function getAllNotifications() {
+		console.log("get all notifications. user: " + JSON.stringify($scope.getCurrentUser()));
+		if ($scope.getCurrentUser()) {
+			Notification.getAll(function(data) {
+				$scope.notifications = data;
+			}, function(err) {
+				console.error("Unable to retrieve notifications: " + err);
+			});
+		}
+	}
+	getAllNotifications();
+
+	$scope.$watch(function($scope) {
+		return $scope.getCurrentUser();
+	},function(newValue,oldValue){
+		if(oldValue!=newValue)
+			getAllNotifications();
+	},true);
 };
 
 angular.module('myApp').controller('userCtrl',userCtrl);
-
-var notifications = {
-	
-}
 
 var updateUserCtrl = function ($scope,User,Auth,$location,user) {
 
@@ -108,42 +139,42 @@ var updateUserCtrl = function ($scope,User,Auth,$location,user) {
 			});
 		},function(err){
 			if(err.status==403)
-					$scope.user.invalidPassword = $scope.user.currentPassword;
+				$scope.user.invalidPassword = $scope.user.currentPassword;
 		});
 	}
 };
 
 //don't load controller until we've gotten the data from the server
 updateUserCtrl.resolve = {
-			user: ['User',
-						'$q',
-						'$route',
-						'Auth',
-						'$location',
-						function(User, $q, $route, Auth, $location){
-				var deferred = $q.defer();
-				Auth.executeOnLogin(function(){
-					var user = null;
-					if(Auth.isLoggedIn())
-						deferred.resolve(Auth.user);
-					else if($route.current.params.id){
-						User.getPublic($route.current.params.id,function(data){
-							if($route.current.params.password)
-								data.currentPassword = $route.current.params.password;
-							deferred.resolve(data);
-						},function(err){
-							$location.path('/login');
-							deferred.reject();
-						});
-					}
-					else{
-						$location.path('/login');
-						deferred.reject();
-					}
+	user: ['User',
+	'$q',
+	'$route',
+	'Auth',
+	'$location',
+	function(User, $q, $route, Auth, $location){
+		var deferred = $q.defer();
+		Auth.executeOnLogin(function(){
+			var user = null;
+			if(Auth.isLoggedIn())
+				deferred.resolve(Auth.user);
+			else if($route.current.params.id){
+				User.getPublic($route.current.params.id,function(data){
+					if($route.current.params.password)
+						data.currentPassword = $route.current.params.password;
+					deferred.resolve(data);
+				},function(err){
+					$location.path('/login');
+					deferred.reject();
 				});
-				return deferred.promise;
-			}]
-		}
+			}
+			else{
+				$location.path('/login');
+				deferred.reject();
+			}
+		});
+		return deferred.promise;
+	}]
+}
 
 
 angular.module('myApp').controller('updateUserCtrl',updateUserCtrl);
@@ -163,9 +194,9 @@ var forgotPasswordCtrl = function ($scope,User,$mdDialog) {
 	}
 
 	$scope.hide = function() {
-    $mdDialog.hide();
-  };
+		$mdDialog.hide();
+	};
 	$scope.cancel = function() {
-    $mdDialog.cancel();
-  };
+		$mdDialog.cancel();
+	};
 };

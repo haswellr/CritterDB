@@ -29,19 +29,14 @@ exports.findAll = function(req, res) {
       var query = {
         userId: currentUserId
       };
-      Notification
-        .find(query)
-        .sort(sort)
-        .skip(PAGE_SIZE * (page-1))
-        .limit(PAGE_SIZE)
-        .exec(function (err, docs) {
-          if(err){
-            res.status(400).send(err.message);
-          }
-          else{
-            res.send(docs);
-          }
-        });
+      Notification.find(query, function (err, docs) {
+        if(err){
+          res.status(400).send(err.message);
+        }
+        else{
+          res.send(docs);
+        }
+      });
     }
   });
 }
@@ -83,10 +78,11 @@ exports.deleteAll = function(req, res) {
     const notificationsQuery = {
       userId: userId
     }
-    const result = await Notification.deleteMany(notificationsQuery);
-    if(result.ok != 1) {
-      res.status(400).send("Error deleting all notifications for user.");
-    }
-    res.send();
+    Notification.deleteMany(notificationsQuery, function(ok, deletedCount, n) {
+      if(result.ok != 1) {
+        res.status(400).send("Error deleting all notifications for user.");
+      }
+      res.send();
+    });
   });
 }

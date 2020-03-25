@@ -64,6 +64,15 @@
               github
             </a>
           </span>
+          <md-button ng-controller="sideNavCtrl" ng-click="toggleExclusive('notifications');" class="md-icon-button md-mini" aria-label="Notifications">
+            <md-icon ng-class="{'md-accent':(isOpen('notifications') || notifications.length > 0)}">notifications_none</md-icon>
+            <md-tooltip md-direction="left">
+              Notifications
+            </md-tooltip>
+            <div class="counter">
+              {{notifications.length}}
+            </div>
+          </md-button>
           <md-menu ng-show="getCurrentUser()">
             <md-button class="user-dropdown" aria-label="User menu" ng-click="$mdOpenMenu($event)">
               <span hide show-gt-sm>

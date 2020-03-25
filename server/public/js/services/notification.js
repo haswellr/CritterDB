@@ -2,21 +2,20 @@ angular.module('myApp').factory("Notification", function(Auth, CachedResourceAPI
 
   var NotificationAPI = new CachedResourceAPI("/api/notifications/:id");
 
-	var currentUserId = undefined;  //track the current user - pull first page of notifications from server if the user has changed
+	var currentUserId = undefined;  //track the current user - re-retrieve notifications from server if the user has changed
 
   delete NotificationAPI.get;
-  delete NotificationAPI.update;
-  delete NotificationAPI.delete;
 
-  NotificationAPI.getAll = function(page, success, error){
+  NotificationAPI.getAll = function(success, error){
     if (!Auth.user) {
       setTimeout(function(){
         error("Not logged in.");
       });
+      return;
     }
-    if(currentUserId==undefined || Auth.usercurrentUserId != Auth.user.id){
+    if(currentUserId==undefined || currentUserId != Auth.user.id){
       this.cache.clear();
-      currentUserId = userId;   //update current user
+      currentUserId = Auth.user.id;   //update current user
       $resource("/api/notifications").query({}, (function(data){
         for(var i=0;i<data.length;i++)
           this.cache.add(data[i]._id,data[i]);
@@ -32,19 +31,11 @@ angular.module('myApp').factory("Notification", function(Auth, CachedResourceAPI
     }
   }
 
-  NotificationAPI.markAsRead = function(notificationId, success, error){
-    $resource("/api/notifications/:id/read").save({'id':notificationId},"",(function(data){
-      if(success)
-        success(data);
-    }).bind(this),error);
-  }
-
-  NotificationAPI.markAllAsRead = function(success, error){
-    $resource("/api/notifications/read").save({},"",(function(data){
+  NotificationAPI.deleteAll = function(success, error){
+    $resource("/api/notifications").delete({},"",(function(data){
       if(success) {
-        // This function does not return all of the modified notifications, so we clear the cache and grab new ones here.
         this.cache.clear();
-        this.getList(1, success, error);
+        success([]);
       }
     }).bind(this),error);
   }
