@@ -22,7 +22,7 @@
         </md-tooltip>
       </md-button>
       <md-button ng-click="creatureApi.share($event,creature);$event.stopPropagation();" ng-if="creatureApi.share" class="md-mini" aria-label="Export">
-        <md-icon md-menu-origin>share</md-icon>
+        <md-icon ng-class="{'md-accent': creature.sharing.linkSharingEnabled}" md-menu-origin>share</md-icon>
         <md-tooltip md-direction="left" md-autohide>
           Share
         </md-tooltip>
