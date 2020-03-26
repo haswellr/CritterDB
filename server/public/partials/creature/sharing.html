@@ -1,0 +1,40 @@
+<md-dialog id="share-dialog" class="share-modal" aria-label="Sharing" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Creature Sharing</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <section layout="row" class="row">
+      <div layout="column">
+        <md-checkbox ng-model="creature.sharing.linkSharingEnabled" ng-readonly="loading" aria-label="Name is pronoun" style="margin-left:10px;margin-right:10px;">
+          Link Sharing {{getLinkSharingStatus()}}
+          <md-tooltip md-direction="down">
+            Turn link sharing {{getLinkSharingStatus(true)}}
+          </md-tooltip>
+        </md-checkbox>
+      </div>
+    </section>
+    <section layout="row" class="row">
+      <div layout="column">
+        <p style="font-size:12px;">
+          <i>When link sharing is ON, anyone with the link will be able to view this creature.</i>
+        </p>
+      </div>
+    </section>
+    <section ng-if="creature.sharing.linkSharingEnabled" layout="row" class="row">
+      <md-input-container flex>
+        <label>Link</label>
+        <input ng-model="path" type="text" readonly onClick="this.select();"/>
+      </md-input-container>
+    </section>
+  </md-dialog-content>
+  <md-dialog-actions ng-if="creature.sharing.linkSharingEnabled" layout="row">
+    <md-button id="copy-to-clipboard" class="md-raised md-button">Copy to Clipboard</md-button>
+    <md-button ng-click="openUrl()" class="md-raised md-button md-primary">Go to link</md-button>
+  </md-dialog-actions>
+</md-dialog>

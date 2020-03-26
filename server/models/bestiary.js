@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var autopopulate = require('mongoose-autopopulate');
-var SharingSchema = require('./sharingSchema');
 
 var BestiarySchema = new mongoose.Schema(
 	{
@@ -19,10 +18,6 @@ var BestiarySchema = new mongoose.Schema(
     },
     lastActive: {
       type: Date
-    },
-    sharing: {
-        type: SharingSchema,
-        default: {}
     }
   });
 BestiarySchema.plugin(autopopulate);

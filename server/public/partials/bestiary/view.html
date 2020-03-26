@@ -1,105 +1,76 @@
+
 <md-toolbar class="md-whiteframe-5dp inner-header md-menu-toolbar no-print" layout-align="center center">
 	<div ng-controller="sideNavCtrl" class="md-toolbar-tools controls">
 		<md-button hide-gt-sm ng-href="{{getBestiaryListPath()}}" class="md-icon-button md-mini" aria-label="Back">
 			<md-icon>keyboard_backspace</md-icon>
 			<md-tooltip>
-				Back
-			</md-tooltip>
+        Back
+      </md-tooltip>
 		</md-button>
 		<h2>
-			<span ng-if="isUserOwner()" hide show-gt-sm>
+			<span hide show-gt-sm>
 				<a ng-href="{{getBestiaryListPath()}}" style="cursor:pointer;">My Critters</a>
-				<span> > </span>
-			</span>
-			<span ng-if="!isUserOwner()" hide show-gt-sm>
-				<a>{{bestiary.owner.username}}'s Bestiaries</a>
 				<span> > </span>
 			</span>
 			<b>{{bestiary.name}}</b>
 		</h2>
 		<div class="right-side-controls">
-			<md-button ng-click="toggleExclusive('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()"
-				class="md-icon-button md-mini" aria-label="Clipboard">
-				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste
-				</md-icon>
+			<md-button ng-click="toggleExclusive('clipboardNav');" ng-if="!CreatureClipboard.isEmpty()" class="md-icon-button md-mini" aria-label="Clipboard">
+				<md-icon ng-class="{'md-accent':(isOpen('clipboardNav') || !CreatureClipboard.isEmpty())}">content_paste</md-icon>
 				<md-tooltip md-direction="left">
-					Clipboard
-				</md-tooltip>
-				<div class="counter">
-					{{CreatureClipboard.getAll().length}}
-				</div>
+	        Clipboard
+	      </md-tooltip>
+	      <div class="counter">
+	      	{{CreatureClipboard.getAll().length}}
+	      </div>
 			</md-button>
 			<!-- NON-MOBILE BUTTONS -->
-			<md-button hide show-gt-xs ng-click="printBestiary($event,bestiary)" class="md-icon-button md-mini"
-				aria-label="Print">
+			<md-button hide show-gt-xs ng-click="printBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Print">
 				<md-icon>print</md-icon>
 				<md-tooltip md-direction="left">
-					Print Bestiary (try CTRL-P for larger text)
-				</md-tooltip>
+	        Print Bestiary (try CTRL-P for larger text)
+	      </md-tooltip>
 			</md-button>
-			<md-button ng-show="Auth.user && !isUserOwner()" hide show-gt-xs ng-click="copyBestiary()" class="md-icon-button md-mini"
-				aria-label="Copy">
-				<md-icon>content_copy</md-icon>
-				<md-tooltip md-direction="left">
-					Copy Bestiary
-				</md-tooltip>
-			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="shareBestiary($event,bestiary)" class="md-icon-button md-mini"
-				aria-label="Share">
-				<md-icon ng-class="{'md-accent': bestiary.sharing.linkSharingEnabled}">share</md-icon>
-				<md-tooltip md-direction="left">
-					Share Bestiary
-				</md-tooltip>
-			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini"
-				aria-label="Publish">
+			<md-button hide show-gt-xs ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini" aria-label="Publish">
 				<md-icon>publish</md-icon>
 				<md-tooltip md-direction="left">
-					Publish Bestiary
-				</md-tooltip>
+	        Publish Bestiary
+	      </md-tooltip>
 			</md-button>
-			<md-button hide show-gt-xs ng-click="toggleExclusive('filterNav');" class="md-icon-button md-mini"
-				aria-label="Filters">
-				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list
-				</md-icon>
+			<md-button hide show-gt-xs ng-click="toggleExclusive('filterNav');" class="md-icon-button md-mini" aria-label="Filters">
+				<md-icon ng-class="{'md-accent':(isOpen('filterNav') || creatureFilter.areFiltersActive())}">filter_list</md-icon>
 				<md-tooltip md-direction="left">
-					Filter Creatures
-				</md-tooltip>
+	        Filter Creatures
+	      </md-tooltip>
 			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="toggleExclusive('editNav');" ng-class="{'selected':isOpen('editNav')}"
-				class="md-icon-button md-mini" aria-label="Edit">
+			<md-button hide show-gt-xs ng-click="toggleExclusive('editNav');" ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
 				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
 				<md-tooltip md-direction="left">
-					Edit Collection Details
-				</md-tooltip>
+	        Edit Collection Details
+	      </md-tooltip>
 			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="addCreature()" class="md-fab md-mini md-accent"
-				aria-label="Create Creature">
+			<md-button hide show-gt-xs ng-click="addCreature()" class="md-fab md-mini md-accent" aria-label="Create Creature">
 				<md-icon>add</md-icon>
 				<md-tooltip md-direction="left">
-					Create Creature
-				</md-tooltip>
+	        Create Creature
+	      </md-tooltip>
 			</md-button>
 			<!-- MOBILE MENU BUTTON -->
-			<md-button hide-gt-xs ng-click="toggleExclusive('menuNav');" ng-class="{'selected':isOpen('menuNav')}"
-				class="md-icon-button md-mini" aria-label="Menu">
+			<md-button hide-gt-xs ng-click="toggleExclusive('menuNav');" ng-class="{'selected':isOpen('menuNav')}" class="md-icon-button md-mini" aria-label="Menu">
 				<md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
 			</md-button>
 			<!-- - -->
 		</div>
-		<md-button hide-gt-xs ng-hide="isOpen('filterNav') || isOpen('editNav')" ng-click="addCreature()"
-			class="md-fab md-accent main-button" aria-label="Create Creature">
+		<md-button hide-gt-xs ng-hide="isOpen('filterNav') || isOpen('editNav')" ng-click="addCreature()" class="md-fab md-accent main-button" aria-label="Create Creature">
 			<md-icon>add</md-icon>
 		</md-button>
 	</div>
 </md-toolbar>
 
-<div layout="column" class="body-area bg-color-primary-light no-print" ng-controller="sideNavCtrl"
-	layout-align="top center">
+<div layout="column" class="body-area bg-color-primary-light no-print" ng-controller="sideNavCtrl" layout-align="top center">
 	<section class="sidenav-wrapper content-section md-whiteframe-3dp" layout="row" flex>
-		<md-content style="width:100%;" layout="column">
-			<div ng-if="(!bestiary.creatures || bestiary.creatures.length==0) && !bestiary.creaturesLoading"
-				class="no-creatures-area">
+		<md-content style="width:100%;" layout="column" >
+			<div ng-if="(!bestiary.creatures || bestiary.creatures.length==0) && !bestiary.creaturesLoading" class="no-creatures-area">
 				<span>
 					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
 					<md-icon md-svg-icon="/assets/img/icons/ghost-black.svg" style="width:36px;height:36px;"></md-icon>
@@ -108,47 +79,31 @@
 				<h2 class="md-headline">
 					This collection needs some creatures!
 				</h2>
-				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit"
-					aria-label="Create Creature">Create Creature</md-button>
+				<md-button ng-click="addCreature()" class="md-raised md-accent" type="submit" aria-label="Create Creature">Create Creature</md-button>
 			</div>
-			<div hide show-gt-xs ng-if="bestiary.creatures && bestiary.creatures.length>0"
-				class="toggle-bestiary-view-area">
-				<md-button ng-repeat="viewMode in view.modes" ng-click="view.changeTo(viewMode.id)"
-					ng-class="{'md-accent': (viewMode.id==view.current)}" class="md-icon-button md-mini">
+			<div hide show-gt-xs ng-if="bestiary.creatures && bestiary.creatures.length>0" class="toggle-bestiary-view-area">
+				<md-button ng-repeat="viewMode in view.modes" ng-click="view.changeTo(viewMode.id)" ng-class="{'md-accent': (viewMode.id==view.current)}" class="md-icon-button md-mini">
 					<md-icon>{{viewMode.icon}}</md-icon>
 					<md-tooltip md-direction="left">
-						{{viewMode.tooltip}}
-					</md-tooltip>
+		        {{viewMode.tooltip}}
+		      </md-tooltip>
 				</md-button>
 			</div>
 			<!-- Falling Columns View -->
-			<div class="fallingColumns"
-				ng-if="view.current=='fallingColumns' && bestiary.creatures && bestiary.creatures.length>0">
-				<ng-stat-block
-					ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'"
-					creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true">
-				</ng-stat-block>
+			<div class="fallingColumns" ng-if="view.current=='fallingColumns' && bestiary.creatures && bestiary.creatures.length>0">
+				<ng-stat-block ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" no-resize="true"></ng-stat-block>
 			</div>
 			<!-- ==================== -->
 			<!-- List & Preview View -->
-			<div class="previewList"
-				ng-if="view.current=='previewList' && bestiary.creatures && bestiary.creatures.length>0" layout="row"
-				class="layout-row">
+			<div class="previewList" ng-if="view.current=='previewList' && bestiary.creatures && bestiary.creatures.length>0" layout="row" class="layout-row">
 				<md-content layout="column" class="creatures">
-					<ng-stat-block ng-click="preview.selectedCreature=creature"
-						ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'"
-						ng-mouseover="preview.creature=creature" ng-mouseleave="preview.creature=null"
-						creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="mini"
-						is-selected="{{preview.selectedCreature === creature}}"></ng-stat-block>
+					<ng-stat-block ng-click="preview.selectedCreature=creature" ng-repeat="creature in bestiary.creatures | filter:creatureFilter.isCreatureShown | orderBy:'name'" ng-mouseover="preview.creature=creature" ng-mouseleave="preview.creature=null" creature="creature" creature-api="creatureApi" class="fallingColumnsItem" size="mini" is-selected="{{preview.selectedCreature === creature}}"></ng-stat-block>
 				</md-content>
 				<div hide show-gt-xs class="preview">
-					<ng-stat-block ng-show="preview.selectedCreature || preview.creature"
-						creature="preview.creature ? preview.creature : preview.selectedCreature"
-						creature-api="creatureApi" no-resize="true"></ng-stat-block>
+					<ng-stat-block ng-show="preview.selectedCreature || preview.creature" creature="preview.creature ? preview.creature : preview.selectedCreature" creature-api="creatureApi" no-resize="true"></ng-stat-block>
 					<div ng-if="!preview.selectedCreature && !preview.creature" class="no-creatures-area">
 						<span>
-							<md-icon md-svg-icon="/assets/img/icons/magnifying-glass-black.svg"
-								style="width:36px;height:36px;"></md-icon>
+							<md-icon md-svg-icon="/assets/img/icons/magnifying-glass-black.svg" style="width:36px;height:36px;"></md-icon>
 						</span>
 						<h4 class="md-subhead">
 							Click on a creature to lock it to this preview area.
@@ -160,158 +115,138 @@
 		</md-content>
 
 		<!-- CLIPBOARD SIDENAV -->
-		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav"
-			md-is-locked-open="isOpen('clipboardNav')" md-component-id="clipboardNav">
-			<md-toolbar class="md-accent">
-				<div class="md-toolbar-tools">
-					<h1 class="md-toolbar-tools">Clipboard</h1>
-					<span flex></span>
-					<md-button ng-click="close('clipboardNav')" class="md-icon-button" aria-label="Close">
-						<md-icon>close</md-icon>
-					</md-button>
-				</div>
-			</md-toolbar>
-			<md-content layout-padding class="creature-clipboard">
-				<div class="container">
-					<div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index"
-						class="mini-statblock-item">
-						<ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
-						<button ng-click="CreatureClipboard.remove(creature)"
-							class="md-primary remove-saving-throw remove-mini-statblock" type="button">
-							<md-icon md-svg-icon="md-close"></md-icon>
-						</button>
-					</div>
-				</div>
-			</md-content>
-			<div class="action-bar">
-				<md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear
-				</md-button>
-				<md-button ng-click="pasteClipboard();close('clipboardNav');" class="md-raised md-primary"
-					type="submit">Paste</md-button>
-			</div>
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav" md-is-locked-open="isOpen('clipboardNav')" md-component-id="clipboardNav">
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Clipboard</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('clipboardNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+		  <md-content layout-padding class="creature-clipboard">
+		  	<div class="container">
+			    <div layout="row" ng-repeat="creature in CreatureClipboard.getAll() track by $index" class="mini-statblock-item">
+			      <ng-stat-block creature="creature" size="mini" style="width:100%;"></ng-stat-block>
+			      <button ng-click="CreatureClipboard.remove(creature)" class="md-primary remove-saving-throw remove-mini-statblock" type="button">
+		          <md-icon md-svg-icon="md-close"></md-icon>
+		        </button>
+		      </div>
+		    </div>
+		  </md-content>
+		  <div class="action-bar">
+	      <md-button ng-click="CreatureClipboard.clear();close('clipboardNav');" class="md-raised">Clear</md-button>
+    		<md-button ng-click="pasteClipboard();close('clipboardNav');" class="md-raised md-primary" type="submit">Paste</md-button>
+    	</div>
 		</md-sidenav>
 		<!-- FILTER SIDENAV -->
-		<md-sidenav class="md-sidenav-right md-whiteframe-z2 bestiary-sidenav" md-is-locked-open="isOpen('filterNav')"
-			md-component-id="filterNav">
-			<md-toolbar class="md-accent">
-				<div class="md-toolbar-tools">
-					<h1 class="md-toolbar-tools">Filters</h1>
-					<span flex></span>
-					<md-button ng-click="close('filterNav')" class="md-icon-button" aria-label="Close">
-						<md-icon>close</md-icon>
-						<md-tooltip>
-							Close
-						</md-tooltip>
-					</md-button>
-				</div>
-			</md-toolbar>
-			<md-content layout-padding>
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2 bestiary-sidenav" md-is-locked-open="isOpen('filterNav')" md-component-id="filterNav">
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Filters</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('filterNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	          <md-tooltip>
+		        	Close
+		      	</md-tooltip>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+		  <md-content layout-padding>
 				<section layout="row" layout-align="center center">
-					<md-input-container flex>
-						<label>Min CR</label>
-						<input ng-model="creatureFilter.challengeRating.min.value"
-							ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.min)"
-							step="{{creatureFilter.challengeRating.min.step}}" type="number" min="0" max="30" />
-					</md-input-container>
-					<md-input-container flex>
-						<label>Max CR</label>
-						<input ng-model="creatureFilter.challengeRating.max.value"
-							ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.max)"
-							step="{{creatureFilter.challengeRating.max.step}}" type="number" min="0" max="30" />
-					</md-input-container>
-				</section>
-				<section ng-repeat="filter in creatureFilter.filters track by $index" layout="column"
-					layout-align="center top" ng-class="{'and-filter':creatureFilter.fillBackground(true,$index)}"
-					style="padding: 0px;">
+				  <md-input-container flex>
+			      <label>Min CR</label>
+			      <input ng-model="creatureFilter.challengeRating.min.value" ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.min)" step="{{creatureFilter.challengeRating.min.step}}" type="number" min="0" max="30"/>
+			    </md-input-container>
+			    <md-input-container flex>
+			      <label>Max CR</label>
+			      <input ng-model="creatureFilter.challengeRating.max.value" ng-change="creatureFilter.challengeRating.changed(creatureFilter.challengeRating.max)" step="{{creatureFilter.challengeRating.max.step}}" type="number" min="0" max="30"/>
+			    </md-input-container>
+			  </section>
+				<section ng-repeat="filter in creatureFilter.filters track by $index" layout="column" layout-align="center top" ng-class="{'and-filter':creatureFilter.fillBackground(true,$index)}" style="padding: 0px;">
 					<div layout="row" ng-class="{'and-filter':creatureFilter.fillBackground(false,$index)}">
-						<md-input-container style="width:calc(100% - 16px);margin-left:6px;">
-							<label>Filter by environment, faction, name, or race</label>
-							<input ng-model="filter.text">
-						</md-input-container>
-						<button ng-click="creatureFilter.removeFilter($index)" class="md-primary remove-saving-throw"
-							style="margin-top:25px;margin-left:4px;margin-right:6px;">
-							<md-icon md-svg-icon="md-close"></md-icon>
-						</button>
-					</div>
-					<div ng-if="!$last" layout="row" layout-align="center center">
-						<md-button ng-click="filter.toggleOperator()" aria-label="Toggle And/Or Operator">
-							{{filter.operator.toUpperCase()}}
-						</md-button>
-					</div>
-				</section>
-				<section layout="row" layout-align="start center">
-					<md-button ng-click="creatureFilter.resetFilters()" class="md-raised" aria-label="Reset Filters">
-						Reset Filters</md-button>
-					<md-button ng-click="creatureFilter.addFilter()" class="md-raised md-primary"
-						aria-label="Add Filter">Add Filter</md-button>
-				</section>
-			</md-content>
+				    <md-input-container style="width:calc(100% - 16px);margin-left:6px;">
+			        <label>Filter by environment, faction, name, or race</label>
+			        <input ng-model="filter.text">
+			      </md-input-container>
+			      <button ng-click="creatureFilter.removeFilter($index)" class="md-primary remove-saving-throw" style="margin-top:25px;margin-left:4px;margin-right:6px;">
+		          <md-icon md-svg-icon="md-close"></md-icon>
+		        </button>
+		      </div>
+		      <div ng-if="!$last" layout="row" layout-align="center center">
+		      	<md-button ng-click="filter.toggleOperator()" aria-label="Toggle And/Or Operator">
+		      		{{filter.operator.toUpperCase()}}
+		      	</md-button>
+		      </div>
+		    </section>
+	      <section layout="row" layout-align="start center">
+	      	<md-button ng-click="creatureFilter.resetFilters()" class="md-raised" aria-label="Reset Filters">Reset Filters</md-button>
+	      	<md-button ng-click="creatureFilter.addFilter()" class="md-raised md-primary" aria-label="Add Filter">Add Filter</md-button>
+	      </section>
+		  </md-content>
 		</md-sidenav>
 		<!-- EDIT SIDENAV -->
-		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav"
-			md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
-			<md-toolbar class="md-accent">
-				<div class="md-toolbar-tools">
-					<h1 class="md-toolbar-tools">Edit</h1>
-					<span flex></span>
-					<md-button ng-click="close('editNav')" class="md-icon-button" aria-label="Close">
-						<md-icon>close</md-icon>
-					</md-button>
-				</div>
-			</md-toolbar>
-			<md-content layout-padding>
-				<form ng-submit="saveBestiaryInfo();close('editNav');" name="editBestiaryForm">
-					<md-input-container class="md-block">
-						<label>Name</label>
-						<input ng-model="unsavedBestiary.name" name="name" required md-minlength="1" md-maxlength="30">
-						<div ng-messages="editBestiaryForm.name.$error">
-							<div ng-message="required">This is required.</div>
-							<div ng-message="md-maxlength">The name must be less than 30 characters long.</div>
-							<div ng-message="minlength">The name must be at least 1 character long.</div>
-						</div>
-					</md-input-container>
-					<md-input-container class="md-block">
-						<label>Description</label>
-						<textarea ng-model="unsavedBestiary.description" expand-textarea></textarea>
-					</md-input-container>
-					<md-button ng-click="cancelSave();close('editNav');" class="md-raised">Cancel</md-button>
-					<md-button class="md-raised md-primary" type="submit">Save</md-button>
-				</form>
-			</md-content>
+		<md-sidenav class="md-sidenav-right md-whiteframe-z2 edit-sidenav bestiary-sidenav" md-is-locked-open="isOpen('editNav')" md-component-id="editNav">
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Edit</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('editNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+		  <md-content layout-padding>
+		  	<form ng-submit="saveBestiaryInfo();close('editNav');" name="editBestiaryForm">
+			    <md-input-container class="md-block">
+		        <label>Name</label>
+		        <input ng-model="unsavedBestiary.name" name="name" required md-minlength="1" md-maxlength="30">
+		        <div ng-messages="editBestiaryForm.name.$error">
+				      <div ng-message="required">This is required.</div>
+				      <div ng-message="md-maxlength">The name must be less than 30 characters long.</div>
+				      <div ng-message="minlength">The name must be at least 1 character long.</div>
+				    </div>
+		      </md-input-container>
+		      <md-input-container class="md-block">
+		        <label>Description</label>
+		        <textarea ng-model="unsavedBestiary.description" expand-textarea></textarea>
+		      </md-input-container>
+		      <md-button ng-click="cancelSave();close('editNav');" class="md-raised">Cancel</md-button>
+      		<md-button class="md-raised md-primary" type="submit">Save</md-button>
+		    </form>
+		  </md-content>
 		</md-sidenav>
 		<!-- MENU SIDENAV -->
 		<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="menuNav">
-			<md-toolbar class="md-accent">
-				<div class="md-toolbar-tools">
-					<h1 class="md-toolbar-tools">Menu</h1>
-					<span flex></span>
-					<md-button ng-click="close('menuNav')" class="md-icon-button" aria-label="Close">
-						<md-icon>close</md-icon>
-					</md-button>
-				</div>
-			</md-toolbar>
-			<md-list>
-				<md-list-item ng-show="isUserOwner()" ng-click="shareBestiary($event,bestiary);close('menuNav');">
-					<md-icon ng-class="{'md-accent': bestiary.sharing.linkSharingEnabled}" style="margin-bottom:16px">share</md-icon>
-					<p>Share</p>
-				</md-list-item>
-				<md-list-item ng-show="isUserOwner()" ng-click="publishBestiary($event,bestiary);close('menuNav');">
-					<md-icon style="margin-bottom:16px">publish</md-icon>
-					<p>Publish</p>
-				</md-list-item>
-				<md-list-item ng-click="toggleExclusive('filterNav');">
-					<md-icon style="margin-bottom:16px">filter_list</md-icon>
-					<p>Filter</p>
-				</md-list-item>
-				<md-list-item ng-show="isUserOwner()" ng-click="toggleExclusive('editNav');">
-					<md-icon style="margin-bottom:16px">mode_edit</md-icon>
-					<p>Edit</p>
-				</md-list-item>
-				<md-list-item ng-click="printBestiary($event,bestiary);close('menuNav');">
-					<md-icon style="margin-bottom:16px">print</md-icon>
-					<p>Print</p>
-				</md-list-item>
-			</md-list>
+		  <md-toolbar class="md-accent">
+		  	<div class="md-toolbar-tools">
+			    <h1 class="md-toolbar-tools">Menu</h1>
+			    <span flex></span>
+	        <md-button ng-click="close('menuNav')" class="md-icon-button" aria-label="Close">
+	          <md-icon>close</md-icon>
+	        </md-button>
+	      </div>
+		  </md-toolbar>
+	  	<md-list>
+	 			<md-list-item ng-click="publishBestiary($event,bestiary);close('menuNav');">
+	 				<md-icon style="margin-bottom:16px">publish</md-icon>
+	  			<p>Publish</p>
+	 			</md-list-item>
+	 			<md-list-item ng-click="toggleExclusive('filterNav');">
+	  			<md-icon style="margin-bottom:16px">filter_list</md-icon>
+	  			<p>Filter</p>
+	 			</md-list-item>
+	  		<md-list-item ng-click="toggleExclusive('editNav');">
+	  			<md-icon style="margin-bottom:16px">mode_edit</md-icon>
+	  			<p>Edit</p>
+	 			</md-list-item>
+	  		<md-list-item ng-click="printBestiary($event,bestiary);close('menuNav');">
+	  			<md-icon style="margin-bottom:16px">print</md-icon>
+	  			<p>Print</p>
+	 			</md-list-item>
+	  	</md-list>
 		</md-sidenav>
 	</section>
 </div>
@@ -322,9 +257,6 @@
 		{{bestiary.name}}
 	</h1>
 	<div class="fallingColumns">
-		<ng-stat-block
-			ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown"
-			creature="creature" creature-api="creatureApi" class="fallingColumnsItem no-page-break" no-resize="true">
-		</ng-stat-block>
+		<ng-stat-block ng-repeat="creature in bestiary.creatures | orderBy:'name' | filter:creatureFilter.isCreatureShown" creature="creature" creature-api="creatureApi" class="fallingColumnsItem no-page-break" no-resize="true"></ng-stat-block>
 	</div>
 </div>

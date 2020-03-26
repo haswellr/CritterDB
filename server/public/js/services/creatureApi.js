@@ -66,19 +66,13 @@ angular.module('myApp').factory("CreatureAPI", function($location,CreatureClipbo
       api.share = function(ev,creature){
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
         $mdDialog.show({
-          controller: sharingCtrl,
-          templateUrl: '/assets/partials/sharing/sharing-modal.html',
+          controller: creatureSharingCtrl,
+          templateUrl: '/assets/partials/creature/sharing.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose:true,
           locals: {
-            'sharedEntity': creature,
-            'entityAPIService': Creature,
-            'entityLocalDirectory': "creature",
-            'presentationData': {
-              'entityName': "creature",
-              'entityNameTitle': "Creature" 
-            }
+            'creature': creature
           },
           fullscreen: true
         });

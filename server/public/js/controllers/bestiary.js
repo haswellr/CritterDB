@@ -1,8 +1,7 @@
 
-var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI, $cookies, $window, BestiaryCopier) {
+var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, bestiaries, Auth, $mdDialog, $mdMedia, CreatureClipboard, $mdToast, CreatureFilter, CreatureAPI, $cookies, $window) {
 	$scope.bestiaries = bestiaries;
 	$scope.bestiary = bestiary;
-	$scope.Auth = Auth;
 
 	$scope.bestiary.creaturesLoading = true;
 	var loadCreatures = function(){
@@ -40,10 +39,6 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			$scope.view.current = id;
 			$cookies.put(VIEW_MODE_COOKIE,id);
 		}
-	}
-
-	$scope.isUserOwner = function() {
-		return Auth.user && Auth.user._id == $scope.bestiary.ownerId;
 	}
 
 	$scope.preview = {
@@ -90,27 +85,6 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		});
 	}
 
-	$scope.shareBestiary = function(ev,bestiary){
-		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
-        $mdDialog.show({
-          controller: sharingCtrl,
-          templateUrl: '/assets/partials/sharing/sharing-modal.html',
-          parent: angular.element(document.body),
-          targetEvent: ev,
-          clickOutsideToClose:true,
-          locals: {
-            'sharedEntity': bestiary,
-            'entityAPIService': Bestiary,
-            'entityLocalDirectory': "bestiary",
-            'presentationData': {
-              'entityName': "bestiary",
-              'entityNameTitle': "bestiary" 
-            }
-          },
-          fullscreen: true
-        });
-	}
-
 	$scope.deleteBestiary = function(ev,bestiary){
 		var confirm = $mdDialog.confirm()
 			.title("Confirm Deletion")
@@ -125,14 +99,6 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 			var index = $scope.bestiaries.indexOf(bestiary);
 			if(index!=-1)
 				$scope.bestiaries.splice(index,1);
-		});
-	}
-
-	$scope.copyBestiary = function(){
-		BestiaryCopier.copy($scope.bestiary, function(createdBestiary) {
-			$location.url("/bestiary/view/"+createdBestiary._id);
-		}, function(error) {
-			console.error(error);
 		});
 	}
 
@@ -213,30 +179,24 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 
 //don't load controller until we've gotten the data from the server
 bestiaryCtrl.resolve = {
-			bestiary: ['Bestiary','$q','$route','Auth','$location','User',function(Bestiary, $q, $route, Auth, $location, User){
+			bestiary: ['Bestiary','$q','$route','Auth','$location',function(Bestiary, $q, $route, Auth, $location){
 				if($route.current.params.bestiaryId){
 					var deferred = $q.defer();
-					const rejectAndReroute = function() {
-						$location.path('/login');
-						deferred.reject();
-					};
 					Auth.executeOnLogin(function(){
-						Bestiary.get($route.current.params.bestiaryId,function(bestiaryData) {
-							// Get the bestiary owner (note: this could be better done with Mongoose autopopulate, but it's not how the model was set up, and this is easy enough)
-							User.getPublic(bestiaryData.ownerId,function(userData) {
-								bestiaryData.owner = userData;
-								deferred.resolve(bestiaryData);
-								if (Auth.user && Auth.user._id == bestiaryData.ownerId) {
-									// If this is the owner of the bestiary, save that bestiary was active, but no need to do it until after resolving
-									bestiaryData.lastActive = new Date();
-									Bestiary.update(bestiaryData._id, bestiaryData);
-								}
+						if(!Auth.isLoggedIn()){
+							$location.path('/login');
+							deferred.reject();
+						}
+						else{
+							Bestiary.get($route.current.params.bestiaryId,function(data) {
+								deferred.resolve(data);
+								//save that bestiary was active, but no need to do it until after resolving
+								data.lastActive = new Date();
+								Bestiary.update(data._id,data);
 							}, function(errorData) {
 								deferred.reject();
 							});
-						}, function(errorData) {
-							rejectAndReroute();
-						});
+						}
 					});
 					return deferred.promise;
 				}
