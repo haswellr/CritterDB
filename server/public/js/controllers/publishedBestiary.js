@@ -1,9 +1,10 @@
 
-var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryCreaturePager,PublishedBestiaryPager,UserPublishedBestiaryPager,SearchPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo) {
+var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routeParams,PublishedBestiary,PublishedBestiaryCreaturePager,PublishedBestiaryPager,UserPublishedBestiaryPager,SearchPublishedBestiaryPager,CreatureFilter,CreatureAPI,CreatureClipboard,$mdMedia,$mdDialog,Auth,$location,Bestiary,Creature,$window,Mongo,BestiaryCopier) {
 	$scope.bestiary = bestiary;
 	$scope.bestiaries = bestiaries;
 	$scope.owner = owner;
 	$scope.commentEdits = {};
+	$scope.Auth = Auth;
 	if(bestiaries && bestiaries.length>0){
 		if($routeParams.userId)
 			$scope.bestiaryPager = new UserPublishedBestiaryPager($routeParams.userId,bestiaries,2);
@@ -141,32 +142,11 @@ var publishedBestiaryCtrl = function ($scope,bestiary,bestiaries,owner,$routePar
 		});
 	}
 
-	var copyCreaturesToBestiary = function(createdBestiary){
-		var copiedCount = 0;
-		var totalToCopy = $scope.bestiary.creatures.length;
-		var finishedCreatingCreature = function(){
-			copiedCount = copiedCount + 1;
-			if(copiedCount==totalToCopy){
-				$location.url("/bestiary/view/"+createdBestiary._id);
-			}
-		}
-		for(var i=0;i<$scope.bestiary.creatures.length;i++){
-			var newCreature = angular.copy($scope.bestiary.creatures[i]);
-			newCreature._id = undefined;
-			newCreature.bestiaryId = createdBestiary._id;
-			newCreature.publishedBestiaryId = undefined;
-			Creature.create(newCreature,finishedCreatingCreature,finishedCreatingCreature);
-		}
-	}
-
 	$scope.copyBestiary = function(){
-		var newBestiary = Bestiary.generateNewBestiary(Auth.user._id);
-		newBestiary.name = $scope.bestiary.name;
-		newBestiary.description = $scope.bestiary.description;
-		Bestiary.create(newBestiary,function(data){
-			copyCreaturesToBestiary(data);
-		},function(err){
-			console.log("error: "+err);
+		BestiaryCopier.copy($scope.bestiary, function(createdBestiary) {
+			$location.url("/bestiary/view/"+createdBestiary._id);
+		}, function(error) {
+			console.error(error);
 		});
 	}
 

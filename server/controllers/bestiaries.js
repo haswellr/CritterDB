@@ -24,6 +24,16 @@ var authenticateBestiaryByOwner = function(req, bestiary, callback){
     }
 }
 
+var authenticateViewAccess = function(req, bestiary, callback) {
+    if (bestiary.sharing && bestiary.sharing.linkSharingEnabled) {
+        setTimeout(function() {
+            callback(null)
+        });
+    } else {
+        authenticateBestiaryByOwner(req, bestiary, callback);
+    }
+}
+
 exports.findById = function(req, res) {
     var id = req.params.id;
     var query = {'_id':id};
@@ -33,7 +43,7 @@ exports.findById = function(req, res) {
             res.status(400).send(err.message);
         }
         else if(doc){
-            authenticateBestiaryByOwner(req, doc, function(err){
+            authenticateViewAccess(req, doc, function(err){
                 if(err)
                     res.status(400).send(err);
                 else
@@ -153,7 +163,7 @@ exports.findCreaturesByBestiary = function(req, res) {
             res.status(400).send(err.message);
         }
         else if(doc){
-            authenticateBestiaryByOwner(req, doc, function(err){
+            authenticateViewAccess(req, doc, function(err){
                 if(err)
                     res.status(400).send(err);
                 else{
