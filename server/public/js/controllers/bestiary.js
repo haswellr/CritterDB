@@ -104,7 +104,7 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
             'entityLocalDirectory': "bestiary",
             'presentationData': {
               'entityName': "bestiary",
-              'entityNameTitle': "bestiary" 
+              'entityNameTitle': "Bestiary" 
             }
           },
           fullscreen: true
