@@ -15,8 +15,6 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
     $scope.exportFormatIds = Object.keys($scope.exportFormats);
 
     function getSelectedExportFormat() {
-        console.log("selected id: !" + $scope.selectedExportFormatId + "!");
-        console.log("selected format: " + JSON.stringify($scope.exportFormats[$scope.selectedExportFormatId]));
         return $scope.exportFormats[$scope.selectedExportFormatId];
     }
 
@@ -40,19 +38,13 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
         }
 	});
 
-	$scope.onCopy = function (e) {
-		console.log("copied!");
-	}
-
 	var clipboard = new Clipboard('#copy-to-clipboard', {
 		text: function (trigger) {
-            console.log("clip text");
 			return ($scope.export.data);
 		}
 	});
 
 	clipboard.on('success', function (e) {
-        console.log("clip success");
 		$mdToast.show(
 			$mdToast.simple()
 				.textContent("Bestiary copied to clipboard!")
@@ -64,7 +56,6 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
 	});
 
 	clipboard.on('error', function (e) {
-        console.log("clip fail");
 		$mdToast.show(
 			$mdToast.simple()
 				.textContent("Press CTRL-C to copy bestiary!")

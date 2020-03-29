@@ -31,7 +31,8 @@ angular.module('myApp').factory("DataAdapter", function (ToJsonAdapter, FiveEToo
 
     DataAdapter.Format = {
         "5E_TOOLS_BESTIARY": new AdapterWorkflow([new FiveEToolsBestiaryMapper()], new ToJsonAdapter()),
-        "5E_TOOLS_CREATURE": new AdapterWorkflow([new FiveEToolsCreatureMapper()], new ToJsonAdapter())
+        "5E_TOOLS_CREATURE": new AdapterWorkflow([new FiveEToolsCreatureMapper()], new ToJsonAdapter()),
+        "CRITTERDB": new AdapterWorkflow([], new ToJsonAdapter())
     }
 
     /**
