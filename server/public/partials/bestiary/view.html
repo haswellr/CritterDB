@@ -30,11 +30,11 @@
 				</div>
 			</md-button>
 			<!-- NON-MOBILE BUTTONS -->
-			<md-button hide show-gt-xs ng-click="printBestiary($event,bestiary)" class="md-icon-button md-mini"
-				aria-label="Print">
-				<md-icon>print</md-icon>
+			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="addCreature()" class="md-fab md-mini md-accent"
+				aria-label="Create Creature">
+				<md-icon>add</md-icon>
 				<md-tooltip md-direction="left">
-					Print Bestiary (try CTRL-P for larger text)
+					Create Creature
 				</md-tooltip>
 			</md-button>
 			<md-button ng-show="Auth.user && !isUserOwner()" hide show-gt-xs ng-click="copyBestiary()" class="md-icon-button md-mini"
@@ -44,18 +44,11 @@
 					Copy Bestiary
 				</md-tooltip>
 			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="shareBestiary($event,bestiary)" class="md-icon-button md-mini"
-				aria-label="Share">
-				<md-icon ng-class="{'md-accent': bestiary.sharing.linkSharingEnabled}">share</md-icon>
+			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="toggleExclusive('editNav');"
+				ng-class="{'selected':isOpen('editNav')}" class="md-icon-button md-mini" aria-label="Edit">
+				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
 				<md-tooltip md-direction="left">
-					Share Bestiary
-				</md-tooltip>
-			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="publishBestiary($event,bestiary)" class="md-icon-button md-mini"
-				aria-label="Publish">
-				<md-icon>publish</md-icon>
-				<md-tooltip md-direction="left">
-					Publish Bestiary
+					Edit Collection Details
 				</md-tooltip>
 			</md-button>
 			<md-button hide show-gt-xs ng-click="toggleExclusive('filterNav');" class="md-icon-button md-mini"
@@ -66,25 +59,19 @@
 					Filter Creatures
 				</md-tooltip>
 			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="toggleExclusive('editNav');" ng-class="{'selected':isOpen('editNav')}"
-				class="md-icon-button md-mini" aria-label="Edit">
-				<md-icon ng-class="{'md-accent':isOpen('editNav')}">mode_edit</md-icon>
+			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="shareBestiary($event,bestiary)" class="md-icon-button md-mini"
+				aria-label="Share">
+				<md-icon ng-class="{'md-accent': bestiary.sharing.linkSharingEnabled}">share</md-icon>
 				<md-tooltip md-direction="left">
-					Edit Collection Details
+					Share Bestiary
 				</md-tooltip>
 			</md-button>
-			<md-button ng-show="isUserOwner()" hide show-gt-xs ng-click="addCreature()" class="md-fab md-mini md-accent"
-				aria-label="Create Creature">
-				<md-icon>add</md-icon>
-				<md-tooltip md-direction="left">
-					Create Creature
-				</md-tooltip>
-			</md-button>
-			<!-- MOBILE MENU BUTTON -->
-			<md-button hide-gt-xs ng-click="toggleExclusive('menuNav');" ng-class="{'selected':isOpen('menuNav')}"
+			<!-- MENU BUTTON, for both mobile and non-mobile -->
+			<md-button ng-click="toggleExclusive('menuNav');" ng-class="{'selected':isOpen('menuNav')}"
 				class="md-icon-button md-mini" aria-label="Menu">
-				<md-icon ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
-			</md-button>
+				<md-icon hide show-gt-xs ng-class="{'md-accent':isOpen('menuNav')}">more_vert</md-icon>
+				<md-icon hide-gt-xs ng-class="{'md-accent':isOpen('menuNav')}">menu</md-icon>
+			</md-button> 
 			<!-- - -->
 		</div>
 		<md-button hide-gt-xs ng-hide="isOpen('filterNav') || isOpen('editNav')" ng-click="addCreature()"
@@ -291,21 +278,30 @@
 				</div>
 			</md-toolbar>
 			<md-list>
+				<md-list-item ng-show="isUserOwner()" ng-click="toggleExclusive('editNav');">
+					<md-icon style="margin-bottom:16px">mode_edit</md-icon>
+					<p>Edit</p>
+				</md-list-item>
+				<md-list-item ng-click="toggleExclusive('filterNav');">
+					<md-icon style="margin-bottom:16px">filter_list</md-icon>
+					<p>Filter</p>
+				</md-list-item>
+				<md-list-item ng-show="Auth.user" ng-click="copyBestiary($event,bestiary);close('menuNav');">
+					<md-icon style="margin-bottom:16px">content_copy</md-icon>
+					<p>Copy</p>
+				</md-list-item>
 				<md-list-item ng-show="isUserOwner()" ng-click="shareBestiary($event,bestiary);close('menuNav');">
-					<md-icon ng-class="{'md-accent': bestiary.sharing.linkSharingEnabled}" style="margin-bottom:16px">share</md-icon>
+					<md-icon ng-class="{'md-accent': bestiary.sharing.linkSharingEnabled}" style="margin-bottom:16px">
+						share</md-icon>
 					<p>Share</p>
 				</md-list-item>
 				<md-list-item ng-show="isUserOwner()" ng-click="publishBestiary($event,bestiary);close('menuNav');">
 					<md-icon style="margin-bottom:16px">publish</md-icon>
 					<p>Publish</p>
 				</md-list-item>
-				<md-list-item ng-click="toggleExclusive('filterNav');">
-					<md-icon style="margin-bottom:16px">filter_list</md-icon>
-					<p>Filter</p>
-				</md-list-item>
-				<md-list-item ng-show="isUserOwner()" ng-click="toggleExclusive('editNav');">
-					<md-icon style="margin-bottom:16px">mode_edit</md-icon>
-					<p>Edit</p>
+				<md-list-item ng-click="exportBestiary($event,bestiary);close('menuNav');">
+					<md-icon style="margin-bottom:16px" md-svg-icon="/assets/img/icons/material/export.svg"></md-icon>
+					<p>Export</p>
 				</md-list-item>
 				<md-list-item ng-click="printBestiary($event,bestiary);close('menuNav');">
 					<md-icon style="margin-bottom:16px">print</md-icon>

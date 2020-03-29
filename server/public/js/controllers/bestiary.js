@@ -90,6 +90,21 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
 		});
 	}
 
+	$scope.exportBestiary = function(ev,bestiary){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+        $mdDialog.show({
+          controller: exportBestiaryCtrl,
+          templateUrl: '/assets/partials/bestiary/export-modal.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          locals: {
+            'bestiary': bestiary
+          },
+          fullscreen: useFullScreen
+        });
+	}
+
 	$scope.shareBestiary = function(ev,bestiary){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
         $mdDialog.show({
