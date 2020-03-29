@@ -3,9 +3,16 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
     $scope.loading = true;
 
     $scope.exportFormats = {
+        "CritterDB JSON": {
+            name: "CritterDB JSON",
+            fileSuffix: "",
+            fileExtension: "json",
+            description: "Export this bestiary in CritterDB's JSON format.",
+            adapterFormat: DataAdapter.Format["CRITTERDB"]
+        },
         "5E Tools": {
             name: "5E Tools",
-            fileSuffix: "5e_tools",
+            fileSuffix: "_(5e_tools)",
             fileExtension: "json",
             description: '<a href="https://5e.tools/">5E Tools</a> has a browseable collection of official 5E information, including core rules, monsters, and more. Additionally, creatures in the 5E Tools format can be imported into the Roll20 virtual tabletop. Use 5E Tools as a way to get your CritterDB monsters into Roll20.',
             adapterFormat: DataAdapter.Format["5E_TOOLS_BESTIARY"]
@@ -20,7 +27,7 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
 
     function calculateExportData() {
         return {
-            filename: `${bestiary.name}_(${getSelectedExportFormat().fileSuffix}).${getSelectedExportFormat().fileExtension}`,
+            filename: `${bestiary.name}${getSelectedExportFormat().fileSuffix}.${getSelectedExportFormat().fileExtension}`,
             data: DataAdapter.adapt(bestiary, getSelectedExportFormat().adapterFormat)
         }
     }

@@ -44,8 +44,8 @@ angular.module('myApp').factory("DataAdapter", function (ToJsonAdapter, FiveEToo
      * @throws {TypeError} Throws a TypeError if format is not of the correct type.
      */
     DataAdapter.adapt = function (data, format) {
-        if (!format.dataMappers || format.dataMappers.length == 0) {
-            throw new TypeError("Invalid Format. Format must have one or more data mappers.");
+        if (!format.dataMappers) {
+            throw new TypeError("Invalid Format. Format must have defined data mappers.");
         }
         if (!format.stringAdapter) {
             throw new TypeError("Invalid Format. Format must have a string adapter.");
