@@ -8,7 +8,8 @@ angular.module('myApp').factory("DataMapper", function () {
         OBJECT: "object",
         ARRAY: "array",
         FUNCTION: "function",
-        SINGULAR_ARRAY: "singularArray"
+        SINGULAR_ARRAY: "singularArray",
+        DATA_MAPPER: "dataMapper"
     };
 
     function _getProperty(key, sourceData) {
@@ -45,6 +46,10 @@ angular.module('myApp').factory("DataMapper", function () {
         return value ? [value] : [];
     }
 
+    function _mapUsingDataMapper(mappingDefinition, sourceData) {
+        return mappingDefinition.dataMapper.map(sourceData);
+    }
+
     function _mapByDefinition(mappingDefinition, sourceData) {
         if (mappingDefinition == null || sourceData == null) {
             return null;
@@ -77,6 +82,12 @@ angular.module('myApp').factory("DataMapper", function () {
                     return null;
                 }
                 return _mapSingularArray(mappingDefinition.elementMap, sourceData);
+            case MappingType.DATA_MAPPER:
+                if (!mappingDefinition.dataMapper) {
+                    console.error(`dataMapper must be defined for _type "dataMapper" in mapping definition: ${JSON.stringify(mappingDefinition)}`);
+                    return null;
+                }
+                return _mapUsingDataMapper(mappingDefinition, sourceData);
             default:
                 return null;
         }
@@ -95,6 +106,7 @@ angular.module('myApp').factory("DataMapper", function () {
          * - array: Reads from an array specified by the "source" field. For each element in that array, adds an object to an array, mapping fields 1-to-1 as specified in "map".
          * - function: Runs the function specified in "map", passing in a function which takes in a key and returns data from the source object.
          * - singularArray: Reads a value from "map" and places it as a single element in an array, IF that element is not null.
+         * - dataMapper: Maps using another DataMapper.
          */
         map(sourceData) {
             if (!this._mappingDefinition) {
