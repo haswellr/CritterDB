@@ -41,6 +41,13 @@
             </md-menu-item>
           </div>
           <md-menu-item>
+            <md-button ng-click="creatureApi.export.exportJson($event,creature)">
+                <div layout="row">
+                  <p flex>Export to JSON</p>
+                </div>
+            </md-button>
+          </md-menu-item>
+          <md-menu-item>
             <md-button ng-click="creatureApi.export.exportHTML($event,creature)">
                 <div layout="row">
                   <p flex>Export to HTML</p>

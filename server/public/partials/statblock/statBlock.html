@@ -46,6 +46,9 @@
       <md-button hide show-gt-sm ng-click="creatureApi.export.exportImage($event,creature);$event.stopPropagation();" ng-if="creatureApi.export.exportImage" aria-label="Export Image">
         Export to Image
       </md-button>
+      <md-button ng-click="creatureApi.export.exportJson($event,creature);$event.stopPropagation();" ng-if="creatureApi.export.exportJson" aria-label="Export JSON">
+        Export to JSON
+      </md-button>
       <md-button ng-click="creatureApi.export.exportHTML($event,creature);$event.stopPropagation();" ng-if="creatureApi.export.exportHTML" aria-label="Export HTML">
         Export to HTML
       </md-button>

@@ -100,6 +100,20 @@ angular.module('myApp').factory("CreatureAPI", function($location,CreatureClipbo
           fullscreen: useFullScreen
         });
       }
+      api.export.exportJson = function(ev,creature){
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+        $mdDialog.show({
+          controller: exportCreatureJsonCtrl,
+          templateUrl: '/assets/partials/creature/export-json.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          locals: {
+            'creature': creature
+          },
+          fullscreen: useFullScreen
+        });
+      }
       api.export.exportHTML = function(ev,creature){
         var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
         $mdDialog.show({

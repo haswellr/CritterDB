@@ -1,0 +1,46 @@
+<md-dialog id="export-dialog" class="export-modal" aria-label="Export Bestiary" ng-cloak>
+    <form action="/api/downloads" method="post">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Export Creature</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="padding:40px 10px 28px 10px;">
+            <section layout="row" class="row">
+                <md-input-container class="md-block" style="margin-bottom:38px;">
+                    <label>Export Format</label>
+                    <md-select ng-model="selectedExportFormatId" placeholder="Select an export format.">
+                        <md-option ng-value="exportFormatId" ng-repeat="exportFormatId in exportFormatIds">
+                            {{exportFormats[exportFormatId].name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </section>
+            <section layout="row" class="row">
+                <p ng-bind-html="exportFormats[selectedExportFormatId].description" style="text-align:center;font-size:12px;"></p>
+            </section>
+            <!-- This section just holds form data for downloading -->
+            <section layout="row" class="row" style="display:none;">
+                <md-input-container class="md-block">
+                    <label>Filename</label>
+                    <input name="filename" ng-model="export.filename" readonly>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Data</label>
+                    <textarea name="data" ng-model="export.data" md-select-on-focus readonly></textarea>
+                </md-input-container>
+            </section>
+            <!-- --- -->
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-disabled="loading" id="copy-to-clipboard" class="md-raised md-button">Copy to Clipboard
+            </md-button>
+            <md-button ng-disabled="loading" type="submit" class="md-raised md-button md-primary">Download File
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
