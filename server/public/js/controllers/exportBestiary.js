@@ -14,7 +14,7 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
             name: "5E Tools",
             fileSuffix: "_(5e_tools)",
             fileExtension: "json",
-            description: '<a href="https://5e.tools/">5E Tools</a> has a browseable collection of official 5E information, including core rules, monsters, and more. Additionally, creatures in the 5E Tools format can be imported into the Roll20 virtual tabletop. Use 5E Tools as a way to get your CritterDB monsters into Roll20.',
+            description: '<a href="https://5e.tools/">5E Tools</a> has a browseable collection of official 5E information, including core rules, monsters, and more. Additionally, creatures in the 5E Tools format can be imported into the Roll20 virtual tabletop.',
             adapterFormat: DataAdapter.Format["5E_TOOLS_BESTIARY"]
         }
     }
