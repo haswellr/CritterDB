@@ -105,6 +105,22 @@ var bestiaryCtrl = function ($scope, Creature, Bestiary, bestiary, $location, be
         });
 	}
 
+	$scope.importCreatures = function(ev,bestiary){
+		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+        $mdDialog.show({
+          controller: importCreatureCtrl,
+          templateUrl: '/assets/partials/bestiary/import-creatures-modal.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          locals: {
+			'bestiary': bestiary,
+			'updateBestiaryCreaturesFunction': loadCreatures
+          },
+          fullscreen: useFullScreen
+        });
+	}
+
 	$scope.shareBestiary = function(ev,bestiary){
 		var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
         $mdDialog.show({

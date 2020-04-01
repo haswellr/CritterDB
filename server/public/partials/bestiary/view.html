@@ -299,6 +299,10 @@
 					<md-icon style="margin-bottom:16px">publish</md-icon>
 					<p>Publish</p>
 				</md-list-item>
+				<md-list-item ng-click="importCreatures($event,bestiary);close('menuNav');">
+					<md-icon style="margin-bottom:16px" md-svg-icon="/assets/img/icons/material/import.svg"></md-icon>
+					<p>Import Creatures</p>
+				</md-list-item>
 				<md-list-item ng-click="exportBestiary($event,bestiary);close('menuNav');">
 					<md-icon style="margin-bottom:16px" md-svg-icon="/assets/img/icons/material/export.svg"></md-icon>
 					<p>Export</p>

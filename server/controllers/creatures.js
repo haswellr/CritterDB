@@ -76,7 +76,7 @@ var authenticateCreatureByBestiary = function(req, creature, callback){
     }
     else{
         setTimeout(function() {
-            callback(err.message)
+            callback("Creature must belong to a bestiary.")
         });
     }
 }

@@ -1,0 +1,48 @@
+<md-dialog id="import-dialog" class="export-modal" aria-label="Import Bestiary" ng-cloak>
+    <form name="importForm" ng-submit="import()">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Import Creatures</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon style="font-size:24px;height:24px;width:24px;">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="padding:40px 10px 28px 10px;">
+            <section layout="row" class="row">
+                <md-input-container class="md-block" style="margin-bottom:38px;">
+                    <label>Import Format</label>
+                    <md-select ng-model="selectedImportFormatId" placeholder="Select an import format.">
+                        <md-option ng-value="importFormatId" ng-repeat="importFormatId in importFormatIds">
+                            {{importFormats[importFormatId].name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </section>
+            <section layout="row" class="row">
+                <p ng-bind-html="importFormats[selectedImportFormatId].description"
+                    style="text-align:center;font-size:12px;"></p>
+            </section>
+            <section ng-show="selectedImportFormatId" layout="row" class="row">
+                <md-input-container class="md-block">
+                    <label>Import Data</label>
+                    <textarea name="importText" ng-model="importText"></textarea>
+                    <div ng-messages>
+                        <div ng-if="importForm.importText.$error.format">
+                            Invalid format.
+                        </div>
+                        <div ng-if="importForm.importText.$error.empty">
+                            No creatures found.
+                        </div>
+                    </div>
+                </md-input-container>
+            </section>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-disabled="loading" ng-click="import()" class="md-raised md-button md-primary">Import
+                {{creaturesToImport.length}} creatures
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

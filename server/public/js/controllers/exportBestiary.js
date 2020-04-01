@@ -28,7 +28,7 @@ var exportBestiaryCtrl = function ($scope, bestiary, $mdDialog, $mdToast, DataAd
     function calculateExportData() {
         return {
             filename: `${bestiary.name}${getSelectedExportFormat().fileSuffix}.${getSelectedExportFormat().fileExtension}`,
-            data: DataAdapter.adapt(bestiary, getSelectedExportFormat().adapterFormat)
+            data: DataAdapter.export(bestiary, getSelectedExportFormat().adapterFormat)
         }
     }
 

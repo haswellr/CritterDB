@@ -101,6 +101,22 @@ angular.module('myApp').factory("DataMapper", function () {
         }
 
         /**
+         * @returns {boolean} true if this data mapper is capable of mapping forward, false if not.
+         */
+        canMap() {
+            return this._mappingDefinition;
+        }
+
+        /**
+         * @returns {boolean} true if this data mapper is capable of reversing its mapping, false if not.
+         */
+        canReverse() {
+            return this._reverseMappingDefinition;
+        }
+
+        /**
+         * Maps from one data format to another.
+         * 
          * Types of mapping:
          * - object: Maps fields 1-to-1 as specified in "map".
          * - array: Reads from an array specified by the "source" field. For each element in that array, adds an object to an array, mapping fields 1-to-1 as specified in "map".
@@ -109,10 +125,20 @@ angular.module('myApp').factory("DataMapper", function () {
          * - dataMapper: Maps using another DataMapper.
          */
         map(sourceData) {
-            if (!this._mappingDefinition) {
+            if (!canMap()) {
                 throw new TypeError("Children of DataMapper must include mappingDefinition.")
             }
             return _mapByDefinition(this._mappingDefinition, sourceData);
+        }
+
+        /**
+         * Reverses the effects of the map function, mapping from this class's target data format back to its input format.
+         */
+        reverse(targetData) {
+            if (!this.canReverse()) {
+                throw new TypeError("Children of DataMapper must include _reverseMappingDefinition.")
+            }
+            return _mapByDefinition(this._reverseMappingDefinition, targetData);
         }
     }
 

@@ -28,7 +28,7 @@ var exportCreatureJsonCtrl = function ($scope, creature, $mdDialog, $mdToast, Da
     function calculateExportData() {
         return {
             filename: `${creature.name}${getSelectedExportFormat().fileSuffix}.${getSelectedExportFormat().fileExtension}`,
-            data: DataAdapter.adapt(creature, getSelectedExportFormat().adapterFormat)
+            data: DataAdapter.export(creature, getSelectedExportFormat().adapterFormat)
         }
     }
 
