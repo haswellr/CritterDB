@@ -5,10 +5,7 @@ module.exports = {
 		'url': "mongodb://user:pw@host:port/database-name",
 		'options': {
 			'keepAlive': true,
-			'useNewUrlParser': true,
-			'useUnifiedTopology': true,
-			'useCreateIndex': true,
-			'useFindAndModify': false
+			'autoReconnect': true
 		}
 	},
 	'tokens': {
