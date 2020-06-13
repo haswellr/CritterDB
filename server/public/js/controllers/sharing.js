@@ -74,15 +74,11 @@ var sharingCtrl = function ($scope,sharedEntity,entityAPIService,entityLocalDire
   }
 
   $scope.$watch("sharedEntity.sharing.linkSharingEnabled", function(newValue,oldValue){
-      console.log("new value: " + newValue);
 		if(oldValue!=newValue && sharedEntity._id) {
-            console.log("updating: " + JSON.stringify(sharedEntity));
 			$scope.loading = true;
 			entityAPIService.update(sharedEntity._id, sharedEntity, function() {
-                console.log("success");
 				$scope.loading = false;
 			}, function(err){
-				console.log("error: "+err);
 				$scope.loading = false;
 			});
 		}
