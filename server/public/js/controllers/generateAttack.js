@@ -27,7 +27,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 	//melee, ranged, versatile, bonus damage
 	var createDescription = function(attack){
 		var ability = "strength";
-		if((attack.finesse || (attack.ranged && !attack.melee)) && creature.stats.abilityScoreModifiers["dexterity"] > creature.stats.abilityScoreModifiers["strength"])
+		if((attack.finesse && creature.stats.abilityScoreModifiers["dexterity"] > creature.stats.abilityScoreModifiers["strength"]) || (attack.ranged && !attack.melee))
 			ability = "dexterity";
 		var type;
 		if(attack.melee && attack.ranged)
@@ -40,6 +40,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 			type = "Weapon Attack:";
 		var toHit = creature.stats.abilityScoreModifiers[ability]
 			+ creature.stats.proficiencyBonus;
+		var toHitStr = toHit >= 0 ? "+" + toHit : toHit;
 		var rangeStr;
 		if(attack.melee && attack.ranged)
 			rangeStr = "reach " + attack.reach + " ft. or range " + attack.shortRange
@@ -84,7 +85,7 @@ var generateAttackCtrl = function ($scope,creature,CreatureData,$mdDialog) {
 			hitStr = hitStr + " plus " + bonusDamageStr;
 		}
 
-		var description = "<i>" + type + "</i> +" + toHit + " to hit, " + rangeStr
+		var description = "<i>" + type + "</i> " + toHitStr + " to hit, " + rangeStr
 			+ ", one target. <i>Hit:</i> " + hitStr + ".";
 		return(description);
 	}
