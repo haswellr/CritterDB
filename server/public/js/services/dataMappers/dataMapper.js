@@ -125,7 +125,7 @@ angular.module('myApp').factory("DataMapper", function () {
          * - dataMapper: Maps using another DataMapper.
          */
         map(sourceData) {
-            if (!canMap()) {
+            if (!this.canMap()) {
                 throw new TypeError("Children of DataMapper must include mappingDefinition.")
             }
             return _mapByDefinition(this._mappingDefinition, sourceData);

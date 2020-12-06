@@ -137,7 +137,7 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                                     const critterDbAbilityScore = getterFunction(`stats.abilityScores.${critterDbAbility}`);
                                     const critterDbAbilityMod = Math.floor((critterDbAbilityScore - 10) / 2.0);
                                     const calculatedSkillMod = critterDbProficiency + critterDbAbilityMod;
-                                    outputSaves[outputKey] = `+${calculatedSkillMod}`
+                                    outputSkills[outputKey] = `+${calculatedSkillMod}`
                                 }
                             });
                             return outputSkills;
