@@ -33,7 +33,7 @@ var sendPassword = function(email,passwordUrl){
         from: '"'+config.email.name+'" <'+config.email.address+'>',
         to: email,
         subject: 'Lost Password',
-        text: 'You lost something! Follow this link to set your new password: '+passwordUrl+'.'
+        text: 'You lost something! Follow this link to set your new password: ' + passwordUrl
     };
     transporter.sendMail(mailOptions,function(error, info){
         if(error)
