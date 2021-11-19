@@ -29,7 +29,7 @@ var CreatureFlavor = new mongoose.Schema(
         _id : false
     });
 
-//6 core ability sores
+//6 core ability scores
 var AbilityScores = new mongoose.Schema(
     {
         strength: {
