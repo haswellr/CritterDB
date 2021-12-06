@@ -153,12 +153,15 @@
         </p>
       </div>
       <div class="property-line">
-        <h4>Challenge</h4>
-        <p>{{creature.stats.challengeRatingStr}} ({{creature.stats.experiencePoints}} XP)</p>
-      </div>
-      <div class="property-line">
-        <h4>Proficiency Bonus</h4>
-        <p>+{{creature.stats.proficiencyBonus}}</p>
+        <h4 style="opacity: 0;">Challenge</h4>
+        <div class="property-line" style="float: left; margin-left: -3.5%">
+          <h4>Challenge</h4>
+          <p>{{creature.stats.challengeRatingStr}} ({{creature.stats.experiencePoints}} XP)</p>
+        </div>
+        <div class="property-line" style="float: right; margin-right: 15%">
+          <h4>Proficiency Bonus</h4>
+          <p>+{{creature.stats.proficiencyBonus}}</p>
+        </div>
       </div>
     </div>
     <div class="tapered-rule"></div>
