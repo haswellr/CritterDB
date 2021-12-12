@@ -152,12 +152,12 @@
           <span ng-repeat="language in creature.stats.languages"><span ng-if="$index>0">, </span>{{language}}</span>
         </p>
       </div>
-      <div class="property-line" style="margin-bottom: 1.33em">
-        <div class="property-line" style="float: left; margin-left: -1em">
+      <div class="property-line">
+        <div class="left-block">
           <h4>Challenge</h4>
           <p>{{creature.stats.challengeRatingStr}} ({{creature.stats.experiencePoints}} XP)</p>
         </div>
-        <div class="property-line" style="display:inline-block;margin-left: 42px">
+        <div class="right-block">
           <h4>Proficiency Bonus</h4>
           <p>+{{creature.stats.proficiencyBonus}}</p>
         </div>

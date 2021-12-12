@@ -145,6 +145,49 @@ div.stat-block div.property-line > p {
   margin: 0;
 }
 
+div.stat-block div.property-line div.left-block {
+  display: inline-block; 
+  text-indent: 0px;
+  padding-left: 0;
+}
+
+div.stat-block div.property-line div.left-block > h4 {
+  margin: 0;
+  display: inline;
+  font-weight: bold;
+}
+
+div.stat-block div.property-line div.left-block > p:first-of-type {
+  display: inline;
+  text-indent: 0;
+}
+
+div.stat-block div.property-line div.left-block > p {
+  text-indent: 1em;
+  margin: 0;
+}
+
+div.stat-block div.property-line div.right-block {
+  float: right;
+  padding-right: 12px;
+}
+
+div.stat-block div.property-line div.right-block > h4 {
+  margin: 0;
+  display: inline;
+  font-weight: bold;
+}
+
+div.stat-block div.property-line div.right-block > p:first-of-type {
+  display: inline;
+  text-indent: 0;
+}
+
+div.stat-block div.property-line div.right-block > p {
+  text-indent: 1em;
+  margin: 0;
+}
+
 div.stat-block div.property-block {
   margin-top: 0.3em;
   margin-bottom: 0.8em;
