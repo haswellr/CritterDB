@@ -62,7 +62,7 @@
 
     <div class="creature-heading">
       <h1 style="margin-right:40px;">{{creature.name}}</h1>
-      <h2>{{creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase()}} {{creature.stats.race.toLowerCase()}}, {{creature.stats.alignment.toLowerCase()}}</h2>
+      <h2>{{creature.stats.size.charAt(0).toUpperCase() + creature.stats.size.slice(1).toLowerCase()}} {{creature.stats.race.charAt(0).toUpperCase() + creature.stats.race.slice(1).toLowerCase()}}, {{creature.stats.alignment.charAt(0).toUpperCase() + creature.stats.alignment.slice(1).toLowerCase()}}</h2>
       <h1 ng-hide="hideCrTag==true" style="position:absolute;top:10px;right:6px;">{{creature.stats.challengeRatingStr}}</h1>
       <h1 ng-hide="hideCrTag" style="position:absolute;top:34px;right:6px;font-size:10px;">CR</h1>
     </div>
@@ -153,8 +153,14 @@
         </p>
       </div>
       <div class="property-line">
-        <h4>Challenge</h4>
-        <p>{{creature.stats.challengeRatingStr}} ({{creature.stats.experiencePoints}} XP)</p>
+        <div class="left-block">
+          <h4>Challenge</h4>
+          <p>{{creature.stats.challengeRatingStr}} ({{creature.stats.experiencePoints}} XP)</p>
+        </div>
+        <div class="right-block">
+          <h4>Proficiency Bonus</h4>
+          <p>+{{creature.stats.proficiencyBonus}}</p>
+        </div>
       </div>
     </div>
     <div class="tapered-rule"></div>
