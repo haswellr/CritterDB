@@ -1,6 +1,9 @@
 angular.module('myApp').factory("TextUtils", function() {
 
+  const lowercaseTitleWords = {"a":true,"an":true,"the":true,"for":true,"and":true,"nor":true,"but":true,"or":true,"yet":true,"so":true,"at":true,"around":true,"by":true,"after":true,"along":true,"for":true,"from":true,"of":true,"on":true,"to":true,"with":true,"without":true};
+
   class TextUtils {
+
     getCreatureNameAsProperNoun(creature) {
       if (!creature) return "";
       var nameIsProper = creature.flavor ? creature.flavor.nameIsProper : false;
@@ -30,7 +33,20 @@ angular.module('myApp').factory("TextUtils", function() {
     }
 
     capitalizeFirstLetter(word) {
-      return word.charAt(0).toUpperCase() + word.slice(1);
+      const firstAlphabeticalCharIndex = word.search(/[A-Za-z]/);
+      return word.slice(0,firstAlphabeticalCharIndex) + word.charAt(firstAlphabeticalCharIndex).toUpperCase() + word.slice(firstAlphabeticalCharIndex + 1);
+    }
+
+    getTitleCase(sentence) {
+      function shouldCapitalizeWord(word,index,numWords) {
+        if (index === 0 || index === (numWords-1))
+          return true;
+        return lowercaseTitleWords[word] ? false : true;
+      }
+
+      return sentence
+        ? sentence.split(' ').map((word, index, wordList) => shouldCapitalizeWord(word, index, wordList.length) ? this.capitalizeFirstLetter(word) : word.toLowerCase()).join(' ')
+        : sentence;
     }
 
     getPossessive(name){

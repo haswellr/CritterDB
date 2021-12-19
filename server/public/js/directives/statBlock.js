@@ -11,6 +11,7 @@ angular.module('myApp').directive('ngStatBlock', ["$mdMedia", "TextUtils", funct
 			noResize: '=noResize'
 		},
 		link: function(scope, element, attrs) {
+			scope.TextUtils = TextUtils;
 			var setContentUrl = function(){
 				if(attrs.size=='preview')
 					scope.contentUrl = 'assets/partials/statblock/statBlockPreview.html?@@hash';
