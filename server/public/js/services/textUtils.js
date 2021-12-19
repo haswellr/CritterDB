@@ -49,6 +49,10 @@ angular.module('myApp').factory("TextUtils", function() {
         : sentence;
     }
 
+    getCommaSeparatedList(items) {
+      return items.filter(item => item).join(", ");
+    }
+
     getPossessive(name){
       if(name.toLowerCase() == "it")
         return (name + "s");

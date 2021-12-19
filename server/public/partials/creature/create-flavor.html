@@ -35,13 +35,14 @@
       <label>Faction</label>
       <input ng-model="creature.flavor.faction" type="text"/>
     </md-input-container>
-    <md-input-container flex>
-      <label>Alignment</label>
-      <md-select ng-model="creature.stats.alignment">
-        <md-option ng-repeat="alignment in creatureData.alignments" value="{{alignment}}">
-          {{alignment}}
-        </md-option>
-      </md-select>
-    </md-input-container>
+    <md-autocomplete flex
+        md-search-text="creature.stats.alignment"
+        md-items="alignment in searchArray(creature.stats.alignment,creatureData.alignments)"
+        md-item-text="alignment"
+        md-floating-label="Alignment">
+      <md-item-template>
+        <span>{{alignment}}</span>
+      </md-item-template>
+    </md-autocomplete>
   </section>
 </form>
