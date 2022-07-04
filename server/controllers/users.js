@@ -5,40 +5,35 @@ var Bestiary = require('../models/bestiary');
 var Creature = require('../models/creature');
 var jwt = require("jsonwebtoken");
 var config = require("../config");
-var nodemailer = require('nodemailer');
-var url = require('url');
 var creatures = require("../controllers/creatures");
+var emailController = require("../controllers/email");
 
-var transporter = nodemailer.createTransport('smtps://' +
-    config.email.address +
-    ":" +
-    config.email.password +
-    "@smtp.gmail.com");
-
-var sendWelcomeEmail = function(email){
+var sendWelcomeEmail = function(emailAddress){
     var mailOptions = {
         from: '"'+config.email.name+'" <'+config.email.address+'>',
-        to: email,
+        to: emailAddress,
         subject: 'Welcome to Critter DB',
         text: 'Thanks for joining Critter DB! I hope it helps you with all your critter management needs. Please send any feedback to me at haswellrd@gmail.com or on Github at https://github.com/haswellr/CritterDB.\n\nThanks,\nRyan'
     };
-    transporter.sendMail(mailOptions,function(error, info){
-        if(error)
-            console.log(error);
-    });
+    try {
+        emailController.sendEmail(mailOptions);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-var sendPassword = function(email,passwordUrl){
+var sendPassword = function(emailAddress,passwordUrl){
     var mailOptions = {
         from: '"'+config.email.name+'" <'+config.email.address+'>',
-        to: email,
+        to: emailAddress,
         subject: 'Lost Password',
         text: 'You lost something! Follow this link to set your new password: ' + passwordUrl
     };
-    transporter.sendMail(mailOptions,function(error, info){
-        if(error)
-            console.log(error);
-    });
+    try {
+        emailController.sendEmail(mailOptions);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 var getRandomPassword = function() {

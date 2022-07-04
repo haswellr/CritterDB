@@ -8,6 +8,7 @@
     "bcryptjs": "2.3.0",
     "cookie-parser": "1.4.1",
     "express": "3.x",
+    "googleapis": "^104.0.0",
     "grunt": "0.4.5",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-concat": "1.0.0",
@@ -22,7 +23,7 @@
     "mongodb": "3.5.x",
     "mongoose": "^5.9.18",
     "mongoose-autopopulate": "0.12.x",
-    "nodemailer": "2.2.1",
+    "nodemailer": "6.7.6",
     "path": "0.12.7",
     "randomstring": "1.1.4"
   },
