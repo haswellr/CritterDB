@@ -14,6 +14,7 @@ module.exports = {
 	'tokens': {
 		'duration': 86400
 	},
+	'port': 3000,
 	'email': {
 		'address': 'email-address-to-send-from',
 		'name': 'Critter DB',

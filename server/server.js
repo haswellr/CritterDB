@@ -86,5 +86,6 @@ app.post('/api/revokeauthentication', authentication.revokeAuthentication);
 //Downloads
 app.post('/api/downloads', downloads.downloadData);
 
-app.listen(3000);
-console.log('Listening on port 3000...');
+const port = config.port || 3000;
+app.listen(port);
+console.log(`Listening on port ${port}...`);
