@@ -4,6 +4,12 @@
 
 angular.module('myApp').factory("FiveEToolsBestiaryMapper", function (DataMapper, FiveEToolsCreatureMapper) {
 
+    function generateJsonName(getterFunction) {
+        const name = getterFunction("name");
+        const username = getterFunction("owner.username");
+        return `${username}-${name.replace(" ", "-")}`
+    }
+
     class FiveEToolsBestiaryMapper extends DataMapper {
         constructor() {
             super();
@@ -14,12 +20,37 @@ angular.module('myApp').factory("FiveEToolsBestiaryMapper", function (DataMapper
                 "_type": "object",
                 "valueMap": {
                     "monster": {
-                        "_type": "array",
-                        "source": "creatures",
-                        "elementMap": {
-                            "_type": "dataMapper",
-                            "dataMapper": new FiveEToolsCreatureMapper()
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            const creatures = getterFunction("creatures");
+                            const sourceName = getterFunction("name");
+                            const mapper = new FiveEToolsCreatureMapper();
+                            return creatures.map(creature => {
+                                return {
+                                    ...mapper.map(creature),
+                                    source: generateJsonName(getterFunction),
+                                }
+                            })
                         }
+                    },
+                    "_meta": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            const name = getterFunction("name");
+                            const username = getterFunction("owner.username");
+
+                            return {
+                                "sources": [{
+                                    "json": generateJsonName(getterFunction),
+                                    "abbreviation": name.split(" ").map(str => str.substring(0, 1)).join(" "),
+                                    "full": name,
+                                    "url": "",
+                                    "authors": [username],
+                                    "convertedBy": []
+                                }]
+                            }
+                        }
+                        
                     }
                 }
             }
