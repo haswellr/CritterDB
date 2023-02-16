@@ -26,10 +26,9 @@ angular.module('myApp').factory("FiveEToolsBestiaryMapper", function (DataMapper
                             const sourceName = getterFunction("name");
                             const mapper = new FiveEToolsCreatureMapper();
                             return creatures.map(creature => {
-                                return {
-                                    ...mapper.map(creature),
-                                    source: generateJsonName(getterFunction),
-                                }
+                                const creatureData = mapper.map(creature);
+                                creatureData.source = generateJsonName(getterFunction);
+                                return creatureData;
                             })
                         }
                     },
