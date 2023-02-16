@@ -12,9 +12,17 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
         dexterity: "dex",
         constitution: "con",
         wisdom: "wis",
-        intelligence: "intelligence",
-        charisma: "charisma"
+        intelligence: "int",
+        charisma: "cha"
     };
+
+    function calcModifier(abilityScore) {
+        return Math.floor((abilityScore - 10) / 2.0);
+    }
+
+    function toLower(str) {
+        return str.toLowerCase();
+    }
 
     class FiveEToolsCreatureMapper extends DataMapper {
         constructor() {
@@ -26,31 +34,41 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                 "_type": "object",
                 "valueMap": {
                     "name": "name",
-                    "source": "%f%CritterDB",
-                    "page": "%%0",
-                    "size": "stats.size",
+                    "size": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return [getterFunction("stats.size").substring(0, 1).toUpperCase()];
+                        }
+                    },
                     "type": {
                         "_type": "function",
                         "function": function (getterFunction) {
                             const critterDbRace = getterFunction("stats.race");
                             if (critterDbRace.includes(RACE_SUBTYPE_START) && critterDbRace.includes(RACE_SUBTYPE_END)) {
                                 return {
-                                    "type": critterDbRace.substring(0, critterDbRace.indexOf(RACE_SUBTYPE_START)).trim(),
+                                    "type": critterDbRace.substring(0, critterDbRace.indexOf(RACE_SUBTYPE_START)).trim().toLowerCase(),
                                     "tags": [
-                                        critterDbRace.substring(critterDbRace.indexOf(RACE_SUBTYPE_START) + 1, critterDbRace.indexOf(RACE_SUBTYPE_END))
+                                        critterDbRace.substring(critterDbRace.indexOf(RACE_SUBTYPE_START) + 1, critterDbRace.indexOf(RACE_SUBTYPE_END)).toLowerCase()
                                     ]
                                 }
                             } else {
-                                return critterDbRace;
+                                return critterDbRace.toLowerCase();
                             }
                         }
                     },
+                    "source": "%%CritterDB", // TODO: pass a bestiary name
                     "alignment": {
                         "_type": "function",
                         "function": function (getterFunction) {
                             // CritterDB Alignment looks like "Lawful Evil", "Neutral", etc. 5eTools is ["L", "E"] or ["N"].
                             const critterDbAlignment = getterFunction("stats.alignment");
-                            return critterDbAlignment.split(" ").map(word => word.substring(0, 1)).map(letter => letter.toUpperCase());
+                            return critterDbAlignment.split(" ").reduce((acc, item) => {
+                                const letter = item.substring(0, 1).toUpperCase();
+                                if (!acc.includes(letter)) { // avoid ["A", "A"] for "Any Alignment"
+                                    acc.push(letter);
+                                }
+                                return acc;
+                            }, []);
                         }
                     },
                     "ac": {
@@ -69,11 +87,12 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                     "hp": {
                         "_type": "function",
                         "function": function (getterFunction) {
-                            const hitDieSize = CreatureData.sizes[getterFunction("stats.size")].hitDieSize;
+                            const hitDieSize = getterFunction("stats.hitDieSize");
                             const numHitDice = getterFunction("stats.numHitDie");
+                            const extraHealth = getterFunction("stats.extraHealthFromConstitution");
                             return {
-                                "average": Math.ceil(((hitDieSize / 2.0) + 0.5) * numHitDice),
-                                "formula": `${numHitDice}d${hitDieSize}`
+                                "average": Math.floor((hitDieSize / 2.0) * numHitDice) + extraHealth,
+                                "formula": `${numHitDice}d${hitDieSize} + ${extraHealth}`
                             };
                         }
                     },
@@ -90,6 +109,12 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                                         if (speed) {
                                             outputSpeed[speedType] = critterDbSpeed.match(/\d/g).join("");
                                         }
+                                    } else {
+                                        // "walk" speed doesn't have designation
+                                        const walkingSpeedMatch = critterDbSpeed.match(/^(\d{1,3}) ft\.$/i);
+                                        if (walkingSpeedMatch) {
+                                            outputSpeed.walk = parseInt(walkingSpeedMatch[1], 10);
+                                        }
                                     }
                                 });
                             });
@@ -101,7 +126,50 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                     "con": "stats.abilityScores.constitution",
                     "int": "stats.abilityScores.intelligence",
                     "wis": "stats.abilityScores.wisdom",
-                    "cha": "stats.abilityScores.cha",
+                    "cha": "stats.abilityScores.charisma",
+                    "passive": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            const critterDbSenses = getterFunction("stats.senses").map(toLower);
+                            critterDbSenses.forEach(critterDbSense => {
+                                if (critterDbSense.includes("passive perception")) {
+                                    return critterDbSense.match(/\d/g).join("");
+                                }
+                            });
+                            return 10;                        }
+                    },
+                    "cr": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.challengeRatingStr");
+                        }
+                    },
+                    "senses": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.senses").map(toLower);
+                        }
+                    },
+                    "senseTags": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.senses").map((sense) => {
+                                if (sense.match(/darkvision/i)) {
+                                    return "D";
+                                }
+                                if (sense.match(/blindsight/i)) {
+                                    return "B"
+                                }
+                                if (sense.match(/tremorsense/i)) {
+                                    return "T"
+                                }
+                                if (sense.match(/truesight/i)) {
+                                    return "U"
+                                }
+                            });
+                        }
+                    },
+                    "languages": "stats.languages",
                     "save": {
                         "_type": "function",
                         "function": function (getterFunction) {
@@ -114,7 +182,7 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                                 } else if (critterDbSave.proficient) {
                                     const critterDbProficiency = getterFunction("stats.proficiencyBonus");
                                     const critterDbAbilityScore = getterFunction(`stats.abilityScores.${critterDbSave.ability}`);
-                                    const critterDbAbilityMod = Math.floor((critterDbAbilityScore - 10) / 2.0);
+                                    const critterDbAbilityMod = calcModifier(critterDbAbilityScore);
                                     const calculatedSave = critterDbProficiency + critterDbAbilityMod;
                                     outputSaves[outputKey] = `+${calculatedSave}`
                                 }
@@ -135,43 +203,12 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                                     const critterDbProficiency = getterFunction("stats.proficiencyBonus");
                                     const critterDbAbility = CreatureData.skills[critterDbSkill.name].ability;
                                     const critterDbAbilityScore = getterFunction(`stats.abilityScores.${critterDbAbility}`);
-                                    const critterDbAbilityMod = Math.floor((critterDbAbilityScore - 10) / 2.0);
+                                    const critterDbAbilityMod = calcModifier(critterDbAbilityScore);
                                     const calculatedSkillMod = critterDbProficiency + critterDbAbilityMod;
                                     outputSkills[outputKey] = `+${calculatedSkillMod}`
                                 }
                             });
                             return outputSkills;
-                        }
-                    },
-                    "senses": "stats.senses",
-                    "passive": {
-                        "_type": "function",
-                        "function": function (getterFunction) {
-                            const critterDbSenses = getterFunction("stats.senses").map(critterDbSense => critterDbSense.toLowerCase());
-                            critterDbSenses.forEach(critterDbSense => {
-                                if (critterDbSense.includes("passive perception")) {
-                                    return critterDbSense.match(/\d/g).join("");
-                                }
-                            });
-                            return 10;
-                        }
-                    },
-                    "immune": "stats.damageImmunities",
-                    "conditionImmune": "stats.conditionImmunities",
-                    "languages": "stats.languages",
-                    "cr": "challengeRating",
-                    "trait": {
-                        "_type": "array",
-                        "source": "stats.additionalAbilities",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "name": "name",
-                                "entries": {
-                                    "_type": "singularArray",
-                                    "elementMap": "description"
-                                }
-                            }
                         }
                     },
                     "action": {
@@ -188,6 +225,45 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                             }
                         }
                     },
+                    "immune": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.damageImmunities").map(toLower);
+                        }
+                    },                    
+                    "vulnerable": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.damageVulnerabilities").map(toLower);
+                        }
+                    },
+                    "resist": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.damageResistances").map(toLower);
+                        }
+                    },
+                    "conditionImmune": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return getterFunction("stats.conditionImmunities").map(toLower);
+                        },
+                    },
+                    "trait": {
+                        "_type": "array",
+                        "source": "stats.additionalAbilities",
+                        "elementMap": {
+                            "_type": "object",
+                            "valueMap": {
+                                "name": "name",
+                                "entries": {
+                                    "_type": "singularArray",
+                                    "elementMap": "description"
+                                }
+                            }
+                        }
+                    },
+
                     "reaction": {
                         "_type": "array",
                         "source": "stats.reactions",
@@ -218,8 +294,10 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                     },
                     "legendaryGroup": null,
                     "environment": {
-                        "_type": "singularArray",
-                        "elementMap": "flavor.environment"
+                        "_type": "function",
+                        "function": function(getterFunction) {
+                            return getterFunction("flavor.environment").split(/, /).map(toLower);
+                        }
                     },
                     "soundClip": null,
                     "traitTags": {
@@ -227,16 +305,32 @@ angular.module('myApp').factory("FiveEToolsCreatureMapper", function (DataMapper
                         "source": "stats.additionalAbilities",
                         "elementMap": "name"
                     },
-                    "senseTags": null,
-                    "actionTags": {
-                        "_type": "array",
-                        "source": "stats.actions",
-                        "elementMap": "name"
-                    },
+
                     "damageTags": null,
                     "miscTags": null,
                     "conditionInflict": null,
-                    "conditionInflictLegendary": null
+                    "conditionInflictLegendary": null,
+                    "group": "flavor.faction",
+                    "isNamedCreature": "flavor.nameIsProper",
+                    "fluff": {
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            return {
+                                "entries": [
+                                    getterFunction("flavor.description"),
+                                ],
+                                "images": [
+                                    {
+                                        "type": "image",
+                                        "href": {
+                                            "type": "external",
+                                            "url": getterFunction("flavor.imageUrl")
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
                 }
             }
         }
