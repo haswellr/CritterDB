@@ -18,7 +18,7 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-import": "0.1.7",
     "grunt-ng-annotate": "1.0.1",
-    "jsonwebtoken": "5.7.0",
+    "jsonwebtoken": "9.0.0",
     "mime": "1.4.1",
     "mongodb": "3.5.x",
     "mongoose": "^5.9.18",
