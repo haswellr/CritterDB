@@ -16,9 +16,16 @@ var exportCreatureJsonCtrl = function ($scope, creature, $mdDialog, $mdToast, Da
             fileExtension: "json",
             description: '<a href="https://5e.tools/">5E Tools</a> has a browseable collection of official 5E information, including core rules, monsters, and more. Additionally, creatures in the 5E Tools format can be imported into the Roll20 virtual tabletop.<br>Please note that support for this export tool is not provided by 5eTools and any queries or issues should be directed to <a href="https://github.com/haswellr/CritterDB">CritterDB</a>.',
             adapterFormat: DataAdapter.Format["5E_TOOLS_CREATURE"]
+        },
+        "Improved Initiative": {
+            name: "Improved Initiative",
+            fileSuffix: "_(Improved_Init)",
+            fileExtension: "json",
+            description: "Export this bestiary in Improved Initiative's JSON format.",
+            adapterFormat: DataAdapter.Format["IMPROVED_INIT"]
         }
     }
-        
+
     $scope.exportFormatIds = Object.keys($scope.exportFormats);
 
     function getSelectedExportFormat() {
@@ -33,7 +40,7 @@ var exportCreatureJsonCtrl = function ($scope, creature, $mdDialog, $mdToast, Da
     }
 
     $scope.export = {}
-    
+
     $scope.$watch("selectedExportFormatId",function(newValue,oldValue){
 		if(oldValue!=newValue) {
             if (!newValue) {
