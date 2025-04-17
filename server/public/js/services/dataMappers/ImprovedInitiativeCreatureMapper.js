@@ -1,5 +1,5 @@
 /**
- * Adapts creatures into the 5E tools format. https://5e.tools/bestiary.html#adult%20gold%20dragon_mm
+ * Adapts creatures into the Improved Initiative format.
  */
 
 angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (DataMapper, CreatureData) {
@@ -28,6 +28,11 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
         return str.charAt(0).toUpperCase() + str.substring(1);
     }
 
+    function stripMarkup(str) {
+      let doc = new DOMParser().parseFromString(str, 'text/html');
+      return doc.body.textContent || "";
+    }
+
     class ImprovedInitiativeCreatureMapper extends DataMapper {
         constructor() {
             super();
@@ -40,25 +45,22 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                     "Type": {
                         "_type": "function",
                         "function": function (getterFunction) {
-                            const critterDbSize = getterFunction("stats.size").capitalize();
-                            const critterDbRace = getterFunction("stats.race").capitalize();
+                            const critterDbSize = capitalize(getterFunction("stats.size"));
+                            const critterDbRace = capitalize(getterFunction("stats.race"));
                             const critterDbAlignment = getterFunction("stats.alignment");
                             return critterDbSize + " " + critterDbRace + ", " + critterDbAlignment;
                         }
                     },
                     "Source": "%%CritterDB", // TODO: pass a bestiary name
                     "AC": {
-                        "_type": "singularArray",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "Value": "stats.armorClass",
-                                "Notes": "stats.armorType"
-                            }
-                        }
+                          "_type": "object",
+                          "valueMap": {
+                              "Value": "stats.armorClass",
+                              "Notes": "stats.armorType"
+                          }
                     },
                     "HP": {
-                        "_type": "function"
+                        "_type": "function",
                         "function": function (getterFunction) {
                             const totalHealth = getterFunction("stats.hitPoints");
                             const hitDieSize = getterFunction("stats.hitDieSize");
@@ -80,27 +82,25 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                                 critterDbSpeeds.forEach(critterDbSpeed => {
                                     if (critterDbSpeed.includes(speedType)) {
                                         outputSpeed.push(critterDbSpeed);
-                                    } else {
+                                    } else if (speedType == "walk") {
                                         // "walk" speed doesn't have designation
                                         outputSpeed.push("walk "+ critterDbSpeed);
                                     }
                                 });
-                        });
-                        return outputSpeed;
+                            });
+                            return outputSpeed;
+                        }
                     },
                     "Abilities": {
-                        "_type": "singularArray",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "Str": "stats.abilityScores.strength",
-                                "Dex": "stats.abilityScores.dexterity",
-                                "Con": "stats.abilityScores.constitution",
-                                "Int": "stats.abilityScores.intelligence",
-                                "Wis": "stats.abilityScores.wisdom",
-                                "Cha": "stats.abilityScores.charisma"
-                            }
-                        }
+                          "_type": "object",
+                          "valueMap": {
+                              "Str": "stats.abilityScores.strength",
+                              "Dex": "stats.abilityScores.dexterity",
+                              "Con": "stats.abilityScores.constitution",
+                              "Int": "stats.abilityScores.intelligence",
+                              "Wis": "stats.abilityScores.wisdom",
+                              "Cha": "stats.abilityScores.charisma"
+                          }
                     },
                     "Senses": {
                         "_type": "function",
@@ -138,7 +138,7 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                                     const critterDbAbilityScore = getterFunction(`stats.abilityScores.${critterDbSave.ability}`);
                                     const critterDbAbilityMod = calcModifier(critterDbAbilityScore);
                                     const calculatedSave = critterDbProficiency + critterDbAbilityMod;
-                                    outputSave["Modifier"] = `${calculatedSave}`
+                                    outputSave["Modifier"] = `${calculatedSave}`;
                                 }
                                 outputSaves.push(outputSave);
                             });
@@ -152,7 +152,7 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                             const critterDbSkills = getterFunction("stats.skills");
                             critterDbSkills.forEach(critterDbSkill => {
                                 const outputSkill = {};
-                                const outputName = critterDbSkill.name.capitalize();
+                                const outputName = capitalize(critterDbSkill.name);
                                 outputSkill["Name"] = outputName;
                                 if (critterDbSkill.value) {
                                     outputSkill["Modifier"] = `${critterDbSkill.value}`;
@@ -162,7 +162,7 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                                     const critterDbAbilityScore = getterFunction(`stats.abilityScores.${critterDbAbility}`);
                                     const critterDbAbilityMod = calcModifier(critterDbAbilityScore);
                                     const calculatedSkillMod = critterDbProficiency + critterDbAbilityMod;
-                                    outputSkill["Modifier"] = `${calculatedSkillMod}`
+                                    outputSkill["Modifier"] = `${calculatedSkillMod}`;
                                 }
                                 outputSkills.push(outputSkill);
                             });
@@ -170,17 +170,17 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                         }
                     },
                     "Actions": {
-                        "_type": "array",
-                        "source": "stats.actions",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "Name": "name",
-                                "Content": {
-                                    "_type": "singularArray",
-                                    "elementMap": "description"
-                                }
-                            }
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            const outputActions = [];
+                            const critterDbActions = getterFunction("stats.actions");
+                            critterDbActions.forEach(critterDbAction => {
+                                const outputAction = {};
+                                outputAction["Name"] = critterDbAction.name;
+                                outputAction["Content"] = stripMarkup(critterDbAction.description);
+                                outputActions.push(outputAction);
+                            });
+                            return outputActions;
                         }
                     },
                     "DamageImmunities": {
@@ -208,47 +208,47 @@ angular.module('myApp').factory("ImprovedInitiativeCreatureMapper", function (Da
                         },
                     },
                     "Traits": {
-                        "_type": "array",
-                        "source": "stats.additionalAbilities",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "Name": "name",
-                                "Content": {
-                                    "_type": "singularArray",
-                                    "elementMap": "description"
-                                }
-                            }
+                        "_type": "function",
+                        "function": function (getterFunction) {
+                            const outputTraits = [];
+                            const critterDbTraits = getterFunction("stats.additionalAbilities");
+                            critterDbTraits.forEach(critterDbTrait => {
+                                const outputTrait = {};
+                                outputTrait["Name"] = critterDbTrait.name;
+                                outputTrait["Content"] = stripMarkup(critterDbTrait.description);
+                                outputTraits.push(outputTrait);
+                            });
+                            return outputTraits;
                         }
                     },
                     "Reactions": {
-                        "_type": "array",
-                        "source": "stats.reactions",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "Name": "name",
-                                "Content": {
-                                    "_type": "singularArray",
-                                    "elementMap": "description"
-                                }
-                            }
-                        }
+                      "_type": "function",
+                      "function": function (getterFunction) {
+                          const outputReactions = [];
+                          const critterDbReactions = getterFunction("stats.reactions");
+                          critterDbReactions.forEach(critterDbReaction => {
+                              const outputReaction = {};
+                              outputReaction["Name"] = critterDbReaction.name;
+                              outputReaction["Content"] = stripMarkup(critterDbReaction.description);
+                              outputReactions.push(outputReaction);
+                          });
+                          return outputReactions;
+                      }
                     },
                     "LegendaryActions": {
-                        "_type": "array",
-                        "source": "stats.legendaryActions",
-                        "elementMap": {
-                            "_type": "object",
-                            "valueMap": {
-                                "Name": "name",
-                                "Content": {
-                                    "_type": "singularArray",
-                                    "elementMap": "description"
-                                }
-                            }
-                        }
-                    },
+                      "_type": "function",
+                      "function": function (getterFunction) {
+                          const outputLegendaryActions = [];
+                          const critterDbLegendaryActions = getterFunction("stats.legendaryActions");
+                          critterDbLegendaryActions.forEach(critterDbLegendaryAction => {
+                              const outputLegendaryAction = {};
+                              outputLegendaryAction["Name"] = critterDbLegendaryAction.name;
+                              outputLegendaryAction["Content"] = stripMarkup(critterDbLegendaryAction.description);
+                              outputLegendaryAction.push(outputLegendaryAction);
+                          });
+                          return outputLegendaryActions;
+                      }
+                    }
                 }
             }
         }

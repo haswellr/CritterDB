@@ -1,15 +1,15 @@
-/** 
+/**
  * Adapts data, like creatures or bestiaries, to or from other formats. Used for import and export.
  */
 
-angular.module('myApp').factory("DataAdapter", function (JsonAdapter, FiveEToolsBestiaryMapper, FiveEToolsCreatureMapper) {
+angular.module('myApp').factory("DataAdapter", function (JsonAdapter, FiveEToolsBestiaryMapper, FiveEToolsCreatureMapper, ImprovedInitiativeCreatureMapper) {
 
     var DataAdapter = {};
 
     /**
      * Represents an adapter workflow for adapting from one type of data to another.
      * @constructor
-     * @param {object[]} dataMappers - A list of the objects defining the data conversion. They will be run in order, and will convert from a js object 
+     * @param {object[]} dataMappers - A list of the objects defining the data conversion. They will be run in order, and will convert from a js object
      * to another js object.
      * @param {TextAdapter} textAdapter - An instance of the adapter which converts from js object to text. This will be run after all of the data mappers.
      * For example, may convert to JSON format, or HTML, or XML.
@@ -32,12 +32,13 @@ angular.module('myApp').factory("DataAdapter", function (JsonAdapter, FiveETools
     DataAdapter.Format = {
         "5E_TOOLS_BESTIARY": new AdapterWorkflow([new FiveEToolsBestiaryMapper()], new JsonAdapter()),
         "5E_TOOLS_CREATURE": new AdapterWorkflow([new FiveEToolsCreatureMapper()], new JsonAdapter()),
+        "IMPROVED_INITIATIVE_CREATURE": new AdapterWorkflow([new ImprovedInitiativeCreatureMapper()], new JsonAdapter()),
         "CRITTERDB": new AdapterWorkflow([], new JsonAdapter())
     }
 
     /**
      * Exports data from CritterDB format to that of another format.
-     * 
+     *
      * @param {object} data - A piece of CritterDB data to be exported, such as a creature or bestiary.
      * @param {DataAdapter.Format} format - The format to adapt to.
      * @returns {string} The text of the exported bestiary in the specified format.
@@ -64,7 +65,7 @@ angular.module('myApp').factory("DataAdapter", function (JsonAdapter, FiveETools
 
     /**
      * Imports data from text in another format to CritterDB format.
-     * 
+     *
      * @param {string} text - Text to be imported, such as a creature or bestiary.
      * @param {DataAdapter.Format} format - The format to adapt to.
      * @returns {object} The CritterDB object imported from the text.

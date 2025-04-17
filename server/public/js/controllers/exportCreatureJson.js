@@ -22,7 +22,7 @@ var exportCreatureJsonCtrl = function ($scope, creature, $mdDialog, $mdToast, Da
             fileSuffix: "_(Improved_Init)",
             fileExtension: "json",
             description: "Export this bestiary in Improved Initiative's JSON format.",
-            adapterFormat: DataAdapter.Format["IMPROVED_INIT"]
+            adapterFormat: DataAdapter.Format["IMPROVED_INITIATIVE_CREATURE"]
         }
     }
 
